@@ -1,6 +1,9 @@
 package de.kksystem.karteikarten.service.classes;
 
+import java.util.List;
+
 import de.kksystem.karteikarten.facades.DaoFacade;
+import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.service.interfaces.UserService;
 
@@ -54,6 +57,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findUserByEMail(String email) {
 		return daoFacade.findUserByEMail(email);
+	}
+
+	@Override
+	public List<Category> findCategoriesByUserId(int userId) {
+		return daoFacade.findCategoriesByUserId(userId);
 	}
 
 }

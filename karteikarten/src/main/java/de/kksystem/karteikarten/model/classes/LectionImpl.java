@@ -1,12 +1,14 @@
 package de.kksystem.karteikarten.model.classes;
 
+import java.sql.Timestamp;
+
 import de.kksystem.karteikarten.model.interfaces.Lection;
 
 public class LectionImpl implements Lection{
 	private int lectionId;
 	private String name;
 	private String description;
-	private String lastExcercise;
+	private Timestamp lastExcercise;
 	private int categoryId;
 	private int favoritelistId;
 	
@@ -14,7 +16,7 @@ public class LectionImpl implements Lection{
 		super();
 	}
 	
-	public LectionImpl(int lectionId, String name, String description, String lastExcercise, int categoryId, int favoritelistId) {
+	public LectionImpl(int lectionId, String name, String description, Timestamp lastExcercise, int categoryId, int favoritelistId) {
 		this.lectionId = lectionId;
 		this.name = name;
 		this.description = description;
@@ -54,12 +56,12 @@ public class LectionImpl implements Lection{
 	}
 
 	@Override
-	public String getLastExcercise() {
+	public Timestamp getLastExcercise() {
 		return lastExcercise;
 	}
 
 	@Override
-	public void setLastExcercise(String lastExcercise) {
+	public void setLastExcercise(Timestamp lastExcercise) {
 		this.lastExcercise = lastExcercise;
 	}
 
@@ -82,5 +84,4 @@ public class LectionImpl implements Lection{
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
 	}
-	
 }

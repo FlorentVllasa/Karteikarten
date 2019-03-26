@@ -1,5 +1,6 @@
 package de.kksystem.karteikarten.service.classes;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import de.kksystem.karteikarten.facades.DaoFacade;
@@ -14,40 +15,38 @@ public class LectionServiceImpl implements LectionService {
 	}
 
 	@Override
-	public void delete(Lection lection) {
-		// TODO Auto-generated method stub
-		
+	public void addLection(Lection lection) {
+		daoFacade.addLection(lection);
 	}
 
 	@Override
-	public Lection findLection(int lectionId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void deleteLection(Lection lection) {
+		daoFacade.deleteLection(lection);
 	}
 
 	@Override
-	public List<Lection> findAllLection() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateLection(Lection lection) {
+		daoFacade.updateLection(lection);
 	}
 
 	@Override
-	public void saveLection(Lection lection) {
-		// TODO Auto-generated method stub
-		
+	public void updateName(String name, int lectionId) {
+		daoFacade.updateName(name, lectionId);
+	}
+
+	@Override
+	public void updateDescription(String description, int lectionId) {
+		daoFacade.updateDescription(description, lectionId);
+	}
+
+	@Override
+	public void updateLastExcercise(Timestamp timestamp, int lectionId) {
+		daoFacade.updateLastExcercise(timestamp, lectionId);
 	}
 
 	@Override
 	public Lection findLectionById(int lectionId) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoFacade.findLectionById(lectionId);
 	}
-
-	@Override
-	public int countLections() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 
 }

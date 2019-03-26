@@ -1,13 +1,16 @@
-package de.kksystem.karteikarten.dao.classes.jdbc;
+package de.kksystem.karteikarten.service.classes;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import de.kksystem.karteikarten.facades.DaoFacade;
+import de.kksystem.karteikarten.factories.ModelFactory;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 import de.kksystem.karteikarten.service.interfaces.PictureService;
+import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class PictureServiceImpl implements PictureService {
 	private DaoFacade daoFacade;
