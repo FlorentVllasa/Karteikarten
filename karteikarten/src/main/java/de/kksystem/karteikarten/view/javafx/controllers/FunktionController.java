@@ -4,8 +4,11 @@ import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -75,6 +78,17 @@ public class FunktionController implements Initializable {
     	System.out.println("Benutzername: " + username + " ID: " + userId);
     }
 
+    @FXML
+    public void changeCursorEnterLernenBild(MouseEvent event){
+        lernenBild.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Scene sceneInfo = lernenBild.getScene();
+                sceneInfo.setCursor(Cursor.HAND);
+            }
+        });
+    }
+
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
     public void switchSceneToErstellenWindow(MouseEvent event){
         wp.createWindowNewStage("/fxml/erstellenFenster.fxml", "Erstellen Fenster!", new ErstellenFensterController());
@@ -114,6 +128,7 @@ public class FunktionController implements Initializable {
     	abmeldenButton.setOnAction(this::printUserId);
         erstellenBild.setOnMouseClicked(this::switchSceneToErstellenWindow);
         lernenBild.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
+        lernenBild.setOnMouseEntered(this::changeCursorEnterLernenBild);
     }
     //Farbe  #0B2161
 }
