@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Projekt">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.14">
+    <root id="1">
+      <ServerVersion>3.25.1</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Benutzer"/>
+    <table id="7" parent="2" name="Bild"/>
+    <table id="8" parent="2" name="Favoritenliste"/>
+    <table id="9" parent="2" name="Karteikarte"/>
+    <table id="10" parent="2" name="Kategorie"/>
+    <table id="11" parent="2" name="Lektion"/>
+    <table id="12" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="13" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="14" parent="6" name="BenutzerID">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="6" name="EmailAdresse">
+      <Position>2</Position>
+      <DataType>varchar(150)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="16" parent="6" name="Benutzername">
+      <Position>3</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="17" parent="6" name="Passwort">
+      <Position>4</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="18" parent="6" name="Nachname">
+      <Position>5</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="19" parent="6" name="Vorname">
+      <Position>6</Position>
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="20" parent="6" name="LetzteAnmeldung">
+      <Position>7</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <index id="21" parent="6" name="sqlite_autoindex_Benutzer_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>EmailAdresse</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <index id="22" parent="6" name="sqlite_autoindex_Benutzer_2">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Benutzername</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="23" parent="6">
+      <ColNames>BenutzerID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="24" parent="6">
+      <ColNames>EmailAdresse</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Benutzer_1</UnderlyingIndexName>
+    </key>
+    <key id="25" parent="6">
+      <ColNames>Benutzername</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Benutzer_2</UnderlyingIndexName>
+    </key>
+    <column id="26" parent="7" name="BildID">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="7" name="Speicherort">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="28" parent="7" name="Beschreibung">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <key id="29" parent="7">
+      <ColNames>BildID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="30" parent="8" name="FavoritenlisteID">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="31" parent="8" name="Name">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="8" name="BenutzerID">
+      <Position>3</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="33" parent="8" name="sqlite_autoindex_Favoritenliste_1">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>BenutzerID</ColNames>
+      <ColumnCollations></ColumnCollations>
+      <Unique>1</Unique>
+    </index>
+    <key id="34" parent="8">
+      <ColNames>FavoritenlisteID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="35" parent="8">
+      <ColNames>BenutzerID</ColNames>
+      <UnderlyingIndexName>sqlite_autoindex_Favoritenliste_1</UnderlyingIndexName>
+    </key>
+    <foreign-key id="36" parent="8">
+      <ColNames>BenutzerID</ColNames>
+      <RefTableName>Benutzer</RefTableName>
+      <RefColNames>BenutzerID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="37" parent="9" name="KarteikarteID">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="38" parent="9" name="Frage">
+      <Position>2</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="39" parent="9" name="Antwort">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="9" name="Farbe">
+      <Position>4</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+    </column>
+    <column id="41" parent="9" name="LektionID">
+      <Position>5</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="9" name="BildID">
+      <Position>6</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <key id="43" parent="9">
+      <ColNames>KarteikarteID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="44" parent="9">
+      <ColNames>LektionID</ColNames>
+      <RefTableName>Lektion</RefTableName>
+      <RefColNames>LektionID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="45" parent="9">
+      <ColNames>BildID</ColNames>
+      <RefTableName>Bild</RefTableName>
+      <RefColNames>BildID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="46" parent="10" name="KategorieID">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="10" name="Name">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="10" name="Beschreibung">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="49" parent="10" name="BenutzerID">
+      <Position>4</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="50" parent="10">
+      <ColNames>KategorieID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="51" parent="10">
+      <ColNames>BenutzerID</ColNames>
+      <RefTableName>Benutzer</RefTableName>
+      <RefColNames>BenutzerID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="52" parent="11" name="LektionID">
+      <Position>1</Position>
+      <DataType>INTEGER|0s</DataType>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="53" parent="11" name="Name">
+      <Position>2</Position>
+      <DataType>VARCHAR(50)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="11" name="Beschreibung">
+      <Position>3</Position>
+      <DataType>TEXT|0s</DataType>
+    </column>
+    <column id="55" parent="11" name="LetzteUebung">
+      <Position>4</Position>
+      <DataType>DATETIME|0s</DataType>
+    </column>
+    <column id="56" parent="11" name="KategorieID">
+      <Position>5</Position>
+      <DataType>INT|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="11" name="FavoritenlisteID">
+      <Position>6</Position>
+      <DataType>INT|0s</DataType>
+    </column>
+    <key id="58" parent="11">
+      <ColNames>LektionID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="59" parent="11">
+      <ColNames>KategorieID</ColNames>
+      <RefTableName>Kategorie</RefTableName>
+      <RefColNames>KategorieID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="60" parent="11">
+      <ColNames>FavoritenlisteID</ColNames>
+      <RefTableName>Favoritenliste</RefTableName>
+      <RefColNames>FavoritenlisteID</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="61" parent="12" name="type">
+      <Position>1</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="62" parent="12" name="name">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="63" parent="12" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="64" parent="12" name="rootpage">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="65" parent="12" name="sql">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="66" parent="13" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="67" parent="13" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>
