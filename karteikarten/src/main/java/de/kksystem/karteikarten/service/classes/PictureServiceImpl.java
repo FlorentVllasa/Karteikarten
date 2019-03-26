@@ -13,6 +13,7 @@ import de.kksystem.karteikarten.service.interfaces.PictureService;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class PictureServiceImpl implements PictureService {
+	//hallo
 	private DaoFacade daoFacade;
 	
 	public PictureServiceImpl() {
