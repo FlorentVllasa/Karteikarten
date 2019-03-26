@@ -41,7 +41,7 @@ public class NeueKategorieErstellenController implements Initializable {
         }
 
         @FXML
-        void BestätigenCheck(ActionEvent event) {
+        void BestaetigenCheck(ActionEvent event) {
 
         }
         

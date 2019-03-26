@@ -39,11 +39,11 @@ public class KategorieBearbeitenController implements Initializable {
 	    }
 
 	    @FXML
-	    private Button ButtonAusführen;
+	    private Button ButtonAusfuehren;
 	 
 	    @FXML
 	    public Button getButtonAusführen () {
-	    	return ButtonAusführen;
+	    	return ButtonAusfuehren;
 	    }
 	    
 	    @FXML
@@ -63,7 +63,7 @@ public class KategorieBearbeitenController implements Initializable {
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			  ButtonAusführen.setOnAction(this::closeEditCategorieWindow);
+			  ButtonAusfuehren.setOnAction(this::closeEditCategorieWindow);
 		      
 }
 
