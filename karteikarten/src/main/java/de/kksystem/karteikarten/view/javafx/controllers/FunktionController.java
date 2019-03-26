@@ -89,6 +89,36 @@ public class FunktionController implements Initializable {
         });
     }
 
+    public void changeCursorExitLernenBild(MouseEvent event){
+        lernenBild.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Scene sceneInfo = lernenBild.getScene();
+                sceneInfo.setCursor(Cursor.DEFAULT);
+            }
+        });
+    }
+
+    public void changeCursorEnterErstellenBild(MouseEvent event){
+        erstellenBild.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Scene sceneInfo = erstellenBild.getScene();
+                sceneInfo.setCursor(Cursor.HAND);
+            }
+        });
+    }
+
+    public void changeCursorExitErstellenBild(MouseEvent event){
+        erstellenBild.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Scene sceneInfo = erstellenBild.getScene();
+                sceneInfo.setCursor(Cursor.DEFAULT);
+            }
+        });
+    }
+
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
     public void switchSceneToErstellenWindow(MouseEvent event){
         wp.createWindowNewStage("/fxml/erstellenFenster.fxml", "Erstellen Fenster!", new ErstellenFensterController());
@@ -126,9 +156,14 @@ public class FunktionController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
     	abmeldenButton.setOnAction(this::printUserId);
+    	abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
         erstellenBild.setOnMouseClicked(this::switchSceneToErstellenWindow);
         lernenBild.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
         lernenBild.setOnMouseEntered(this::changeCursorEnterLernenBild);
+        lernenBild.setOnMouseExited(this::changeCursorExitLernenBild);
+        erstellenBild.setOnMouseEntered(this::changeCursorEnterErstellenBild);
+        erstellenBild.setOnMouseExited(this::changeCursorExitErstellenBild);
+
     }
     //Farbe  #0B2161
 }
