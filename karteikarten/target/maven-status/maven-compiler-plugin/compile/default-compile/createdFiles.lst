@@ -50,6 +50,7 @@ de\kksystem\karteikarten\service\interfaces\UserService.class
 de\kksystem\karteikarten\dao\classes\jdbc\LectionDaoJdbcImpl.class
 de\kksystem\karteikarten\service\interfaces\LectionService.class
 de\kksystem\karteikarten\validators\StringValidator.class
+de\kksystem\karteikarten\view\javafx\controllers\FunktionController$1.class
 de\kksystem\karteikarten\dao\interfaces\IndexCardDao.class
 de\kksystem\karteikarten\dao\classes\jdbc\UserDaoJdbcImpl.class
 de\kksystem\karteikarten\dao\classes\jdbc\CategoryDaoJdbcImpl.class

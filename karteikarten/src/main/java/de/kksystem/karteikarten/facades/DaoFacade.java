@@ -114,7 +114,6 @@ public class DaoFacade {
 		return categoryDao.findAllCategories();
 	}
 
-	
 	public int countCategories() {
 		return categoryDao.countCategories();
 	}
