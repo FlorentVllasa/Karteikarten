@@ -4,7 +4,6 @@ import de.kksystem.karteikarten.facades.DaoFacade;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 import de.kksystem.karteikarten.service.interfaces.PictureService;
 
-//hallo deutschland 
 public class PictureServiceImpl implements PictureService {
 	private DaoFacade daoFacade;
 	
