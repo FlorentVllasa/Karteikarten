@@ -44,7 +44,7 @@ public class RegistrationController implements Initializable {
 
     /*Diese Methode wechselt die von der Registrieren Scene zur LogIn Scene*/
     public void switchToLoginWindow(ActionEvent event){
-        wpss.createWindowSwitchScene("/fxml/loginWindow.fxml", new LoginController(), lw.getWindow());
+        wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
     }
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
