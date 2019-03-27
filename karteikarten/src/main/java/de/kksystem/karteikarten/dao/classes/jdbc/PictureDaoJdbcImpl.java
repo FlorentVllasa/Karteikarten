@@ -13,6 +13,7 @@ import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class PictureDaoJdbcImpl implements PictureDao {
 
+	//nurkommentar
 	@Override
 	public void deletePicture(int pictureId) {
 		Connection connection = null;

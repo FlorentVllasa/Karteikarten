@@ -13,11 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class KategorieLoeschenController implements Initializable {
-
-	
-	
-
-
 	    @FXML
 	    private ComboBox<KategorieAuswaehlenController> KategorieLoeschenComboBox;
 	    
