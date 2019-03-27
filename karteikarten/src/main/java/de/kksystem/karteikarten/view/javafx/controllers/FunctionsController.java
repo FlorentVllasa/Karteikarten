@@ -120,7 +120,7 @@ public class FunctionsController implements Initializable {
     }
 
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
-    public void switchSceneToErstellenWindow(MouseEvent event){
+    public void switchSceneToCreateWindow(MouseEvent event){
         wp.createWindowNewStage("/fxml/createWindow.fxml", "Erstellen Fenster!", new CreateWindowController());
 
     }
@@ -157,7 +157,7 @@ public class FunctionsController implements Initializable {
         //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
     	abmeldenButton.setOnAction(this::printUserId);
     	abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
-        erstellenBild.setOnMouseClicked(this::switchSceneToErstellenWindow);
+        erstellenBild.setOnMouseClicked(this::switchSceneToCreateWindow);
         lernenBild.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
         lernenBild.setOnMouseEntered(this::changeCursorEnterLernenBild);
         lernenBild.setOnMouseExited(this::changeCursorExitLernenBild);

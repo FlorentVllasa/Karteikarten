@@ -23,7 +23,7 @@ public class CreateWindowController implements Initializable {
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
      * Dies wird erreicht in dem die Stage Information irgendeiner Komponente der Scene ermittelt wird und
      * dann in ein Stage Objekt umgewandelt wird.*/
-    public void closeErstellenWindow(ActionEvent event){
+    public void closeCreateWindow(ActionEvent event){
         Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
         stageInfo.close();
     }
@@ -31,6 +31,6 @@ public class CreateWindowController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnZurueck.setOnAction(this::closeErstellenWindow);
+        btnZurueck.setOnAction(this::closeCreateWindow);
     }
 }

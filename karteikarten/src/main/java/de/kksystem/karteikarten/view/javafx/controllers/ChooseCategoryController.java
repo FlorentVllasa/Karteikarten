@@ -26,7 +26,7 @@ public class ChooseCategoryController implements Initializable {
 
 
     /*Diese Methode wechselt das Fenster zum Lernen Fenster in dem die zuvor erstellen Karteikarten verwendet werden*/
-    public void switchToLernenWindow(ActionEvent event){
+    public void switchToLearnWindow(ActionEvent event){
         wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
         Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
         stageInfo.close();
@@ -44,6 +44,6 @@ public class ChooseCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnZurueck.setOnAction(this::closeChooseCategorieWindow);
-        btnOk.setOnAction(this::switchToLernenWindow);
+        btnOk.setOnAction(this::switchToLearnWindow);
     }
 }
