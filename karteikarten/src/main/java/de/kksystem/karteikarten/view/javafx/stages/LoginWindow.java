@@ -22,6 +22,7 @@ public class LoginWindow extends Application {
 		final Parent root = fxmlLoader.load();
 		Scene scene = new Scene(root, 600, 400);
 		window.setScene(scene);
+		window.setResizable(false);
 		window.setTitle("Login Window");
 		window.show();
 	}
