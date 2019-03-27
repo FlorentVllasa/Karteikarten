@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -28,8 +29,22 @@ public class CreateWindowController implements Initializable {
     @FXML
     private MenuItem addCategoryMenuItem;
 
-    public void siwtchToAddCategoryWindow(ActionEvent event){
+    @FXML
+    private MenuItem editCategoryMenuItem;
+
+    @FXML
+    private MenuItem deleteCategoryMenuItem;
+
+    public void switchToAddCategoryWindow(ActionEvent event){
         switchStageHelper.createWindowNewStage("/fxml/createCategoryWindow.fxml", "Kategorie erstellen!", new CreateCategoryController());
+    }
+
+    public void switchToEditCategoryWindow(ActionEvent event){
+        switchStageHelper.createWindowNewStage("/fxml/editCategoryWindow.fxml", "Kategorie bearbeiten!", new EditCategoryController());
+    }
+
+    public void switchToDeleteCategoryWindow(ActionEvent event){
+        switchStageHelper.createWindowNewStage("/fxml/deleteCategoryWindow.fxml", "Kategorie loeschen!", new DeleteCategoryController());
     }
 
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
@@ -44,6 +59,8 @@ public class CreateWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnZurueck.setOnAction(this::closeCreateWindow);
-        addCategoryMenuItem.setOnAction(this::siwtchToAddCategoryWindow);
+        addCategoryMenuItem.setOnAction(this::switchToAddCategoryWindow);
+        editCategoryMenuItem.setOnAction(this::switchToEditCategoryWindow);
+        deleteCategoryMenuItem.setOnAction(this::switchToDeleteCategoryWindow);
     }
 }

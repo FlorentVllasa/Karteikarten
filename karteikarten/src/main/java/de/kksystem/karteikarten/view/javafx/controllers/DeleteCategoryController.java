@@ -12,44 +12,31 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class DeleteCategoryController implements Initializable {
-	    @FXML
-	    private ComboBox<ChooseCategoryController> KategorieLoeschenComboBox;
-	    
-	    
-	    @FXML 
-	    public ComboBox<ChooseCategoryController> getKategorieLoeschenComboBox () {
-	    	return KategorieLoeschenComboBox;
-	    }
 
-	    @FXML
-	    private Button ButtonLoeschen;
-	    
-	    @FXML
-	    public Button getButtonLoeschen() {
-	    	return ButtonLoeschen;
-	    }
-	    
-	    
+	@FXML
+	private AnchorPane anchorPane;
 
-	    @FXML
-	    void LoeschenCheck(ActionEvent event) {
+	@FXML
+	private ComboBox<?> KategorieLöschenComboBox;
 
-	    }
-	    
-	    @FXML
-	    private AnchorPane anchorPane;
+	@FXML
+	private Button ButtonLöschen;
 
-		public void closeDeleteCategorieWindow(ActionEvent event){
+	@FXML
+	void LoeschenCheck(ActionEvent event) {
+
+	}
+
+	public void closeDeleteCategorieWindow(ActionEvent event){
 		Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
-	    stageInfo.close();
+		stageInfo.close();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		//ButtonLoeschen.setOnAction(this::closeDeleteCategorieWindow);
 	}
 	
-		@Override
-		public void initialize(URL location, ResourceBundle resources) {
-			ButtonLoeschen.setOnAction(this::closeDeleteCategorieWindow);
-	      
-	}
-	
-	}
+}
 
 

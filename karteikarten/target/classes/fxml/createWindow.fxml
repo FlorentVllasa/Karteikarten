@@ -23,9 +23,9 @@
         <menus>
           <Menu mnemonicParsing="false" text="Kategorie ">
             <items>
-              <MenuItem mnemonicParsing="false" text="Kategorie erstellen..." />
-                  <MenuItem mnemonicParsing="false" text="Kategorie bearbeiten..." />
-                  <MenuItem mnemonicParsing="false" text="Kategorie löschen..." />
+              <MenuItem fx:id="addCategoryMenuItem" mnemonicParsing="false" text="Kategorie erstellen..." />
+                  <MenuItem fx:id="editCategoryMenuItem" mnemonicParsing="false" text="Kategorie bearbeiten..." />
+                  <MenuItem fx:id="deleteCategoryMenuItem" mnemonicParsing="false" text="Kategorie löschen..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Lektion">
