@@ -57,20 +57,20 @@ public class LoginController implements Initializable {
     	UserData.getInstance().setUserId(user.getUserId());
     	
     	
-        wp.createWindowNewStage("/fxml/funktionen.fxml", "Funktion wählen!", new FunktionController());
+        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
         closePreviousWindowLogin();
     	
     }
 
     /*Diese Methode wechselt das Fenster vom LogIn Fenster zum Funktionen Fenster durch den Einloggen Button Klick*/
     public void switchToFunktionenWindow(ActionEvent event){
-        wp.createWindowNewStage("/fxml/funktionen.fxml", "Funktion wählen!", new FunktionController());
+        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
         closePreviousWindowLogin();
     }
 
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
     public void switchToRegistrierenWindow(ActionEvent event){
-        wpss.createWindowSwitchScene("/fxml/registrieren.fxml", new RegistrierenController(), lw.getWindow());
+        wpss.createWindowSwitchScene("/fxml/registrationWindow.fxml", new RegistrationController(), lw.getWindow());
     }
 
     /*Diese Methode dient dazu das LoginWindow Fenster zu schließen nach erfolgreichem LoginWindow*/

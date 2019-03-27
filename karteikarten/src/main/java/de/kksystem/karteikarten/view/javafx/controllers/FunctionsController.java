@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FunktionController implements Initializable {
+public class FunctionsController implements Initializable {
     private WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     private LoginWindow lw = new LoginWindow();
 
@@ -121,13 +121,13 @@ public class FunktionController implements Initializable {
 
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
     public void switchSceneToErstellenWindow(MouseEvent event){
-        wp.createWindowNewStage("/fxml/erstellenFenster.fxml", "Erstellen Fenster!", new ErstellenFensterController());
+        wp.createWindowNewStage("/fxml/createWindow.fxml", "Erstellen Fenster!", new CreateWindowController());
 
     }
 
     /*Wenn auf das Lernen Bild geklickt wird, öffnet sich das Fenster Kategorie auswählen*/
     public void switchSceneToChooseCategorieWindow(MouseEvent event){
-        wp.createWindowNewStage("/fxml/auswaehlenKategorie.fxml", "Wähle deine Kategorie und Lektion!", new KategorieAuswaehlenController());
+        wp.createWindowNewStage("/fxml/chooseCategory.fxml", "Wähle deine Kategorie und Lektion!", new ChooseCategoryController());
     }
 
     /*Wenn auf Abmelden Button geklickt wird, schließt sich das Funktionen Fenster und öffnet das Login Fenster*/
