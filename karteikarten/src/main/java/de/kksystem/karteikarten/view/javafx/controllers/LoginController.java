@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class LoginController implements Initializable {
@@ -24,22 +25,17 @@ public class LoginController implements Initializable {
     private LoginWindow lw = new LoginWindow();
     
     @FXML
-    private TitledPane titledPane;
-
-    @FXML
-    private Button buttonEinloggen;
-
-    @FXML
-    private Button buttonRegistrieren;
-
-    @FXML
-    private TextField textFieldUserName;
-
-    @FXML
-    private PasswordField PasswordField;
+    private AnchorPane anchorPane;
     
     @FXML
-    private ImageView regsiterImage;
+    private Button buttonLogin;
+
+    @FXML
+    private Button buttonForgotPassword;
+
+    @FXML
+    private Button buttonRegister;
+    
     
     @FXML
     private void printUsername(ActionEvent event) {
@@ -75,14 +71,14 @@ public class LoginController implements Initializable {
 
     /*Diese Methode dient dazu das LoginWindow Fenster zu schließen nach erfolgreichem LoginWindow*/
     public void closePreviousWindowLogin(){
-        Stage stageInfo = (Stage) titledPane.getScene().getWindow();
+        Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
         stageInfo.close();
     }
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttonEinloggen.setOnAction(this::printUsername);
-        buttonRegistrieren.setOnAction(this::switchToRegistrationWindow);
+        buttonLogin.setOnAction(this::printUsername);
+        buttonRegister.setOnAction(this::switchToRegistrationWindow);
     }
 }

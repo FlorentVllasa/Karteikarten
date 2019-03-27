@@ -16,7 +16,7 @@ public class LoginWindow extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage;
-		final URL fxmlUrl = getClass().getResource("/fxml/loginWindow.fxml");
+		final URL fxmlUrl = getClass().getResource("/fxml/LoginNew.fxml");
 		final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
 		fxmlLoader.setController(new LoginController());
 		final Parent root = fxmlLoader.load();
