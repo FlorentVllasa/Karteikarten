@@ -37,5 +37,6 @@
       <Button fx:id="buttonRegister" layoutX="386.0" layoutY="252.0" mnemonicParsing="false" text="Registrieren" AnchorPane.bottomAnchor="122.66666666666667" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="134.66666666666669" AnchorPane.topAnchor="252.0" />
       <Label layoutX="47.0" layoutY="182.0" text="Passwort:" AnchorPane.bottomAnchor="200.66666666666666" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="499.0" AnchorPane.topAnchor="182.0" />
       <Label fx:id="lblLogInMessage" layoutX="21.0" layoutY="369.0" />
+      <Label layoutX="21.0" layoutY="121.0" text="Name: nutzer, Pw: 123" />
    </children>
 </AnchorPane>
