@@ -23,7 +23,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Kategorie ">
             <items>
-              <MenuItem mnemonicParsing="false" text="Kategorie erstellen..." />
+              <MenuItem fx:id="addCategoryMenuItem" mnemonicParsing="false" text="Kategorie erstellen..." />
                   <MenuItem mnemonicParsing="false" text="Kategorie bearbeiten..." />
                   <MenuItem mnemonicParsing="false" text="Kategorie löschen..." />
             </items>

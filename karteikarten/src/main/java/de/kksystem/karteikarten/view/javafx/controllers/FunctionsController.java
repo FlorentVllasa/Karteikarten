@@ -157,7 +157,6 @@ public class FunctionsController implements Initializable {
         lernenBild.setOnMouseExited(this::changeCursorExitLernenBild);
         erstellenBild.setOnMouseEntered(this::changeCursorEnterErstellenBild);
         erstellenBild.setOnMouseExited(this::changeCursorExitErstellenBild);
-
     }
     //Farbe  #0B2161
 }

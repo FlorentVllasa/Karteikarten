@@ -44,6 +44,8 @@ public class CreateCategoryController implements Initializable {
         void BestaetigenCheck(ActionEvent event) {
 
         }
+
+
         
        
         public void closeCreateNewCategorieWindow(ActionEvent event){
