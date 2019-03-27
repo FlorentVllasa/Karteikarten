@@ -87,6 +87,10 @@ public class ServiceFacade {
 		return userService.findUserByEMail(email);
 	}
 	
+	public boolean checkLogIn(String username, String password) {
+		return userService.checkLogIn(username, password);
+	}
+	
 	/*
 	 * 
 	 *Category

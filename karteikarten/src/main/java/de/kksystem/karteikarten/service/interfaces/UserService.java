@@ -16,4 +16,5 @@ public interface UserService {
 	User findUserById(int userId);
 	User findUserByEMail(String email);
 	List<Category> findCategoriesByUserId(int userId);
+	boolean checkLogIn(String username, String password);
 }

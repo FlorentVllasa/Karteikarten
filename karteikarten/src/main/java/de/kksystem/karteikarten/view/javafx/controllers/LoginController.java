@@ -36,26 +36,28 @@ public class LoginController implements Initializable {
     @FXML
     private Button buttonRegister;
     
+    @FXML
+    private TextField txtUsername;
     
     @FXML
-    private void printUsername(ActionEvent event) {
-    	int userId = 4;
+    private PasswordField txtPassword;
+    
+    @FXML
+    private Label lblLogInMessage;
+    
+    
+    @FXML
+    private void logIn(ActionEvent event) {
+    	String username = txtUsername.getText();
+    	String password = txtPassword.getText();
     	
-    	IndexCard newIndexCard = new IndexCardImpl("Definition Multiplikation?", "*", null, 1, null);
-    	
-    	ServiceFacade.getInstance().addIndexCard(newIndexCard);
-   
-    	User user = ServiceFacade.getInstance().findUserById(userId);
-    	
-    	System.out.println("Aus DB:" + user.getUsername());
-    	
-    	UserData.getInstance().setUsername(user.getUsername());
-    	UserData.getInstance().setUserId(user.getUserId());
-    	
-    	
-        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
-        closePreviousWindowLogin();
-    	
+    	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
+    		System.out.println("OK");
+            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
+            closePreviousWindowLogin();
+    	}else {
+    		lblLogInMessage.setText("Benutzername oder Passwort falsch.");
+    	}
     }
 
     /*Diese Methode wechselt das Fenster vom LogIn Fenster zum Funktionen Fenster durch den Einloggen Button Klick*/
@@ -78,7 +80,7 @@ public class LoginController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buttonLogin.setOnAction(this::printUsername);
+        buttonLogin.setOnAction(this::logIn);
         buttonRegister.setOnAction(this::switchToRegistrationWindow);
     }
 }
