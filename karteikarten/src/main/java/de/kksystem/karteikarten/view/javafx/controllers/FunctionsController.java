@@ -25,12 +25,6 @@ public class FunctionsController implements Initializable {
     private WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     private LoginWindow lw = new LoginWindow();
 
-    private static final ImageView GespeicherteKarteikartenImage = null;
-
-    private static final ImageView KarteikartenertsellenImage = null;
-
-    private static final ImageView NeueKarteikartenserstellen1Image = null;
-
     @FXML
     private ImageView lernenBild;
 
