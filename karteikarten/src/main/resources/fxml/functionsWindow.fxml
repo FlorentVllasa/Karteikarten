@@ -23,12 +23,12 @@
             <Separator layoutX="434.0" layoutY="199.0" orientation="VERTICAL" prefHeight="171.0" prefWidth="6.0" />
             <ImageView fx:id="lernenBild" fitHeight="164.0" fitWidth="164.0" layoutX="129.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@GespeicherteKarteikarten.png" />
+                  <Image url="@../Pictures/GespeicherteKarteikarten.png" />
                </image>
             </ImageView>
             <ImageView fx:id="erstellenBild" fitHeight="164.0" fitWidth="164.0" layoutX="595.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@createNewTable.png" />
+                  <Image url="@../Pictures/createNewTable.png" />
                </image>
             </ImageView>
             <Label layoutX="14.0" layoutY="522.0" text="Eingeloggt als:" textFill="WHITE">

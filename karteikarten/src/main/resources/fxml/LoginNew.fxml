@@ -31,7 +31,7 @@
       <Label layoutX="286.0" layoutY="173.0" text="oder" />
       <ImageView fitHeight="134.0" fitWidth="162.0" layoutX="356.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="356.0" AnchorPane.rightAnchor="93.41584777832031" AnchorPane.topAnchor="106.0">
          <image>
-            <Image url="@register_button.png" />
+            <Image url="@../Pictures/register_button.png" />
          </image>
       </ImageView>
       <Button fx:id="buttonRegister" layoutX="386.0" layoutY="252.0" mnemonicParsing="false" text="Registrieren" AnchorPane.bottomAnchor="122.66666666666667" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="134.66666666666669" AnchorPane.topAnchor="252.0" />
