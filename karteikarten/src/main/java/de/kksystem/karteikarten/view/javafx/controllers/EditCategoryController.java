@@ -16,21 +16,37 @@ import java.util.ResourceBundle;
 public class EditCategoryController implements Initializable {
 
 
-	@FXML
-	private AnchorPane anchorPane;
+    @FXML
+    private AnchorPane anchorPane;
 
-	@FXML
-	private ComboBox<?> KategorieLöschenComboBox;
+    @FXML
+    private TextField textFieldName;
+    
+    @FXML
+    public TextField gettextFieldName() {
+    	return textFieldName;
+    }
 
-	@FXML
-	private Button ButtonLöschen;
+    @FXML
+    private ComboBox<String> cmbChooseCat;
+    
+    @FXML
+    public ComboBox<String> getcmbChooseCat() {
+    	return cmbChooseCat;
+    }
 
-	@FXML
-	void KategorieCheck(ActionEvent event) {
+    @FXML
+    private Button btnRun;
+    
+    @FXML
+    public Button getbtnRun() {
+    	return btnRun;
+    }
 
-	}
+    @FXML
+    void RunCheck(ActionEvent event) {
 
-
+    }
 
 	public void closeEditCategorieWindow(ActionEvent event){
 		Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
@@ -44,5 +60,3 @@ public class EditCategoryController implements Initializable {
 	}
 
 }
-
-

@@ -5,19 +5,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane fx:id="splitPane" dividerPositions="0.24145785876993167" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="splitPane" dividerPositions="0.24145785876993167" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
             <children>
-                <TextField fx:id="textFieldFrage" layoutX="11.0" layoutY="10.0" prefHeight="79.0" prefWidth="577.0" AnchorPane.bottomAnchor="10.799999999999997" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.799999999999955" AnchorPane.topAnchor="10.0" />
+                <TextField fx:id="textFieldQuestion" layoutX="11.0" layoutY="10.0" prefHeight="79.0" prefWidth="577.0" AnchorPane.bottomAnchor="10.799999999999997" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.799999999999955" AnchorPane.topAnchor="10.0" />
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
             <children>
-                <TextField fx:id="textFieldAntwort" layoutX="11.0" layoutY="8.0" prefHeight="225.0" prefWidth="577.0" AnchorPane.bottomAnchor="88.79999999999998" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.799999999999955" AnchorPane.topAnchor="8.0" />
-                <Button fx:id="buttonZuruck" layoutX="11.0" layoutY="242.0" mnemonicParsing="false" text="&lt;- Zurück" />
-                <Button fx:id="buttonAntwort" layoutX="245.0" layoutY="242.0" mnemonicParsing="false" style="-fx-background-color: #33a4ff;" text="Antwort anzeigen" />
-                <Button fx:id="buttonWeiter" layoutX="516.0" layoutY="242.0" mnemonicParsing="false" text="Weiter -&gt;" />
-            <Button fx:id="schlieseFester" layoutX="266.0" layoutY="282.0" mnemonicParsing="false" text="Schließen" />
+                <TextField fx:id="textFieldAnswer" layoutX="11.0" layoutY="8.0" prefHeight="225.0" prefWidth="577.0" AnchorPane.bottomAnchor="88.79999999999998" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="9.799999999999955" AnchorPane.topAnchor="8.0" />
+                <Button fx:id="btnBack" layoutX="11.0" layoutY="242.0" mnemonicParsing="false" onAction="#BackCheck" text="&lt;- Zurück" />
+                <Button fx:id="btnAnswer" layoutX="245.0" layoutY="242.0" mnemonicParsing="false" onAction="#AnswerCheck" style="-fx-background-color: #33a4ff;" text="Antwort anzeigen" />
+                <Button fx:id="btnContinue" layoutX="516.0" layoutY="242.0" mnemonicParsing="false" onAction="#ContinueCheck" text="Weiter -&gt;" />
+            <Button fx:id="btnCloseWindow" layoutX="266.0" layoutY="282.0" mnemonicParsing="false" onAction="#CloseWindowCheck" text="Schließen" />
             </children></AnchorPane>
     </items>
 </SplitPane>

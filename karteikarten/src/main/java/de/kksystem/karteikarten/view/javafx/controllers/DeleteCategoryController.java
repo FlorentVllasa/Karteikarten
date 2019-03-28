@@ -17,13 +17,13 @@ public class DeleteCategoryController implements Initializable {
 	private AnchorPane anchorPane;
 
 	@FXML
-	private ComboBox<?> KategorieLöschenComboBox;
+	private ComboBox<String> cmbChooseCat;
 
 	@FXML
-	private Button ButtonLöschen;
+	private Button btnDelete;
 
 	@FXML
-	void LoeschenCheck(ActionEvent event) {
+	void DeleteCheck(ActionEvent event) {
 
 	}
 
@@ -38,5 +38,3 @@ public class DeleteCategoryController implements Initializable {
 	}
 	
 }
-
-

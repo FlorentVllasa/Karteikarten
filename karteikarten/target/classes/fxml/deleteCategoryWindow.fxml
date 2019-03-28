@@ -6,20 +6,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="232.0" prefWidth="359.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="61.0" prefHeight="47.0" prefWidth="238.0" text="Kategorie Löschen ">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <ComboBox fx:id="KategorieLöschenComboBox" layoutX="9.0" layoutY="90.0" prefHeight="47.0" prefWidth="341.0" promptText="Kategorie auswählen" />
+      <ComboBox fx:id="cmbChooseCat" layoutX="9.0" layoutY="90.0" prefHeight="47.0" prefWidth="341.0" promptText="Kategorie auswählen" />
       <Label layoutX="9.0" layoutY="62.0" text="Kategorie:">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Button fx:id="ButtonLöschen" layoutX="126.0" layoutY="162.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="109.0" text="Löschen">
+      <Button fx:id="btnDelete" layoutX="126.0" layoutY="162.0" mnemonicParsing="false" onAction="#DeleteCheck" prefHeight="47.0" prefWidth="109.0" text="Löschen">
          <font>
             <Font size="18.0" />
          </font>

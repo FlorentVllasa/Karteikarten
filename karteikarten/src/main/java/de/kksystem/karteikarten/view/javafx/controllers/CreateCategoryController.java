@@ -30,18 +30,19 @@ public class CreateCategoryController implements Initializable {
         
        
         @FXML
-        private Button ButtonConfirm;
-
-        @FXML
-        private AnchorPane anchorPane;
+        private Button btnConfirm;
         
         @FXML
         public Button getButtonConfirm() {
-        	return ButtonConfirm;
+        	return btnConfirm;
         }
+        
+        @FXML
+        private AnchorPane anchorPane;
+
 
         @FXML
-        void BestaetigenCheck(ActionEvent event) {
+        void ConfirmCheck(ActionEvent event) {
 
         }
 
@@ -55,9 +56,8 @@ public class CreateCategoryController implements Initializable {
 
 		@Override
 		public void initialize(URL location, ResourceBundle resources) {
-			  ButtonConfirm.setOnAction(this::closeCreateNewCategorieWindow);
+			  btnConfirm.setOnAction(this::closeCreateNewCategorieWindow);
 		      
 		}
 
 	}
-

@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <PasswordField fx:id="txtPassWord" layoutX="46.0" layoutY="269.0" prefHeight="35.0" prefWidth="183.0" promptText="Passwort" />
       <TextField fx:id="txtForeName" layoutX="46.0" layoutY="128.0" prefHeight="35.0" prefWidth="183.0" promptText="Vorname" />
       <TextField fx:id="txtName" layoutX="312.0" layoutY="128.0" prefHeight="35.0" prefWidth="183.0" promptText="Name" />
       <TextField fx:id="txtEmail" layoutX="46.0" layoutY="200.0" prefHeight="35.0" prefWidth="183.0" promptText="E-Mail" />
-      <ImageView fx:id="registerImage" fitHeight="106.0" fitWidth="106.0" layoutX="442.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="registerImage" fitHeight="80.0" fitWidth="92.0" layoutX="359.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Pictures/register_button.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegister" layoutX="403.0" layoutY="346.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="183.0" text="Neu Anmelden" />
+      <Button fx:id="btnRegister" layoutX="359.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" text="Registrieren" />
       <Label fx:id="lblKontoErstellen" layoutX="141.0" layoutY="22.0" text="Konto Erstellen">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="btnZurueck" layoutX="46.0" layoutY="353.0" mnemonicParsing="false" text="Zurück" />
+      <Button fx:id="btnBack" layoutX="46.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" text="Zurück" />
       <TextField fx:id="txtUserName" layoutX="312.0" layoutY="205.0" prefHeight="35.0" prefWidth="183.0" promptText="Username" />
       <Label fx:id="lblMessage" layoutX="156.0" layoutY="357.0" />
    </children>

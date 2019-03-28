@@ -20,13 +20,13 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <ComboBox fx:id="ComboBoxKategorie" layoutX="15.0" layoutY="155.0" prefHeight="25.0" prefWidth="313.0" promptText="Katgorie auswählen" />
+      <ComboBox fx:id="cmbChooseCat" layoutX="15.0" layoutY="155.0" prefHeight="25.0" prefWidth="313.0" promptText="Katgorie auswählen" />
       <Label layoutX="14.0" layoutY="120.0" text="Kategorie:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="ButtonAusführen" layoutX="125.0" layoutY="191.0" mnemonicParsing="false" text="Ausführen">
+      <Button fx:id="btnRun" layoutX="125.0" layoutY="191.0" mnemonicParsing="false" onAction="#RunCheck" text="Ausführen">
          <font>
             <Font size="18.0" />
          </font>

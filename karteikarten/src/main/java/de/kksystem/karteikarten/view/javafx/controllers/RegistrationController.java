@@ -46,7 +46,7 @@ public class RegistrationController implements Initializable {
     private Label lblKontoErstellen;
 
     @FXML
-    private Button btnZurueck;
+    private Button btnBack;
 
     @FXML
     private TextField txtUserName;
@@ -92,7 +92,7 @@ public class RegistrationController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnZurueck.setOnAction(this::switchToLoginWindow);
+        btnBack.setOnAction(this::switchToLoginWindow);
         btnRegister.setOnAction(this::registerUser);
     }
 }

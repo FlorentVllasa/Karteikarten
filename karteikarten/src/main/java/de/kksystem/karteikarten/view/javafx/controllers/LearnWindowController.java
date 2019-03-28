@@ -17,27 +17,47 @@ import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
 
-    @FXML
+	@FXML
     private SplitPane splitPane;
 
     @FXML
-    private TextField textFieldFrage;
+    private TextField textFieldQuestion;
 
     @FXML
-    private TextField textFieldAntwort;
+    private TextField textFieldAnswer;
 
     @FXML
-    private Button buttonZuruck;
+    private Button btnBack;
 
     @FXML
-    private Button buttonAntwort;
+    private Button btnAnswer;
 
     @FXML
-    private Button buttonWeiter;
+    private Button btnContinue;
 
     @FXML
-    private Button schlieseFester;
+    private Button btnCloseWindow;
 
+    @FXML
+    void AnswerCheck(ActionEvent event) {
+
+    }
+
+    @FXML
+    void BackCheck(ActionEvent event) {
+
+    }
+
+    @FXML
+    void CloseWindowCheck(ActionEvent event) {
+
+    }
+
+    @FXML
+    void ContinueCheck(ActionEvent event) {
+
+    }
+    
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
      * Dies wird erreicht in dem die Stage Information irgendeiner Komponente der Scene ermittelt wird und
      * dann in ein Stage Objekt umgewandelt wird.*/
@@ -50,6 +70,6 @@ public class LearnWindowController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        schlieseFester.setOnAction(this::closeLearnWindow);
+        btnCloseWindow.setOnAction(this::closeLearnWindow);
     }
 }
