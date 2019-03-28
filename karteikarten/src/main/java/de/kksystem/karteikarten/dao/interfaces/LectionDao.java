@@ -14,4 +14,5 @@ public interface LectionDao {
 	void updateLastExcercise(Timestamp timestamp, int lectionId);
 	Lection findLectionById(int lectionId);
 	List<Lection> findLectionByCategoryId(int categoryId);
+	List<Lection> findLectionByFavoritelistId(int favoritelisteId);
 }

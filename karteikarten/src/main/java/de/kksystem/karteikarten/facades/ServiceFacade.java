@@ -169,6 +169,9 @@ public class ServiceFacade {
 		return lectionService.findLectionByCategoryId(categoryId);
 	}
 	
+	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
+		return lectionService.findLectionByFavoritelistId(favoritelisteId);
+	}
 	/*
 	 * 
 	 *IndexCard

@@ -161,6 +161,10 @@ public class DaoFacade {
 		return lectionDao.findLectionByCategoryId(categoryId);
 	}
 	
+	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
+		return lectionDao.findLectionByFavoritelistId(favoritelisteId);
+	}
+	
 	/*
 	 * 
 	 *IndexCard

@@ -237,15 +237,6 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
         }
     }
 
-    public static void main(String[] args) {
-       CategoryDaoJdbcImpl cat = new CategoryDaoJdbcImpl();
-       //UserImpl user1 = new UserImpl("Destroyer", "flow3@random.com", "pw123456", "Vl", "FL");
-       // UserImpl user2 = new UserImpl("Guentha2", "gunt@random.com", "pw23", "Guenther", "Mueller");
-       //CategoryImpl category3 = new CategoryImpl("Sport", null);
-       //new UserDaoJdbcImpl().addUser(user2);
-       //cat.updateCategorieDescription(category3, user2, "Unnoetig");
-    }
-
 	@Override
 	public void updateCategorieName(Category category, String neuerCatName) {
 		Connection connection = null;
@@ -277,7 +268,7 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		ResultSet rs = null;
-		String sqlString = "SELECT * FROM Kategorie WHERE NutzerID = ?";
+		String sqlString = "SELECT * FROM Kategorie WHERE BenutzerID = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();
@@ -308,4 +299,18 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
 			}
 		}
 	}
+
+//    public static void main(String[] args) {
+//       CategoryDaoJdbcImpl cat = new CategoryDaoJdbcImpl();
+//       //UserImpl user1 = new UserImpl("Destroyer", "flow3@random.com", "pw123456", "Vl", "FL");
+//       //UserImpl user2 = new UserImpl("Guentha2", "gunt@random.com", "pw23", "Guenther", "Mueller");
+//       //CategoryImpl category3 = new CategoryImpl("Sport", null);
+//       //new UserDaoJdbcImpl().addUser(user2);
+//       //cat.updateCategorieDescription(category3, user2, "Unnoetig");
+//       List<Category> list = cat.findCategoriesByUserId(4);
+//       for (int i = 0; i < list.size(); i++) {
+//    	   System.out.println(list.get(i).getCategoryId());
+//       }
+//    }
+
 }

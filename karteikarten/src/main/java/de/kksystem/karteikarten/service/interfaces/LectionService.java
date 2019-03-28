@@ -14,4 +14,5 @@ public interface LectionService {
 	void updateLastExcercise(Timestamp timestamp, int lectionId);
 	Lection findLectionById(int lectionId);
 	public List<Lection> findLectionByCategoryId(int categoryId);
+	public List<Lection> findLectionByFavoritelistId(int favoritelisteId);
 }

@@ -11,6 +11,7 @@ import java.util.List;
 import de.kksystem.karteikarten.dao.interfaces.LectionDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
 import de.kksystem.karteikarten.model.interfaces.Category;
+import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.utils.JdbcUtils;
@@ -255,6 +256,44 @@ public class LectionDaoJdbcImpl implements LectionDao {
 		}
 	}
 	
+	@Override
+	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
+		List<Lection> allLectionsList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		String sqlString = "SELECT * FROM Lektion WHERE FavoritenlisteID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, favoritelisteId);
+
+			rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				Lection lection = createLectionFromResultSet(rs);
+				allLectionsList.add(lection);
+			}
+			return allLectionsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
+	}
+	
 	private Lection createLectionFromResultSet(final ResultSet resultSet) throws SQLException {
 		final int lectionId = resultSet.getInt(1);
 		final String name = resultSet.getString(2);
@@ -272,6 +311,15 @@ public class LectionDaoJdbcImpl implements LectionDao {
 		lection.setFavoritelistId(favoritelistId);
 
 		return lection;
+	}
+	
+	public static void main(String[] args) {
+		LectionDaoJdbcImpl cat = new LectionDaoJdbcImpl();
+		List<Lection> list = cat.findLectionByFavoritelistId(1);
+		//List<Lection> list = cat.findLectionByCategoryId(6);
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println(list.get(i).getLectionId());
+		}
 	}
 
 }

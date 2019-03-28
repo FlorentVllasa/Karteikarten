@@ -54,4 +54,9 @@ public class LectionServiceImpl implements LectionService {
 		return daoFacade.findLectionByCategoryId(categoryId);
 	}
 
+	@Override
+	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
+		return daoFacade.findLectionByFavoritelistId(favoritelisteId);
+	}
+	
 }

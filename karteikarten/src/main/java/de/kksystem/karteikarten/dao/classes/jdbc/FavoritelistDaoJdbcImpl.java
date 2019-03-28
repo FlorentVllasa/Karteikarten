@@ -152,7 +152,7 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		ResultSet rs = null;
-		String sqlString = "SELECT * FROM Favoritenliste WHERE NutzerID = ?";
+		String sqlString = "SELECT * FROM Favoritenliste WHERE BenutzerID = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();
@@ -188,5 +188,13 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 			}
 		}
 	}
+	
+//	public static void main(String[] args) {
+//		FavoritelistDaoJdbcImpl cat = new FavoritelistDaoJdbcImpl();
+//		List<Favoritelist> list = cat.findFavoritesByUserId(4);
+//		for (int i = 0; i < list.size(); i++) {
+//			System.out.println(list.get(i).getFavoritelistId());
+//		}
+//	}
 
 }
