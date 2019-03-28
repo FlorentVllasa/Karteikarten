@@ -15,16 +15,16 @@ import java.util.ResourceBundle;
 
 public class CreateWindowController implements Initializable {
 
-    WindowPresetSwitchStage switchStageHelper = new WindowPresetSwitchStage();
+    private WindowPresetSwitchStage switchStageHelper = new WindowPresetSwitchStage();
 
     @FXML
     private AnchorPane anchorPane;
 
     @FXML
-    private Button btnZurueck;
+    private Button btnBack;
 
     @FXML
-    private Button btnSpeichern;
+    private Button btnSave;
 
     @FXML
     private MenuItem addCategoryMenuItem;
@@ -58,7 +58,7 @@ public class CreateWindowController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnZurueck.setOnAction(this::closeCreateWindow);
+        btnBack.setOnAction(this::closeCreateWindow);
         addCategoryMenuItem.setOnAction(this::switchToAddCategoryWindow);
         editCategoryMenuItem.setOnAction(this::switchToEditCategoryWindow);
         deleteCategoryMenuItem.setOnAction(this::switchToDeleteCategoryWindow);
