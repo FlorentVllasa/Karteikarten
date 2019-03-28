@@ -157,9 +157,9 @@ public class DaoFacade {
 		return lectionDao.findLectionById(lectionId);
 	}
 	
-	//public List<Lection> listLectionsByCategoryId(int categoryId) {
-	//	return lectionDao.listLectionsByCategoryId(categoryId);
-	//}
+	public List<Lection> findLectionByCategoryId(int categoryId) {
+		return lectionDao.findLectionByCategoryId(categoryId);
+	}
 	
 	/*
 	 * 

@@ -217,6 +217,7 @@ public class LectionDaoJdbcImpl implements LectionDao {
 		}
 	}
 	
+	@Override
 	public List<Lection> findLectionByCategoryId(int categoryId) {
 		List<Lection> allLectionsList = new ArrayList<>();
 		Connection connection = null;

@@ -48,5 +48,10 @@ public class LectionServiceImpl implements LectionService {
 	public Lection findLectionById(int lectionId) {
 		return daoFacade.findLectionById(lectionId);
 	}
+	
+	@Override
+	public List<Lection> findLectionByCategoryId(int categoryId) {
+		return daoFacade.findLectionByCategoryId(categoryId);
+	}
 
 }

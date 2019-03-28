@@ -13,4 +13,5 @@ public interface LectionService {
 	void updateDescription(String description, int lectionId);
 	void updateLastExcercise(Timestamp timestamp, int lectionId);
 	Lection findLectionById(int lectionId);
+	public List<Lection> findLectionByCategoryId(int categoryId);
 }

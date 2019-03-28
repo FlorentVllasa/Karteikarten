@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.FavoritelistDao;
-import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.utils.JdbcUtils;
@@ -153,7 +152,7 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		ResultSet rs = null;
-		String sqlString = "SELECT * FROM Kategorie WHERE NutzerID = ?";
+		String sqlString = "SELECT * FROM Favoritenliste WHERE NutzerID = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();

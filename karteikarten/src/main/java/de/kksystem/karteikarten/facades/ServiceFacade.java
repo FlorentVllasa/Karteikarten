@@ -165,6 +165,10 @@ public class ServiceFacade {
 		return lectionService.findLectionById(lectionId);
 	}
 	
+	public List<Lection> findLectionByCategoryId(int categoryId) {
+		return lectionService.findLectionByCategoryId(categoryId);
+	}
+	
 	/*
 	 * 
 	 *IndexCard
