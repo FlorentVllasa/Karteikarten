@@ -135,8 +135,6 @@ public class FunctionsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	showLblLoggedInMessage();
         //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
-    	
-    	btnLogOut.setOnAction(this::printUserId);
     	btnLogOut.setOnAction(this::switchToPreviousWindowLogin);
         ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
         ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
