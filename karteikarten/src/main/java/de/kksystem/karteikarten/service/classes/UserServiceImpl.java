@@ -79,4 +79,17 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
+	@Override
+	public int checkRegister(String username, String email){
+		User searchUserEmail = daoFacade.findUserByEMail(email);
+		User searchUserName = daoFacade.findUserByUsername(username);
+
+		if(searchUserEmail != null && searchUserEmail.getEmail().equals(email)){
+			return 1;
+		}else if(searchUserName != null && searchUserName.getUsername().equals(username)){
+			return 0;
+		}
+		return -1;
+	}
+
 }

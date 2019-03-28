@@ -1,6 +1,9 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
+import de.kksystem.karteikarten.facades.ServiceFacade;
+import de.kksystem.karteikarten.model.classes.UserImpl;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
+import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +13,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,15 +22,16 @@ import java.util.ResourceBundle;
 public class RegistrationController implements Initializable {
     LoginWindow lw = new LoginWindow();
     WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
+    WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
 
     @FXML
-    private javafx.scene.control.PasswordField PasswordField;
+    private PasswordField txtPassWord;
 
     @FXML
-    private TextField textFieldVorname;
+    private TextField txtForeName;
 
     @FXML
-    private TextField textfieldName;
+    private TextField txtName;
 
     @FXML
     private TextField txtEmail;
@@ -34,13 +40,49 @@ public class RegistrationController implements Initializable {
     private ImageView registerImage;
 
     @FXML
-    private Button btnNeuAnmelden;
+    private Button btnRegister;
 
     @FXML
     private Label lblKontoErstellen;
 
     @FXML
     private Button btnZurueck;
+
+    @FXML
+    private TextField txtUserName;
+
+    @FXML
+    private Label lblMessage;
+
+    @FXML
+    private AnchorPane anchorPane;
+
+    public void registerUser(ActionEvent event){
+        String surname = txtName.getText();
+        String foreName = txtForeName.getText();
+        String userName = txtUserName.getText();
+        String email = txtEmail.getText();
+        String password = txtPassWord.getText();
+
+        if(surname.isEmpty() || foreName.isEmpty() || userName.isEmpty() || email.isEmpty() || password.isEmpty()){
+            lblMessage.setText("Bitte alle Felder ausfuellen!");
+        }else if(ServiceFacade.getInstance().checkRegister(userName, email) > 0){
+            lblMessage.setText("Email wird schon benutzt!");
+        }else if(ServiceFacade.getInstance().checkRegister(userName, email) == 0){
+            lblMessage.setText("Benutzername wird schon benutzt!");
+        }else{
+            UserImpl user = new UserImpl(userName, email, password, surname, foreName, null);
+            ServiceFacade.getInstance().addUser(user);
+
+            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
+            closeRegisterWindow();
+        }
+    }
+
+    public void closeRegisterWindow(){
+        Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
+        stageInfo.close();
+    }
 
     /*Diese Methode wechselt die von der Registrieren Scene zur LogIn Scene*/
     public void switchToLoginWindow(ActionEvent event){
@@ -51,5 +93,6 @@ public class RegistrationController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnZurueck.setOnAction(this::switchToLoginWindow);
+        btnRegister.setOnAction(this::registerUser);
     }
 }

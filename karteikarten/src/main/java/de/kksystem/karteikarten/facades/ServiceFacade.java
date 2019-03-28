@@ -90,6 +90,10 @@ public class ServiceFacade {
 	public boolean checkLogIn(String username, String password) {
 		return userService.checkLogIn(username, password);
 	}
+
+	public int checkRegister(String username, String email){
+		return userService.checkRegister(username, email);
+	}
 	
 	/*
 	 * 
