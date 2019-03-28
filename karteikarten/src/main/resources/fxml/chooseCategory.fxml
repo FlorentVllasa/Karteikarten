@@ -72,7 +72,7 @@
                   </VBox>
                   <VBox alignment="BOTTOM_LEFT" layoutY="95.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
                      <children>
-                        <Button fx:id="btnZurueck" mnemonicParsing="false" text="Zurück" VBox.vgrow="ALWAYS">
+                        <Button fx:id="btnBack" mnemonicParsing="false" text="Zurück" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" />
                            </VBox.margin>
