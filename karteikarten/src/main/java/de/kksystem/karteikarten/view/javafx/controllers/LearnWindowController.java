@@ -46,28 +46,6 @@ public class LearnWindowController implements Initializable {
         stageInfo.close();
     }
     
-//   public void start(Stage stage) {
-   	
-//    	Combobox<Category> comboBox = new ComboBox<Category>();
-    	
-//    	ObservableList<Category> list = CategoryDaoJdbcImpl.getCategoryList();
-    	
-//    	comboBox.setItems(list);
-//    	comboBox.getSelectionModel().select(1);
-    	
-//    	splitPane root = new splitPane();
-//    	root.setPadding(new Insets(5));
-//    	root.setHgap(5);
-    	
-//    	stage.setTitle("ComboBox (de.kksystem.karteikarten.view.javafx.controllers)");
-//    	Scene scene = new Scene(root, 350, 300);
-//    	stage.setScene(scene);
-//    	stage.show();    	
-//    }
-    
-//    public static void main(String[] args) {
-//    	Application.launch(args);
-//    }
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
