@@ -52,7 +52,6 @@ public class LoginController implements Initializable {
     	String password = txtPassword.getText();
     	
     	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
-    		System.out.println("OK");
             wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
             closePreviousWindowLogin();
     	}else {
