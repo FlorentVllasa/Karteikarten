@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,43 +27,22 @@ public class FunctionsController implements Initializable {
     private LoginWindow lw = new LoginWindow();
 
     @FXML
-    private ImageView lernenBild;
-
-    @FXML
-    private ImageView erstellenBild;
-
-    @FXML
-    private ImageView einstellungenBild;
-
-    @FXML
     private AnchorPane anchorPane;
 
     @FXML
     private BorderPane borderPane;
+    
+    @FXML
+    private Button btnLogOut;
+    
+    @FXML
+    private ImageView ivLearn;
 
     @FXML
-    private Button buttonKarteikartenBearbeiten;
-
+    private ImageView ivManager;
+    
     @FXML
-    private Button lernenButton;
-
-    @FXML
-    private Button buttonNeueKarteikartenerstellen;
-
-    @FXML
-    private ImageView GespeicherteKarteikarten;
-
-    @FXML
-    private ImageView Karteikartenertsellen;
-
-    @FXML
-    private ImageView NeueKarteikartenerstellen1;
-
-    @FXML
-    private TextField userTextfield;
-
-    @FXML
-    private Button abmeldenButton;
+    private Label lblLoggedInMessage;
     
     @FXML
     private void printUserId(ActionEvent event) {
@@ -74,40 +54,40 @@ public class FunctionsController implements Initializable {
 
     @FXML
     public void changeCursorEnterLernenBild(MouseEvent event){
-        lernenBild.setOnMouseEntered(new EventHandler<MouseEvent>() {
+        ivLearn.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Scene sceneInfo = lernenBild.getScene();
+                Scene sceneInfo = ivLearn.getScene();
                 sceneInfo.setCursor(Cursor.HAND);
             }
         });
     }
 
     public void changeCursorExitLernenBild(MouseEvent event){
-        lernenBild.setOnMouseExited(new EventHandler<MouseEvent>() {
+        ivLearn.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Scene sceneInfo = lernenBild.getScene();
+                Scene sceneInfo = ivLearn.getScene();
                 sceneInfo.setCursor(Cursor.DEFAULT);
             }
         });
     }
 
     public void changeCursorEnterErstellenBild(MouseEvent event){
-        erstellenBild.setOnMouseEntered(new EventHandler<MouseEvent>() {
+        ivManager.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Scene sceneInfo = erstellenBild.getScene();
+                Scene sceneInfo = ivManager.getScene();
                 sceneInfo.setCursor(Cursor.HAND);
             }
         });
     }
 
     public void changeCursorExitErstellenBild(MouseEvent event){
-        erstellenBild.setOnMouseExited(new EventHandler<MouseEvent>() {
+    	ivManager.setOnMouseExited(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Scene sceneInfo = erstellenBild.getScene();
+                Scene sceneInfo = ivManager.getScene();
                 sceneInfo.setCursor(Cursor.DEFAULT);
             }
         });
@@ -141,22 +121,27 @@ public class FunctionsController implements Initializable {
      * Dies wird erreicht in dem die Stage Information irgendeiner Komponente der Scene ermittelt wird und
      * dann in ein Stage Objekt umgewandelt wird.*/
     public void closeWindowFunktionen(){
-        Stage stageInfo = (Stage) abmeldenButton.getScene().getWindow();
+        Stage stageInfo = (Stage) btnLogOut.getScene().getWindow();
         stageInfo.close();
+    }
+    
+    public void showLblLoggedInMessage() {
+    	String username = UserData.getInstance().getUsername();
+    	lblLoggedInMessage.setText("Eingeloggt als " + username + ".");
     }
 
     /*Hier werden die anklickbaren Button und Bilder ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	showLblLoggedInMessage();
         //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
-    	abmeldenButton.setOnAction(this::printUserId);
-    	abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
-        erstellenBild.setOnMouseClicked(this::switchSceneToCreateWindow);
-        lernenBild.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
-        lernenBild.setOnMouseEntered(this::changeCursorEnterLernenBild);
-        lernenBild.setOnMouseExited(this::changeCursorExitLernenBild);
-        erstellenBild.setOnMouseEntered(this::changeCursorEnterErstellenBild);
-        erstellenBild.setOnMouseExited(this::changeCursorExitErstellenBild);
+    	btnLogOut.setOnAction(this::switchToPreviousWindowLogin);
+        ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
+        ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
+        ivLearn.setOnMouseEntered(this::changeCursorEnterLernenBild);
+        ivLearn.setOnMouseExited(this::changeCursorExitLernenBild);
+        ivManager.setOnMouseEntered(this::changeCursorEnterErstellenBild);
+        ivManager.setOnMouseExited(this::changeCursorExitErstellenBild);
     }
     //Farbe  #0B2161
 }

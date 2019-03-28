@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -17,12 +18,53 @@ public class ChooseCategoryController implements Initializable {
 
     @FXML
     private AnchorPane anchorPane;
+    
+    @FXML
+    public AnchorPane getanchorPane() {
+    	return anchorPane;
+    }
 
     @FXML
-    private Button btnZurueck;
+    private Button btnBack;
+    
+    @FXML
+    public Button getbtnBack() {
+    	return btnBack;
+    }
 
     @FXML
-    private Button btnOk;
+    private Button btnConfirm;
+    
+    @FXML
+    public Button getbtnConfirm () {
+    	return btnConfirm;
+    }
+    
+    @FXML
+    private ComboBox<String> cmbChooseCat;
+    
+    @FXML
+    public ComboBox<String> getcmbChooseCat() {
+    	return cmbChooseCat;
+    }
+    
+    @FXML
+    private ComboBox<String> cmbChooseLec;
+    
+    @FXML
+    public ComboBox<String> getcmbChooseLec() {
+    	return cmbChooseLec;
+    }
+    
+    @FXML
+    private ComboBox<String> cmbChooseFav;
+    
+    @FXML
+    public ComboBox<String> cmbChooseFav() {
+    	return cmbChooseFav;
+    }
+    
+    
 
 
     /*Diese Methode wechselt das Fenster zum Lernen Fenster in dem die zuvor erstellen Karteikarten verwendet werden*/
@@ -43,7 +85,7 @@ public class ChooseCategoryController implements Initializable {
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnZurueck.setOnAction(this::closeChooseCategorieWindow);
-        btnOk.setOnAction(this::switchToLearnWindow);
+        btnBack.setOnAction(this::closeChooseCategorieWindow);
+        btnConfirm.setOnAction(this::switchToLearnWindow);
     }
 }
