@@ -36,12 +36,12 @@ public class FavoritelistServiceImpl implements FavoritelistService {
 	}
 
 	@Override
-	public FavoritelistImpl findFavoritelist(int favoritelistId) {
+	public Favoritelist findFavoritelist(int favoritelistId) {
 		return daoFacade.findFavoritelist(favoritelistId);
 	}
 
 	@Override
-	public List<FavoritelistImpl> findAllFavoritelist() {
+	public List<Favoritelist> findAllFavoritelist() {
 		return daoFacade.findAllFavoritelist();
 	}
 

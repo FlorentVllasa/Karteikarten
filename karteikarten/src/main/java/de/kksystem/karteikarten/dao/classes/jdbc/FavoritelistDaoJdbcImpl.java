@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.FavoritelistDao;
+import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
@@ -37,9 +38,9 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 	}
 
 	@Override
-	public List<FavoritelistImpl> findAllFavoritelist() {
+	public List<Favoritelist> findAllFavoritelist() {
 		
-		List<FavoritelistImpl> listeAllerFavoritenListen = new ArrayList<>();
+		List<Favoritelist> listeAllerFavoritenListen = new ArrayList<>();
 		String sql ="SELECT * FROM FavoritenListe";
 		try (Connection conn = JdbcUtils.getConnection()){
 			PreparedStatement query = conn.prepareStatement(sql); 
@@ -108,17 +109,15 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 	public void addFavoritelist(String name , int userId) {
 		
 	String sql = "INSERT INTO FavoritenListe (Name, BenutzerID) VALUES (?,?)";
-	try {
-		Connection conn = JdbcUtils.getConnection();
-		PreparedStatement query = conn.prepareStatement(sql); 
-		query.setString(1,name); 
-		query.setInt(2,userId);
-		query.executeUpdate();
-	}catch(SQLException e ) { 
-		System.out.println(e.getMessage());
-	}
-	
-		
+		try {
+			Connection conn = JdbcUtils.getConnection();
+			PreparedStatement query = conn.prepareStatement(sql); 
+			query.setString(1,name); 
+			query.setInt(2,userId);
+			query.executeUpdate();
+		}catch(SQLException e ) { 
+			System.out.println(e.getMessage());
+		}	
 	}
 
 	@Override
@@ -146,12 +145,4 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 		return favList ;	
 	}
 
-	public static void main(String[] args) {
-		FavoritelistDaoJdbcImpl test = new FavoritelistDaoJdbcImpl(); 
-		List<FavoritelistImpl> testTwo = new ArrayList<>();
-		testTwo = test.findAllFavoritelist();
-		for (FavoritelistImpl testTree : testTwo) {
-			System.out.println(testTree);
-		}
-	}
 }

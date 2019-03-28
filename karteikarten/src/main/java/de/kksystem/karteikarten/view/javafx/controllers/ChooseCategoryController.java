@@ -1,5 +1,17 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
+import java.util.List;
+
+import de.kksystem.karteikarten.data.UserData;
+import de.kksystem.karteikarten.model.interfaces.Category;
+import de.kksystem.karteikarten.facades.ServiceFacade;
+import de.kksystem.karteikarten.model.classes.IndexCardImpl;
+import de.kksystem.karteikarten.model.interfaces.IndexCard;
+import de.kksystem.karteikarten.model.interfaces.User;
+import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
+import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
+import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -65,7 +77,20 @@ public class ChooseCategoryController implements Initializable {
     }
     
     
-
+    /*Diese Methode holt die Kategorieliste von der Datenbank*/
+    public void getCategoryList() {
+    	List<Category> categoryList = ServiceFacade.getInstance().findAllCategories();
+    }
+    
+    /*Diese Methode holt die Lektionliste von der Datenbank*/
+    public void getLectionList() {
+    	
+    }
+    
+    /*Diese Methode holt die Favoritenliste von der Datenbank*/
+    public void getFavoriteList() {
+    	
+    }
 
     /*Diese Methode wechselt das Fenster zum Lernen Fenster in dem die zuvor erstellen Karteikarten verwendet werden*/
     public void switchToLearnWindow(ActionEvent event){

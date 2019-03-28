@@ -239,11 +239,11 @@ public class ServiceFacade {
 		favoritelistService.findFavoritelistById(favoritelistId);
 	}
 	
-	public FavoritelistImpl findFavoritelist(int favoritelistId) {
+	public Favoritelist findFavoritelist(int favoritelistId) {
 		return favoritelistService.findFavoritelist(favoritelistId);
 	}
 	
-	public List<FavoritelistImpl> findAllFavoritelist() {
+	public List<Favoritelist> findAllFavoritelist() {
 		return favoritelistService.findAllFavoritelist();
 	}
 }

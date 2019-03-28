@@ -230,11 +230,11 @@ public class DaoFacade {
 		favoritelistDao.findFavoritelistById(favoritelistId);
 	}
 	
-	public FavoritelistImpl findFavoritelist(int favoritelistId) {
+	public Favoritelist findFavoritelist(int favoritelistId) {
 		return favoritelistDao.findFavoritelist(favoritelistId);
 	}
 	
-	public List<FavoritelistImpl> findAllFavoritelist() {
+	public List<Favoritelist> findAllFavoritelist() {
 		return favoritelistDao.findAllFavoritelist();
 	}
 }
