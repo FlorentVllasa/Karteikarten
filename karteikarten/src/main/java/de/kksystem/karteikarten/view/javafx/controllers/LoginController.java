@@ -51,11 +51,15 @@ public class LoginController implements Initializable {
     	String username = txtUsername.getText();
     	String password = txtPassword.getText();
     	
-    	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
-            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
-            closePreviousWindowLogin();
+    	if(!username.isEmpty() && !password.isEmpty()) {
+	    	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
+	            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
+	            closePreviousWindowLogin();
+	    	}else {
+	    		lblLogInMessage.setText("Benutzername oder Passwort falsch.");
+	    	}
     	}else {
-    		lblLogInMessage.setText("Benutzername oder Passwort falsch.");
+    		lblLogInMessage.setText("Bitte Benutzername und Passwort eingeben.");
     	}
     }
 
