@@ -10,7 +10,6 @@ import de.kksystem.karteikarten.dao.interfaces.LectionDao;
 import de.kksystem.karteikarten.dao.interfaces.PictureDao;
 import de.kksystem.karteikarten.dao.interfaces.UserDao;
 import de.kksystem.karteikarten.factories.DaoFactory;
-import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
@@ -103,9 +102,11 @@ public class DaoFacade {
 	public void updateCategoryName(Category category, String neuerCatName){
 		categoryDao.updateCategorieName(category, neuerCatName);
 	}
+	
 	public void updateCategoryDescription(Category category, String neueBeschreibung){
 		categoryDao.updateCategorieDescription(category, neueBeschreibung);
 	}
+	
 	public Category findCategory(Category category) {
 		return categoryDao.findCategory(category);
 	}
@@ -155,6 +156,10 @@ public class DaoFacade {
 	public Lection findLectionById(int lectionId) {
 		return lectionDao.findLectionById(lectionId);
 	}
+	
+	//public List<Lection> listLectionsByCategoryId(int categoryId) {
+	//	return lectionDao.listLectionsByCategoryId(categoryId);
+	//}
 	
 	/*
 	 * 
@@ -236,5 +241,9 @@ public class DaoFacade {
 	
 	public List<Favoritelist> findAllFavoritelist() {
 		return favoritelistDao.findAllFavoritelist();
+	}
+	
+	public List<Favoritelist> findFavoritesByUserId(int userId) {
+		return favoritelistDao.findFavoritesByUserId(userId);
 	}
 }

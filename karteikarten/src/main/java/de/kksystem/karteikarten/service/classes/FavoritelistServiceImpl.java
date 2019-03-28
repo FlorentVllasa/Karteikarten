@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.kksystem.karteikarten.facades.DaoFacade;
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
+import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.service.interfaces.FavoritelistService;
 
@@ -43,6 +44,11 @@ public class FavoritelistServiceImpl implements FavoritelistService {
 	@Override
 	public List<Favoritelist> findAllFavoritelist() {
 		return daoFacade.findAllFavoritelist();
+	}
+	
+	@Override
+	public List<Favoritelist> findFavoritesByUserId(int userId) {
+		return daoFacade.findFavoritesByUserId(userId);
 	}
 
 

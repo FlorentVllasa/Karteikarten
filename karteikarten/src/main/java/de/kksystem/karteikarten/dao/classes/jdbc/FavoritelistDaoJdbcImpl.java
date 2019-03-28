@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.FavoritelistDao;
+import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.utils.JdbcUtils;
@@ -121,7 +122,7 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 	}
 
 	@Override
-	public FavoritelistImpl findFavoritelist(int favoritelistId) {
+	public Favoritelist findFavoritelist(int favoritelistId) {
 		FavoritelistImpl favList = new FavoritelistImpl();
 		String sql ="SELECT * FROM FavoritenListe WHERE FavoritenListeID = ?";
 		try (Connection conn = JdbcUtils.getConnection()){
@@ -143,6 +144,50 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 			System.out.println(e.getMessage());
 		}
 		return favList ;	
+	}
+	
+	@Override
+	public List<Favoritelist> findFavoritesByUserId(int userId) {
+		FavoritelistImpl favList = new FavoritelistImpl();
+		List<Favoritelist> allFavoritesList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		String sqlString = "SELECT * FROM Kategorie WHERE NutzerID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, userId);
+
+			rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				// die id in unserem Favoriten Objekt setzen
+				favList.setFavoritelistId(rs.getInt("FavoritenListeID"));
+				// den namen in unserem Favoriten Objekt setzen 
+				favList.setName(rs.getString("Name"));
+				// die Benutzer ID in unserem Objekt setzen
+				favList.setUserId(rs.getInt("BenutzerID"));
+				allFavoritesList.add(favList);
+			}
+			return allFavoritesList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
 	}
 
 }

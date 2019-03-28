@@ -3,6 +3,7 @@ package de.kksystem.karteikarten.service.interfaces;
 import java.util.List;
 
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
+import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 
 public interface FavoritelistService {
@@ -12,4 +13,5 @@ public interface FavoritelistService {
 	void findFavoritelistById(int favoritelistId);
 	Favoritelist findFavoritelist(int favoritelistId);
 	List<Favoritelist> findAllFavoritelist();
+	List<Favoritelist> findFavoritesByUserId(int userId);
 }

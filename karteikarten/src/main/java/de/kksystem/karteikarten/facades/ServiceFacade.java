@@ -246,4 +246,8 @@ public class ServiceFacade {
 	public List<Favoritelist> findAllFavoritelist() {
 		return favoritelistService.findAllFavoritelist();
 	}
+	
+	public List<Favoritelist> findFavoritesByUserId(int userId){
+		return favoritelistService.findFavoritesByUserId(userId);
+	}
 }
