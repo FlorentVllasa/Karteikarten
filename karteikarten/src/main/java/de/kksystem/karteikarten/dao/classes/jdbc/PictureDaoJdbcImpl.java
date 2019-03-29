@@ -13,7 +13,6 @@ import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class PictureDaoJdbcImpl implements PictureDao {
 
-	//nurkommentar
 	@Override
 	public void deletePicture(int pictureId) {
 		Connection connection = null;
@@ -83,8 +82,12 @@ public class PictureDaoJdbcImpl implements PictureDao {
 			pstatement.setInt(1, pictureId);
 			 
 			rs = pstatement.executeQuery();
-			final Picture picture = createPictureFromResultSet(rs);
-			return picture;
+			
+			if (rs.next()) {
+				final Picture picture = createPictureFromResultSet(rs);
+				return picture;
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -117,9 +120,12 @@ public class PictureDaoJdbcImpl implements PictureDao {
 			pstatement.setString(2, picture.getDescription());
 			pstatement.executeUpdate();
 			ResultSet rs = pstatement.getGeneratedKeys();
-			int generated_key = rs.getInt(1);
-			return generated_key;
 			
+			if (rs.next()) {
+				int generated_key = rs.getInt(1);
+				return generated_key;
+			}
+			return 0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return 0;

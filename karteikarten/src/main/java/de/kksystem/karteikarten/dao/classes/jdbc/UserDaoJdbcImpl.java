@@ -6,11 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.UserDao;
 import de.kksystem.karteikarten.model.classes.UserImpl;
-import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 import de.kksystem.karteikarten.factories.ModelFactory;
@@ -107,8 +105,12 @@ public class UserDaoJdbcImpl implements UserDao {
 			pstatement.setString(1, email);
 
 			rs = pstatement.executeQuery();
-			final User user = createUserFromResultSet(rs);
-			return user;
+			
+			if(rs.next()) {
+				final User user = createUserFromResultSet(rs);
+				return user;
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -140,8 +142,11 @@ public class UserDaoJdbcImpl implements UserDao {
 			pstatement.setString(1, username);
 
 			rs = pstatement.executeQuery();
-			final User user = createUserFromResultSet(rs);
-			return user;
+			if(rs.next()) {
+				final User user = createUserFromResultSet(rs);
+				return user;
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -173,8 +178,12 @@ public class UserDaoJdbcImpl implements UserDao {
 			pstatement.setInt(1, userId);
 
 			rs = pstatement.executeQuery();
-			final User user = createUserFromResultSet(rs);
-			return user;
+			
+			if(rs.next()) {
+				final User user = createUserFromResultSet(rs);
+				return user;
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

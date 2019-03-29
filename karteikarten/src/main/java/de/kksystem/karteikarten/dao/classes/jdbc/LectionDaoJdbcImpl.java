@@ -10,10 +10,7 @@ import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.LectionDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
-import de.kksystem.karteikarten.model.interfaces.Category;
-import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.Lection;
-import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class LectionDaoJdbcImpl implements LectionDao {
@@ -198,8 +195,12 @@ public class LectionDaoJdbcImpl implements LectionDao {
 			pstatement.setInt(1, lectionId);
 
 			rs = pstatement.executeQuery();
-			final Lection lection = createLectionFromResultSet(rs);
-			return lection;
+			
+            if(rs.next()) {
+    			final Lection lection = createLectionFromResultSet(rs);
+    			return lection;
+			}
+			return null;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

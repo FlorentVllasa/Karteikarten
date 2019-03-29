@@ -24,29 +24,46 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		PreparedStatement pstatement = null;
 		ResultSet rs = null;
 		String sqlString = "SELECT * FROM Karteikarte WHERE KarteikarteID = ?";
-		
+
 		try {
 			connection = JdbcUtils.getConnection();
-			 pstatement = connection.prepareStatement(sqlString);
-			 pstatement.setInt(1, indexCardId);
-			 
-			 rs = pstatement.executeQuery();
-			 final IndexCard indexCard = createIndexCardFromResultSet(rs);
-			 return indexCard;
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, indexCardId);
+
+			rs = pstatement.executeQuery();
+
+			if (rs.next()) {
+				final IndexCard indexCard = createIndexCardFromResultSet(rs);
+				return indexCard;
+			}
+			return null;
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		} finally {
-			if(rs != null) {
-				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
-			if(pstatement != null) {
-				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -56,39 +73,48 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		String sqlString = "INSERT INTO Karteikarte (Frage, Antwort, Farbe, LektionID, BildID) VALUES (?, ?, ?, ?, ?)";
-		
+
 		try {
 			connection = JdbcUtils.getConnection();
 			pstatement = connection.prepareStatement(sqlString);
-			
+
 			pstatement.setString(1, indexCard.getQuestion());
 			pstatement.setString(2, indexCard.getAnswer());
-			
-			if(indexCard.getColor() == null) {
+
+			if (indexCard.getColor() == null) {
 				pstatement.setNull(3, Types.VARCHAR);
-			}else {
+			} else {
 				pstatement.setString(3, indexCard.getColor());
 			}
-			
+
 			pstatement.setInt(4, indexCard.getLectionId());
-			
-			// wenn pictureId null, dann übergebe null (d.h. pictureId kann in der DB null sein)
-			if(indexCard.getPictureId() == null) {
-				pstatement.setNull(5, Types.INTEGER);	
-			}else {
+
+			// wenn pictureId null, dann übergebe null (d.h. pictureId kann in der DB null
+			// sein)
+			if (indexCard.getPictureId() == null) {
+				pstatement.setNull(5, Types.INTEGER);
+			} else {
 				pstatement.setInt(5, indexCard.getPictureId());
 			}
-			
+
 			pstatement.executeUpdate();
-		} catch(SQLException sqle) {
+		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
-			if(pstatement != null) {
-				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -109,12 +135,20 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
-			if(pstatement != null) {
-				try { pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try { connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 		}
 	}
@@ -132,17 +166,25 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 			pstatement.setString(1, indexCard.getQuestion());
 			pstatement.setString(2, indexCard.getAnswer());
 			pstatement.setInt(3, indexCard.getIndexCardId());
-			
+
 			pstatement.executeUpdate();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
-			if(pstatement != null) {
-				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -165,12 +207,20 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
-			if(pstatement != null) {
-				try {  pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try {  connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 		}
 	}
@@ -193,16 +243,24 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {
-			if(pstatement != null) {
-				try {  pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (pstatement != null) {
+				try {
+					pstatement.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 
-			if(connection != null) {
-				try {  connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException sqle) {
+					sqle.printStackTrace();
+				}
 			}
 		}
 	}
-	
+
 	private IndexCard createIndexCardFromResultSet(final ResultSet resultSet) throws SQLException {
 		final int indexCardId = resultSet.getInt(1);
 		final String question = resultSet.getString(2);
@@ -210,7 +268,7 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		final String color = resultSet.getString(4);
 		final int lectionId = resultSet.getInt(5);
 		final int pictureId = resultSet.getInt(6);
-		
+
 		final IndexCard indexCard = ModelFactory.createIndexCard();
 		indexCard.setIndexCardId(indexCardId);
 		indexCard.setQuestion(question);
@@ -218,7 +276,7 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 		indexCard.setColor(color);
 		indexCard.setLectionId(lectionId);
 		indexCard.setPictureId(pictureId);
-		
+
 		return indexCard;
 	}
 }

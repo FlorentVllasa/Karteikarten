@@ -9,10 +9,7 @@ import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.CategoryDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
-import de.kksystem.karteikarten.model.classes.CategoryImpl;
-import de.kksystem.karteikarten.model.classes.UserImpl;
 import de.kksystem.karteikarten.model.interfaces.Category;
-import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
 public class CategoryDaoJdbcImpl implements CategoryDao {
@@ -77,8 +74,12 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
             pstatement = connection.prepareStatement(sqlString);
             pstatement.setInt(1, getCategoryIdFromDatabase(category));
             rs = pstatement.executeQuery();
-            final Category category1 = createCategoryFromResultSet(rs);
-            return category1;
+            
+            if(rs.next()) {
+                final Category category1 = createCategoryFromResultSet(rs);
+                return category1;
+			}
+			return null;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -170,9 +171,12 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
             connection = JdbcUtils.getConnection();
             pstatement = connection.prepareStatement(countString);
             rs = pstatement.executeQuery();
-            numberOfCategories = rs.getInt(1);
-            System.out.println(numberOfCategories);
-            return numberOfCategories;
+            
+            if(rs.next()) {
+            	numberOfCategories = rs.getInt(1);
+            	return numberOfCategories; 
+			}
+			return -1;
         }catch(SQLException se){
             System.out.println(se.getMessage());
             return -1;
@@ -217,8 +221,12 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
             pstatement = connection.prepareStatement(catIdString);
             pstatement.setString(1, category.getName());
             rs = pstatement.executeQuery();
-            int catId = rs.getInt(1);
-            return catId;
+            
+            if(rs.next()) {
+                int catId = rs.getInt(1);
+                return catId;
+			}
+			return 0;
         }catch(SQLException se){
             System.out.println(se.getMessage());
             return 0;
