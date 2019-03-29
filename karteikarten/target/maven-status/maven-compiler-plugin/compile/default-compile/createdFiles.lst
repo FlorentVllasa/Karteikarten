@@ -4,7 +4,6 @@ de\kksystem\karteikarten\dao\classes\jdbc\FavoritelistDaoJdbcImpl.class
 de\kksystem\karteikarten\constants\DatabaseConstants.class
 de\kksystem\karteikarten\service\interfaces\CategoryService.class
 de\kksystem\karteikarten\factories\DaoFactory.class
-de\kksystem\karteikarten\view\javafx\controllers\DeleteCategoryController.class
 de\kksystem\karteikarten\factories\ServiceFactory.class
 de\kksystem\karteikarten\dao\classes\jdbc\PictureDaoJdbcImpl.class
 de\kksystem\karteikarten\model\classes\UserImpl.class
@@ -16,7 +15,6 @@ de\kksystem\karteikarten\model\classes\PictureImpl.class
 de\kksystem\karteikarten\service\classes\CategoryServiceImpl.class
 de\kksystem\karteikarten\factories\ModelFactory.class
 de\kksystem\karteikarten\dao\interfaces\UserDao.class
-de\kksystem\karteikarten\view\javafx\controllers\CreateCategoryController.class
 de\kksystem\karteikarten\model\classes\IndexCardImpl.class
 de\kksystem\karteikarten\service\classes\PictureServiceImpl.class
 de\kksystem\karteikarten\service\classes\FavoritelistServiceImpl.class
@@ -55,7 +53,6 @@ de\kksystem\karteikarten\dao\classes\jdbc\LectionDaoJdbcImpl.class
 de\kksystem\karteikarten\service\interfaces\LectionService.class
 de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$4.class
 de\kksystem\karteikarten\validators\StringValidator.class
-de\kksystem\karteikarten\view\javafx\controllers\EditCategoryController.class
 de\kksystem\karteikarten\view\javafx\controllers\FunctionsController.class
 de\kksystem\karteikarten\dao\interfaces\IndexCardDao.class
 de\kksystem\karteikarten\dao\classes\jdbc\UserDaoJdbcImpl.class

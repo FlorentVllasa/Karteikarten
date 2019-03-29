@@ -1,4 +1,3 @@
-C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\DeleteCategoryController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\constants\DatabaseConstants.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\Lection.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\PictureServiceImpl.java
@@ -20,7 +19,6 @@ C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikart
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\UserServiceImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\User.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\classes\jdbc\PictureDaoJdbcImpl.java
-C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\CreateCategoryController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\Favoritelist.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\FavoritelistServiceImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchStage.java
@@ -31,7 +29,6 @@ C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikart
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\utils\StringUtils.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\RegistrationController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\classes\UserImpl.java
-C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\EditCategoryController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\FunctionsController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\classes\jdbc\CategoryDaoJdbcImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\data\UserData.java
