@@ -47,11 +47,12 @@ public class UserDaoJdbcImpl implements UserDao {
 			rs = pstatement.getGeneratedKeys();
 			
 			if(rs.next()) {
-				return rs.getInt("FavoritenlisteID");
+				return rs.getInt(1);
 			}
-		} catch (SQLException e) {
 			return -1;
+		} catch (SQLException e) {
 			e.printStackTrace();
+			return -1;
 		} finally {
 			if(rs != null) {
 				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }

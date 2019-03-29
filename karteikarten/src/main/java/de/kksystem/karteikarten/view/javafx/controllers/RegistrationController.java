@@ -1,5 +1,6 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
+import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
 import de.kksystem.karteikarten.model.classes.UserImpl;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
@@ -73,11 +74,18 @@ public class RegistrationController implements Initializable {
         }else{
             UserImpl user = new UserImpl(userName, email, password, surname, foreName, null);
             
-            int userId = ServiceFacade.getInstance().addUser(user);
+            int newUserId = ServiceFacade.getInstance().addUser(user);
             
-            if(userId > 0) {
-            	ServiceFacade.getInstance().addFavoritelist("Wichtig zum Lernen!", userId);
-
+            if(newUserId > 0) {
+            	UserData.getInstance().setUserId(newUserId);
+            	UserData.getInstance().setUsername(user.getUsername());
+            	
+            	// Neue Favoritenliste des neuen Nutzers in die Db eingefügt
+            	int newFavoritelistId = ServiceFacade.getInstance().addFavoritelist(null, newUserId);
+            	
+            	// FavoritenlisteID des neuen Nutzers nun in UserData abgespeichert
+            	UserData.getInstance().setFavoritelistId(newFavoritelistId);
+            	
                 wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
                 closeRegisterWindow();
             }else {

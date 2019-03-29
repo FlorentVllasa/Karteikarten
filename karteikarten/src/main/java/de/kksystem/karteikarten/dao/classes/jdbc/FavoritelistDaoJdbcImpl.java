@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,18 +108,43 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 	}
 
 	@Override
-	public void addFavoritelist(String name , int userId) {
+	public int addFavoritelist(String name, int userId) {
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
 		
-	String sql = "INSERT INTO FavoritenListe (Name, BenutzerID) VALUES (?,?)";
+		String sqlString = "INSERT INTO Favoritenliste (Name, BenutzerID) VALUES (NULL, ?)";
+
 		try {
-			Connection conn = JdbcUtils.getConnection();
-			PreparedStatement query = conn.prepareStatement(sql); 
-			query.setString(1,name); 
-			query.setInt(2,userId);
-			query.executeUpdate();
-		}catch(SQLException e ) { 
-			System.out.println(e.getMessage());
-		}	
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString, Statement.RETURN_GENERATED_KEYS);
+
+			pstatement.setInt(1, userId);
+
+			pstatement.executeUpdate();
+			
+			rs = pstatement.getGeneratedKeys();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return -1;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
 	}
 
 	@Override

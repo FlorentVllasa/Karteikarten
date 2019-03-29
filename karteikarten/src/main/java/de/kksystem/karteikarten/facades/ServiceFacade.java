@@ -230,8 +230,8 @@ public class ServiceFacade {
 	 *
 	 * 
 	 */
-	public void addFavoritelist(String name , int userId) {
-		favoritelistService.addFavoritelist(name, userId);
+	public int addFavoritelist(String name, int userId) {
+		return favoritelistService.addFavoritelist(name, userId);
 	}
 	
 	public void delete(int favoritId) {

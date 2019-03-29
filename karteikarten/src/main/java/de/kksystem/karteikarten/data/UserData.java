@@ -11,6 +11,7 @@ import de.kksystem.karteikarten.model.interfaces.*;
 public class UserData {
 	private String username;
 	private int userId;
+	private int favoritelistId;
 	private List<Category> categoryList;
 	private List<Favoritelist> favoriteList;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
@@ -39,12 +40,20 @@ public class UserData {
 		choosenLection = lection;
 	}
 	
+	public void setFavoritelistId(int favoritelistId) {
+		this.favoritelistId = favoritelistId;
+	}
+	
 	public String getUsername() {
 		return this.username;
 	}
 	
 	public int getUserId() {
 		return this.userId;
+	}
+	
+	public int getFavoritelistId() {
+		return this.favoritelistId;
 	}
 	
 	public Lection getLection() {

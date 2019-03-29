@@ -17,8 +17,8 @@ public class FavoritelistServiceImpl implements FavoritelistService {
 	}
 
 	@Override
-	public void addFavoritelist(String name, int userId) {
-		daoFacade.addFavoritelist(name, userId);
+	public int addFavoritelist(String name, int userId) {
+		return daoFacade.addFavoritelist(name, userId);
 	}
 
 	@Override
