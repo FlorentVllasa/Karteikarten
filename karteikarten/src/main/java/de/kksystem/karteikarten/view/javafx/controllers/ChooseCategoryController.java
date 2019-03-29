@@ -89,13 +89,11 @@ public class ChooseCategoryController implements Initializable {
     public void switchToLearnWindow(ActionEvent event){
     	if ((cmbChooseCat.getSelectionModel().getSelectedIndex() > 0) && (cmbChooseLec.getSelectionModel().getSelectedIndex() > 0)) {
     		UserData.getInstance().setLection(categoryLectionList.get(cmbChooseLec.getSelectionModel().getSelectedIndex()-1));
-    		System.out.println(UserData.getInstance().getLection().getName());
     		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
             Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
             stageInfo.close();
     	} else if (cmbChooseFav.getSelectionModel().getSelectedIndex() > 0) {
     		UserData.getInstance().setLection(favoriteLectionList.get(cmbChooseFav.getSelectionModel().getSelectedIndex()-1));
-    		System.out.println(UserData.getInstance().getLection().getName());
     		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
             Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
             stageInfo.close();
