@@ -79,11 +79,23 @@ public class LoginController implements Initializable {
         Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
         stageInfo.close();
     }
+    
+    @FXML
+    private void onEnterUsername(ActionEvent event) {
+    	txtPassword.requestFocus();
+    }
+    
+    @FXML
+    private void onEnterPassword(ActionEvent event) {
+    	logIn(event);
+    }
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttonLogin.setOnAction(this::logIn);
         buttonRegister.setOnAction(this::switchToRegistrationWindow);
+        txtUsername.setOnAction(this::onEnterUsername);
+        txtPassword.setOnAction(this::onEnterPassword);
     }
 }
