@@ -83,11 +83,15 @@ public class RegistrationController implements Initializable {
             	// Neue Favoritenliste des neuen Nutzers in die Db eingefügt
             	int newFavoritelistId = ServiceFacade.getInstance().addFavoritelist(null, newUserId);
             	
-            	// FavoritenlisteID des neuen Nutzers nun in UserData abgespeichert
-            	UserData.getInstance().setFavoritelistId(newFavoritelistId);
-            	
-                wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
-                closeRegisterWindow();
+            	if(newFavoritelistId > 0) {
+                	// FavoritenlisteID des neuen Nutzers nun in UserData abgespeichert
+                	UserData.getInstance().setFavoritelistId(newFavoritelistId);
+                	
+                    wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
+                    closeRegisterWindow();
+            	}else {
+            		System.out.println("Leider ist etwas schiefgelaufen. Versuchen Sie es später erneut.");
+            	}
             }else {
             	System.out.println("Leider ist etwas schiefgelaufen. Versuchen Sie es später erneut.");
             }
