@@ -52,7 +52,7 @@ public class ServiceFacade {
 	 * 
 	 */
 	public int addUser(User user) {
-		userService.addUser(user);
+		return userService.addUser(user);
 	}
 	
 	public void deleteUser(User user) {
