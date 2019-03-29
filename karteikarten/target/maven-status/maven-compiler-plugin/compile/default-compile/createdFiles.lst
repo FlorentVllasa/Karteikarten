@@ -38,6 +38,7 @@ de\kksystem\karteikarten\view\javafx\controllers\CreateWindowController.class
 de\kksystem\karteikarten\view\javafx\controllers\RegistrationController.class
 de\kksystem\karteikarten\model\interfaces\IndexCard.class
 de\kksystem\karteikarten\service\classes\LectionServiceImpl.class
+de\kksystem\karteikarten\view\javafx\controllers\EditIndexCardController.class
 de\kksystem\karteikarten\dao\interfaces\LectionDao.class
 de\kksystem\karteikarten\data\UserData.class
 de\kksystem\karteikarten\facades\ServiceFacade.class

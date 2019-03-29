@@ -23,28 +23,28 @@
         <menus>
           <Menu mnemonicParsing="false" text="Kategorie ">
             <items>
-              <MenuItem fx:id="addCategoryMenuItem" mnemonicParsing="false" text="Kategorie erstellen..." />
-                  <MenuItem fx:id="editCategoryMenuItem" mnemonicParsing="false" text="Kategorie bearbeiten..." />
-                  <MenuItem fx:id="deleteCategoryMenuItem" mnemonicParsing="false" text="Kategorie löschen..." />
+              <MenuItem fx:id="miAddCategory" mnemonicParsing="false" text="Kategorie erstellen..." />
+                  <MenuItem fx:id="miEditCategory" mnemonicParsing="false" text="Kategorie bearbeiten..." />
+                  <MenuItem fx:id="miDeleteCategory" mnemonicParsing="false" text="Kategorie löschen..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Lektion">
             <items>
-              <MenuItem mnemonicParsing="false" text="Lektion erstellen..." />
-                  <MenuItem mnemonicParsing="false" text="Lektion bearbeiten..." />
-                  <MenuItem mnemonicParsing="false" text="Lektion löschen" />
+              <MenuItem fx:id="miAddLection" mnemonicParsing="false" text="Lektion erstellen..." />
+                  <MenuItem fx:id="miEditLection" mnemonicParsing="false" text="Lektion bearbeiten..." />
+                  <MenuItem fx:id="miDeleteLection" mnemonicParsing="false" text="Lektion löschen" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Karteikarte">
             <items>
-              <MenuItem mnemonicParsing="false" text="Karteikarte bearbeiten..." />
-                  <MenuItem mnemonicParsing="false" text="Karteikarte löschen..." />
+              <MenuItem fx:id="miEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
+                  <MenuItem fx:id="miDeleteIndexCard" mnemonicParsing="false" text="Karteikarte löschen..." />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Favoritenliste">
               <items>
-                <MenuItem mnemonicParsing="false" text="Favoritenliste bearbeiten..." />
-                  <MenuItem mnemonicParsing="false" text="Favoritenliste löschen..." />
+                <MenuItem fx:id="miEditFavoritelist" mnemonicParsing="false" text="Favoritenliste bearbeiten..." />
+                  <MenuItem fx:id="miDeleteFavoritelist" mnemonicParsing="false" text="Favoritenliste löschen..." />
               </items>
             </Menu>
         </menus>
