@@ -12,4 +12,5 @@ public interface FavoritelistDao {
 	Favoritelist findFavoritelist(int favoritelistId);
 	List<Favoritelist> findAllFavoritelist();
 	List<Favoritelist> findFavoritesByUserId(int userId);
+	Favoritelist findFavoritelistIdByUserId(int userId);
 }

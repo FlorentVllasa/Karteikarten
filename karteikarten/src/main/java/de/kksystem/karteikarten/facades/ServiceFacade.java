@@ -202,6 +202,10 @@ public class ServiceFacade {
 		return indexCardService.findIndexCardById(indexCardId);
 	}
 	
+	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
+		return indexCardService.findAllIndexCardsByLectionId(lectionId);
+	}
+	
 	/*
 	 * 
 	 *Picture
@@ -256,5 +260,9 @@ public class ServiceFacade {
 	
 	public List<Favoritelist> findFavoritesByUserId(int userId){
 		return favoritelistService.findFavoritesByUserId(userId);
+	}
+	
+	public Favoritelist findFavoritelistIdByUserId(int userId) {
+		return favoritelistService.findFavoritelistIdByUserId(userId);
 	}
 }

@@ -1,5 +1,7 @@
 package de.kksystem.karteikarten.service.classes;
 
+import java.util.List;
+
 import de.kksystem.karteikarten.facades.DaoFacade;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.service.interfaces.IndexCardService;
@@ -41,5 +43,10 @@ public class IndexCardServiceImpl implements IndexCardService{
 	@Override
 	public IndexCard findIndexCardById(int indexCardId) {
 		return daoFacade.findIndexCardById(indexCardId);
+	}
+
+	@Override
+	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
+		return daoFacade.findAllIndexCardsByLectionId(lectionId);
 	}
 }

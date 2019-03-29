@@ -195,6 +195,10 @@ public class DaoFacade {
 		return indexCardDao.findIndexCardById(indexCardId);
 	}
 	
+	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
+		return indexCardDao.findAllIndexCardsByLectionId(lectionId);
+	}
+	
 	/*
 	 * 
 	 *Picture
@@ -249,5 +253,9 @@ public class DaoFacade {
 	
 	public List<Favoritelist> findFavoritesByUserId(int userId) {
 		return favoritelistDao.findFavoritesByUserId(userId);
+	}
+	
+	public Favoritelist findFavoritelistIdByUserId(int userId) {
+		return favoritelistDao.findFavoritelistIdByUserId(userId);
 	}
 }

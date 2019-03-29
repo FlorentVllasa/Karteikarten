@@ -14,4 +14,5 @@ public interface FavoritelistService {
 	Favoritelist findFavoritelist(int favoritelistId);
 	List<Favoritelist> findAllFavoritelist();
 	List<Favoritelist> findFavoritesByUserId(int userId);
+	Favoritelist findFavoritelistIdByUserId(int userId);
 }

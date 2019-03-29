@@ -5,10 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.IndexCardDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
+import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
 /**
@@ -257,6 +260,44 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 				} catch (SQLException sqle) {
 					sqle.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	@Override
+	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
+		List<IndexCard> allIndexCardsList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		String sqlString = "SELECT * FROM Karteikarte WHERE LektionID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, lectionId);
+
+			rs = pstatement.executeQuery();
+			
+			while(rs.next()) {
+				IndexCard indexCard = createIndexCardFromResultSet(rs);
+				allIndexCardsList.add(indexCard);
+			}
+			return allIndexCardsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
 		}
 	}

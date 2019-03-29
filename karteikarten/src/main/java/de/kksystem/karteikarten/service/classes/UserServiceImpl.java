@@ -5,6 +5,7 @@ import java.util.List;
 import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.DaoFacade;
 import de.kksystem.karteikarten.model.interfaces.Category;
+import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.service.interfaces.UserService;
 
@@ -68,11 +69,14 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean checkLogIn(String username, String password) {
 		User user = daoFacade.findUserByUsername(username);
+		//Favoritelist favoritelist = daoFacade.findF
 		
 		if(user != null && user.getPassword().equals(password)) {
+			Favoritelist favoritelist = daoFacade.findFavoritelistIdByUserId(user.getUserId());
 			System.out.println("OK");
 			UserData.getInstance().setUsername(user.getUsername());
 			UserData.getInstance().setUserId(user.getUserId());
+			UserData.getInstance().setFavoritelistId(favoritelist.getFavoritelistId());
 			
 			return true;
 		}

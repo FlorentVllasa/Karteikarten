@@ -1,5 +1,7 @@
 package de.kksystem.karteikarten.dao.interfaces;
 
+import java.util.List;
+
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 
 public interface IndexCardDao {
@@ -9,6 +11,5 @@ public interface IndexCardDao {
 	void updateQuestion(String newQuestion, int indexCardId);
 	void updateAnswer(String newAnswer, int indexCardId);
 	IndexCard findIndexCardById(int indexCardId);
-	// muss in die Lection -> List<IndexCard> findAllIndexCardsByLectionId(int lectionId);
-	// muss in die Lection -> int countIndexCardsByLectionId(int lectionId);
+	List<IndexCard> findAllIndexCardsByLectionId(int lectionId);
 }

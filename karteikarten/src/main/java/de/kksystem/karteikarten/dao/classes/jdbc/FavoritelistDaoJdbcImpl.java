@@ -5,11 +5,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.FavoritelistDao;
+import de.kksystem.karteikarten.factories.ModelFactory;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
+import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
@@ -75,10 +78,43 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 		}catch(SQLException e ) { 
 			System.out.println(e.getMessage());
 		}
-		
-				
-		
-		
+	}
+	
+	@Override
+	public Favoritelist findFavoritelistIdByUserId(int userId) {
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		String sqlString = "SELECT * FROM Favoritenliste WHERE BenutzerID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, userId);
+
+			rs = pstatement.executeQuery();
+			
+			if(rs.next()) {
+				final Favoritelist favoritelist = createFavoritelistFromResultSet(rs);
+				return favoritelist;
+			}
+			return null;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
 	}
 
 	@Override
@@ -213,6 +249,19 @@ public class FavoritelistDaoJdbcImpl  implements FavoritelistDao {
 				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
 		}
+	}
+	
+	private Favoritelist createFavoritelistFromResultSet(final ResultSet resultSet) throws SQLException {
+		final int favoritelistId = resultSet.getInt(1);
+		final String favoritelistName = resultSet.getString(2);
+		final int favoritelistUserId = resultSet.getInt(3);
+
+		final Favoritelist favoritelist = ModelFactory.createFavoritelist();
+		favoritelist.setFavoritelistId(favoritelistId);
+		favoritelist.setName(favoritelistName);
+		favoritelist.setUserId(favoritelistUserId);
+
+		return favoritelist;
 	}
 	
 //	public static void main(String[] args) {

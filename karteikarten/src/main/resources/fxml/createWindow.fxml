@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -71,7 +71,7 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="278.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <ComboBox prefWidth="150.0">
+                                    <ComboBox fx:id="cmbCategories" prefWidth="150.0">
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>
@@ -96,7 +96,7 @@
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <ListView prefHeight="389.0" prefWidth="298.0" VBox.vgrow="ALWAYS" />
+                                                <ListView fx:id="lvLections" prefHeight="389.0" prefWidth="298.0" VBox.vgrow="ALWAYS" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -113,7 +113,7 @@
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <ListView VBox.vgrow="ALWAYS" />
+                                                <ListView fx:id="lvFavorites" VBox.vgrow="ALWAYS" />
                                              </children>
                                           </VBox>
                                        </children>
@@ -132,10 +132,10 @@
                     <items>
                       <AnchorPane prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TableView prefHeight="200.0" prefWidth="861.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tvIndexCards" prefHeight="200.0" prefWidth="861.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="C1" />
-                                  <TableColumn prefWidth="75.0" text="C2" />
+                                  <TableColumn fx:id="tcQuestion" prefWidth="504.7999878525734" text="Frage" />
+                                  <TableColumn fx:id="tcAnswer" minWidth="0.0" prefWidth="516.0" text="Antwort" />
                                 </columns>
                               </TableView>
                            </children>

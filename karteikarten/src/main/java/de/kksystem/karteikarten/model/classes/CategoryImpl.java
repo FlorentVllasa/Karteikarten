@@ -37,12 +37,6 @@ public class CategoryImpl implements Category {
 	}
 
 	@Override
-    public String toString(){
-	    return "CatID:" + this.categoryId + " Name:" + this.name + " Description:" + this.description +
-                " UserId:" + this.userId;
-    }
-
-	@Override
 	public String getName() {
 		return name;
 	}
@@ -70,6 +64,11 @@ public class CategoryImpl implements Category {
 	@Override
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	@Override
+	public String toString(){
+		return name;
 	}
 	
 }
