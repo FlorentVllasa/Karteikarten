@@ -6,7 +6,7 @@ import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.User;
 
 public interface UserService {
-	void addUser(User user);
+	int addUser(User user);
 	void deleteUser(User user);
 	void updateUser(User user);
 	void updatePassword(String newPassword, int userId);

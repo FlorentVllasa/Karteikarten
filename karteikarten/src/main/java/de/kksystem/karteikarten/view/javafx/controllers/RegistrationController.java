@@ -72,10 +72,18 @@ public class RegistrationController implements Initializable {
             lblMessage.setText("Benutzername wird schon benutzt!");
         }else{
             UserImpl user = new UserImpl(userName, email, password, surname, foreName, null);
-            ServiceFacade.getInstance().addUser(user);
+            
+            int userId = ServiceFacade.getInstance().addUser(user);
+            
+            if(userId > 0) {
+            	ServiceFacade.getInstance().addFavoritelist("Wichtig zum Lernen!", userId);
 
-            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
-            closeRegisterWindow();
+                wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
+                closeRegisterWindow();
+            }else {
+            	System.out.println("Leider ist etwas schiefgelaufen. Versuchen Sie es später erneut.");
+            }
+            
         }
     }
 

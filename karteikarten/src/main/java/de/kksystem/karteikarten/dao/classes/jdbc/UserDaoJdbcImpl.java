@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -22,15 +23,17 @@ import de.kksystem.karteikarten.factories.ModelFactory;
 public class UserDaoJdbcImpl implements UserDao {
 
 	@Override
-	public void addUser(User user) {
+	public int addUser(User user) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		
 		String sqlString = "INSERT INTO Benutzer (EmailAdresse, Benutzername, Passwort, Nachname, Vorname, LetzteAnmeldung) VALUES (?, ?, ?, ?, ?, ?)";
 
 		try {
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			connection = JdbcUtils.getConnection();
-			pstatement = connection.prepareStatement(sqlString);
+			pstatement = connection.prepareStatement(sqlString, Statement.RETURN_GENERATED_KEYS);
 
 			pstatement.setString(1, user.getEmail());
 			pstatement.setString(2, user.getUsername());
@@ -40,9 +43,20 @@ public class UserDaoJdbcImpl implements UserDao {
 			pstatement.setTimestamp(6, timestamp);
 
 			pstatement.executeUpdate();
+			
+			rs = pstatement.getGeneratedKeys();
+			
+			if(rs.next()) {
+				return rs.getInt("FavoritenlisteID");
+			}
 		} catch (SQLException e) {
+			return -1;
 			e.printStackTrace();
 		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			
 			if(pstatement != null) {
 				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}

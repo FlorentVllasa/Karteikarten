@@ -51,7 +51,7 @@ public class ServiceFacade {
 	 *
 	 * 
 	 */
-	public void addUser(User user) {
+	public int addUser(User user) {
 		userService.addUser(user);
 	}
 	

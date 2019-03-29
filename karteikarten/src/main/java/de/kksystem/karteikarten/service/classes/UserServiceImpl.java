@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void addUser(User user) {
-		daoFacade.addUser(user);
+	public int addUser(User user) {
+		return daoFacade.addUser(user);
 	}
 
 	@Override
