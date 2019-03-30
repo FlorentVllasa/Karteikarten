@@ -19,7 +19,7 @@ public class LectionDaoJdbcImpl implements LectionDao {
 	public void addLection(Lection lection) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = "INSERT INTO Lektion (Name, Beschreibung, LetzteUebung, KategorieID, FavoritenlisteID) VALUES (?, ?, NULL, ?, ?)";
+		String sqlString = "INSERT INTO Lektion (Name, Beschreibung, LetzteUebung, KategorieID, FavoritenlisteID) VALUES (?, ?, NULL, ?, NULL)";
 
 		try {
 			connection = JdbcUtils.getConnection();
@@ -28,7 +28,6 @@ public class LectionDaoJdbcImpl implements LectionDao {
 			pstatement.setString(1, lection.getName());
 			pstatement.setString(2, lection.getDescription());
 			pstatement.setInt(3, lection.getCategoryId());
-			pstatement.setInt(4, lection.getFavoritelistId());
 
 			pstatement.executeUpdate();
 		} catch (SQLException e) {

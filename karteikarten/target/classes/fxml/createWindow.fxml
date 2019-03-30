@@ -150,14 +150,14 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                    <children>
-                                                      <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Frage eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <HTMLEditor fx:id="htmlQuestion" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Frage eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                                    <children>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="38.4" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <Button fx:id="btnBack" mnemonicParsing="false" text="Zurück" HBox.hgrow="ALWAYS">
+                                                            <Button fx:id="btnBack" mnemonicParsing="false" text="Zurück ins Hauptmenü" HBox.hgrow="ALWAYS">
                                                                <HBox.margin>
                                                                   <Insets left="5.0" />
                                                                </HBox.margin>
@@ -176,14 +176,14 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                    <children>
-                                                      <HTMLEditor htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Antwort eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <HTMLEditor fx:id="htmlAnswer" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Antwort eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                                                    <children>
                                                       <HBox alignment="CENTER_RIGHT" layoutX="268.0" prefHeight="44.0" prefWidth="243.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <Button fx:id="btnSave" mnemonicParsing="false" text="Speichern">
+                                                            <Button fx:id="btnSave" mnemonicParsing="false" text="Karteikarte hinzufügen">
                                                                <HBox.margin>
                                                                   <Insets right="5.0" />
                                                                </HBox.margin>
@@ -192,7 +192,7 @@
                                                       </HBox>
                                                       <HBox alignment="CENTER_LEFT" prefHeight="44.0" prefWidth="199.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="312.0" AnchorPane.topAnchor="0.0">
                                                          <children>
-                                                            <Button mnemonicParsing="false" text="Bild einfügen">
+                                                            <Button fx:id="btnAddPicture" mnemonicParsing="false" text="Bild zur Karteikarte hinzufügen">
                                                                <HBox.margin>
                                                                   <Insets left="5.0" />
                                                                </HBox.margin>
