@@ -24,6 +24,14 @@ public class LectionImpl implements Lection{
 		this.categoryId = categoryId;
 		this.favoritelistId = favoritelistId;
 	}
+
+	public LectionImpl(String name, String description, Timestamp lastExcercise, int categoryId, int favoritelistId){
+		this.name = name;
+		this.description = description;
+		this.lastExcercise = lastExcercise;
+		this.categoryId = categoryId;
+		this.favoritelistId = favoritelistId;
+	}
 	
 	@Override
 	public int getLectionId() {

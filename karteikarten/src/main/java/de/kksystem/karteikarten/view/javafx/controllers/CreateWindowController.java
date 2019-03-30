@@ -2,6 +2,9 @@ package de.kksystem.karteikarten.view.javafx.controllers;
 
 import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
+import de.kksystem.karteikarten.model.classes.CategoryImpl;
+import de.kksystem.karteikarten.model.classes.IndexCardImpl;
+import de.kksystem.karteikarten.model.classes.LectionImpl;
 import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
@@ -19,6 +22,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.web.HTMLEditor;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -27,6 +31,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CreateWindowController implements Initializable {
 
@@ -88,6 +94,12 @@ public class CreateWindowController implements Initializable {
 
 	@FXML
 	private MenuItem miDeleteFavoritelist;
+
+    @FXML
+    private HTMLEditor htmlQuestion;
+
+    @FXML
+    private HTMLEditor htmlAnswer;
 
 	@FXML
 	private void loadCategories() {
@@ -163,6 +175,7 @@ public class CreateWindowController implements Initializable {
 		});
 	}
 
+	@FXML
 	public void switchToAddCategoryDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Kategorienamen eingeben");
 		tid.setTitle("Kategorie erstellen");
@@ -171,13 +184,18 @@ public class CreateWindowController implements Initializable {
 
 		Optional<String> enteredValue = tid.showAndWait();
 
-		if (enteredValue.get().isBlank()) {
-			System.out.println("Unknown");
-		} else {
-			System.out.println(enteredValue.get());
+		if(enteredValue.get().isBlank()){
+			System.out.println("Fehler");
+		}else{
+			int userId = UserData.getInstance().getUserId();
+			CategoryImpl category = new CategoryImpl(enteredValue.get(), null, userId);
+			ServiceFacade.getInstance().addCategory(category);
+
+			cmbCategories.getItems().add(category);
 		}
 	}
 
+	@FXML
 	public void switchToEditCategoryDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Neuer Kategoriename");
 		tid.setTitle("Kategorie bearbeiten");
@@ -186,13 +204,19 @@ public class CreateWindowController implements Initializable {
 
 		Optional<String> enteredValue = tid.showAndWait();
 
-		if (enteredValue.get().isBlank()) {
-			System.out.println("Unknown");
-		} else {
-			System.out.println(enteredValue.get());
+		if(enteredValue.get().isBlank()){
+			System.out.println("Fehler");
+		}else{
+			int userId = UserData.getInstance().getUserId();
+			Category category = cmbCategories.getSelectionModel().getSelectedItem();
+			ServiceFacade.getInstance().updateCategoryName(category, enteredValue.get());
+			List<Category> allCategories = ServiceFacade.getInstance().findCategoriesByUserId(userId);
+			ObservableList<Category> obsList = FXCollections.observableList(allCategories);
+			cmbCategories.setItems(obsList);
 		}
 	}
 
+	@FXML
 	public void switchToDeleteCategoryDialog(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Kategorie loeschen!");
@@ -207,6 +231,7 @@ public class CreateWindowController implements Initializable {
 		}
 	}
 
+	@FXML
 	public void switchtoAddLectionDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Lektionnamen eingeben");
 		tid.setTitle("Lektion erstellen");
@@ -215,13 +240,14 @@ public class CreateWindowController implements Initializable {
 
 		Optional<String> enteredValue = tid.showAndWait();
 
-		if (enteredValue.get().isBlank()) {
-			System.out.println("Unknown");
-		} else {
-			System.out.println(enteredValue.get());
-		}
+        int favListId = UserData.getInstance().getFavoritelistId();
+        int catId = cmbCategories.getSelectionModel().getSelectedItem().getCategoryId();
+        LectionImpl lection = new LectionImpl(enteredValue.get(), null, null, catId, favListId);
+        ServiceFacade.getInstance().addLection(lection);
+        lvLections.getItems().add(lection);
 	}
 
+	@FXML
 	public void switchToEditLectionDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Neuer Lektionname");
 		tid.setTitle("Lektion bearbeiten");
@@ -237,6 +263,7 @@ public class CreateWindowController implements Initializable {
 		}
 	}
 
+	@FXML
 	public void switchToDeleteLectionDialog(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Lektion loeschen!");
@@ -251,11 +278,47 @@ public class CreateWindowController implements Initializable {
 		}
 	}
 
+	public void addIndexCardIntoTableView(ActionEvent event){
+        int lectionId = lvLections.getSelectionModel().getSelectedItem().getLectionId();
+        String question = getText(htmlQuestion.getHtmlText());
+        String answer = getText(htmlAnswer.getHtmlText());
+
+        if(question.isBlank() && answer.isBlank()){
+            System.out.println("Frage und Antwort angeben!");
+        }else if(question.isBlank()){
+            System.out.println("Bitte Frage eingeben!");
+        }else if(answer.isBlank()){
+            System.out.println("Bitte Antwort angeben!");
+        }else{
+            IndexCardImpl indexCard = new IndexCardImpl(question, answer, null, lectionId, null);
+            ServiceFacade.getInstance().addIndexCard(indexCard);
+            tvIndexCards.getItems().add(indexCard);
+        }
+
+    }
+
+    public static String getText(String htmlText) {
+        String result = "";
+        Pattern pattern = Pattern.compile("<[^>]*>");
+        Matcher matcher = pattern.matcher(htmlText);
+        final StringBuffer text = new StringBuffer(htmlText.length());
+        while (matcher.find()) {
+            matcher.appendReplacement(
+                    text,
+                    " ");
+        }
+        matcher.appendTail(text);
+        result = text.toString().trim();
+        return result;
+    }
+
+	@FXML
 	public void switchToEditIndexCardDialog(ActionEvent event) {
 		switchStageHelper.createWindowNewStage("/fxml/editIndexCardWindow.fxml", "Karteikarte bearbeiten!",
 				new EditIndexCardController());
 	}
 
+	@FXML
 	public void switchToDeleteIndexCardDialog(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Karteikarte loeschen!");
@@ -270,6 +333,7 @@ public class CreateWindowController implements Initializable {
 		}
 	}
 
+	@FXML
 	public void switchtoEditFavoritelistDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Neuer Favoritenname");
 		tid.setTitle("Favoritenliste bearbeiten");
@@ -285,6 +349,7 @@ public class CreateWindowController implements Initializable {
 		}
 	}
 
+	@FXML
 	public void switchToDeleteFavoritelistDialog(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Favorit loeschen!");
@@ -325,5 +390,6 @@ public class CreateWindowController implements Initializable {
 		miDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
 		miEditFavoritelist.setOnAction(this::switchtoEditFavoritelistDialog);
 		miDeleteFavoritelist.setOnAction(this::switchToDeleteFavoritelistDialog);
+		btnSave.setOnAction(this::addIndexCardIntoTableView);
 	}
 }

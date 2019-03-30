@@ -254,8 +254,8 @@ public class CategoryDaoJdbcImpl implements CategoryDao {
             connection = JdbcUtils.getConnection();
             pstatement = connection.prepareStatement(updateCategorieString);
             pstatement.setString(1, neuerCatName);
-            pstatement.setInt(2, getCategoryIdFromDatabase(category));
-            //pstatement.setInt(3, userImplDao.getUserIdFromDatabase(user));
+            pstatement.setInt(2, category.getCategoryId());
+            pstatement.setInt(3, category.getUserId());
             pstatement.executeUpdate();
         }catch(SQLException se){
             System.out.println(se.getMessage());
