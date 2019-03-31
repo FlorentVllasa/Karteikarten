@@ -12,13 +12,18 @@ import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStag
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Optional;
@@ -72,6 +77,10 @@ public class CreateWindowController implements Initializable {
 	private HTMLEditor htmlQuestion;
 	@FXML
 	private HTMLEditor htmlAnswer;
+
+	@FXML
+    private void test() {
+    }
 
 	@FXML
 	private void showLoadedData() {
@@ -445,8 +454,32 @@ public class CreateWindowController implements Initializable {
 
 	@FXML
 	public void switchToEditIndexCardDialog(ActionEvent event) {
-		switchStageHelper.createWindowNewStage("/fxml/editIndexCardWindow.fxml", "Karteikarte bearbeiten!",
-				new EditIndexCardController());
+		//switchStageHelper.createWindowNewStage("/fxml/editIndexCardWindow.fxml", "Karteikarte bearbeiten!", new EditIndexCardController());
+        try{
+            final URL fxmlUrl = getClass().getResource("/fxml/EditIndexCardWindow.fxml");
+            final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+            fxmlLoader.setController(new EditIndexCardController());
+            Parent root = fxmlLoader.load();
+
+			//load IndexCard into the two HTML-Editors of EditIndexCardWindow.fxml
+			IndexCard indexCard = tvIndexCards.getSelectionModel().getSelectedItem();
+			int lectionId = indexCard.getLectionId();
+			String question = indexCard.getQuestion();
+			String answer = indexCard.getAnswer();
+			EditIndexCardController controller = fxmlLoader.getController();
+			controller.loadClickedIndexCard(question, answer);
+			controller.setIndexcard(indexCard);
+
+            Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }catch(IOException io){
+            System.out.println(io.getMessage());
+        }
+
 	}
 
 	@FXML
@@ -476,11 +509,7 @@ public class CreateWindowController implements Initializable {
 
 		Optional<String> enteredValue = tid.showAndWait();
 
-		if (enteredValue.get().isBlank()) {
-			System.out.println("Unknown");
-		} else {
-			System.out.println(enteredValue.get());
-		}
+
 	}
 
 	@FXML

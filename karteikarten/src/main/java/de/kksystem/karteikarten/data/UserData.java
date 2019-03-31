@@ -4,6 +4,7 @@ import java.util.List;
 
 import de.kksystem.karteikarten.facades.ServiceFacade;
 import de.kksystem.karteikarten.model.interfaces.*;
+import de.kksystem.karteikarten.view.javafx.controllers.CreateWindowController;
 
 /*
  * Eventuell weitere Daten während Laufzeit speichern; nicht sicher, welche noch
@@ -16,6 +17,7 @@ public class UserData {
 	private List<Favoritelist> favoriteList;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
 	private Lection choosenLection;
+	private CreateWindowController controller;
 	
 	private static UserData instance;
 	
@@ -43,6 +45,10 @@ public class UserData {
 	public void setFavoritelistId(int favoritelistId) {
 		this.favoritelistId = favoritelistId;
 	}
+
+	public void setCreateWindowController(CreateWindowController controller){
+		this.controller = controller;
+	}
 	
 	public String getUsername() {
 		return this.username;
@@ -59,6 +65,10 @@ public class UserData {
 	public Lection getLection() {
 		return choosenLection;
 	}
+
+	public CreateWindowController getC(){
+		return controller;
+	}
 	
 	public List<Category> getCategoryList(){
 		categoryList = ServiceFacade.getInstance().findCategoriesByUserId(getUserId());
@@ -69,5 +79,4 @@ public class UserData {
 		favoriteList = ServiceFacade.getInstance().findFavoritesByUserId(getUserId());
 		return favoriteList;
 	}
-	
 }

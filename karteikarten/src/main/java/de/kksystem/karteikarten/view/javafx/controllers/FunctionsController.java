@@ -95,8 +95,10 @@ public class FunctionsController implements Initializable {
 
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
     public void switchSceneToCreateWindow(MouseEvent event){
-        wp.createWindowNewStage("/fxml/createWindow.fxml", "Erstellen Fenster!", new CreateWindowController());
+        CreateWindowController controller = new CreateWindowController();
+        wp.createWindowNewStage("/fxml/createWindow.fxml", "Erstellen Fenster!", controller);
 
+        UserData.getInstance().setCreateWindowController(controller);
     }
 
     /*Wenn auf das Lernen Bild geklickt wird, öffnet sich das Fenster Kategorie auswählen*/
