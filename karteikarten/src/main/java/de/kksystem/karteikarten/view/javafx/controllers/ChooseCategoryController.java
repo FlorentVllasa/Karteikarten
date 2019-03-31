@@ -14,7 +14,7 @@ import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
-
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -115,14 +115,8 @@ public class ChooseCategoryController implements Initializable {
     
     private void cmbChooseCatValueChanged(ActionEvent event) {
     	if (cmbChooseCat.getSelectionModel().getSelectedIndex() == 0) {
-    		cmbChooseCat.setDisable(false);
-    		cmbChooseLec.setDisable(true);
-    		cmbChooseFav.setDisable(false);
     		cmbChooseLec.getItems().clear();
     	} else {
-    		cmbChooseCat.setDisable(false);
-    		cmbChooseLec.setDisable(false);
-    		cmbChooseFav.setDisable(true);
     		int choosenCatId = cmbChooseCat.getSelectionModel().getSelectedIndex();
     		Category choosenCategory = UserData.getInstance().getCategoryList().get(choosenCatId - 1);
     		getLectionList(choosenCategory.getCategoryId());
@@ -131,23 +125,19 @@ public class ChooseCategoryController implements Initializable {
     
     private void cmbChooseFavValueChanged(ActionEvent event) {
     	if (cmbChooseFav.getSelectionModel().getSelectedIndex() == 0) {
-    		cmbChooseCat.setDisable(false);
-    		cmbChooseLec.setDisable(true);
-    		cmbChooseFav.setDisable(false);
     		cmbChooseLec.getItems().clear();
-    	} else {
-    		cmbChooseCat.setDisable(true);
-    		cmbChooseLec.setDisable(true);
-    		cmbChooseFav.setDisable(false);
     	}
     }
 
+    private void setDisableProperty() {
+    	cmbChooseCat.disableProperty().bind(cmbChooseFav.getSelectionModel().selectedIndexProperty().greaterThan(0));
+    	cmbChooseLec.disableProperty().bind(cmbChooseCat.getSelectionModel().selectedIndexProperty().lessThan(1));
+    	cmbChooseFav.disableProperty().bind(cmbChooseCat.getSelectionModel().selectedIndexProperty().greaterThan(0));
+    }
+    
     private void initializeListe() {
         getCategoryList();
         getFavoriteList();
-        cmbChooseCat.setDisable(false);
-		cmbChooseLec.setDisable(true);
-		cmbChooseFav.setDisable(false);
     }
     
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
@@ -158,6 +148,7 @@ public class ChooseCategoryController implements Initializable {
         cmbChooseCat.setOnAction(this::cmbChooseCatValueChanged);
         cmbChooseFav.setOnAction(this::cmbChooseFavValueChanged);
         initializeListe();
+        setDisableProperty();
     }
     
 }
