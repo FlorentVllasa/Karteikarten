@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -9,31 +14,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BDBDBD;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #BDBDBD;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <PasswordField fx:id="txtPassWord" layoutX="46.0" layoutY="261.0" prefHeight="43.0" prefWidth="221.0" promptText="Passwort" />
       <TextField fx:id="txtForeName" layoutX="46.0" layoutY="128.0" prefHeight="43.0" prefWidth="221.0" promptText="Vorname" />
       <TextField fx:id="txtName" layoutX="330.0" layoutY="128.0" prefHeight="43.0" prefWidth="221.0" promptText="Name" />
       <TextField fx:id="txtEmail" layoutX="46.0" layoutY="192.0" prefHeight="43.0" prefWidth="221.0" promptText="E-Mail" />
+      <TextField fx:id="txtUserName" layoutX="330.0" layoutY="192.0" prefHeight="43.0" prefWidth="221.0" promptText="Username" />
+      <PasswordField fx:id="txtPassWord" layoutX="46.0" layoutY="261.0" prefHeight="43.0" prefWidth="221.0" promptText="Passwort" />
+      <Button fx:id="btnRegister" layoutX="330.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #08088A;" text="Registrieren" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></Button>
+      <Button fx:id="btnBack" layoutX="46.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #08088A;" text="Zurück" textFill="WHITE">
+         <font>
+            <Font name="Segoe UI" size="18.0" />
+         </font></Button>
       <ImageView fx:id="registerImage" fitHeight="94.0" fitWidth="129.0" layoutX="388.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Pictures/register_button.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnRegister" layoutX="330.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="221.0" style="-fx-background-color: #08088A;" text="Registrieren" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI" size="18.0" />
-         </font></Button>
       <Label fx:id="lblKontoErstellen" layoutX="141.0" layoutY="22.0" text="Konto Erstellen">
          <font>
             <Font size="48.0" />
          </font>
       </Label>
-      <Button fx:id="btnBack" layoutX="46.0" layoutY="348.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="90.0" style="-fx-background-color: #08088A;" text="Zurück" textFill="WHITE">
-         <font>
-            <Font name="Segoe UI" size="18.0" />
-         </font></Button>
-      <TextField fx:id="txtUserName" layoutX="330.0" layoutY="192.0" prefHeight="43.0" prefWidth="221.0" promptText="Username" />
       <Label fx:id="lblMessage" layoutX="156.0" layoutY="357.0" textFill="RED" />
    </children>
 </AnchorPane>
