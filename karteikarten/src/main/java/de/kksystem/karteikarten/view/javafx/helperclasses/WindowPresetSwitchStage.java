@@ -29,22 +29,4 @@ public class WindowPresetSwitchStage {
         }
     }
 
-    public void createWindowManager(String path, String title, Object controller){
-        try {
-            final FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource(path));
-            fxmlLoader.setController(controller);
-            final Stage stage = new Stage();
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setScene(scene);
-            stage.setTitle(title);
-            stage.show();
-
-        }catch(IOException io){
-            io.printStackTrace();
-        }
-    }
-
-
 }
