@@ -83,7 +83,10 @@ public class CreateWindowController implements Initializable {
 		tcQuestion.setCellValueFactory(new PropertyValueFactory<>("question"));
 		tcAnswer.setCellValueFactory(new PropertyValueFactory<>("answer"));
 		loadCategories();
-		loadLections(cmbCategories.getItems().get(0).getCategoryId());
+		
+		if(cmbCategories.getItems().size() > 0) {
+			loadLections(cmbCategories.getItems().get(0).getCategoryId());
+		}
 		loadFavoritelist();
 
 		dynamicTableIndexCardByListLection();
@@ -419,15 +422,17 @@ public class CreateWindowController implements Initializable {
 			alert.showAndWait();
 		} else {
 			Lection selectedLection = null;
+			int lectionId = 0;
 			
 			if(!lvLections.getSelectionModel().isEmpty()) {
 				selectedLection = lvLections.getSelectionModel().getSelectedItem();
+				lectionId = lvLections.getSelectionModel().getSelectedItem().getLectionId();
 			}else if(!lvFavorites.getSelectionModel().isEmpty()) {
 				selectedLection = lvFavorites.getSelectionModel().getSelectedItem();
+				lectionId = lvFavorites.getSelectionModel().getSelectedItem().getLectionId();
 			}
 			
 			if (selectedLection != null) {
-				int lectionId = lvLections.getSelectionModel().getSelectedItem().getLectionId();
 				IndexCard indexCard = new IndexCardImpl(question, answer, null, lectionId, null);
 				ServiceFacade.getInstance().addIndexCard(indexCard);
 				loadIndexCards(lectionId);

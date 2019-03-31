@@ -87,7 +87,7 @@ public class RegistrationController implements Initializable {
                 	// FavoritenlisteID des neuen Nutzers nun in UserData abgespeichert
                 	UserData.getInstance().setFavoritelistId(newFavoritelistId);
                 	
-                    wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!" ,new FunctionsController());
+                    wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!", new FunctionsController());
                     closeRegisterWindow();
             	}else {
             		System.out.println("Leider ist etwas schiefgelaufen. Versuchen Sie es später erneut.");
