@@ -12,6 +12,8 @@ public class WindowPresetSwitchStage {
      * Path ist die fxml Url, title ist der Titel des Fensters, controller ist eine Referenz auf die ControllerKlasse
      * der jeweiligen fxml*/
 
+    Object controller;
+
     public void createWindowNewStage(String path, String title, Object controller){
         try {
             final FXMLLoader fxmlLoader = new FXMLLoader();
@@ -29,4 +31,7 @@ public class WindowPresetSwitchStage {
         }
     }
 
+    public Object getController() {
+        return controller;
+    }
 }

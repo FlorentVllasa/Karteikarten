@@ -464,7 +464,6 @@ public class CreateWindowController implements Initializable {
 
 			//load IndexCard into the two HTML-Editors of EditIndexCardWindow.fxml
 			IndexCard indexCard = tvIndexCards.getSelectionModel().getSelectedItem();
-			int lectionId = indexCard.getLectionId();
 			String question = indexCard.getQuestion();
 			String answer = indexCard.getAnswer();
 			EditIndexCardController controller = fxmlLoader.getController();
@@ -473,6 +472,7 @@ public class CreateWindowController implements Initializable {
 
             Stage stage = new Stage();
 			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Karteikarte abändern!");
             Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
@@ -482,6 +482,7 @@ public class CreateWindowController implements Initializable {
         }
 
 	}
+
 
 	@FXML
 	public void switchToDeleteIndexCardDialog(ActionEvent event) {
