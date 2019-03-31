@@ -15,9 +15,9 @@ public class UserData {
 	private int favoritelistId;
 	private List<Category> categoryList;
 	private List<Favoritelist> favoriteList;
+	private CreateWindowController controller;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
 	private Lection choosenLection;
-	private CreateWindowController controller;
 	
 	private static UserData instance;
 	

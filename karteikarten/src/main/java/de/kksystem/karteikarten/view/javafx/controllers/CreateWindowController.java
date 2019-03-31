@@ -79,10 +79,6 @@ public class CreateWindowController implements Initializable {
 	private HTMLEditor htmlAnswer;
 
 	@FXML
-    private void test() {
-    }
-
-	@FXML
 	private void showLoadedData() {
 		tcQuestion.setCellValueFactory(new PropertyValueFactory<>("question"));
 		tcAnswer.setCellValueFactory(new PropertyValueFactory<>("answer"));
@@ -543,7 +539,6 @@ public class CreateWindowController implements Initializable {
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		setDisableProperty();
 		showLoadedData();
-
 		btnBack.setOnAction(this::closeCreateWindow);
 		miAddCategory.setOnAction(this::switchToAddCategoryDialog);
 		miEditCategory.setOnAction(this::switchToEditCategoryDialog);
