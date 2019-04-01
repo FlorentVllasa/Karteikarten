@@ -12,9 +12,11 @@ import java.util.Properties;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -53,7 +55,7 @@ public class ForgotPasswordController implements Initializable{
 	
 	private String generatedKey;
 	
-	public void switchToLoginWindow(ActionEvent event){
+	private void switchToLoginWindow(ActionEvent event){
         Stage stage = new Stage();
         try{
             lw.start(stage);
@@ -63,6 +65,10 @@ public class ForgotPasswordController implements Initializable{
         Stage stageInfo = (Stage) btnBack.getScene().getWindow();
         stageInfo.close();
     }
+	
+	private void switchToCreateNewPasswordWindow(ActionEvent event) {
+		
+	}
 	
 	private String generateKey() {
 		final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_§$%&/()=#+*";
@@ -121,8 +127,17 @@ public class ForgotPasswordController implements Initializable{
 	
 	private void sendRecovery(ActionEvent event) {
 		
-		if ((!txtFieldEmail.getText().isEmpty()) && 
-			(ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()) != null)) {
+		if (txtFieldEmail.getText().isEmpty()) {
+			Alert alert = new Alert(AlertType.WARNING);
+			alert.setTitle("Achtung!");
+    		alert.setHeaderText("Bitte füllen Sie das Emailfeld aus!");
+    		alert.showAndWait();
+		} else if (ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()) == null) {
+			Alert alert = new Alert(AlertType.WARNING);
+    		alert.setTitle("Achtung!");
+    		alert.setHeaderText("Wir können Ihre Emailadresse leider nicht finden. Bitte Überprüfen Sie Ihre Emailadresse.");
+    		alert.showAndWait();
+		} else {
 			generatedKey = generateKey();
             
             String msg = 	"<!DOCTYPE html>\r\n" + 
@@ -147,13 +162,13 @@ public class ForgotPasswordController implements Initializable{
             
             sendEmail(txtFieldEmail.getText(), "Wiederherstellen deines Karteikarten-Kontos", msg);
             
-        } else {
-        	
-        }
+		}
 	}
 	
 	private void compareKey(ActionEvent event) {
 		if (txtRecoveryKey.getText().equals(generatedKey)) {
+			wpss.createWindowSwitchScene("/fxml/CreateNewPasswortWindow.fxml", new CreateNewPasswortWindowController(txtFieldEmail.getText()), lw.getWindow());
+		} else {
 			
 		}
 	}
