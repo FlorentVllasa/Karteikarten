@@ -156,6 +156,10 @@ public class DaoFacade {
 	public Lection findLectionById(int lectionId) {
 		return lectionDao.findLectionById(lectionId);
 	}
+
+	public List<Lection> findLectionByUserId(int userId) {
+		return lectionDao.findLectionByUserId(userId);
+	}
 	
 	public List<Lection> findLectionByCategoryId(int categoryId) {
 		return lectionDao.findLectionByCategoryId(categoryId);

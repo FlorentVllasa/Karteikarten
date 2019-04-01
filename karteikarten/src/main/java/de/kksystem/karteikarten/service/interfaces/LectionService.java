@@ -15,4 +15,5 @@ public interface LectionService {
 	Lection findLectionById(int lectionId);
 	public List<Lection> findLectionByCategoryId(int categoryId);
 	public List<Lection> findLectionByFavoritelistId(int favoritelisteId);
+	public List<Lection> findLectionByUserId(int userId);
 }

@@ -255,6 +255,44 @@ public class LectionDaoJdbcImpl implements LectionDao {
 			}
 		}
 	}
+
+	@Override
+	public List<Lection> findLectionByUserId(int userId){
+		List<Lection> allLectionsList = new ArrayList<>();
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		String sqlString = "SELECT * FROM Lektion WHERE UserId = ?";
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			pstatement.setInt(1, userId);
+
+			rs = pstatement.executeQuery();
+
+			while(rs.next()) {
+				Lection lection = createLectionFromResultSet(rs);
+				allLectionsList.add(lection);
+			}
+			return allLectionsList;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
+
+	}
 	
 	@Override
 	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
