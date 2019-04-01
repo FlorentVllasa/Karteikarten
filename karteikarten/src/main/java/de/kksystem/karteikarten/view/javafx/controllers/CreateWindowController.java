@@ -700,6 +700,7 @@ public class CreateWindowController implements Initializable {
 					successfulAlert.setContentText(
 							"Ihr Bild " + pictureFilename + " wurde erfolgreich der Karteikarte beigefügt!");
 					successfulAlert.showAndWait();
+					loadIndexCards(selectedIndexCard.getLectionId());
 				} else {
 					Alert errorAlert = new Alert(AlertType.ERROR);
 					errorAlert.setTitle("Fehlgeschlagen");
