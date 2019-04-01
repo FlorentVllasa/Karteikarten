@@ -86,7 +86,7 @@ public class ForgotPasswordController implements Initializable{
         for (int i = 0; i < 100; ++i) {
             sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
         }
-        System.out.println(sb.toString());
+        //System.out.println(sb.toString());
         return sb.toString();
 	}
 	
@@ -176,7 +176,7 @@ public class ForgotPasswordController implements Initializable{
 	
 	private void compareKey(ActionEvent event) {
 		if (txtRecoveryKey.getText().equals(generatedKey)) {
-			wpss.createWindowSwitchScene("/fxml/CreateNewPasswortWindow.fxml", new CreateNewPasswortWindowController(txtFieldEmail.getText()), lw.getWindow());
+			wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
     		alert.setTitle("Achtung!");
@@ -199,7 +199,7 @@ public class ForgotPasswordController implements Initializable{
 		setDisableProperty();
 		btnSendEmail.setOnAction(this::sendRecovery);
 		btnConfirm.setOnAction(this::compareKey);
-		//btnBack.setOnAction(this::switchToLoginWindow);
+		btnBack.setOnAction(this::switchToLoginWindow);
 	}
 
 }

@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -178,6 +178,9 @@
                                       <items>
                                           <MenuItem fx:id="cntxtMenuEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
                                           <MenuItem fx:id="cntxtMenuDeleteIndexCard" mnemonicParsing="false" text="Karteikarten löschen..." />
+                                          <SeparatorMenuItem mnemonicParsing="false" />
+                                          <MenuItem fx:id="cntxtMenuAddPicture" mnemonicParsing="false" text="Bild hinzufügen..." />
+                                          <MenuItem fx:id="cntxtMenuShowPicture" mnemonicParsing="false" text="Bild anzeigen..." />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>

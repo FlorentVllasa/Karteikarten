@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateNewPasswortWindowController implements Initializable{
+public class CreateNewPasswordWindowController implements Initializable{
 	private String emailAdresse;
 	
 	LoginWindow lw = new LoginWindow();
@@ -37,7 +37,7 @@ public class CreateNewPasswortWindowController implements Initializable{
     @FXML
     private Button btnChangePassword;
 		
-	CreateNewPasswortWindowController(String emailAdresse){
+	CreateNewPasswordWindowController(String emailAdresse){
 		this.emailAdresse = emailAdresse;
 	}
 	
@@ -58,6 +58,10 @@ public class CreateNewPasswortWindowController implements Initializable{
     		alert.setTitle("Erfolgreich!");
     		alert.setHeaderText("Ihr Passwort wurde geändert. \nBitte loggen Sie sich mit dem neuen Passwort ein.");
     		alert.showAndWait();
+    	    WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+    	    WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
+    	    LoginWindow lw = new LoginWindow();
+    	    wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
 		}
 	}
 	
