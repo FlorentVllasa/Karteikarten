@@ -334,10 +334,6 @@ public class UserDaoJdbcImpl implements UserDao {
 		user.setLastLogin(userLastLogin);
 
 		return user;
-	}
-	
-	public static void main(String[] args) {
-		User user = new UserImpl("benutzername", "email@example.com", "meinpw", "buschi", "giorgio", null);
-		new UserDaoJdbcImpl().addUser(user);
-	}
+	}	
+
 }
