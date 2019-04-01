@@ -16,6 +16,7 @@ de\kksystem\karteikarten\service\classes\CategoryServiceImpl.class
 de\kksystem\karteikarten\factories\ModelFactory.class
 de\kksystem\karteikarten\dao\interfaces\UserDao.class
 de\kksystem\karteikarten\model\classes\IndexCardImpl.class
+de\kksystem\karteikarten\view\javafx\controllers\ForgotPasswordController.class
 de\kksystem\karteikarten\service\classes\PictureServiceImpl.class
 de\kksystem\karteikarten\service\classes\FavoritelistServiceImpl.class
 de\kksystem\karteikarten\dao\classes\jdbc\IndexCardDaoJdbcImpl.class
@@ -49,6 +50,7 @@ de\kksystem\karteikarten\model\classes\LectionImpl.class
 de\kksystem\karteikarten\view\javafx\controllers\LearnWindowController.class
 de\kksystem\karteikarten\service\classes\IndexCardServiceImpl.class
 de\kksystem\karteikarten\service\interfaces\UserService.class
+de\kksystem\karteikarten\view\javafx\controllers\ForgotPasswordController$1.class
 de\kksystem\karteikarten\dao\classes\jdbc\LectionDaoJdbcImpl.class
 de\kksystem\karteikarten\service\interfaces\LectionService.class
 de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$4.class

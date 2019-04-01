@@ -68,7 +68,12 @@ public class LoginController implements Initializable {
         wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
         closePreviousWindowLogin();
     }
-
+    
+    /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
+    public void switchToForgotPasswordWindow(ActionEvent event){
+        wpss.createWindowSwitchScene("/fxml/ForgotPassword.fxml", new ForgotPasswordController(), lw.getWindow());
+    }
+    
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
     public void switchToRegistrationWindow(ActionEvent event){
         wpss.createWindowSwitchScene("/fxml/registrationWindow.fxml", new RegistrationController(), lw.getWindow());
@@ -94,6 +99,7 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         buttonLogin.setOnAction(this::logIn);
+        buttonForgotPassword.setOnAction(this::switchToForgotPasswordWindow);
         buttonRegister.setOnAction(this::switchToRegistrationWindow);
         txtUsername.setOnAction(this::onEnterUsername);
         txtPassword.setOnAction(this::onEnterPassword);

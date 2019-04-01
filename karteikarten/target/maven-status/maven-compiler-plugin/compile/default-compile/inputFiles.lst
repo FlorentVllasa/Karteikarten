@@ -13,6 +13,7 @@ D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karte
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchStage.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\interfaces\UserDao.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\Picture.java
+D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\ForgotPasswordController.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\interfaces\CategoryDao.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\constants\DatabaseConstants.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\facades\ServiceFacade.java
