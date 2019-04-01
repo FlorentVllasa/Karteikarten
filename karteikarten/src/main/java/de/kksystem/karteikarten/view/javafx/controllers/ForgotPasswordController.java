@@ -51,7 +51,7 @@ public class ForgotPasswordController implements Initializable{
     private Button btnConfirm;
 	
 	@FXML
-    private Button btnBack;
+    private Button btnCancel;
 	
 	private String generatedKey;
 	
@@ -62,7 +62,7 @@ public class ForgotPasswordController implements Initializable{
         }catch(Exception e){
             e.printStackTrace();
         }
-        Stage stageInfo = (Stage) btnBack.getScene().getWindow();
+        Stage stageInfo = (Stage) btnCancel.getScene().getWindow();
         stageInfo.close();
     }
 	
@@ -177,7 +177,7 @@ public class ForgotPasswordController implements Initializable{
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		btnSendEmail.setOnAction(this::sendRecovery);
 		btnConfirm.setOnAction(this::compareKey);
-		//btnBack.setOnAction(this::switchToLoginWindow);
+		btnCancel.setOnAction(this::switchToLoginWindow);
 	}
 
 }

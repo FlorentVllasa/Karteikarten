@@ -124,6 +124,10 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	private MenuItem cntxtMenuDeleteIndexCard;
 	@FXML
+	private MenuItem cntxtMenuAddPicture;
+	@FXML
+	private MenuItem cntxtMenuShowPicture;
+	@FXML
 	private Label lblPictureMessage;
 	@FXML
 	private Label lblHtmlQuestion;
@@ -334,6 +338,9 @@ public class CreateWindowController implements Initializable {
 		cntxtMenuEditIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 		cntxtMenuDeleteIndexCard.disableProperty()
 				.bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
+
+		cntxtMenuAddPicture.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuShowPicture.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 	}
 
 	@FXML
@@ -810,5 +817,7 @@ public class CreateWindowController implements Initializable {
 		cntxtMenuEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
 		cntxtMenuDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
 		btnAddPicture.setOnAction(this::choosePicture);
+		cntxtMenuAddPicture.setOnAction(this::addPictureToIndexCard);
+		cntxtMenuShowPicture.setOnAction(this::showPictureOfIndexCard);
 	}
 }
