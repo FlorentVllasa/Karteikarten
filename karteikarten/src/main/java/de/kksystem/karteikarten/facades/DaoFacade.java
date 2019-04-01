@@ -33,6 +33,7 @@ public class DaoFacade {
 		lectionDao = DaoFactory.createLectionDao();
 		indexCardDao = DaoFactory.createIndexCardDao();
 		favoritelistDao = DaoFactory.createFavoritelistDao();
+		pictureDao = DaoFactory.createPictureDao();
 	}
 	
 	public static DaoFacade getInstance() {
@@ -175,8 +176,8 @@ public class DaoFacade {
 	 *
 	 * 
 	 */
-	public void addIndexCard(IndexCard indexCard) {
-		indexCardDao.addIndexCard(indexCard);
+	public int addIndexCard(IndexCard indexCard) {
+		return indexCardDao.addIndexCard(indexCard);
 	}
 	
 	public void deleteIndexCard(IndexCard indexCard) {
@@ -193,6 +194,10 @@ public class DaoFacade {
 	
 	public void updateAnswer(String newAnswer, int indexCardId) {
 		indexCardDao.updateAnswer(newAnswer, indexCardId);
+	}
+	
+	public void updatePictureId(int indexCardId, int pictureId) {
+		indexCardDao.updatePictureId(indexCardId, pictureId);
 	}
 	
 	public IndexCard findIndexCardById(int indexCardId) {

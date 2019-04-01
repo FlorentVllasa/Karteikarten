@@ -15,8 +15,8 @@ public class IndexCardServiceImpl implements IndexCardService{
 	}
 
 	@Override
-	public void addIndexCard(IndexCard indexCard) {
-		daoFacade.addIndexCard(indexCard);
+	public int addIndexCard(IndexCard indexCard) {
+		return daoFacade.addIndexCard(indexCard);
 	}
 
 	@Override
@@ -38,6 +38,10 @@ public class IndexCardServiceImpl implements IndexCardService{
 	@Override
 	public void updateAnswer(String newAnswer, int indexCardId) {
 		daoFacade.updateAnswer(newAnswer, indexCardId);
+	}
+	
+	public void updatePictureId(int indexCardId, int pictureId) {
+		daoFacade.updatePictureId(indexCardId, pictureId);
 	}
 
 	@Override

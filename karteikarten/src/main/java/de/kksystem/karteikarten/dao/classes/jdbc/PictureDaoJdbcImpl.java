@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 
 import de.kksystem.karteikarten.dao.interfaces.PictureDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
@@ -45,7 +46,7 @@ public class PictureDaoJdbcImpl implements PictureDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		String sqlString = 	"UPDATE Bild" +
-							"SET SpeicherOrt = ?, Beschreibung = ?" +
+							"SET Speicherort = ?, Beschreibung = ?" +
 							"WHERE BildID = ?";
 		
 		try {
@@ -110,26 +111,37 @@ public class PictureDaoJdbcImpl implements PictureDao {
 	public int addPicture(Picture picture) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = 	"INSERT INTO Bild (SpeicherOrt, Beschreibung)" + 
+		ResultSet rs = null;
+		
+		String sqlString = 	"INSERT INTO Bild (Speicherort, Beschreibung)" + 
 							"VALUES (?, ?)";
 		
 		try {
 			connection = JdbcUtils.getConnection();
 			pstatement = connection.prepareStatement(sqlString,Statement.RETURN_GENERATED_KEYS);
 			pstatement.setString(1, picture.getFileLocation());
-			pstatement.setString(2, picture.getDescription());
+			
+			if(picture.getDescription() != null) {
+				pstatement.setString(2, picture.getDescription());
+			}else {
+				pstatement.setNull(2, Types.VARCHAR);
+			}
+
 			pstatement.executeUpdate();
-			ResultSet rs = pstatement.getGeneratedKeys();
+			rs = pstatement.getGeneratedKeys();
 			
 			if (rs.next()) {
-				int generated_key = rs.getInt(1);
-				return generated_key;
+				return rs.getInt(1);
 			}
-			return 0;
+			return -1;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return 0;
+			return -1;
 		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			
 			if(pstatement != null) {
 				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}

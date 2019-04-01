@@ -16,6 +16,11 @@ public class PictureImpl implements Picture{
 		this.fileLocation = fileLocation;
 		this.description = description;
 	}
+	
+	public PictureImpl(String fileLocation, String description) {
+		this.fileLocation = fileLocation;
+		this.description = description;
+	}
 
 	@Override
 	public int getPictureId() {

@@ -178,8 +178,8 @@ public class ServiceFacade {
 	 *
 	 * 
 	 */
-	public void addIndexCard(IndexCard indexCard) {
-		indexCardService.addIndexCard(indexCard);
+	public int addIndexCard(IndexCard indexCard) {
+		return indexCardService.addIndexCard(indexCard);
 	}
 	
 	public void deleteIndexCard(IndexCard indexCard) {
@@ -196,6 +196,10 @@ public class ServiceFacade {
 	
 	public void updateAnswer(String newAnswer, int indexCardId) {
 		indexCardService.updateAnswer(newAnswer, indexCardId);
+	}
+	
+	public void updatePictureId(int indexCardId, int pictureId) {
+		indexCardService.updatePictureId(indexCardId, pictureId);
 	}
 	
 	public IndexCard findIndexCardById(int indexCardId) {
