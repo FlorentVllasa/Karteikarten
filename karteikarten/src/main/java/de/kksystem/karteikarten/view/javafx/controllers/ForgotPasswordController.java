@@ -7,8 +7,6 @@ import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScen
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 
-import com.sun.mail.smtp.SMTPAddressFailedException;
-
 import java.util.Properties;
 
 import javafx.event.ActionEvent;
@@ -26,15 +24,17 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import java.io.IOException;
 import java.net.URL;
 import java.security.SecureRandom;
 import java.util.ResourceBundle;
 
 public class ForgotPasswordController implements Initializable{
 	LoginWindow lw = new LoginWindow();
+	WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
-    WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+    
+    @FXML
+    private AnchorPane anchorPane;
     
     @FXML
     private TextField txtFieldEmail;
@@ -57,8 +57,6 @@ public class ForgotPasswordController implements Initializable{
         Stage stage = new Stage();
         try{
             lw.start(stage);
-        }catch(IOException io){
-            io.printStackTrace();
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -123,7 +121,8 @@ public class ForgotPasswordController implements Initializable{
 	
 	private void sendRecovery(ActionEvent event) {
 		
-		if (ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()) != null) {
+		if ((!txtFieldEmail.getText().isEmpty()) && 
+			(ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()) != null)) {
 			generatedKey = generateKey();
             
             String msg = 	"<!DOCTYPE html>\r\n" + 
