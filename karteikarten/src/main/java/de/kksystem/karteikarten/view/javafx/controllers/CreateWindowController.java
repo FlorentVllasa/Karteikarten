@@ -11,6 +11,7 @@ import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.Modality;
@@ -77,6 +80,38 @@ public class CreateWindowController implements Initializable {
 	private HTMLEditor htmlQuestion;
 	@FXML
 	private HTMLEditor htmlAnswer;
+
+	//ContextMenus and MenuItems
+	@FXML
+	private ContextMenu cntxtCategories;
+	@FXML
+	private MenuItem cntxtMenuAddCategory;
+	@FXML
+	private MenuItem cntxtMenuEditCategory;
+	@FXML
+	private MenuItem cntxtMenuDeleteCategory;
+	@FXML
+	private ContextMenu cntxtLections;
+	@FXML
+	private MenuItem cntxtMenuAddLection;
+	@FXML
+	private MenuItem cntxtMenuEditLection;
+	@FXML
+	private MenuItem cntxtMenuDeleteLection;
+	@FXML
+	private MenuItem cntxtMenuAddFavorite;
+	@FXML
+	private ContextMenu cntxtFavorites;
+	@FXML
+	private MenuItem cntxtMenuEditFavorite;
+	@FXML
+	private MenuItem cntxtMenuDeleteFavorite;
+	@FXML
+	private ContextMenu cntxtIndexCards;
+	@FXML
+	private MenuItem cntxtMenuEditIndexCard;
+	@FXML
+	private MenuItem cntxtMenuDeleteIndexCard;
 
 	@FXML
 	private void showLoadedData() {
@@ -242,6 +277,39 @@ public class CreateWindowController implements Initializable {
 	}
 
 	@FXML
+	public void setDisablePropertyContextMenu(){
+		cntxtMenuEditCategory.disableProperty().bind(cmbCategories.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuDeleteCategory.disableProperty().bind(cmbCategories.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuAddLection.disableProperty().bind(cmbCategories.getSelectionModel().selectedItemProperty().isNull());
+
+		cntxtMenuEditLection.disableProperty().bind(
+				Bindings.and(lvLections.getSelectionModel().selectedItemProperty().isNull(),
+				lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
+
+		cntxtMenuDeleteLection.disableProperty().bind(
+				Bindings.and(lvLections.getSelectionModel().selectedItemProperty().isNull(),
+				lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
+
+		cntxtMenuAddFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
+
+		cntxtMenuEditFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuDeleteFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
+
+		cntxtMenuEditIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuDeleteIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
+	}
+
+	@FXML
+	public void openCombobBoxOnlyLeftClick(){
+		//MOUSE_RELEASED, weil sich das Pop Up Menu von der ComboBox öffnet wenn man die rechte Maustaste loslässt.
+		cmbCategories.addEventFilter(MouseEvent.MOUSE_RELEASED, ev ->{
+			if(ev.getButton() == MouseButton.SECONDARY){
+				ev.consume();
+			}
+		});
+	}
+
+	@FXML
 	public void switchToAddCategoryDialog(ActionEvent event) {
 		TextInputDialog tid = new TextInputDialog("Kategorienamen eingeben");
 		tid.setTitle("Kategorie erstellen");
@@ -392,6 +460,7 @@ public class CreateWindowController implements Initializable {
 				int lastSelectedCategory = cmbCategories.getSelectionModel().getSelectedItem().getCategoryId();
 				loadLections(lastSelectedCategory);
 				loadFavoritelist();
+				tvIndexCards.getItems().clear();
 			}
 		} else {
 
@@ -543,8 +612,10 @@ public class CreateWindowController implements Initializable {
 	/* Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen */
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		setDisablePropertyContextMenu();
 		setDisableProperty();
 		showLoadedData();
+		openCombobBoxOnlyLeftClick();
 		btnBack.setOnAction(this::closeCreateWindow);
 		miAddCategory.setOnAction(this::switchToAddCategoryDialog);
 		miEditCategory.setOnAction(this::switchToEditCategoryDialog);
@@ -558,5 +629,16 @@ public class CreateWindowController implements Initializable {
 		miDeleteFavoritelist.setOnAction(this::switchToDeleteFavoritelistDialog);
 		btnSave.setOnAction(this::addIndexCardIntoTableView);
 		cmbCategories.setOnAction(this::dynamicListLection);
+		cntxtMenuAddCategory.setOnAction(this::switchToAddCategoryDialog);
+		cntxtMenuEditCategory.setOnAction(this::switchToEditCategoryDialog);
+		cntxtMenuDeleteCategory.setOnAction(this::switchToDeleteCategoryDialog);
+		cntxtMenuAddLection.setOnAction(this::switchtoAddLectionDialog);
+		cntxtMenuEditLection.setOnAction(this::switchToEditLectionDialog);
+		cntxtMenuDeleteLection.setOnAction(this::switchToDeleteLectionDialog);
+		//contextMenuAddFavorite.setOnAction(this::switchtoadd...);
+		cntxtMenuEditFavorite.setOnAction(this::switchtoEditFavoritelistDialog);
+		cntxtMenuDeleteFavorite.setOnAction(this::switchToDeleteFavoritelistDialog);
+		cntxtMenuEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
+		cntxtMenuDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
 	}
 }

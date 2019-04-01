@@ -21,7 +21,6 @@ de\kksystem\karteikarten\service\classes\PictureServiceImpl.class
 de\kksystem\karteikarten\service\classes\FavoritelistServiceImpl.class
 de\kksystem\karteikarten\dao\classes\jdbc\IndexCardDaoJdbcImpl.class
 de\kksystem\karteikarten\dao\interfaces\CategoryDao.class
-de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$3.class
 de\kksystem\karteikarten\view\javafx\controllers\LoginController.class
 de\kksystem\karteikarten\facades\DaoFacade.class
 de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchStage.class
@@ -42,7 +41,6 @@ de\kksystem\karteikarten\dao\interfaces\LectionDao.class
 de\kksystem\karteikarten\data\UserData.class
 de\kksystem\karteikarten\facades\ServiceFacade.class
 de\kksystem\karteikarten\model\interfaces\Lection.class
-de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$2.class
 de\kksystem\karteikarten\utils\JdbcUtils.class
 de\kksystem\karteikarten\service\interfaces\PictureService.class
 de\kksystem\karteikarten\view\javafx\controllers\ChooseCategoryController.class
@@ -53,11 +51,9 @@ de\kksystem\karteikarten\service\interfaces\UserService.class
 de\kksystem\karteikarten\view\javafx\controllers\ForgotPasswordController$1.class
 de\kksystem\karteikarten\dao\classes\jdbc\LectionDaoJdbcImpl.class
 de\kksystem\karteikarten\service\interfaces\LectionService.class
-de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$4.class
 de\kksystem\karteikarten\validators\StringValidator.class
 de\kksystem\karteikarten\view\javafx\controllers\FunctionsController.class
 de\kksystem\karteikarten\dao\interfaces\IndexCardDao.class
 de\kksystem\karteikarten\dao\classes\jdbc\UserDaoJdbcImpl.class
 de\kksystem\karteikarten\dao\classes\jdbc\CategoryDaoJdbcImpl.class
-de\kksystem\karteikarten\view\javafx\controllers\FunctionsController$1.class
 de\kksystem\karteikarten\service\interfaces\FavoritelistService.class

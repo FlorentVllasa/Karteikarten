@@ -54,6 +54,16 @@ public class ChooseCategoryController implements Initializable {
     
     private List<Lection> categoryLectionList;
     private List<Lection> favoriteLectionList;
+    private List<Lection> lektionLectionList;
+
+    public void getLektionList(int lektionId){
+        cmbChooseCat.getItems().clear();
+        cmbChooseCat.getItems().add("none");
+        List<Lection> lectionList = UserData.getInstance().getLectionList();
+        for(int i = 0; i < lectionList.size(); i++){
+            cmbChooseCat.getItems().add(lectionList.get(i).getName());
+        }
+    }
     
     /*Diese Methode holt die Kategorieliste von der Datenbank*/
     public void getCategoryList() {

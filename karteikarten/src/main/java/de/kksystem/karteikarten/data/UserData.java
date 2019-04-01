@@ -14,6 +14,7 @@ public class UserData {
 	private int userId;
 	private int favoritelistId;
 	private List<Category> categoryList;
+	private List<Lection> lectionList;
 	private List<Favoritelist> favoriteList;
 	private CreateWindowController controller;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
@@ -79,4 +80,11 @@ public class UserData {
 		favoriteList = ServiceFacade.getInstance().findFavoritesByUserId(getUserId());
 		return favoriteList;
 	}
+
+    public List<Lection> getLectionList() {
+		lectionList = ServiceFacade.getInstance().findLectionByCategoryId(getUserId());
+		return lectionList;
+    }
+
+
 }
