@@ -65,8 +65,18 @@ public class CreateNewPasswordWindowController implements Initializable{
 		}
 	}
 	
+	private void onEnterNewPassword(ActionEvent event) {
+		txtConfirmationPassword.requestFocus();
+	}
+	
+	private void onEnterConfirmationPassword(ActionEvent event) {
+		changePassword(event);
+	}
+	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		txtNewPassword.setOnAction(this::onEnterNewPassword);
+		txtConfirmationPassword.setOnAction(this::onEnterConfirmationPassword);
 		btnChangePassword.setOnAction(this::changePassword);
 	}
 

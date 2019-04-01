@@ -148,13 +148,16 @@ public class ForgotPasswordController implements Initializable{
     		alert.showAndWait();
 		} else {
 			generatedKey = generateKey();
+			
+			String firstName = ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()).getForename();
+			String lastName = ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()).getSurname();
             
             String msg = 	"<!DOCTYPE html>\r\n" + 
             				"<html>\r\n" + 
             				"<body>\r\n" + 
             				"\r\n" + 
             				"\r\n" + 
-            				"<p>Hallo!</p>" +
+            				"<p>Hallo " + firstName + " " + lastName + "!</p>" +
             				"<br>\r\n" +
 		            		"<p>Du hast gerade eine Wiederherstellungschlüssel angefordert!</p>\r\n" + 
 		            		"<p>Kopier den Schlüssel <b>ins zweite Feld</b> des Wiederherstellungsfenster und auf Bestätigen drucken!</p> \r\n" + 
@@ -188,11 +191,21 @@ public class ForgotPasswordController implements Initializable{
 		btnConfirm.disableProperty().bind(btnSendEmail.disabledProperty().not());
 	}
 	
+	private void onEnterEmail(ActionEvent event) {
+		sendRecovery(event);
+	}
+	
+	private void onEnterRecoveryKey(ActionEvent event) {
+		compareKey(event);
+	}
+	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		keySentStatus.set(false);
 		keySentCompleted.set(true);
 		setDisableProperty();
+		txtFieldEmail.setOnAction(this::onEnterEmail);
+		txtRecoveryKey.setOnAction(this::onEnterRecoveryKey);
 		btnSendEmail.setOnAction(this::sendRecovery);
 		btnConfirm.setOnAction(this::compareKey);
 		btnBack.setOnAction(this::switchToLoginWindow);
