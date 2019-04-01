@@ -159,8 +159,8 @@ public class ForgotPasswordController implements Initializable{
             				"\r\n" + 
             				"<p>Hallo " + firstName + " " + lastName + "!</p>" +
             				"<br>\r\n" +
-		            		"<p>Du hast gerade eine Wiederherstellungschlüssel angefordert!</p>\r\n" + 
-		            		"<p>Kopier den Schlüssel <b>ins zweite Feld</b> des Wiederherstellungsfenster und auf Bestätigen drucken!</p> \r\n" + 
+		            		"<p>Du hast gerade einen Wiederherstellungschlüssel angefordert!</p>\r\n" + 
+		            		"<p>Kopier den Schlüssel <b>ins zweite Feld</b> des Wiederherstellungsfensters und auf Bestätigen drucken!</p> \r\n" + 
 		            		"<p>Dein Code lautet: <b><i>" + generatedKey + "</i></b></p> \r\n" + 
 		            		"<br>\r\n" + 
 		            		"<p>Mit freundlichen Grüßen</p>\r\n" + 
