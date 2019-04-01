@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -42,6 +42,8 @@
             <items>
               <MenuItem fx:id="miEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
                   <MenuItem fx:id="miDeleteIndexCard" mnemonicParsing="false" text="Karteikarte löschen..." />
+                  <MenuItem fx:id="miAddPicToIndexCard" mnemonicParsing="false" text="Bild einfügen/ersetzen..." />
+                  <MenuItem fx:id="miShowPicOfIndexCard" mnemonicParsing="false" text="Bild anzeigen..." />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Favoritenliste">
@@ -62,12 +64,12 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="53.6" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label text="Kategorie:">
+                                    <Label text="Kategorie:" textFill="#0051a8">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets />
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
@@ -103,7 +105,7 @@
                                        <children>
                                           <VBox alignment="TOP_CENTER" prefHeight="362.4" prefWidth="258.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label text="Lektionen">
+                                                <Label text="Lektionen" textFill="#0051a8">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
@@ -131,7 +133,7 @@
                                        <children>
                                           <VBox alignment="TOP_CENTER" prefHeight="224.8" prefWidth="258.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
-                                                <Label text="Favoritenliste">
+                                                <Label text="Favoritenliste" textFill="#0051a8">
                                                    <font>
                                                       <Font name="System Bold" size="18.0" />
                                                    </font>
@@ -166,7 +168,7 @@
                     <items>
                       <AnchorPane prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <TableView fx:id="tvIndexCards" prefHeight="200.0" prefWidth="861.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tvIndexCards" layoutY="40.0" prefHeight="210.0" prefWidth="1032.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0">
                                 <columns>
                                   <TableColumn fx:id="tcQuestion" prefWidth="504.7999878525734" text="Frage" />
                                   <TableColumn fx:id="tcAnswer" minWidth="0.0" prefWidth="516.0" text="Antwort" />
@@ -180,6 +182,11 @@
                                     </ContextMenu>
                                  </contextMenu>
                               </TableView>
+                              <Label fx:id="lblTable" layoutX="14.0" layoutY="6.0" text="Karteikarten der ausgewählten Lektion:" textFill="#0051a8">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                       <AnchorPane prefHeight="100.0" prefWidth="160.0">
@@ -192,7 +199,12 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                    <children>
-                                                      <HTMLEditor fx:id="htmlQuestion" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Frage eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <HTMLEditor fx:id="htmlQuestion" layoutY="43.0" prefHeight="373.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0" />
+                                                      <Label fx:id="lblHtmlQuestion" layoutX="11.0" layoutY="8.0" text="Frage eingeben:" textFill="#0051a8">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
@@ -221,7 +233,12 @@
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                    <children>
-                                                      <HTMLEditor fx:id="htmlAnswer" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;Antwort eingeben:&lt;/body&gt;&lt;/html&gt;" prefHeight="321.6" prefWidth="520.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                      <HTMLEditor fx:id="htmlAnswer" layoutY="43.0" prefHeight="373.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="43.0" />
+                                                      <Label fx:id="lblHtmlAnswer" layoutX="11.0" layoutY="8.0" text="Antwort eingeben:" textFill="#0051a8">
+                                                         <font>
+                                                            <Font name="System Bold" size="18.0" />
+                                                         </font>
+                                                      </Label>
                                                    </children>
                                                 </AnchorPane>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
@@ -250,6 +267,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
+                                                      <Label fx:id="lblPictureMessage" layoutX="188.0" layoutY="13.0" text="Kein Bild ausgewählt" textFill="#0051a8" />
                                                    </children>
                                                 </AnchorPane>
                                             </items>

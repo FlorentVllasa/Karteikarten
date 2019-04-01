@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,14 +73,15 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 	}
 
 	@Override
-	public void addIndexCard(IndexCard indexCard) {
+	public int addIndexCard(IndexCard indexCard) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
+		ResultSet rs = null;
 		String sqlString = "INSERT INTO Karteikarte (Frage, Antwort, Farbe, LektionID, BildID) VALUES (?, ?, ?, ?, ?)";
 
 		try {
 			connection = JdbcUtils.getConnection();
-			pstatement = connection.prepareStatement(sqlString);
+			pstatement = connection.prepareStatement(sqlString, Statement.RETURN_GENERATED_KEYS);
 
 			pstatement.setString(1, indexCard.getQuestion());
 			pstatement.setString(2, indexCard.getAnswer());
@@ -101,8 +103,16 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 			}
 
 			pstatement.executeUpdate();
+			
+			rs = pstatement.getGeneratedKeys();
+			
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return -1;
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
+			return -1;
 		} finally {
 			if (pstatement != null) {
 				try {
@@ -262,6 +272,35 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 				}
 			}
 		}
+	}
+	
+	@Override
+	public void updatePictureId(int indexCardId, int pictureId) {
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		
+		String sqlString = "UPDATE Karteikarte SET BildID = ? WHERE KarteikarteID = ?";
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+			
+			pstatement.setInt(1, pictureId);
+			pstatement.setInt(2, indexCardId);
+			
+			pstatement.executeUpdate();
+			
+		}catch(SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+		}
+		
 	}
 	
 	@Override
