@@ -35,6 +35,15 @@ public class ForgotPasswordController implements Initializable{
     WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
     WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     
+    @FXML
+    private TextField txtFieldEmail;
+    
+    @FXML
+    private TextField txtRecoveryKey;
+    
+    @FXML
+    private Button btnSendEmail;
+    
 	@FXML
     private Button btnConfirm;
 	
@@ -55,53 +64,78 @@ public class ForgotPasswordController implements Initializable{
     }
 	
 	private void sendRecovery(ActionEvent event) {
-		Properties prop = new Properties();
-		prop.put("mail.smtp.auth", true);
-        prop.put("mail.smtp.starttls.enable", "true");
-        prop.put("mail.smtp.host", "express-relay.jangosmtp.net");
-        prop.put("mail.smtp.port", 2525);
-        prop.put("mail.smtp.ssl.trust", "express-relay.jangosmtp.net");
-        
-        Session session = Session.getInstance(prop, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("letmetry", "@X123abc");
-            }
-        });
-
-        try {
-
-            Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("forgot@karteikarten.com"));
-            System.out.println("1");
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("ignatiusjuanpradipta@gmail.com"));
-            System.out.println("2");
-            message.setSubject("Recovery Key");
-            System.out.println("3");
-            String msg = "This is my first email using JavaMailer";
-
-            MimeBodyPart mimeBodyPart = new MimeBodyPart();
-            mimeBodyPart.setContent(msg, "text/html");
-
-            //MimeBodyPart attachmentBodyPart = new MimeBodyPart();
-            //attachmentBodyPart.attachFile(new File("pom.xml"));
-
-            Multipart multipart = new MimeMultipart();
-            multipart.addBodyPart(mimeBodyPart);
-            //multipart.addBodyPart(attachmentBodyPart);
-
-            message.setContent(multipart);
-
-            Transport.send(message);
-
-        } catch (Exception e) {
-        	e.printStackTrace();
+		
+		if (ServiceFacade.getInstance().findUserByEMail(txtFieldEmail.getText()) != null) {
+			Properties prop = new Properties();
+			prop.put("mail.smtp.auth", true);
+	        prop.put("mail.smtp.starttls.enable", "true");
+	        prop.put("mail.smtp.host", "smtp.gmail.com");
+	        prop.put("mail.smtp.port", 587);
+	        prop.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+	        prop.setProperty("mail.smtp.user", "recovery.karteikarten@gmail.com");
+	        prop.setProperty("mail.smtp.password", "Lernmolwas!");
+	        prop.setProperty("mail.smtp.auth", "true");
+	        
+	        Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() 
+	        {
+	            protected PasswordAuthentication getPasswordAuthentication() 
+	            {
+	                return new PasswordAuthentication("recovery.karteikarten@gmail.com","Lernmolwas!");
+	            }
+	        });
+	
+	        try {
+	
+	            Message message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress("recovery.karteikarten@gmail.com", "Karteikarten Support"));
+	            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(txtFieldEmail.getText()));
+	            message.setSubject("Wiederherstellen deines Karteikarten-Kontos");
+	            String code = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	            
+	            String msg = 	"<!DOCTYPE html>\r\n" + 
+	            				"<html>\r\n" + 
+	            				"<body>\r\n" + 
+	            				"\r\n" + 
+	            				"\r\n" + 
+	            				"<p>Hallo!</p>" +
+	            				"<br>\r\n" +
+			            		"<p>Du hast gerade eine Wiederherstellungschlüssel angefordert!</p>\r\n" + 
+			            		"<p>Kopier den Schlüssel <b>ins zweite Feld</b> des Wiederherstellungsfenster und auf Bestätigen drucken!</p> \r\n" + 
+			            		"<p>Ein neues Passwort wird dann zu dieser Emailadresse zugeschickt.</p>\r\n" + 
+			            		"<p>Dein Code lautet: <b><i>" + code + "</i></b></p> \r\n" + 
+			            		"<br>\r\n" + 
+			            		"<p>Mit freundlichen Grüßen</p>\r\n" + 
+			            		"<p>Dein Karteikarten Team</p>\r\n" + 
+			            		"\r\n" + 
+			            		"\r\n" + 
+			            		"\r\n" + 
+			            		"</body>\r\n" + 
+			            		"</html>\r\n";
+	
+	            MimeBodyPart mimeBodyPart = new MimeBodyPart();
+	            mimeBodyPart.setContent(msg, "text/html");
+	
+	            Multipart multipart = new MimeMultipart();
+	            multipart.addBodyPart(mimeBodyPart);
+	
+	            message.setContent(multipart);
+	
+	            Transport.send(message);
+	        } catch (javax.mail.SendFailedException e) {
+	        	e.printStackTrace();
+	        	//System.out.println(e.getInvalidAddresses());
+	        	//System.out.println(e.getValidUnsentAddresses());
+	        } catch (Exception e) {
+	        	e.printStackTrace();
+	        }
+        } else {
+        	
         }
 	}
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		btnConfirm.setOnAction(this::sendRecovery);
+		btnSendEmail.setOnAction(this::sendRecovery);
 		//btnBack.setOnAction(this::switchToLoginWindow);
 	}
 
