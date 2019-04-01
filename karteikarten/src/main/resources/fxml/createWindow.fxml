@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -17,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" prefHeight="754.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <MenuBar layoutY="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -75,6 +78,18 @@
                                        <HBox.margin>
                                           <Insets right="10.0" />
                                        </HBox.margin>
+                                       <contextMenu>
+                                          <ContextMenu fx:id="cntxtCategories">
+                                            <items>
+                                              <MenuItem fx:id="cntxtMenuAddCategory" mnemonicParsing="false" text="Kategorie erstellen..." />
+                                                <MenuItem fx:id="cntxtMenuEditCategory" mnemonicParsing="false" text="Kategorie bearbeiten..." />
+                                                <MenuItem fx:id="cntxtMenuDeleteCategory" mnemonicParsing="false" text="Kategorie löschen..." />
+                                            </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
                                     </ComboBox>
                                  </children>
                               </HBox>
@@ -96,7 +111,18 @@
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <ListView fx:id="lvLections" prefHeight="389.0" prefWidth="298.0" VBox.vgrow="ALWAYS" />
+                                                <ListView fx:id="lvLections" prefHeight="389.0" prefWidth="298.0" VBox.vgrow="ALWAYS">
+                                                   <contextMenu>
+                                                      <ContextMenu fx:id="cntxtLections">
+                                                        <items>
+                                                          <MenuItem fx:id="cntxtMenuAddLection" mnemonicParsing="false" text="Lektion erstellen..." />
+                                                            <MenuItem fx:id="cntxtMenuEditLection" mnemonicParsing="false" text="Lektion bearbeiten..." />
+                                                            <MenuItem fx:id="cntxtMenuDeleteLection" mnemonicParsing="false" text="Lektion löschen..." />
+                                                            <SeparatorMenuItem mnemonicParsing="false" />
+                                                            <MenuItem fx:id="cntxtMenuAddFavorite" mnemonicParsing="false" text="Favorit hinzufügen..." />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu></ListView>
                                              </children>
                                           </VBox>
                                        </children>
@@ -113,7 +139,15 @@
                                                       <Insets top="10.0" />
                                                    </VBox.margin>
                                                 </Label>
-                                                <ListView fx:id="lvFavorites" VBox.vgrow="ALWAYS" />
+                                                <ListView fx:id="lvFavorites" VBox.vgrow="ALWAYS">
+                                                   <contextMenu>
+                                                      <ContextMenu fx:id="cntxtFavorites">
+                                                        <items>
+                                                          <MenuItem fx:id="cntxtMenuEditFavorite" mnemonicParsing="false" text="Favorit bearbeiten..." />
+                                                            <MenuItem fx:id="cntxtMenuDeleteFavorite" mnemonicParsing="false" text="Favorit löschen..." />
+                                                        </items>
+                                                      </ContextMenu>
+                                                   </contextMenu></ListView>
                                              </children>
                                           </VBox>
                                        </children>
@@ -137,6 +171,14 @@
                                   <TableColumn fx:id="tcQuestion" prefWidth="504.7999878525734" text="Frage" />
                                   <TableColumn fx:id="tcAnswer" minWidth="0.0" prefWidth="516.0" text="Antwort" />
                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu fx:id="cntxtIndexCards">
+                                      <items>
+                                          <MenuItem fx:id="cntxtMenuEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
+                                          <MenuItem fx:id="cntxtMenuDeleteIndexCard" mnemonicParsing="false" text="Karteikarten löschen..." />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
                               </TableView>
                            </children>
                         </AnchorPane>
@@ -161,6 +203,9 @@
                                                                <HBox.margin>
                                                                   <Insets left="5.0" />
                                                                </HBox.margin>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
                                                             </Button>
                                                          </children>
                                                       </HBox>
@@ -187,6 +232,9 @@
                                                                <HBox.margin>
                                                                   <Insets right="5.0" />
                                                                </HBox.margin>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
                                                             </Button>
                                                          </children>
                                                       </HBox>
@@ -196,6 +244,9 @@
                                                                <HBox.margin>
                                                                   <Insets left="5.0" />
                                                                </HBox.margin>
+                                                               <cursor>
+                                                                  <Cursor fx:constant="HAND" />
+                                                               </cursor>
                                                             </Button>
                                                          </children>
                                                       </HBox>

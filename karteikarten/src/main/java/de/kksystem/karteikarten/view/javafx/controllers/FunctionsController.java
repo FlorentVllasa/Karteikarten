@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -50,47 +51,6 @@ public class FunctionsController implements Initializable {
     	int userId = UserData.getInstance().getUserId();
 
     	System.out.println("Benutzername: " + username + " ID: " + userId);
-    }
-
-    @FXML
-    public void changeCursorEnterLernenBild(MouseEvent event){
-        ivLearn.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Scene sceneInfo = ivLearn.getScene();
-                sceneInfo.setCursor(Cursor.HAND);
-            }
-        });
-    }
-
-    public void changeCursorExitLernenBild(MouseEvent event){
-        ivLearn.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Scene sceneInfo = ivLearn.getScene();
-                sceneInfo.setCursor(Cursor.DEFAULT);
-            }
-        });
-    }
-
-    public void changeCursorEnterErstellenBild(MouseEvent event){
-        ivManager.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Scene sceneInfo = ivManager.getScene();
-                sceneInfo.setCursor(Cursor.HAND);
-            }
-        });
-    }
-
-    public void changeCursorExitErstellenBild(MouseEvent event){
-    	ivManager.setOnMouseExited(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Scene sceneInfo = ivManager.getScene();
-                sceneInfo.setCursor(Cursor.DEFAULT);
-            }
-        });
     }
 
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
@@ -140,10 +100,6 @@ public class FunctionsController implements Initializable {
     	btnLogOut.setOnAction(this::switchToPreviousWindowLogin);
         ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
         ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
-        ivLearn.setOnMouseEntered(this::changeCursorEnterLernenBild);
-        ivLearn.setOnMouseExited(this::changeCursorExitLernenBild);
-        ivManager.setOnMouseEntered(this::changeCursorEnterErstellenBild);
-        ivManager.setOnMouseExited(this::changeCursorExitErstellenBild);
     }
     //Farbe  #0B2161
 }
