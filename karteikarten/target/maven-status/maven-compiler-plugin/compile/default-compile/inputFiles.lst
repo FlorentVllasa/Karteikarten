@@ -30,6 +30,7 @@ D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karte
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\data\UserData.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\factories\DaoFactory.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\LoginController.java
+D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\CreateNewPasswortWindowController.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchScene.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\utils\JdbcUtils.java
 D:\Eclipse-Workspace\git\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\interfaces\LectionDao.java
