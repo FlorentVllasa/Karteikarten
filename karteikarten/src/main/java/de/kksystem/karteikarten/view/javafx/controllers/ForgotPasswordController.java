@@ -154,8 +154,7 @@ public class ForgotPasswordController implements Initializable{
 	
 	private void compareKey(ActionEvent event) {
 		if (txtRecoveryKey.getText().equals(generatedKey)) {
-			String msg = "";
-			sendEmail(txtFieldEmail.getText(), "Dein neues Passwort", msg);
+			
 		}
 	}
 	
