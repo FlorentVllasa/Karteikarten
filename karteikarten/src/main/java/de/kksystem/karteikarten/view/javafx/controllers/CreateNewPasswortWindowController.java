@@ -50,7 +50,7 @@ public class CreateNewPasswortWindowController implements Initializable{
 		} else if (!txtNewPassword.getText().equals(txtConfirmationPassword.getText())) {
 			Alert alert = new Alert(AlertType.WARNING);
     		alert.setTitle("Achtung!");
-    		alert.setHeaderText("Ihre Passwörter stimmen nicht überein!");
+    		alert.setHeaderText("Leider stimmen Ihre Passwörter nicht überein!");
     		alert.showAndWait();
 		} else {
 			ServiceFacade.getInstance().updatePassword(txtNewPassword.getText(), ServiceFacade.getInstance().findUserByEMail(emailAdresse).getUserId());

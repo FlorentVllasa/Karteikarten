@@ -9,6 +9,10 @@ import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 
 import java.util.Properties;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,6 +58,11 @@ public class ForgotPasswordController implements Initializable{
     private Button btnBack;
 	
 	private String generatedKey;
+	
+	private BooleanProperty keySentStatus = new SimpleBooleanProperty();
+	private BooleanProperty keySentCompleted = new SimpleBooleanProperty();
+	
+	//private boolean keySent = false;
 	
 	private void switchToLoginWindow(ActionEvent event){
         Stage stage = new Stage();
@@ -161,7 +170,7 @@ public class ForgotPasswordController implements Initializable{
 		            		"</html>\r\n";
             
             sendEmail(txtFieldEmail.getText(), "Wiederherstellen deines Karteikarten-Kontos", msg);
-            
+            keySentStatus.set(true);
 		}
 	}
 	
@@ -169,12 +178,25 @@ public class ForgotPasswordController implements Initializable{
 		if (txtRecoveryKey.getText().equals(generatedKey)) {
 			wpss.createWindowSwitchScene("/fxml/CreateNewPasswortWindow.fxml", new CreateNewPasswortWindowController(txtFieldEmail.getText()), lw.getWindow());
 		} else {
-			
+			Alert alert = new Alert(AlertType.WARNING);
+    		alert.setTitle("Achtung!");
+    		alert.setHeaderText("Leider stimmen der Schlüssel nicht überein!");
+    		alert.showAndWait();
 		}
+	}
+	
+	private void setDisableProperty() {
+		txtFieldEmail.disableProperty().bind(keySentStatus.isEqualTo(keySentCompleted));
+		btnSendEmail.disableProperty().bind(txtRecoveryKey.disabledProperty().not());
+		txtRecoveryKey.disableProperty().bind(txtFieldEmail.disabledProperty().not());
+		btnConfirm.disableProperty().bind(btnSendEmail.disabledProperty().not());
 	}
 	
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
+		keySentStatus.set(false);
+		keySentCompleted.set(true);
+		setDisableProperty();
 		btnSendEmail.setOnAction(this::sendRecovery);
 		btnConfirm.setOnAction(this::compareKey);
 		//btnBack.setOnAction(this::switchToLoginWindow);

@@ -54,8 +54,7 @@ public class ChooseCategoryController implements Initializable {
     
     private List<Lection> categoryLectionList;
     private List<Lection> favoriteLectionList;
-    private List<Lection> lektionLectionList;
-
+    
     public void getLektionList(int lektionId){
         cmbChooseCat.getItems().clear();
         cmbChooseCat.getItems().add("none");
