@@ -218,8 +218,8 @@ public class DaoFacade {
 		pictureDao.deletePicture(pictureId);
 	}
 	
-	public void updatePicture(int pictureId, Picture newPicture) {
-		pictureDao.updatePicture(pictureId, newPicture);
+	public void updatePicture(Picture newPicture) {
+		pictureDao.updatePicture(newPicture);
 	}
 	
 	public Picture findPicture(int pictureId) {

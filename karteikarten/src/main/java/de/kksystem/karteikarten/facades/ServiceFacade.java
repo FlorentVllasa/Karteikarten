@@ -224,8 +224,8 @@ public class ServiceFacade {
 		pictureService.deletePicture(pictureId);
 	}
 	
-	public void updatePicture(int pictureId, Picture newPicture) {
-		pictureService.updatePicture(pictureId, newPicture);
+	public void updatePicture(Picture newPicture) {
+		pictureService.updatePicture(newPicture);
 	}
 	
 	public Picture findPicture(int pictureId) {

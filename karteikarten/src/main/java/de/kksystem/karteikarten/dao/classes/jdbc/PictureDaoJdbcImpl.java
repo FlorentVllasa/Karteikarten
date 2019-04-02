@@ -19,7 +19,7 @@ public class PictureDaoJdbcImpl implements PictureDao {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
 		String sqlString = 	"DELETE FROM Bild" +
-							"WHERE BildID = ?";
+							" WHERE BildID = ?";
 		
 		try {
 			connection = JdbcUtils.getConnection();
@@ -42,11 +42,11 @@ public class PictureDaoJdbcImpl implements PictureDao {
 	}
 	
 	@Override
-	public void updatePicture(int pictureId, Picture newPicture) {
+	public void updatePicture(Picture newPicture) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = 	"UPDATE Bild" +
-							"SET Speicherort = ?, Beschreibung = ?" +
+		String sqlString = 	"UPDATE Bild " +
+							"SET Speicherort = ?, Beschreibung = ? " +
 							"WHERE BildID = ?";
 		
 		try {
@@ -54,7 +54,7 @@ public class PictureDaoJdbcImpl implements PictureDao {
 			pstatement = connection.prepareStatement(sqlString);
 			pstatement.setString(1, newPicture.getFileLocation());
 			pstatement.setString(2, newPicture.getDescription());
-			pstatement.setInt(3, pictureId);
+			pstatement.setInt(3, newPicture.getPictureId());
 			
 			pstatement.executeUpdate();
 		} catch (SQLException e) {
@@ -69,7 +69,7 @@ public class PictureDaoJdbcImpl implements PictureDao {
 			}
 		}
 	}
-
+	
 	@Override
 	public Picture findPicture(int pictureId) {
 		Connection connection = null;

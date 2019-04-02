@@ -4,7 +4,7 @@ import de.kksystem.karteikarten.model.interfaces.Picture;
 
 public interface PictureService {
 	void deletePicture(int pictureId);
-	void updatePicture(int pictureId, Picture newPicture);
+	void updatePicture(Picture newPicture);
 	Picture findPicture(int pictureId);
 	int addPicture(Picture picture);
 }

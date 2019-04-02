@@ -101,11 +101,59 @@ public class EditPictureOfIndexCardController implements Initializable {
     }
     
     @FXML
+    private void replacePictureOfIndexCard(ActionEvent event) {
+		createWindowController = UserData.getInstance().getC();
+		createWindowController.resetFilePicture();
+
+		if (passedIndexCard != null) {
+			final FileChooser pictureChooser = new FileChooser();
+			pictureChooser.getExtensionFilters().addAll(
+					new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+					new FileChooser.ExtensionFilter("PNG", "*.png"),
+					new FileChooser.ExtensionFilter("GIF", "*.gif"));
+			pictureChooser.setTitle("Wählen Sie Ihr Bild für Ihre Karteikarte");
+			Stage currentStage = (Stage) anchorPane.getScene().getWindow();
+			File selectedPicture = pictureChooser.showOpenDialog(currentStage);
+
+			if (selectedPicture != null) {
+				String pathOfPicture = selectedPicture.getAbsoluteFile().toString();
+				String pictureFilename = selectedPicture.getName();
+
+				if (passedIndexCard.getPictureId() > 0) {
+					Picture updatedPicture = new PictureImpl(passedIndexCard.getPictureId(), pathOfPicture, null);
+					ServiceFacade.getInstance().updatePicture(updatedPicture);
+					passedIndexCard.setPictureId(updatedPicture.getPictureId());
+
+					Alert successfulAlert = new Alert(AlertType.INFORMATION);
+					successfulAlert.setTitle("Erfolgreich");
+					successfulAlert.setHeaderText("Bild wurde erfolgreich ersetzt");
+					successfulAlert.setContentText(
+							"Ihr Bild " + pictureFilename + " wurde erfolgreich eingefügt.");
+					successfulAlert.showAndWait();
+					loadPictureOfIndexCard();
+					setDisableProperty();
+					lblPictureMessage.setText("Bild: " + pictureFilename);
+					createWindowController.loadIndexCards(passedIndexCard.getLectionId());
+				} else {
+					Alert errorAlert = new Alert(AlertType.ERROR);
+					errorAlert.setTitle("Fehlgeschlagen");
+					errorAlert.setHeaderText("Bild konnte nicht ersetzt werden");
+					errorAlert.setContentText("Ihr Bild " + pictureFilename
+							+ " konnte der Karteikarte nicht beigefügt werden. Kontaktieren Sie bitte den Support.");
+					errorAlert.showAndWait();
+				}
+			}
+		}
+    }
+ 
+    @FXML
     private void deletePicture(ActionEvent event) {
-    	ServiceFacade.getInstance().updatePictureId(passedIndexCard.getIndexCardId(), -1);
-    	passedIndexCard.setPictureId(-1);
-    	setDisableProperty();
-    	loadPictureOfIndexCard();
+    	if(passedIndexCard.getPictureId() > 0) {
+        	ServiceFacade.getInstance().deletePicture(passedIndexCard.getPictureId());
+        	passedIndexCard.setPictureId(-1);
+        	setDisableProperty();
+        	loadPictureOfIndexCard();
+    	}
     }
     
     @FXML
@@ -177,7 +225,7 @@ public class EditPictureOfIndexCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	btnAddPicture.setOnAction(this::addPictureToIndexCard);
-    	btnReplacePicture.setOnAction(this::addPictureToIndexCard);
+    	btnReplacePicture.setOnAction(this::replacePictureOfIndexCard);
     	btnDeletePicture.setOnAction(this::deletePicture);
     	btnCloseWindow.setOnAction(this::closeWindow);
     }

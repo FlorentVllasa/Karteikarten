@@ -17,8 +17,8 @@ public class PictureServiceImpl implements PictureService {
 	}
 
 	@Override
-	public void updatePicture(int pictureId, Picture newPicture) {
-		daoFacade.updatePicture(pictureId, newPicture);
+	public void updatePicture(Picture newPicture) {
+		daoFacade.updatePicture(newPicture);
 	}
 
 	@Override
