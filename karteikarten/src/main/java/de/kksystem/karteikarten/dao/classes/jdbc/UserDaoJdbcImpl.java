@@ -315,6 +315,62 @@ public class UserDaoJdbcImpl implements UserDao {
 		}
 	}
 
+	@Override
+	public void updateUsername(String newUsername, int userId){
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		String sqlString = "UPDATE Benutzer SET Benutzername = ? WHERE BenutzerID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+
+			pstatement.setString(1, newUsername);
+			pstatement.setInt(2, userId);
+
+			pstatement.executeUpdate();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			if(pstatement != null) {
+				try {  pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try {  connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+		}
+	}
+
+	@Override
+	public void updateEmail(String newEmail, int userId){
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		String sqlString = "UPDATE Benutzer SET EmailAdresse = ? WHERE BenutzerID = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+
+			pstatement.setString(1, newEmail);
+			pstatement.setInt(2, userId);
+
+			pstatement.executeUpdate();
+
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			if(pstatement != null) {
+				try {  pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try {  connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+		}
+	}
+
 	private User createUserFromResultSet(final ResultSet resultSet) throws SQLException {
 		final int userId = resultSet.getInt(1);
 		final String userEmail = resultSet.getString(2);

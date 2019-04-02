@@ -32,8 +32,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void updateUsername(String newUsername, int userId){
+		daoFacade.updateUsername(newUsername, userId);
+	}
+
+	@Override
 	public void updatePassword(String newPassword, int userId) {
 		daoFacade.updatePassword(newPassword, userId);
+	}
+
+	@Override
+	public void updateEmail(String newEmail, int userId){
+		daoFacade.updateEmail(newEmail, userId);
 	}
 
 	@Override
@@ -77,6 +87,7 @@ public class UserServiceImpl implements UserService {
 			UserData.getInstance().setUsername(user.getUsername());
 			UserData.getInstance().setUserId(user.getUserId());
 			UserData.getInstance().setFavoritelistId(favoritelist.getFavoritelistId());
+			UserData.getInstance().setEmail(user.getEmail());
 			
 			return true;
 		}

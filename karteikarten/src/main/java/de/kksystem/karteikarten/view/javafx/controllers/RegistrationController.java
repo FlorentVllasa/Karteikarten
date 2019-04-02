@@ -79,6 +79,7 @@ public class RegistrationController implements Initializable {
             if(newUserId > 0) {
             	UserData.getInstance().setUserId(newUserId);
             	UserData.getInstance().setUsername(user.getUsername());
+            	UserData.getInstance().setEmail(email);
             	
             	// Neue Favoritenliste des neuen Nutzers in die Db eingefügt
             	int newFavoritelistId = ServiceFacade.getInstance().addFavoritelist(null, newUserId);

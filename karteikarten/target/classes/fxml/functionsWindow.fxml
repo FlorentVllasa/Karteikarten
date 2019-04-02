@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -11,8 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<?import java.net.URL?>
-<BorderPane prefHeight="569.6" prefWidth="894.4" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="564.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="894.0" style="-fx-background-color: #0B2161;" BorderPane.alignment="CENTER">
          <children>
@@ -21,8 +21,8 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Separator layoutX="434.0" layoutY="199.0" orientation="VERTICAL" prefHeight="171.0" prefWidth="6.0" />
-            <ImageView fx:id="ivLearn" fitHeight="164.0" fitWidth="164.0" layoutX="129.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+            <Separator layoutX="268.0" layoutY="202.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="2.0" />
+            <ImageView fx:id="ivLearn" fitHeight="164.0" fitWidth="164.0" layoutX="52.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/GespeicherteKarteikarten.png" />
                </image>
@@ -30,7 +30,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="ivManager" fitHeight="164.0" fitWidth="164.0" layoutX="595.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivManager" fitHeight="164.0" fitWidth="164.0" layoutX="365.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/createNewTable.png" />
                </image>
@@ -44,12 +44,23 @@
                </font>
             </Label>
             <Button fx:id="btnLogOut" layoutX="800.0" layoutY="519.0" mnemonicParsing="false" text="Abmelden" />
-            <Label layoutX="161.0" layoutY="396.0" text="Lernen!" textFill="WHITE">
+            <Label layoutX="81.0" layoutY="396.0" text="Lernen!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="517.0" layoutY="396.0" text="Karteikarten Manager!" textFill="WHITE">
+            <Label layoutX="282.0" layoutY="396.0" text="Karteikarten Manager" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Separator layoutX="617.0" layoutY="202.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="2.0" />
+            <ImageView fx:id="ivUserOptions" fitHeight="150.0" fitWidth="200.0" layoutX="669.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/userOptions.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="649.0" layoutY="396.0" text="Einstellungen" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>

@@ -65,6 +65,10 @@ public class DaoFacade {
 	public void updatePassword(String newPassword, int userId) {
 		userDao.updatePassword(newPassword, userId);
 	}
+
+	public void updateEmail(String newEmail, int userId){
+		userDao.updateEmail(newEmail, userId);
+	}
 	
 	public void updateForename(String newForename, int userId) {
 		userDao.updateForename(newForename, userId);
@@ -84,6 +88,10 @@ public class DaoFacade {
 	
 	public User findUserByEMail(String email) {
 		return userDao.findUserByEMail(email);
+	}
+
+	public void updateUsername(String newUsername, int userId){
+		userDao.updateUsername(newUsername, userId);
 	}
 	
 	/*

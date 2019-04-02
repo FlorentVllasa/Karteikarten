@@ -62,9 +62,17 @@ public class ServiceFacade {
 	public void updateUser(User user) {
 		userService.updateUser(user);
 	}
+
+	public void updateUsername(String newUsername, int userId){
+		userService.updateUsername(newUsername, userId);
+	}
 	
 	public void updatePassword(String newPassword, int userId) {
 		userService.updatePassword(newPassword, userId);
+	}
+
+	public void updateEmail(String newEmail, int userId){
+		userService.updateEmail(newEmail, userId);
 	}
 	
 	public void updateForename(String newForename, int userId) {

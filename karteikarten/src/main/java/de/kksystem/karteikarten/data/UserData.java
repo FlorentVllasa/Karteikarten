@@ -11,6 +11,7 @@ import de.kksystem.karteikarten.view.javafx.controllers.CreateWindowController;
  */
 public class UserData {
 	private String username;
+	private String email;
 	private int userId;
 	private int favoritelistId;
 	private List<Category> categoryList;
@@ -30,9 +31,13 @@ public class UserData {
         }
 		return instance;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public void setEmail(String email){
+		this.email = email;
 	}
 	
 	public void setUserId(int userId) {
@@ -53,6 +58,10 @@ public class UserData {
 	
 	public String getUsername() {
 		return this.username;
+	}
+
+	public String getEmail(){
+		return this.email;
 	}
 	
 	public int getUserId() {
