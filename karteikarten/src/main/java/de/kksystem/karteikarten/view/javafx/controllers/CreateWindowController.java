@@ -627,7 +627,7 @@ public class CreateWindowController implements Initializable {
 		}
 
 	}
-
+	
 	@FXML
 	public void switchToDeleteIndexCardDialog(ActionEvent event) {
 		IndexCard selectedIndexCard = tvIndexCards.getSelectionModel().getSelectedItem();
@@ -673,47 +673,6 @@ public class CreateWindowController implements Initializable {
 	}
 
 	@FXML
-	private void addPictureToIndexCard(ActionEvent event) {
-		resetFilePicture();
-		IndexCard selectedIndexCard = tvIndexCards.getSelectionModel().getSelectedItem();
-
-		if (selectedIndexCard != null) {
-			final FileChooser pictureChooser = new FileChooser();
-			pictureChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-					new FileChooser.ExtensionFilter("PNG", "*.png"), new FileChooser.ExtensionFilter("GIF", "*.gif"));
-			pictureChooser.setTitle("Wählen Sie Ihr Bild für Ihre Karteikarte");
-			Stage currentStage = (Stage) anchorPane.getScene().getWindow();
-			File selectedPicture = pictureChooser.showOpenDialog(currentStage);
-
-			if (selectedPicture != null) {
-				String pathOfPicture = selectedPicture.getAbsoluteFile().toString();
-				String pictureFilename = selectedPicture.getName();
-				Picture picture = new PictureImpl(pathOfPicture, null);
-				int newPictureId = ServiceFacade.getInstance().addPicture(picture);
-
-				if (newPictureId > 0) {
-					ServiceFacade.getInstance().updatePictureId(selectedIndexCard.getIndexCardId(), newPictureId);
-
-					Alert successfulAlert = new Alert(AlertType.INFORMATION);
-					successfulAlert.setTitle("Erfolgreich");
-					successfulAlert.setHeaderText("Bild wurde erfolgreich hinzugefügt");
-					successfulAlert.setContentText(
-							"Ihr Bild " + pictureFilename + " wurde erfolgreich der Karteikarte beigefügt!");
-					successfulAlert.showAndWait();
-					loadIndexCards(selectedIndexCard.getLectionId());
-				} else {
-					Alert errorAlert = new Alert(AlertType.ERROR);
-					errorAlert.setTitle("Fehlgeschlagen");
-					errorAlert.setHeaderText("Bild konnte nicht hinzugefügt werden");
-					errorAlert.setContentText("Ihr Bild " + pictureFilename
-							+ " konnte der Karteikarte nicht beigefügt werden. Kontaktieren Sie bitte den Support.");
-					errorAlert.showAndWait();
-				}
-			}
-		}
-	}
-
-	@FXML
 	private void choosePicture(ActionEvent event) {
 		final FileChooser pictureChooser = new FileChooser();
 		pictureChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
@@ -725,6 +684,40 @@ public class CreateWindowController implements Initializable {
 		if (selectedPicture != null) {
 			filePicture = selectedPicture;
 			lblPictureMessage.setText("Ausgewählt: " + filePicture.getName());
+		}
+	}
+	
+	@FXML
+	private void switchToEditPictureOfIndexCardWindow(ActionEvent event) {
+		try {
+			final URL fxmlUrl = getClass().getResource("/fxml/EditPictureOfIndexCard.fxml");
+			final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
+			fxmlLoader.setController(new EditPictureOfIndexCardController());
+			Parent root = fxmlLoader.load();
+
+			IndexCard indexCard = tvIndexCards.getSelectionModel().getSelectedItem();
+			
+			if(indexCard != null) {
+				IndexCard passedIndexCard = indexCard;
+				
+				EditPictureOfIndexCardController editPictureController = fxmlLoader.getController();
+				editPictureController.setPassedIndexCard(passedIndexCard);
+
+				Stage stage = new Stage();
+				stage.initModality(Modality.APPLICATION_MODAL);
+				stage.setTitle("Bild-Optionen der Karteikarte");
+				Scene scene = new Scene(root);
+				stage.setScene(scene);
+				stage.show();
+				
+				editPictureController.loadPictureOfIndexCard();
+				editPictureController.setDisableProperty();
+				
+
+			}
+
+		} catch (IOException io) {
+			System.out.println(io.getMessage());
 		}
 	}
 
@@ -762,6 +755,10 @@ public class CreateWindowController implements Initializable {
 			}
 		}
 	}
+	
+	public void updateCreateWindowComponents() {
+		
+	}
 
 	/*
 	 * Diese Methode nimmt sich die Stage Information der Scene und schließt das
@@ -774,7 +771,7 @@ public class CreateWindowController implements Initializable {
 		stageInfo.close();
 	}
 
-	private void resetFilePicture() {
+	public void resetFilePicture() {
 		filePicture = null;
 		lblPictureMessage.setText("Kein Bild ausgewählt");
 	}
@@ -800,8 +797,8 @@ public class CreateWindowController implements Initializable {
 		miDeleteLection.setOnAction(this::switchToDeleteLectionDialog);
 		miEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
 		miDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
-		miAddPicToIndexCard.setOnAction(this::addPictureToIndexCard);
-		miShowPicOfIndexCard.setOnAction(this::showPictureOfIndexCard);
+		miAddPicToIndexCard.setOnAction(this::switchToEditPictureOfIndexCardWindow);
+		miShowPicOfIndexCard.setOnAction(this::switchToEditPictureOfIndexCardWindow);
 		miEditFavoritelist.setOnAction(this::switchtoEditFavoritelistDialog);
 		miDeleteFavoritelist.setOnAction(this::switchToDeleteFavoritelistDialog);
 		btnSave.setOnAction(this::addIndexCardIntoTableView);
@@ -818,7 +815,7 @@ public class CreateWindowController implements Initializable {
 		cntxtMenuEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
 		cntxtMenuDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
 		btnAddPicture.setOnAction(this::choosePicture);
-		cntxtMenuAddPicture.setOnAction(this::addPictureToIndexCard);
-		cntxtMenuShowPicture.setOnAction(this::showPictureOfIndexCard);
+		cntxtMenuAddPicture.setOnAction(this::switchToEditPictureOfIndexCardWindow);
+		cntxtMenuShowPicture.setOnAction(this::switchToEditPictureOfIndexCardWindow);
 	}
 }

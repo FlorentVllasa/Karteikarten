@@ -20,6 +20,7 @@ public class LoginWindow extends Application {
 		final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
 		fxmlLoader.setController(new LoginController());
 		final Parent root = fxmlLoader.load();
+		
 		Scene scene = new Scene(root, 600, 400);
 		window.setScene(scene);
 		window.setResizable(false);
@@ -30,7 +31,7 @@ public class LoginWindow extends Application {
 	public Stage getWindow(){
 		return window;
 	}
-
+	
 	public static void main(String[] args){
 		launch(args);
 	}

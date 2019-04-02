@@ -284,7 +284,12 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 			connection = JdbcUtils.getConnection();
 			pstatement = connection.prepareStatement(sqlString);
 			
-			pstatement.setInt(1, pictureId);
+			if(pictureId > 0) {
+				pstatement.setInt(1, pictureId);
+			} else {
+				pstatement.setNull(1, Types.INTEGER);
+			}
+			
 			pstatement.setInt(2, indexCardId);
 			
 			pstatement.executeUpdate();

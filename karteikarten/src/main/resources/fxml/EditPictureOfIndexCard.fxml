@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button fx:id="btnAddPicture" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Bild hinzufügen" />
+      <Button fx:id="btnReplacePicture" layoutX="128.0" layoutY="14.0" mnemonicParsing="false" text="Bild ersetzen" />
+      <Button fx:id="btnDeletePicture" layoutX="229.0" layoutY="14.0" mnemonicParsing="false" text="Bild entfernen" />
+      <Label fx:id="lblPictureMessage" layoutX="15.0" layoutY="50.0" textFill="#0051a8" />
+      <Button fx:id="btnCloseWindow" layoutX="535.0" layoutY="14.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="173.0" text="Schließen" />
+      <ScrollPane fx:id="scrlpnPicture" layoutY="80.0" prefHeight="579.0" prefWidth="724.0">
+         <content>
+            <ImageView fx:id="ivIndexCardPicture" fitHeight="577.0" fitWidth="721.0" pickOnBounds="true" preserveRatio="true" />
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>
