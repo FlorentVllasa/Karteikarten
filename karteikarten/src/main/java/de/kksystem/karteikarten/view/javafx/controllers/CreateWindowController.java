@@ -193,18 +193,10 @@ public class CreateWindowController implements Initializable {
 	public void loadIndexCards(int lectionId) {
 		tvIndexCards.getItems().clear();
 		if (lvLections.getItems().size() > 0) {
-			List<IndexCard> allIndexCards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(lectionId);
+			List<IndexCard> allIndexCards = ServiceFacade.getInstance().findAllIndexCardsByLectionIdWithoutHTML(lectionId);
 
 			for (int i = 0; i < allIndexCards.size(); i++) {
-				int indexCardId = allIndexCards.get(i).getIndexCardId();
-				String question = getText(allIndexCards.get(i).getQuestion());
-				String answer = getText(allIndexCards.get(i).getAnswer());
-				String color = null;
-				int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
-				int pictureId = allIndexCards.get(i).getPictureId();
-
-				IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
-				tvIndexCards.getItems().add(indexCard);
+				tvIndexCards.getItems().add(allIndexCards.get(i));
 			}
 		}
 	}
@@ -238,18 +230,10 @@ public class CreateWindowController implements Initializable {
 					int selectedLection = lvFavorites.getSelectionModel().getSelectedItem().getLectionId();
 
 					List<IndexCard> allIndexCards = ServiceFacade.getInstance()
-							.findAllIndexCardsByLectionId(selectedLection);
+							.findAllIndexCardsByLectionIdWithoutHTML(selectedLection);
 
 					for (int i = 0; i < allIndexCards.size(); i++) {
-						int indexCardId = allIndexCards.get(i).getIndexCardId();
-						String question = getText(allIndexCards.get(i).getQuestion());
-						String answer = getText(allIndexCards.get(i).getAnswer());
-						String color = null;
-						int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
-						int pictureId = allIndexCards.get(i).getPictureId();
-
-						IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
-						tvIndexCards.getItems().add(indexCard);
+						tvIndexCards.getItems().add(allIndexCards.get(i));
 					}
 				}
 			}
@@ -269,18 +253,10 @@ public class CreateWindowController implements Initializable {
 					int selectedLection = lvLections.getSelectionModel().getSelectedItem().getLectionId();
 
 					List<IndexCard> allIndexCards = ServiceFacade.getInstance()
-							.findAllIndexCardsByLectionId(selectedLection);
+							.findAllIndexCardsByLectionIdWithoutHTML(selectedLection);
 
 					for (int i = 0; i < allIndexCards.size(); i++) {
-						int indexCardId = allIndexCards.get(i).getIndexCardId();
-						String question = getText(allIndexCards.get(i).getQuestion());
-						String answer = getText(allIndexCards.get(i).getAnswer());
-						String color = null;
-						int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
-						int pictureId = allIndexCards.get(i).getPictureId();
-
-						IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
-						tvIndexCards.getItems().add(indexCard);
+						tvIndexCards.getItems().add(allIndexCards.get(i));
 					}
 				}
 			}
@@ -659,8 +635,6 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	public void switchToDeleteIndexCardDialog(ActionEvent event) {
 		IndexCard selectedIndexCard = tvIndexCards.getSelectionModel().getSelectedItem();
-		int indexCardId = selectedIndexCard.getIndexCardId();
-		IndexCard indexCard = ServiceFacade.getInstance().findIndexCardById(indexCardId);
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Karteikarte löschen");
@@ -669,8 +643,8 @@ public class CreateWindowController implements Initializable {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {
-			ServiceFacade.getInstance().deleteIndexCard(indexCard);
-			loadIndexCards(indexCard.getLectionId());
+			ServiceFacade.getInstance().deleteIndexCard(selectedIndexCard);
+			loadIndexCards(selectedIndexCard.getLectionId());
 		} else {
 
 		}

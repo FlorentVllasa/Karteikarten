@@ -209,6 +209,10 @@ public class ServiceFacade {
 	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
 		return indexCardService.findAllIndexCardsByLectionId(lectionId);
 	}
+
+	public List<IndexCard> findAllIndexCardsByLectionIdWithoutHTML(int lectionId) {
+		return indexCardService.findAllIndexCardsByLectionIdWithoutHTML(lectionId);
+	}
 	
 	/*
 	 * 

@@ -13,4 +13,5 @@ public interface IndexCardService {
 	void updatePictureId(int indexCardId, int pictureId);
 	IndexCard findIndexCardById(int indexCardId);
 	List<IndexCard> findAllIndexCardsByLectionId(int lectionId);
+	List<IndexCard> findAllIndexCardsByLectionIdWithoutHTML(int lectionId);
 }
