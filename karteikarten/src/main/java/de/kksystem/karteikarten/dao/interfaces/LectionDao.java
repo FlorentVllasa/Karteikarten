@@ -12,6 +12,7 @@ public interface LectionDao {
 	void updateName(String name, int lectionId);
 	void updateDescription(String description, int lectionId);
 	void updateLastExcercise(Timestamp timestamp, int lectionId);
+	void updateFavoriteListId(Lection lection, int favoriteId);
 	Lection findLectionById(int lectionId);
 	List<Lection> findLectionByUserId(int userId);
 	List<Lection> findLectionByCategoryId(int categoryId);

@@ -64,5 +64,9 @@ public class LectionServiceImpl implements LectionService {
 	public List<Lection> findLectionByUserId(int userId) {
 		return daoFacade.findLectionByUserId(userId);
 	}
-	
+
+	@Override
+	public void updateFavoriteListId(Lection lection, int favoriteId){
+		daoFacade.updateFavoriteListId(lection, favoriteId);
+	}
 }

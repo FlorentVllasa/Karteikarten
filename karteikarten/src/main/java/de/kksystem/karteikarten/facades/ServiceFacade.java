@@ -172,6 +172,11 @@ public class ServiceFacade {
 	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
 		return lectionService.findLectionByFavoritelistId(favoritelisteId);
 	}
+
+	public void updateFavoriteListId(Lection lection, int favoriteId){
+		lectionService.updateFavoriteListId(lection, favoriteId);
+	}
+
 	/*
 	 * 
 	 *IndexCard

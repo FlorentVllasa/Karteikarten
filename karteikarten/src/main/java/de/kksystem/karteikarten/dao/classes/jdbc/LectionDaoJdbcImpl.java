@@ -1,10 +1,6 @@
 package de.kksystem.karteikarten.dao.classes.jdbc;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -168,6 +164,36 @@ public class LectionDaoJdbcImpl implements LectionDao {
 
 			pstatement.executeUpdate();
 
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+		} finally {
+			if(pstatement != null) {
+				try {  pstatement.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try {  connection.close(); } catch (SQLException sqle) { sqle.printStackTrace(); }
+			}
+		}
+	}
+
+	@Override
+	public void updateFavoriteListId(Lection lection, int favoriteId){
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		String sqlString = "UPDATE Lektion SET FavoritenlisteID = ? WHERE LektionID = ?";
+		try{
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+
+			if(favoriteId > 0) {
+				pstatement.setInt(1, favoriteId);
+			} else {
+				pstatement.setNull(1, Types.INTEGER);
+			}
+
+			pstatement.setInt(2, lection.getLectionId());
+			pstatement.executeUpdate();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		} finally {

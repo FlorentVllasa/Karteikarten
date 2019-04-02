@@ -80,13 +80,11 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	private MenuItem miDeleteIndexCard;
 	@FXML
-	private MenuItem miAddPicToIndexCard;
+	private MenuItem miPictureOptions;
 	@FXML
-	private MenuItem miShowPicOfIndexCard;
+	private MenuItem miAddFavorite;
 	@FXML
-	private MenuItem miEditFavoritelist;
-	@FXML
-	private MenuItem miDeleteFavoritelist;
+	private MenuItem miRemoveFavorite;
 	@FXML
 	private HTMLEditor htmlQuestion;
 	@FXML
@@ -114,9 +112,7 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	private ContextMenu cntxtFavorites;
 	@FXML
-	private MenuItem cntxtMenuEditFavorite;
-	@FXML
-	private MenuItem cntxtMenuDeleteFavorite;
+	private MenuItem cntxtMenuRemoveFavorite;
 	@FXML
 	private ContextMenu cntxtIndexCards;
 	@FXML
@@ -124,9 +120,7 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	private MenuItem cntxtMenuDeleteIndexCard;
 	@FXML
-	private MenuItem cntxtMenuAddPicture;
-	@FXML
-	private MenuItem cntxtMenuShowPicture;
+	private MenuItem cntxtMenuPictureOptions;
 	@FXML
 	private Label lblPictureMessage;
 	@FXML
@@ -277,6 +271,9 @@ public class CreateWindowController implements Initializable {
 				.bind(Bindings.and(lvLections.getSelectionModel().selectedItemProperty().isNull(),
 						lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
 
+		miAddFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
+		miRemoveFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
+
 		htmlQuestion.disableProperty().bind(Bindings.and(lvLections.getSelectionModel().selectedItemProperty().isNull(),
 				lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
 
@@ -307,12 +304,7 @@ public class CreateWindowController implements Initializable {
 
 		miEditIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 		miDeleteIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
-		miAddPicToIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
-		miShowPicOfIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
-
-		// miEditFavo und miDeleteFavo noch nicht implementiert
-		miEditFavoritelist.setDisable(true);
-		miDeleteFavoritelist.setDisable(true);
+		miPictureOptions.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 	}
 
 	@FXML
@@ -332,15 +324,13 @@ public class CreateWindowController implements Initializable {
 
 		cntxtMenuAddFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
 
-		cntxtMenuEditFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
-		cntxtMenuDeleteFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuRemoveFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
 
 		cntxtMenuEditIndexCard.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 		cntxtMenuDeleteIndexCard.disableProperty()
 				.bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 
-		cntxtMenuAddPicture.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
-		cntxtMenuShowPicture.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
+		cntxtMenuPictureOptions.disableProperty().bind(tvIndexCards.getSelectionModel().selectedItemProperty().isNull());
 	}
 
 	@FXML
@@ -651,28 +641,36 @@ public class CreateWindowController implements Initializable {
 	}
 
 	@FXML
-	public void switchtoEditFavoritelistDialog(ActionEvent event) {
-		TextInputDialog tid = new TextInputDialog("Neuer Favoritenname");
-		tid.setTitle("Favoritenliste bearbeiten");
-		tid.setHeaderText(null);
-		tid.setContentText("Bitte neuen Favoritennamen eingeben:");
-
-		Optional<String> enteredValue = tid.showAndWait();
-
+	public void addFavorite(ActionEvent event){
+		Lection selectedLection = lvLections.getSelectionModel().getSelectedItem();
+		int userFavoriteListId = UserData.getInstance().getFavoritelistId();
+		ServiceFacade.getInstance().updateFavoriteListId(selectedLection, userFavoriteListId);
+		loadFavoritelist();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setContentText("Favorit wurde hinzugefügt!");
+		alert.showAndWait();
 	}
 
+
 	@FXML
-	public void switchToDeleteFavoritelistDialog(ActionEvent event) {
+	public void removeFavorite(ActionEvent event) {
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Favorit löschen");
 		alert.setHeaderText("Achtung");
-		alert.setContentText("Soll endgültig gelöscht werden?");
+		alert.setContentText("Soll Favorit aus der Liste entfernt werden?");
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {
-			// ... user chose OK, hier wird gelöscht
+			Lection lection = lvFavorites.getSelectionModel().getSelectedItem();
+			ServiceFacade.getInstance().updateFavoriteListId(lection, -1);
+			tvIndexCards.getItems().clear();
+			loadFavoritelist();
+			Alert succes = new Alert(AlertType.INFORMATION);
+			succes.setHeaderText("Erfolgreich!");
+			succes.setContentText("Der Favorit wurde erfolgreich entfernt!");
+			succes.show();
 		} else {
-
+			alert.close();
 		}
 	}
 
@@ -801,10 +799,9 @@ public class CreateWindowController implements Initializable {
 		miDeleteLection.setOnAction(this::switchToDeleteLectionDialog);
 		miEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
 		miDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
-		miAddPicToIndexCard.setOnAction(this::switchToEditPictureOfIndexCardWindow);
-		miShowPicOfIndexCard.setOnAction(this::switchToEditPictureOfIndexCardWindow);
-		miEditFavoritelist.setOnAction(this::switchtoEditFavoritelistDialog);
-		miDeleteFavoritelist.setOnAction(this::switchToDeleteFavoritelistDialog);
+		miPictureOptions.setOnAction(this::switchToEditPictureOfIndexCardWindow);
+		miAddFavorite.setOnAction(this::addFavorite);
+		miRemoveFavorite.setOnAction(this::removeFavorite);
 		btnSave.setOnAction(this::addIndexCardIntoTableView);
 		cmbCategories.setOnAction(this::dynamicListLection);
 		cntxtMenuAddCategory.setOnAction(this::switchToAddCategoryDialog);
@@ -813,13 +810,11 @@ public class CreateWindowController implements Initializable {
 		cntxtMenuAddLection.setOnAction(this::switchtoAddLectionDialog);
 		cntxtMenuEditLection.setOnAction(this::switchToEditLectionDialog);
 		cntxtMenuDeleteLection.setOnAction(this::switchToDeleteLectionDialog);
-		// contextMenuAddFavorite.setOnAction(this::switchtoadd...);
-		cntxtMenuEditFavorite.setOnAction(this::switchtoEditFavoritelistDialog);
-		cntxtMenuDeleteFavorite.setOnAction(this::switchToDeleteFavoritelistDialog);
+		cntxtMenuAddFavorite.setOnAction(this::addFavorite);
+		cntxtMenuRemoveFavorite.setOnAction(this::removeFavorite);
 		cntxtMenuEditIndexCard.setOnAction(this::switchToEditIndexCardDialog);
 		cntxtMenuDeleteIndexCard.setOnAction(this::switchToDeleteIndexCardDialog);
 		btnAddPicture.setOnAction(this::choosePicture);
-		cntxtMenuAddPicture.setOnAction(this::switchToEditPictureOfIndexCardWindow);
-		cntxtMenuShowPicture.setOnAction(this::switchToEditPictureOfIndexCardWindow);
+		cntxtMenuPictureOptions.setOnAction(this::switchToEditPictureOfIndexCardWindow);
 	}
 }

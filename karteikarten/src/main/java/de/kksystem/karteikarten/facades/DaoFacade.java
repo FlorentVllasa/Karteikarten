@@ -169,6 +169,12 @@ public class DaoFacade {
 	public List<Lection> findLectionByFavoritelistId(int favoritelisteId) {
 		return lectionDao.findLectionByFavoritelistId(favoritelisteId);
 	}
+
+	public void updateFavoriteListId(Lection lection, int favoriteId){
+		lectionDao.updateFavoriteListId(lection, favoriteId);
+	}
+
+
 	
 	/*
 	 * 
