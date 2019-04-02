@@ -13,9 +13,14 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.text.MessageFormat;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
+
+
+
 
 	@FXML
     private SplitPane splitPane;
@@ -65,11 +70,24 @@ public class LearnWindowController implements Initializable {
         Stage stageInfo = (Stage) splitPane.getScene().getWindow();
         stageInfo.close();
     }
+
+    // Methode zum Anzeigen der Antwort
+
+    public void antwortAanzeigen(){
+
+        if(------------){//richtig ?
+
+        } else {
+            System.out.println("Leider Falsch");
+        }
+
+    }
     
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnCloseWindow.setOnAction(this::closeLearnWindow);
+
     }
 }
