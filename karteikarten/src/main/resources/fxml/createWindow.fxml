@@ -49,12 +49,6 @@
                   <MenuItem fx:id="miPictureOptions" mnemonicParsing="false" text="Bild-Optionen" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Favoritenliste">
-              <items>
-                <MenuItem fx:id="miEditFavoritelist" mnemonicParsing="false" text="Favoritenliste bearbeiten..." />
-                  <MenuItem fx:id="miDeleteFavoritelist" mnemonicParsing="false" text="Favoritenliste löschen..." />
-              </items>
-            </Menu>
         </menus>
       </MenuBar>
       <SplitPane dividerPositions="0.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
