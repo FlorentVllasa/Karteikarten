@@ -35,6 +35,9 @@ import java.security.SecureRandom;
 import java.util.ResourceBundle;
 
 public class ForgotPasswordController implements Initializable{
+	
+	private final int KEY_LENGTH = 100;
+	
 	LoginWindow lw = new LoginWindow();
 	WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
@@ -62,8 +65,7 @@ public class ForgotPasswordController implements Initializable{
 	private BooleanProperty keySentStatus = new SimpleBooleanProperty();
 	private BooleanProperty keySentCompleted = new SimpleBooleanProperty();
 	
-	//private boolean keySent = false;
-	
+	/*Diese Methode springt das Fenster auf das LoginWindow zurueck*/
 	private void switchToLoginWindow(ActionEvent event){
         Stage stage = new Stage();
         try{
@@ -75,21 +77,24 @@ public class ForgotPasswordController implements Initializable{
         stageInfo.close();
     }
 	
-	private void switchToCreateNewPasswordWindow(ActionEvent event) {
-		
+	/*Diese Methode erstellt ein neues Fenster zum Aendern des Passworts, falls die geschickte und eingegebene Schluesseln miteinander stimmen*/
+	private void switchToCreateNewPasswordWindow() {
+		wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
 	}
 	
+	/*Diese Methode generiert eine Wiederherstellungsschluessel mit der Länge KEY_LENGTH (default = 100, Langeaenderung erfolgt durch Konstantwertaenderung)*/	
 	private String generateKey() {
 		final String ALPHABET = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_§$%&/()=#+*";
 	    final SecureRandom RANDOM = new SecureRandom();
 	    StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < 100; ++i) {
+        for (int i = 0; i < KEY_LENGTH; ++i) {
             sb.append(ALPHABET.charAt(RANDOM.nextInt(ALPHABET.length())));
         }
         //System.out.println(sb.toString());
         return sb.toString();
 	}
 	
+	/*Diese Methode generiert eine Email, die zu einem Benutzer weggeschickt werden muss*/
 	private void sendEmail(String receiver, String subject, String msg) {
 		Properties prop = new Properties();
 		prop.put("mail.smtp.auth", true);
@@ -134,6 +139,7 @@ public class ForgotPasswordController implements Initializable{
         }
 	}
 	
+	/*Diese Methode schickt eine Wiederherstellungsschluessel falls Benutzer gefunden wurde.*/
 	private void sendRecovery(ActionEvent event) {
 		
 		if (txtFieldEmail.getText().isEmpty()) {
@@ -173,9 +179,10 @@ public class ForgotPasswordController implements Initializable{
 		}
 	}
 	
+	/*Diese Methode vergleicht den von Benutzer eingegebenen Schüssel und dem zu der Benutzeremail geschickten Schlüssel*/
 	private void compareKey(ActionEvent event) {
 		if (txtRecoveryKey.getText().equals(generatedKey)) {
-			wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
+			switchToCreateNewPasswordWindow();
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
     		alert.setTitle("Achtung!");
@@ -184,6 +191,7 @@ public class ForgotPasswordController implements Initializable{
 		}
 	}
 	
+	/*Diese Methode stellt fest, bei welchen Bedingungen sollen die Objekte deaktiviert werden*/
 	private void setDisableProperty() {
 		txtFieldEmail.disableProperty().bind(keySentStatus.isEqualTo(keySentCompleted));
 		btnSendEmail.disableProperty().bind(txtRecoveryKey.disabledProperty().not());
@@ -191,14 +199,17 @@ public class ForgotPasswordController implements Initializable{
 		btnConfirm.disableProperty().bind(btnSendEmail.disabledProperty().not());
 	}
 	
+	/*Die Methode stellt eine Methode fest, wenn man Enter on EmailFeld drueckt.*/
 	private void onEnterEmail(ActionEvent event) {
 		sendRecovery(event);
 	}
 	
+	/*Die Methode stellt eine Methode fest, wenn man Enter on RecoveryKeyFeld drueckt.*/
 	private void onEnterRecoveryKey(ActionEvent event) {
 		compareKey(event);
 	}
 	
+	/*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen und erforderliche Methode aufgerufen*/
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		keySentStatus.set(false);

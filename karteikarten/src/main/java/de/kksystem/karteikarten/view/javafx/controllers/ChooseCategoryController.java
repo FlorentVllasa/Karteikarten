@@ -55,15 +55,6 @@ public class ChooseCategoryController implements Initializable {
     private List<Lection> categoryLectionList;
     private List<Lection> favoriteLectionList;
     
-    public void getLektionList(int lektionId){
-        cmbChooseCat.getItems().clear();
-        cmbChooseCat.getItems().add("none");
-        List<Lection> lectionList = UserData.getInstance().getLectionList();
-        for(int i = 0; i < lectionList.size(); i++){
-            cmbChooseCat.getItems().add(lectionList.get(i).getName());
-        }
-    }
-    
     /*Diese Methode holt die Kategorieliste von der Datenbank*/
     public void getCategoryList() {
     	cmbChooseCat.getItems().clear();
@@ -122,6 +113,7 @@ public class ChooseCategoryController implements Initializable {
         stageInfo.close();
     }
     
+    /*Diese Methode wird aufgerufen, wenn man eine Category von Categorylist auswaehlt*/
     private void cmbChooseCatValueChanged(ActionEvent event) {
     	if (cmbChooseCat.getSelectionModel().getSelectedIndex() == 0) {
     		cmbChooseLec.getItems().clear();
@@ -132,24 +124,27 @@ public class ChooseCategoryController implements Initializable {
     	}
     }
     
+    /*Diese Methode wird aufgerufen, wenn man eine Favorite von Favoritelist auswaehlt*/
     private void cmbChooseFavValueChanged(ActionEvent event) {
     	if (cmbChooseFav.getSelectionModel().getSelectedIndex() == 0) {
     		cmbChooseLec.getItems().clear();
     	}
     }
 
+    /*Diese Methode stellt fest, bei welchen Bedingungen sollen die Objekte deaktiviert werden*/
     private void setDisableProperty() {
     	cmbChooseCat.disableProperty().bind(cmbChooseFav.getSelectionModel().selectedIndexProperty().greaterThan(0));
     	cmbChooseLec.disableProperty().bind(cmbChooseCat.getSelectionModel().selectedIndexProperty().lessThan(1));
     	cmbChooseFav.disableProperty().bind(cmbChooseCat.getSelectionModel().selectedIndexProperty().greaterThan(0));
     }
     
+    /*Diese Methode initializiert die Categorylist und Favoritelist wenn man das Fenster erst aufmacht.*/
     private void initializeListe() {
         getCategoryList();
         getFavoriteList();
     }
     
-    /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
+    /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen und erforderliche Methode aufgerufen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnBack.setOnAction(this::closeChooseCategorieWindow);
