@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6612d930-18eb-47b0-8be7-c129899449f2" name="Default Changelist" comment="-added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeEmailController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeNameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeUsernameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/changeEmailWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/changeNameWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/changePasswordWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fxml/changeUsernameWindow.fxml" afterDir="false" />
+    <list default="true" id="6612d930-18eb-47b0-8be7-c129899449f2" name="Default Changelist" comment="-added some UserOptions">
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_11.xml" beforeDir="false" />
@@ -17,17 +9,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_mac_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_mac_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/classes/jdbc/UserDaoJdbcImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/classes/jdbc/UserDaoJdbcImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/data/UserData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/data/UserData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/facades/DaoFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/facades/DaoFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/facades/ServiceFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/facades/ServiceFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/service/classes/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/service/classes/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/service/interfaces/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/service/interfaces/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/UserOptionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/UserOptionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/database/Projekt.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/Projekt.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/functionsWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/functionsWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/database/Projekt.db" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/database/Projekt.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -135,11 +118,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="116" column="33" lean-forward="true" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
+            <state relative-caret-position="294">
+              <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -147,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+            <state relative-caret-position="480">
+              <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -232,7 +215,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changePassword.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changeEmail.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changeNameWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/data/UserData.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/classes/jdbc/UserDaoJdbcImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/UserDao.java" />
@@ -245,6 +227,7 @@
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeUsernameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/UserOptionsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeEmailController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java" />
       </list>
     </option>
   </component>
@@ -477,7 +460,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554238383989" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554239454504" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -608,7 +591,7 @@
       <workItem from="1554146556403" duration="518000" />
       <workItem from="1554205483338" duration="5405000" />
       <workItem from="1554215122220" duration="6109000" />
-      <workItem from="1554221770756" duration="11989000" />
+      <workItem from="1554221770756" duration="13129000" />
     </task>
     <task id="LOCAL-00001" summary="GUI wurde in eingefügt">
       <created>1553090754247</created>
@@ -736,11 +719,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554225901283</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="-added some UserOptions">
+      <created>1554238483585</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1554238483585</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178494000" />
+    <option name="totallyTimeSpent" value="179634000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="1" width="1694" height="1017" extended-state="1" />
@@ -799,7 +789,8 @@
     <MESSAGE value="-some changes to the MenuItems in the createWindos.fxml&#10;-added an add and remove function for favorites&#10;-added an update Method to the LectionDaoJdbcImpl" />
     <MESSAGE value="-little change in createWindow.fxml" />
     <MESSAGE value="-added Useroptions to the functionWindow&#10;-added userOptions.fxml, will be implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="-added Useroptions to the functionWindow&#10;-added userOptions.fxml, will be implemented" />
+    <MESSAGE value="-added some UserOptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="-added some UserOptions" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/helperclasses/WindowPresetSwitchStage.java">
@@ -1145,16 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="116" column="33" lean-forward="true" selection-start-line="116" selection-start-column="33" selection-end-line="116" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/UserOptionsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
@@ -1203,8 +1184,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="39" column="50" lean-forward="true" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+        <state relative-caret-position="480">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="62" column="27" selection-start-line="62" selection-start-column="27" selection-end-line="62" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

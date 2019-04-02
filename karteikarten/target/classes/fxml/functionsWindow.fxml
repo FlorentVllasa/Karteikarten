@@ -24,7 +24,7 @@
             <Separator layoutX="268.0" layoutY="202.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="2.0" />
             <ImageView fx:id="ivLearn" fitHeight="164.0" fitWidth="164.0" layoutX="52.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Pictures/GespeicherteKarteikarten.png" />
+                  <Image url="@../Pictures/lernen.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -32,7 +32,7 @@
             </ImageView>
             <ImageView fx:id="ivManager" fitHeight="164.0" fitWidth="164.0" layoutX="365.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Pictures/createNewTable.png" />
+                  <Image url="@../Pictures/edit.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

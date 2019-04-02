@@ -2,6 +2,7 @@ C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikart
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\Lection.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\PictureServiceImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchScene.java
+C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\ChangeUsernameController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\classes\LectionImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\classes\PictureImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\interfaces\CategoryService.java
@@ -21,6 +22,7 @@ C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikart
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\classes\jdbc\PictureDaoJdbcImpl.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\interfaces\Favoritelist.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\FavoritelistServiceImpl.java
+C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\ChangeNameController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\helperclasses\WindowPresetSwitchStage.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\factories\ServiceFactory.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\interfaces\FavoritelistDao.java
@@ -46,6 +48,8 @@ C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikart
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\facades\ServiceFacade.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\interfaces\IndexCardService.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\model\classes\CategoryImpl.java
+C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\ChangePasswordController.java
+C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\view\javafx\controllers\ChangeEmailController.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\dao\interfaces\IndexCardDao.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\facades\DaoFacade.java
 C:\Users\hp\Desktop\bernerslee\karteikarten\src\main\java\de\kksystem\karteikarten\service\classes\CategoryServiceImpl.java
