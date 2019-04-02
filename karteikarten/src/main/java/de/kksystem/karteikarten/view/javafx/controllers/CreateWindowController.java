@@ -196,7 +196,15 @@ public class CreateWindowController implements Initializable {
 			List<IndexCard> allIndexCards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(lectionId);
 
 			for (int i = 0; i < allIndexCards.size(); i++) {
-				tvIndexCards.getItems().add(allIndexCards.get(i));
+				int indexCardId = allIndexCards.get(i).getIndexCardId();
+				String question = getText(allIndexCards.get(i).getQuestion());
+				String answer = getText(allIndexCards.get(i).getAnswer());
+				String color = null;
+				int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
+				int pictureId = allIndexCards.get(i).getPictureId();
+
+				IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
+				tvIndexCards.getItems().add(indexCard);
 			}
 		}
 	}
@@ -233,7 +241,15 @@ public class CreateWindowController implements Initializable {
 							.findAllIndexCardsByLectionId(selectedLection);
 
 					for (int i = 0; i < allIndexCards.size(); i++) {
-						tvIndexCards.getItems().add(allIndexCards.get(i));
+						int indexCardId = allIndexCards.get(i).getIndexCardId();
+						String question = getText(allIndexCards.get(i).getQuestion());
+						String answer = getText(allIndexCards.get(i).getAnswer());
+						String color = null;
+						int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
+						int pictureId = allIndexCards.get(i).getPictureId();
+
+						IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
+						tvIndexCards.getItems().add(indexCard);
 					}
 				}
 			}
@@ -256,7 +272,15 @@ public class CreateWindowController implements Initializable {
 							.findAllIndexCardsByLectionId(selectedLection);
 
 					for (int i = 0; i < allIndexCards.size(); i++) {
-						tvIndexCards.getItems().add(allIndexCards.get(i));
+						int indexCardId = allIndexCards.get(i).getIndexCardId();
+						String question = getText(allIndexCards.get(i).getQuestion());
+						String answer = getText(allIndexCards.get(i).getAnswer());
+						String color = null;
+						int lectionIdIndexCard = allIndexCards.get(i).getLectionId();
+						int pictureId = allIndexCards.get(i).getPictureId();
+
+						IndexCardImpl indexCard = new IndexCardImpl(indexCardId, question, answer, color, lectionIdIndexCard, pictureId);
+						tvIndexCards.getItems().add(indexCard);
 					}
 				}
 			}
@@ -513,8 +537,10 @@ public class CreateWindowController implements Initializable {
 	}
 
 	public void addIndexCardIntoTableView(ActionEvent event) {
-		String question = getText(htmlQuestion.getHtmlText());
-		String answer = getText(htmlAnswer.getHtmlText());
+		String question = htmlQuestion.getHtmlText();
+		String answer = htmlAnswer.getHtmlText();
+		String questionPlainText = getText(htmlQuestion.getHtmlText());
+		String answerPlainText = getText(htmlAnswer.getHtmlText());
 		String pathOfPicture = null;
 		String pictureFilename = null;
 		int newPictureId = -1;
@@ -522,17 +548,17 @@ public class CreateWindowController implements Initializable {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setTitle("Fehler");
 
-		if (question.isBlank() && answer.isBlank()) {
+		if (questionPlainText.isBlank() && answerPlainText.isBlank()) {
 			alert.setHeaderText("Frage und Antwort wurden nicht eingetragen");
 			alert.setContentText("Bitte tragen Sie unten Ihre Frage und die dazugehörige Antwort ein.");
 
 			alert.showAndWait();
-		} else if (question.isBlank()) {
+		} else if (questionPlainText.isBlank()) {
 			alert.setHeaderText("Frage wurde nicht eingetragen");
 			alert.setContentText("Bitte tragen Sie unten Ihre Frage ein.");
 
 			alert.showAndWait();
-		} else if (answer.isBlank()) {
+		} else if (answerPlainText.isBlank()) {
 			alert.setHeaderText("Antwort wurde nicht eingetragen");
 			alert.setContentText("Bitte tragen Sie unten Ihre Antwort ein.");
 
@@ -608,7 +634,9 @@ public class CreateWindowController implements Initializable {
 			Parent root = fxmlLoader.load();
 
 			// load IndexCard into the two HTML-Editors of EditIndexCardWindow.fxml
-			IndexCard indexCard = tvIndexCards.getSelectionModel().getSelectedItem();
+			IndexCard indexCardData = tvIndexCards.getSelectionModel().getSelectedItem();
+			int indexCardId = indexCardData.getIndexCardId();
+			IndexCard indexCard = ServiceFacade.getInstance().findIndexCardById(indexCardId);
 			String question = indexCard.getQuestion();
 			String answer = indexCard.getAnswer();
 			EditIndexCardController controller = fxmlLoader.getController();
@@ -631,6 +659,8 @@ public class CreateWindowController implements Initializable {
 	@FXML
 	public void switchToDeleteIndexCardDialog(ActionEvent event) {
 		IndexCard selectedIndexCard = tvIndexCards.getSelectionModel().getSelectedItem();
+		int indexCardId = selectedIndexCard.getIndexCardId();
+		IndexCard indexCard = ServiceFacade.getInstance().findIndexCardById(indexCardId);
 
 		Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 		alert.setTitle("Karteikarte löschen");
@@ -639,8 +669,8 @@ public class CreateWindowController implements Initializable {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {
-			ServiceFacade.getInstance().deleteIndexCard(selectedIndexCard);
-			loadIndexCards(selectedIndexCard.getLectionId());
+			ServiceFacade.getInstance().deleteIndexCard(indexCard);
+			loadIndexCards(indexCard.getLectionId());
 		} else {
 
 		}
