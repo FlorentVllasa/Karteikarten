@@ -36,22 +36,19 @@
               <MenuItem fx:id="miAddLection" mnemonicParsing="false" text="Lektion erstellen..." />
                   <MenuItem fx:id="miEditLection" mnemonicParsing="false" text="Lektion bearbeiten..." />
                   <MenuItem fx:id="miDeleteLection" mnemonicParsing="false" text="Lektion löschen" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="miAddFavorite" mnemonicParsing="false" text="Favorit hinzufügen..." />
+                  <MenuItem fx:id="miRemoveFavorite" mnemonicParsing="false" text="Favorit entfernen..." />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Karteikarte">
             <items>
               <MenuItem fx:id="miEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
                   <MenuItem fx:id="miDeleteIndexCard" mnemonicParsing="false" text="Karteikarte löschen..." />
-                  <MenuItem fx:id="miAddPicToIndexCard" mnemonicParsing="false" text="Bild einfügen/ersetzen..." />
-                  <MenuItem fx:id="miShowPicOfIndexCard" mnemonicParsing="false" text="Bild anzeigen..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="miPictureOptions" mnemonicParsing="false" text="Bild-Optionen" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="Favoritenliste">
-              <items>
-                <MenuItem fx:id="miEditFavoritelist" mnemonicParsing="false" text="Favoritenliste bearbeiten..." />
-                  <MenuItem fx:id="miDeleteFavoritelist" mnemonicParsing="false" text="Favoritenliste löschen..." />
-              </items>
-            </Menu>
         </menus>
       </MenuBar>
       <SplitPane dividerPositions="0.2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
@@ -145,8 +142,7 @@
                                                    <contextMenu>
                                                       <ContextMenu fx:id="cntxtFavorites">
                                                         <items>
-                                                          <MenuItem fx:id="cntxtMenuEditFavorite" mnemonicParsing="false" text="Favorit bearbeiten..." />
-                                                            <MenuItem fx:id="cntxtMenuDeleteFavorite" mnemonicParsing="false" text="Favorit löschen..." />
+                                                          <MenuItem fx:id="cntxtMenuRemoveFavorite" mnemonicParsing="false" text="Favorit entfernen..." />
                                                         </items>
                                                       </ContextMenu>
                                                    </contextMenu></ListView>
@@ -179,8 +175,7 @@
                                           <MenuItem fx:id="cntxtMenuEditIndexCard" mnemonicParsing="false" text="Karteikarte bearbeiten..." />
                                           <MenuItem fx:id="cntxtMenuDeleteIndexCard" mnemonicParsing="false" text="Karteikarten löschen..." />
                                           <SeparatorMenuItem mnemonicParsing="false" />
-                                          <MenuItem fx:id="cntxtMenuAddPicture" mnemonicParsing="false" text="Bild hinzufügen..." />
-                                          <MenuItem fx:id="cntxtMenuShowPicture" mnemonicParsing="false" text="Bild anzeigen..." />
+                                          <MenuItem fx:id="cntxtMenuPictureOptions" mnemonicParsing="false" text="Bild-Optionen..." />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>

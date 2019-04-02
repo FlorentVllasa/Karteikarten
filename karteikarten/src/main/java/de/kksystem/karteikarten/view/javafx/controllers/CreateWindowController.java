@@ -615,7 +615,6 @@ public class CreateWindowController implements Initializable {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
-
 		} catch (IOException io) {
 			System.out.println(io.getMessage());
 		}
@@ -717,7 +716,6 @@ public class CreateWindowController implements Initializable {
 				
 
 			}
-
 		} catch (IOException io) {
 			System.out.println(io.getMessage());
 		}
