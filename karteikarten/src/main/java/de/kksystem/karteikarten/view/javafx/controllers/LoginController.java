@@ -1,5 +1,6 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,18 +12,31 @@ import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class LoginController implements Initializable {
     private WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     private WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
     private LoginWindow lw = new LoginWindow();
+
+    @FXML
+    private StackPane stackPaneParent;
     
     @FXML
     private AnchorPane anchorPane;
@@ -53,8 +67,19 @@ public class LoginController implements Initializable {
     	
     	if(!username.isEmpty() && !password.isEmpty()) {
 	    	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
-	            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
-	            closePreviousWindowLogin();
+//	            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
+//	            closePreviousWindowLogin();
+                try{
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
+                    fxmlLoader.setController(new FunctionsController());
+                    Scene scene = new Scene(fxmlLoader.load());
+                    Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    stageInfo.setResizable(false);
+                    stageInfo.setScene(scene);
+                }catch(IOException io){
+                    System.out.println(io.getMessage());
+                }
 	    	}else {
 	    		lblLogInMessage.setText("Benutzername oder Passwort falsch.");
 	    	}
@@ -76,7 +101,27 @@ public class LoginController implements Initializable {
     
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
     public void switchToRegistrationWindow(ActionEvent event){
-        wpss.createWindowSwitchScene("/fxml/registrationWindow.fxml", new RegistrationController(), lw.getWindow());
+        //wpss.createWindowSwitchScene("/fxml/registrationWindow.fxml", new RegistrationController(), lw.getWindow());
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/registrationWindow.fxml"));
+            fxmlLoader.setController(new RegistrationController());
+            Parent root = fxmlLoader.load();
+            Scene scene = buttonForgotPassword.getScene();
+            root.translateXProperty().set(scene.getWidth());
+            stackPaneParent.getChildren().add(root);
+
+            Timeline timeline = new Timeline();
+            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+            timeline.setOnFinished(ev -> {
+                stackPaneParent.getChildren().remove(anchorPane);
+            });
+            timeline.play();
+        }catch(IOException io){
+            System.out.println(io.getMessage());
+        }
     }
 
     /*Diese Methode dient dazu das LoginWindow Fenster zu schließen nach erfolgreichem LoginWindow*/

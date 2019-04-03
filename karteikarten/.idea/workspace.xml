@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6612d930-18eb-47b0-8be7-c129899449f2" name="Default Changelist" comment="">
+    <list default="true" id="6612d930-18eb-47b0-8be7-c129899449f2" name="Default Changelist" comment="-Added Switch Animation from Login Window to Register Window and back&#10;-Added Scene switches to register button, login button and logout button">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_mac_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_mac_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_mac_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_mac_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_media_mac_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_web_mac_11.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/karteikarten.iml" beforeDir="false" afterPath="$PROJECT_DIR$/karteikarten.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database/Projekt.db" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/database/Projekt.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/LoginNew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/LoginNew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,23 +63,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChooseCategoryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-167">
-              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="393">
+              <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,21 +76,34 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/LectionDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="460">
+              <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/IndexCardDao.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="14" column="48" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="48" />
+            <state relative-caret-position="153">
+              <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/LoginNew.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -118,7 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/stages/LoginWindow.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/KategorieAuswaehlenController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrierenController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/utils/JdbcUtils.java" />
@@ -130,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/fxml/createCategoryWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/deleteCategoryWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/editCategoryWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/CreateCategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/EditCategoryController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/editIndexCardWindow.fxml" />
@@ -150,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/CreateWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/userOptionsWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/Css/functionsWindow.css" />
-        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changeUsername.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changePassword.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/changeEmail.fxml" />
@@ -163,12 +173,15 @@
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/service/classes/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/facades/ServiceFacade.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeNameController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeUsernameController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/UserOptionsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangeEmailController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChangePasswordController.java" />
         <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/fxml/LoginNew.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java" />
       </list>
     </option>
   </component>
@@ -196,8 +209,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
-    <option name="width" value="1416" />
-    <option name="height" value="785" />
+    <option name="width" value="1666" />
+    <option name="height" value="1017" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -205,6 +218,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,14 +329,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554287748147" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554302021479" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -453,6 +466,7 @@
       <workItem from="1554205483338" duration="5405000" />
       <workItem from="1554215122220" duration="6109000" />
       <workItem from="1554221770756" duration="13129000" />
+      <workItem from="1554300762371" duration="1256000" />
     </task>
     <task id="LOCAL-00001" summary="GUI wurde in eingefügt">
       <created>1553090754247</created>
@@ -612,7 +626,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179634000" />
+    <option name="totallyTimeSpent" value="180890000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -624,10 +638,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="0" width="1416" height="785" extended-state="0" />
+    <frame x="1" y="0" width="1666" height="1017" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49791378" visible="true" weight="0.17103347" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49791378" visible="true" weight="0.23272727" />
       <window_info id="Structure" order="1" sideWeight="0.5020862" side_tool="true" weight="0.19019608" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -636,8 +650,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289183" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3001443" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.3982684" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.299117" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3982684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.2871573" />
@@ -653,7 +667,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Theme Preview" order="4" />
-      <window_info anchor="right" id="Maven" order="5" sideWeight="0.49889624" visible="true" weight="0.15938865" />
+      <window_info anchor="right" id="Maven" order="5" sideWeight="0.49889624" visible="true" weight="0.18363637" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Database" order="8" weight="0.17112999" />
@@ -685,14 +699,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="-added some UserOptions" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/functionsWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/EditIndexCardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
@@ -881,13 +887,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="54" column="47" selection-start-line="54" selection-start-column="47" selection-end-line="54" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -910,16 +909,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="346" column="56" selection-start-line="346" selection-start-column="11" selection-end-line="346" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="985">
-          <caret line="81" column="55" selection-start-line="81" selection-start-column="55" selection-end-line="81" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -996,16 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="84" column="45" selection-start-line="84" selection-start-column="45" selection-end-line="84" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/CreateWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2852">
@@ -1020,16 +999,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
           <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChooseCategoryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-167">
-          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1054,24 +1023,69 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/IndexCardDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="48" />
+        <state relative-caret-position="678">
+          <caret line="85" selection-start-line="85" selection-end-line="85" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/ChooseCategoryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/LectionDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="220">
           <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LearnWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/dao/interfaces/IndexCardDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="240">
+          <caret line="14" column="48" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/LoginNew.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/FunctionsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="92" column="58" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="117" column="41" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/de/kksystem/karteikarten/view/javafx/controllers/RegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="145" column="43" selection-start-line="145" selection-start-column="43" selection-end-line="145" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

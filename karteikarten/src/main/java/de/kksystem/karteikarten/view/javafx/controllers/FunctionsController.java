@@ -87,16 +87,18 @@ public class FunctionsController implements Initializable {
 
     /*Wenn auf Abmelden Button geklickt wird, schließt sich das Funktionen Fenster und öffnet das Login Fenster*/
     public void switchToPreviousWindowLogin(ActionEvent event){
-        Stage stage = new Stage();
         try{
-            lw.start(stage);
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
+            fxmlLoader.setController(new LoginController());
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stageInfo.setResizable(false);
+            stageInfo.setScene(scene);
         }catch(IOException io){
-            io.printStackTrace();
-        }catch(Exception e){
-            e.printStackTrace();
+            System.out.println(io.getMessage());
         }
         //wp.createWindowNewStage("/loginWindow.fxml", "Login Window", new LoginController());
-        closeWindowFunktionen();
     }
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
      * Dies wird erreicht in dem die Stage Information irgendeiner Komponente der Scene ermittelt wird und
