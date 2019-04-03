@@ -1,6 +1,11 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
+import de.kksystem.karteikarten.data.UserData;
+import de.kksystem.karteikarten.model.classes.LectionImpl;
+import de.kksystem.karteikarten.model.interfaces.Lection;
 import javafx.application.Application;
+import javafx.beans.Observable;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +23,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
+
 
 
 
@@ -71,23 +77,18 @@ public class LearnWindowController implements Initializable {
         stageInfo.close();
     }
 
-    // Methode zum Anzeigen der Antwort
 
-    public void antwortAanzeigen(){
+   public void btnAnswer(ActionEvent event){
+       UserData.getInstance().getLection().getLectionId();
 
-        if(------------){//richtig ?
-
-        } else {
-            System.out.println("Leider Falsch");
-        }
-
-    }
+   }
     
 
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnCloseWindow.setOnAction(this::closeLearnWindow);
+
 
     }
 }
