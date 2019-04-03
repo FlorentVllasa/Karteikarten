@@ -41,7 +41,7 @@
             <Image url="@../Pictures/register_button.png" />
          </image>
       </ImageView>
-      <Label fx:id="lblKontoErstellen" layoutX="141.0" layoutY="22.0" text="Konto Erstellen">
+      <Label fx:id="lblKontoErstellen" layoutX="141.0" layoutY="22.0" text="Konto Erstellen" textFill="WHITE">
          <font>
             <Font size="48.0" />
          </font>

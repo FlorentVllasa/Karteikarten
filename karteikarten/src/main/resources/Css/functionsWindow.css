@@ -1,9 +1,15 @@
+#anchorPane {
+	-fx-background-color : linear-gradient(#FF8000,#FFFF00);
+}
 
+#btnLogOut {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
 
-
-
-
-
+#btnLogOut:hover {
+	-fx-background-color: #2E64FE;
+}
 
 #ivLearn:hover{
     -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 10, 0.5 , 0 , 2 );
