@@ -30,10 +30,6 @@ import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
 
-
-
-
-
 	@FXML
     private SplitPane splitPane;
 
