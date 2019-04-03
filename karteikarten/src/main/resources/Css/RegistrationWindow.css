@@ -1,0 +1,23 @@
+#anchorPane {
+	-fx-background-color : linear-gradient(#FF8000,#FFFF00);
+}
+
+
+#btnBack {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnBack:hover {
+	-fx-background-color: #2E64FE;
+}
+
+#btnSendCode {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnSendCode:hover {
+
+	-fx-background-color: #2E64FE;
+}
