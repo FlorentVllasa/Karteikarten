@@ -1,0 +1,13 @@
+#anchorPane {
+	-fx-background-color : linear-gradient(#FF8000,#FFFF00);
+}
+
+
+#buttonLogin {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#buttonLogin:hover {
+	-fx-background-color: green;
+}
