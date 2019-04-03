@@ -25,10 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
 
 import java.net.URL;
 import java.security.SecureRandom;
