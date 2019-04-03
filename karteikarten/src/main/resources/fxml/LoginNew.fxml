@@ -39,9 +39,9 @@
          </font></Button>
       <Separator layoutX="299.0" layoutY="107.0" orientation="VERTICAL" prefHeight="226.0" prefWidth="5.0" />
       <Label layoutX="286.0" layoutY="173.0" text="oder" />
-      <ImageView fitHeight="162.0" fitWidth="157.0" layoutX="350.0" layoutY="106.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="99.0" AnchorPane.topAnchor="106.0">
+      <ImageView fitHeight="140.0" fitWidth="157.0" layoutX="362.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="157.0" AnchorPane.leftAnchor="362.0" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="103.0">
          <image>
-            <Image url="@../Pictures/register_button.png" />
+            <Image url="@../Pictures/AddUserIcon.png" />
          </image>
       </ImageView>
       <Label fx:id="lblLogInMessage" layoutX="21.0" layoutY="369.0" textFill="RED" />
