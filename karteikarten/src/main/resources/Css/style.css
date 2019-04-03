@@ -9,5 +9,25 @@
 }
 
 #buttonLogin:hover {
-	-fx-background-color: green;
+	-fx-background-color: #2E64FE;
+}
+
+#buttonForgotPassword {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#buttonForgotPassword:hover {
+
+	-fx-background-color: #2E64FE;
+}
+
+#buttonRegister {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#buttonRegister:hover {
+
+	-fx-background-color: #2E64FE;
 }
