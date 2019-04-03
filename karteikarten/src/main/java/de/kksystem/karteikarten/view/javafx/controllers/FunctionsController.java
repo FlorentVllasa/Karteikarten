@@ -4,6 +4,9 @@ import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,9 +24,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class FunctionsController implements Initializable {
@@ -51,6 +57,9 @@ public class FunctionsController implements Initializable {
     
     @FXML
     private Label lblLoggedInMessage;
+
+    @FXML
+    private Label lblDateTime;
     
     @FXML
     private void printUserId(ActionEvent event) {
@@ -113,9 +122,19 @@ public class FunctionsController implements Initializable {
     	lblLoggedInMessage.setText("Eingeloggt als " + username + ".");
     }
 
+    private void showTime() {
+    	Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            lblDateTime.setText(LocalDateTime.now().format(formatter));
+        }), new KeyFrame(Duration.seconds(1)));
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+
     /*Hier werden die anklickbaren Button und Bilder ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+    	showTime();
     	showLblLoggedInMessage();
         //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
     	btnLogOut.setOnAction(this::switchToPreviousWindowLogin);

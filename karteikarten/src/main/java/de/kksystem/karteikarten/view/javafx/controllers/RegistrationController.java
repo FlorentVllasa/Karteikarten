@@ -101,6 +101,7 @@ public class RegistrationController implements Initializable {
         }else if(!password.equals(confirmpassword)) {
         	lblMessage.setText("Die Passwörter stimmen nicht überein!");
         }else{
+        	lblMessage.setText("");
             UserImpl user = new UserImpl(userName, email, password, surname, foreName, null);
             
             int newUserId = ServiceFacade.getInstance().addUser(user);
@@ -210,6 +211,7 @@ public class RegistrationController implements Initializable {
         }else if(ServiceFacade.getInstance().checkRegister(userName, email) == 0){
             lblMessage.setText("Benutzername wird schon benutzt!");
         }else{
+        	lblMessage.setText("");
         	generatedKey = generateKey();
         	//System.out.println(generatedKey);
             
@@ -281,6 +283,7 @@ public class RegistrationController implements Initializable {
     /*Diese Methode vergleicht den von Benutzer eingegebenen Schüssel und dem zu der Benutzeremail geschickten Schlüssel*/
 	private void compareKey(ActionEvent event) {
 		if (txtConfirmationCode.getText().equals(generatedKey)) {
+			lblMessage.setText("");
 			txtConfirmationCode.setVisible(false);
 			txtConfirmationCode.setDisable(true);
 			btnConfirm.setVisible(false);

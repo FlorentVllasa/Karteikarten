@@ -80,7 +80,7 @@
                <Image url="@../Pictures/PasswordIcon.png" />
             </image>
          </ImageView>
-            <Label fx:id="lblDateTime" layoutX="476.0" layoutY="373.0" text="Time">
+            <Label fx:id="lblDateTime" layoutX="456.0" layoutY="374.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="140.0" text="Time">
                <font>
                   <Font name="Gabriola" size="20.0" />
                </font>
