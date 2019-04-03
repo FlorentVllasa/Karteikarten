@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="CENTER" layoutX="-4.0" prefHeight="74.0" prefWidth="606.0" text="Hallo!&#10;Anmelden oder neues Konto erstellen" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
+      <Label alignment="CENTER" layoutX="-4.0" prefHeight="74.0" prefWidth="606.0" text="Hallo!&#10;Anmelden oder neues Konto erstellen" textAlignment="CENTER" textFill="WHITE" underline="true" AnchorPane.bottomAnchor="326.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -23,11 +23,11 @@
          <children>
             <TextField fx:id="txtUsername" prefHeight="51.0" prefWidth="153.0" promptText="Benutzername...">
                <font>
-                  <Font size="18.0" />
+                  <Font size="17.0" />
                </font></TextField>
             <PasswordField fx:id="txtPassword" prefHeight="51.0" prefWidth="153.0" promptText="Passwort...">
                <font>
-                  <Font size="18.0" />
+                  <Font size="17.0" />
                </font></PasswordField>
          </children>
       </VBox>
