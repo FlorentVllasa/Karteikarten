@@ -40,7 +40,7 @@
             </ImageView>
             <Label fx:id="lblLoggedInMessage" layoutX="9.0" layoutY="584.0" prefHeight="24.0" prefWidth="277.0" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="20.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
             <Button fx:id="btnLogOut" layoutX="765.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="107.0" text="Abmelden">
