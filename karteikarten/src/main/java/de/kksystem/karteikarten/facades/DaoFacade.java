@@ -1,11 +1,14 @@
+
 package de.kksystem.karteikarten.facades;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
 import de.kksystem.karteikarten.dao.interfaces.CategoryDao;
 import de.kksystem.karteikarten.dao.interfaces.FavoritelistDao;
 import de.kksystem.karteikarten.dao.interfaces.IndexCardDao;
+import de.kksystem.karteikarten.dao.interfaces.IndexCardStatDao;
 import de.kksystem.karteikarten.dao.interfaces.LectionDao;
 import de.kksystem.karteikarten.dao.interfaces.PictureDao;
 import de.kksystem.karteikarten.dao.interfaces.UserDao;
@@ -13,6 +16,7 @@ import de.kksystem.karteikarten.factories.DaoFactory;
 import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
+import de.kksystem.karteikarten.model.interfaces.IndexCardStat;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 import de.kksystem.karteikarten.model.interfaces.User;
@@ -23,6 +27,7 @@ public class DaoFacade {
 	private static CategoryDao categoryDao;
 	private static LectionDao lectionDao;
 	private static IndexCardDao indexCardDao;
+	private static IndexCardStatDao indexCardStatDao;
 	private static PictureDao pictureDao;
 	private static FavoritelistDao favoritelistDao;
 	
@@ -32,6 +37,7 @@ public class DaoFacade {
 		categoryDao = DaoFactory.createCategoryDao();
 		lectionDao = DaoFactory.createLectionDao();
 		indexCardDao = DaoFactory.createIndexCardDao();
+		indexCardStatDao = DaoFactory.createIndexCardStatDao();
 		favoritelistDao = DaoFactory.createFavoritelistDao();
 		pictureDao = DaoFactory.createPictureDao();
 	}
@@ -281,4 +287,32 @@ public class DaoFacade {
 	public Favoritelist findFavoritelistIdByUserId(int userId) {
 		return favoritelistDao.findFavoritelistIdByUserId(userId);
 	}
+	
+	/*
+	 * 
+	 *IndexCardStat
+	 *
+	 * 
+	 */
+	public int addIndexCardStat(IndexCardStat indexCardStat) {
+		return indexCardStatDao.addIndexCardStat(indexCardStat);
+	}
+	
+	public void updateRight(int indexCardId) {
+		indexCardStatDao.updateRight(indexCardId);
+	}
+	
+	public void updateWrong(int indexCardId) {
+		indexCardStatDao.updateWrong(indexCardId);
+	}
+	
+	public List<IndexCardStat> findAllStatsByIndexCardId(int indexCardId, int numberOfLastDays) {
+		return indexCardStatDao.findAllStatsByIndexCardId(indexCardId, numberOfLastDays);
+	}
+	
+	public List<IndexCardStat> findAllStatsByLectionId(int lectionId, int numberOfLastDays) {
+		return indexCardStatDao.findAllStatsByLectionId(lectionId, numberOfLastDays);
+	}
+	
 }
+

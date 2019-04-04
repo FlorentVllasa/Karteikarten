@@ -73,6 +73,7 @@
                   <Font name="Gabriola" size="20.0" />
                </font>
             </Label>
+            <Button fx:id="btnStatistics" layoutX="99.0" layoutY="448.0" mnemonicParsing="false" text="Statistiken" />
          </children>
          <opaqueInsets>
             <Insets />

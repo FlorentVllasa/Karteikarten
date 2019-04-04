@@ -12,6 +12,7 @@ public interface IndexCardService {
 	void updateAnswer(String newAnswer, int indexCardId);
 	void updatePictureId(int indexCardId, int pictureId);
 	IndexCard findIndexCardById(int indexCardId);
+	IndexCard findIndexCardByIdWithoutHTML(int indexCardId);
 	List<IndexCard> findAllIndexCardsByLectionId(int lectionId);
 	List<IndexCard> findAllIndexCardsByLectionIdWithoutHTML(int lectionId);
 }

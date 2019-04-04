@@ -12,7 +12,6 @@ import java.util.List;
 import de.kksystem.karteikarten.dao.interfaces.IndexCardDao;
 import de.kksystem.karteikarten.factories.ModelFactory;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
-import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.utils.JdbcUtils;
 
 /**
@@ -71,7 +70,7 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 			}
 		}
 	}
-
+	
 	@Override
 	public int addIndexCard(IndexCard indexCard) {
 		Connection connection = null;
@@ -114,6 +113,10 @@ public class IndexCardDaoJdbcImpl implements IndexCardDao {
 			sqle.printStackTrace();
 			return -1;
 		} finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+			
 			if (pstatement != null) {
 				try {
 					pstatement.close();

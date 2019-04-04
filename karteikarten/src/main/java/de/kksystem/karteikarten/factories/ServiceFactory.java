@@ -3,12 +3,14 @@ package de.kksystem.karteikarten.factories;
 import de.kksystem.karteikarten.service.classes.CategoryServiceImpl;
 import de.kksystem.karteikarten.service.classes.FavoritelistServiceImpl;
 import de.kksystem.karteikarten.service.classes.IndexCardServiceImpl;
+import de.kksystem.karteikarten.service.classes.IndexCardStatServiceImpl;
 import de.kksystem.karteikarten.service.classes.LectionServiceImpl;
 import de.kksystem.karteikarten.service.classes.PictureServiceImpl;
 import de.kksystem.karteikarten.service.classes.UserServiceImpl;
 import de.kksystem.karteikarten.service.interfaces.CategoryService;
 import de.kksystem.karteikarten.service.interfaces.FavoritelistService;
 import de.kksystem.karteikarten.service.interfaces.IndexCardService;
+import de.kksystem.karteikarten.service.interfaces.IndexCardStatService;
 import de.kksystem.karteikarten.service.interfaces.LectionService;
 import de.kksystem.karteikarten.service.interfaces.PictureService;
 import de.kksystem.karteikarten.service.interfaces.UserService;
@@ -36,5 +38,9 @@ public class ServiceFactory {
 	
 	public static FavoritelistService createFavoritelist() {
 		return new FavoritelistServiceImpl();
+	}
+	
+	public static IndexCardStatService createIndexCardStatService() {
+		return new IndexCardStatServiceImpl();
 	}
 }

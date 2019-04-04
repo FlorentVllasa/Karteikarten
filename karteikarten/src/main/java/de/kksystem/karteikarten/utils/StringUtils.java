@@ -1,5 +1,8 @@
 package de.kksystem.karteikarten.utils;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class StringUtils {
 	// Überprüfe, ob tatsächlich ein Integer
 	public static boolean isInteger(String str) {
@@ -23,6 +26,20 @@ public class StringUtils {
 	        }
 	    }
 	    return true;
+	}
+	
+	// entfernt html-code eines Strings und gibt demzufolge nur den eigentlichen text zurück
+	public static String getText(String htmlText) {
+		String result = "";
+		Pattern pattern = Pattern.compile("<[^>]*>");
+		Matcher matcher = pattern.matcher(htmlText);
+		final StringBuffer text = new StringBuffer(htmlText.length());
+		while (matcher.find()) {
+			matcher.appendReplacement(text, " ");
+		}
+		matcher.appendTail(text);
+		result = text.toString().trim();
+		return result;
 	}
 	
 }

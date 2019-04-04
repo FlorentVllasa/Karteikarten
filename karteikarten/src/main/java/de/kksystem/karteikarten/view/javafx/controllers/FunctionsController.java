@@ -46,6 +46,10 @@ public class FunctionsController implements Initializable {
     @FXML
     private Button btnLogOut;
     
+    
+    @FXML
+    private Button btnStatistics;
+    
     @FXML
     private ImageView ivLearn;
 
@@ -80,6 +84,10 @@ public class FunctionsController implements Initializable {
         }catch(IOException io){
             System.out.println(io.getMessage());
         }
+    }
+    
+    public void switchToStatisticsWindow(ActionEvent event) {
+    	wp.createWindowNewStage("/fxml/Statistics.fxml", "Statistiken Ihrer Lektionen und Karteikarten", new StatisticsController());
     }
 
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
@@ -143,6 +151,7 @@ public class FunctionsController implements Initializable {
         ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
         ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
         ivUserOptions.setOnMouseClicked(this::switchSceneToUserOptionsWindow);
+        btnStatistics.setOnAction(this::switchToStatisticsWindow);
     }
     //Farbe  #0B2161
 }

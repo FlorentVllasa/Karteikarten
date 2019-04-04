@@ -1,5 +1,6 @@
 package de.kksystem.karteikarten.facades;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -8,12 +9,14 @@ import de.kksystem.karteikarten.model.classes.FavoritelistImpl;
 import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.Favoritelist;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
+import de.kksystem.karteikarten.model.interfaces.IndexCardStat;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 import de.kksystem.karteikarten.model.interfaces.User;
 import de.kksystem.karteikarten.service.interfaces.CategoryService;
 import de.kksystem.karteikarten.service.interfaces.FavoritelistService;
 import de.kksystem.karteikarten.service.interfaces.IndexCardService;
+import de.kksystem.karteikarten.service.interfaces.IndexCardStatService;
 import de.kksystem.karteikarten.service.interfaces.LectionService;
 import de.kksystem.karteikarten.service.interfaces.PictureService;
 import de.kksystem.karteikarten.service.interfaces.UserService;
@@ -24,6 +27,7 @@ public class ServiceFacade {
 	private static CategoryService categoryService;
 	private static LectionService lectionService;
 	private static IndexCardService indexCardService;
+	private static IndexCardStatService indexCardStatService;
 	private static PictureService pictureService;
 	private static FavoritelistService favoritelistService;
 	
@@ -32,6 +36,7 @@ public class ServiceFacade {
 		categoryService = ServiceFactory.createCategoryService();
 		lectionService = ServiceFactory.createLectionService();
 		indexCardService = ServiceFactory.createIndexCardService();
+		indexCardStatService = ServiceFactory.createIndexCardStatService();
 		pictureService = ServiceFactory.createPicture();
 		favoritelistService = ServiceFactory.createFavoritelist();
 	}
@@ -219,6 +224,10 @@ public class ServiceFacade {
 		return indexCardService.findIndexCardById(indexCardId);
 	}
 	
+	public IndexCard findIndexCardByIdWithoutHTML(int indexCardId) {
+		return indexCardService.findIndexCardByIdWithoutHTML(indexCardId);
+	}
+	
 	public List<IndexCard> findAllIndexCardsByLectionId(int lectionId) {
 		return indexCardService.findAllIndexCardsByLectionId(lectionId);
 	}
@@ -285,5 +294,31 @@ public class ServiceFacade {
 	
 	public Favoritelist findFavoritelistIdByUserId(int userId) {
 		return favoritelistService.findFavoritelistIdByUserId(userId);
+	}
+	
+	/*
+	 * 
+	 *IndexCardStat
+	 *
+	 * 
+	 */
+	public int addIndexCardStat(IndexCardStat indexCardStat) {
+		return indexCardStatService.addIndexCardStat(indexCardStat);
+	}
+	
+	public void updateRight(int indexCardId) {
+		indexCardStatService.updateRight(indexCardId);
+	}
+	
+	public void updateWrong(int indexCardId) {
+		indexCardStatService.updateWrong(indexCardId);
+	}
+	
+	public List<IndexCardStat> findAllStatsByIndexCardId(int indexCardId, int numberOfLastDays) {
+		return indexCardStatService.findAllStatsByIndexCardId(indexCardId, numberOfLastDays);
+	}
+	
+	public List<IndexCardStat> findAllStatsByLectionId(int lectionId, int numberOfLastDays) {
+		return indexCardStatService.findAllStatsByLectionId(lectionId, numberOfLastDays);
 	}
 }
