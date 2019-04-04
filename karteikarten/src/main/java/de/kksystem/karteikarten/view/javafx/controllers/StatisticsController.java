@@ -2,6 +2,7 @@ package de.kksystem.karteikarten.view.javafx.controllers;
 
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -286,6 +287,7 @@ public class StatisticsController implements Initializable {
 
 	@FXML
 	private void calculateStatistics(List<IndexCardStat> indexCardStatList, String type) {
+		resetLectionLabels();
 		if (indexCardStatList.size() > 0) {
 			double resultTotalNumberRight = 0;
 			double resultTotalNumberWrong = 0;
@@ -356,6 +358,8 @@ public class StatisticsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		LocalDate ld = LocalDate.now();
+		System.out.println(ld);
 		showLoadedData();
 		showIndexCardBarChart();
 		cmbCategories.setOnAction(this::dynamicListLection);
