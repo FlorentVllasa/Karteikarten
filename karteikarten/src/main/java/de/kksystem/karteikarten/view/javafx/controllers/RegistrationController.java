@@ -259,24 +259,9 @@ public class RegistrationController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
             fxmlLoader.setController(new LoginController());
             Parent root = fxmlLoader.load();
-            Scene scene = btnBack.getScene();
-
-            //getting parent Container from Login Window
-            StackPane stackPaneParent = (StackPane) scene.getRoot();
-            stackPaneParent.getChildren().add(root);
-
-            //setting the position of the scene to appear from left to right(negative Width Value)
-            //Otherwise from right to left
-            root.translateXProperty().set(-scene.getWidth());
-
-            Timeline timeline = new Timeline();
-            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
-            timeline.getKeyFrames().add(keyFrame);
-            timeline.setOnFinished(ev -> {
-                stackPaneParent.getChildren().remove(anchorPane);
-            });
-            timeline.play();
+            Stage stageInfo = (Stage) btnBack.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());
         }

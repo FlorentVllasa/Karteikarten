@@ -6,6 +6,7 @@ import de.kksystem.karteikarten.view.javafx.controllers.LoginController;
 import javafx.application.Application;
 //import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.CacheHint;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,8 +21,9 @@ public class LoginWindow extends Application {
 		final FXMLLoader fxmlLoader = new FXMLLoader(fxmlUrl);
 		fxmlLoader.setController(new LoginController());
 		final Parent root = fxmlLoader.load();
-		
-		Scene scene = new Scene(root, 600, 400);
+		root.setCache(true);
+		root.setCacheHint(CacheHint.SPEED);
+		Scene scene = new Scene(root);
 		window.setScene(scene);
 		window.setResizable(false);
 		window.setTitle("Login Window");

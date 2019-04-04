@@ -23,6 +23,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -109,18 +110,9 @@ public class LoginController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/ForgotPassword.fxml"));
             fxmlLoader.setController(new ForgotPasswordController());
             Parent root = fxmlLoader.load();
-            Scene scene = buttonForgotPassword.getScene();
-            root.translateXProperty().set(scene.getWidth());
-            stackPaneParent.getChildren().add(root);
-
-            Timeline timeline = new Timeline();
-            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
-            timeline.getKeyFrames().add(keyFrame);
-            timeline.setOnFinished(ev -> {
-                stackPaneParent.getChildren().remove(anchorPane);
-            });
-            timeline.play();
+            Stage stageInfo = (Stage) buttonForgotPassword.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());
         }
@@ -134,18 +126,9 @@ public class LoginController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/registrationWindow.fxml"));
             fxmlLoader.setController(new RegistrationController());
             Parent root = fxmlLoader.load();
-            Scene scene = buttonRegister.getScene();
-            root.translateXProperty().set(scene.getWidth());
-            stackPaneParent.getChildren().add(root);
-
-            Timeline timeline = new Timeline();
-            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
-            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
-            timeline.getKeyFrames().add(keyFrame);
-            timeline.setOnFinished(ev -> {
-                stackPaneParent.getChildren().remove(anchorPane);
-            });
-            timeline.play();
+            Stage stageInfo = (Stage) buttonRegister.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());
         }
