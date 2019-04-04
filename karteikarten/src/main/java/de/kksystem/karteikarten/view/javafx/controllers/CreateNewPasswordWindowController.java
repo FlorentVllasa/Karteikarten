@@ -7,14 +7,24 @@ import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScen
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -58,10 +68,36 @@ public class CreateNewPasswordWindowController implements Initializable{
     		alert.setTitle("Erfolgreich!");
     		alert.setHeaderText("Ihr Passwort wurde geändert. \nBitte loggen Sie sich mit dem neuen Passwort ein.");
     		alert.showAndWait();
-    	    WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
-    	    WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
-    	    LoginWindow lw = new LoginWindow();
-    	    wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
+			switchToLoginWindow();
+		}
+	}
+
+	public void switchToLoginWindow(){
+		try{
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
+			fxmlLoader.setController(new LoginController());
+			Parent root = fxmlLoader.load();
+			Scene scene = btnChangePassword.getScene();
+
+			//getting parent Container from Login Window
+			StackPane stackPaneParent = (StackPane) scene.getRoot();
+			stackPaneParent.getChildren().add(root);
+
+			//setting the position of the scene to appear from left to right(negative Width Value)
+			//Otherwise from right to left
+			root.translateXProperty().set(-scene.getWidth());
+
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
+			KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.setOnFinished(ev -> {
+				stackPaneParent.getChildren().remove(anchorPane);
+			});
+			timeline.play();
+		}catch(IOException io){
+			System.out.println(io.getMessage());
 		}
 	}
 	

@@ -7,22 +7,32 @@ import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScen
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 
+import java.io.IOException;
 import java.util.Properties;
 
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -64,19 +74,63 @@ public class ForgotPasswordController implements Initializable{
 	
 	/*Diese Methode springt das Fenster auf das LoginWindow zurueck*/
 	private void switchToLoginWindow(ActionEvent event){
-        Stage stage = new Stage();
-        try{
-            lw.start(stage);
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-        Stage stageInfo = (Stage) btnBack.getScene().getWindow();
-        stageInfo.close();
+		try{
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
+			fxmlLoader.setController(new LoginController());
+			Parent root = fxmlLoader.load();
+			Scene scene = btnBack.getScene();
+
+			//getting parent Container from Login Window
+			StackPane stackPaneParent = (StackPane) scene.getRoot();
+			stackPaneParent.getChildren().add(root);
+
+			//setting the position of the scene to appear from left to right(negative Width Value)
+			//Otherwise from right to left
+			root.translateXProperty().set(-scene.getWidth());
+
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
+			KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.setOnFinished(ev -> {
+				stackPaneParent.getChildren().remove(anchorPane);
+			});
+			timeline.play();
+		}catch(IOException io){
+			System.out.println(io.getMessage());
+		}
     }
 	
 	/*Diese Methode erstellt ein neues Fenster zum Aendern des Passworts, falls die geschickte und eingegebene Schluesseln miteinander stimmen*/
 	private void switchToCreateNewPasswordWindow() {
-		wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
+		//wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
+		try{
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("/fxml/CreateNewPasswordWindow.fxml"));
+			fxmlLoader.setController(new CreateNewPasswordWindowController(txtFieldEmail.getText()));
+			Parent root = fxmlLoader.load();
+			Scene scene = btnConfirm.getScene();
+
+			//getting parent Container from Login Window
+			StackPane stackPaneParent = (StackPane) scene.getRoot();
+			stackPaneParent.getChildren().add(root);
+
+			//setting the position of the scene to appear from left to right(negative Width Value)
+			//Otherwise from right to left
+			root.translateXProperty().set(-scene.getWidth());
+
+			Timeline timeline = new Timeline();
+			KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
+			KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+			timeline.getKeyFrames().add(keyFrame);
+			timeline.setOnFinished(ev -> {
+				stackPaneParent.getChildren().remove(anchorPane);
+			});
+			timeline.play();
+		}catch(IOException io){
+			System.out.println(io.getMessage());
+		}
 	}
 	
 	/*Diese Methode generiert eine Wiederherstellungsschluessel mit der Länge KEY_LENGTH (default = 100, Langeaenderung erfolgt durch Konstantwertaenderung)*/	

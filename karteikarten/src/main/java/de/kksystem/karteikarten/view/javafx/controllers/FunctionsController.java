@@ -101,9 +101,11 @@ public class FunctionsController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
             fxmlLoader.setController(new LoginController());
             Scene scene = new Scene(fxmlLoader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+            closeWindowFunktionen();
         }catch(IOException io){
             System.out.println(io.getMessage());
         }

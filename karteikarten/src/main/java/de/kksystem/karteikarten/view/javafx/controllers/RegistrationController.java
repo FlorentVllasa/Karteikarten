@@ -124,10 +124,12 @@ public class RegistrationController implements Initializable {
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
                         fxmlLoader.setController(new FunctionsController());
+                        Stage stage = new Stage();
                         Scene scene = new Scene(fxmlLoader.load());
-                        Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                        stageInfo.setResizable(false);
-                        stageInfo.setScene(scene);
+                        stage.setResizable(false);
+                        stage.setScene(scene);
+                        stage.show();
+                        closeRegisterWindow();
                     }catch(IOException io){
                         System.out.println(io.getMessage());
                     }
@@ -139,6 +141,11 @@ public class RegistrationController implements Initializable {
             }
             
         }
+    }
+
+    public void closeRegisterWindow(){
+        Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
+        stageInfo.close();
     }
 
     /*Diese Methode generiert eine Wiederherstellungsschluessel mit der Länge KEY_LENGTH (default = 100, Langeaenderung erfolgt durch Konstantwertaenderung)*/	
@@ -243,11 +250,6 @@ public class RegistrationController implements Initializable {
             btnConfirm.setDisable(false);
         }
     }
-    
-    public void closeRegisterWindow(){
-        Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
-        stageInfo.close();
-    }
 
     /*Diese Methode wechselt die von der Registrieren Scene zur LogIn Scene*/
     public void switchToLoginWindow(ActionEvent event){
@@ -268,7 +270,7 @@ public class RegistrationController implements Initializable {
             root.translateXProperty().set(-scene.getWidth());
 
             Timeline timeline = new Timeline();
-            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
             timeline.getKeyFrames().add(keyFrame);
             timeline.setOnFinished(ev -> {

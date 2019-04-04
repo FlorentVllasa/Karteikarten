@@ -79,9 +79,11 @@ public class LoginController implements Initializable {
                     fxmlLoader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
                     fxmlLoader.setController(new FunctionsController());
                     Scene scene = new Scene(fxmlLoader.load());
-                    Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    stageInfo.setResizable(false);
-                    stageInfo.setScene(scene);
+                    Stage stage = new Stage();
+                    stage.setResizable(false);
+                    stage.setScene(scene);
+                    stage.show();
+                    closeLoginWindow();
                 }catch(IOException io){
                     System.out.println(io.getMessage());
                 }
@@ -96,12 +98,32 @@ public class LoginController implements Initializable {
     /*Diese Methode wechselt das Fenster vom LogIn Fenster zum Funktionen Fenster durch den Einloggen Button Klick*/
     public void switchTofunctionsWindow(ActionEvent event){
         wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
-        closePreviousWindowLogin();
+        closeLoginWindow();
     }
     
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
     public void switchToForgotPasswordWindow(ActionEvent event){
-        wpss.createWindowSwitchScene("/fxml/ForgotPassword.fxml", new ForgotPasswordController(), lw.getWindow());
+        //wpss.createWindowSwitchScene("/fxml/ForgotPassword.fxml", new ForgotPasswordController(), lw.getWindow());
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/fxml/ForgotPassword.fxml"));
+            fxmlLoader.setController(new ForgotPasswordController());
+            Parent root = fxmlLoader.load();
+            Scene scene = buttonForgotPassword.getScene();
+            root.translateXProperty().set(scene.getWidth());
+            stackPaneParent.getChildren().add(root);
+
+            Timeline timeline = new Timeline();
+            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
+            KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
+            timeline.getKeyFrames().add(keyFrame);
+            timeline.setOnFinished(ev -> {
+                stackPaneParent.getChildren().remove(anchorPane);
+            });
+            timeline.play();
+        }catch(IOException io){
+            System.out.println(io.getMessage());
+        }
     }
     
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
@@ -112,12 +134,12 @@ public class LoginController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/fxml/registrationWindow.fxml"));
             fxmlLoader.setController(new RegistrationController());
             Parent root = fxmlLoader.load();
-            Scene scene = buttonForgotPassword.getScene();
+            Scene scene = buttonRegister.getScene();
             root.translateXProperty().set(scene.getWidth());
             stackPaneParent.getChildren().add(root);
 
             Timeline timeline = new Timeline();
-            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_OUT);
+            KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.LINEAR);
             KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.5), keyValue);
             timeline.getKeyFrames().add(keyFrame);
             timeline.setOnFinished(ev -> {
@@ -130,7 +152,7 @@ public class LoginController implements Initializable {
     }
 
     /*Diese Methode dient dazu das LoginWindow Fenster zu schließen nach erfolgreichem LoginWindow*/
-    public void closePreviousWindowLogin(){
+    public void closeLoginWindow(){
         Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
         stageInfo.close();
     }
