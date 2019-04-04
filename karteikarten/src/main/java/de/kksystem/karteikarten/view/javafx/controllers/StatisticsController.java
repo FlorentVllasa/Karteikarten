@@ -28,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class StatisticsController implements Initializable {
 
@@ -330,6 +331,11 @@ public class StatisticsController implements Initializable {
 		lblLectionTotalRight.setText("---");
 		lblLectionTotalWrong.setText("---");
 	}
+	
+	public void closeCreateWindow(ActionEvent event) {
+		Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
+		stageInfo.close();
+	}
 
 
 //	@FXML
@@ -353,5 +359,6 @@ public class StatisticsController implements Initializable {
 		showLoadedData();
 		showIndexCardBarChart();
 		cmbCategories.setOnAction(this::dynamicListLection);
+		btnBack.setOnAction(this::closeCreateWindow);
 	}
 }
