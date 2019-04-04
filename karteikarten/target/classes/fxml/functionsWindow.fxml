@@ -14,15 +14,15 @@
 
 <BorderPane prefHeight="564.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="569.0" prefWidth="894.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="938.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="197.0" layoutY="63.0" text="Wähle eine Funktion!" textFill="WHITE" underline="true" AnchorPane.bottomAnchor="436.20000000000005" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="217.39999999999998" AnchorPane.topAnchor="62.99999999999997">
+            <Label layoutX="196.0" prefHeight="89.0" prefWidth="524.0" text="Wähle eine Funktion!" textFill="WHITE" underline="true" AnchorPane.bottomAnchor="535.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Separator layoutX="268.0" layoutY="202.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="2.0" />
-            <ImageView fx:id="ivLearn" fitHeight="164.0" fitWidth="164.0" layoutX="52.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+            <Separator layoutX="265.0" layoutY="121.0" orientation="VERTICAL" prefHeight="217.0" prefWidth="6.0" />
+            <ImageView fx:id="ivLearn" fitHeight="164.0" fitWidth="164.0" layoutX="52.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/lernen.png" />
                </image>
@@ -30,7 +30,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="ivManager" fitHeight="164.0" fitWidth="164.0" layoutX="365.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivManager" fitHeight="164.0" fitWidth="164.0" layoutX="365.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/edit.png" />
                </image>
@@ -38,42 +38,51 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="lblLoggedInMessage" layoutX="14.0" layoutY="522.0" textFill="WHITE">
+            <Label fx:id="lblLoggedInMessage" layoutX="9.0" layoutY="584.0" prefHeight="24.0" prefWidth="277.0" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="btnLogOut" layoutX="764.0" layoutY="509.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="107.0" text="Abmelden">
+            <Button fx:id="btnLogOut" layoutX="765.0" layoutY="542.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="107.0" text="Abmelden">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Button>
-            <Label layoutX="81.0" layoutY="396.0" text="Lernen!" textFill="WHITE">
+            <Label layoutX="81.0" layoutY="298.0" text="Lernen!" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label layoutX="282.0" layoutY="396.0" text="Karteikarten Manager" textFill="WHITE">
+            <Label layoutX="292.0" layoutY="301.0" text="Karteikarten Manager" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Separator layoutX="617.0" layoutY="202.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="2.0" />
-            <ImageView fx:id="ivUserOptions" fitHeight="150.0" fitWidth="200.0" layoutX="669.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <Separator layoutX="618.0" layoutY="130.0" orientation="VERTICAL" prefHeight="213.0" prefWidth="5.0" />
+            <ImageView fx:id="ivUserOptions" fitHeight="150.0" fitWidth="200.0" layoutX="669.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/userOptions.png" />
                </image>
             </ImageView>
-            <Label layoutX="649.0" layoutY="396.0" text="Einstellungen" textFill="WHITE">
+            <Label layoutX="648.0" layoutY="307.0" text="Einstellungen" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="lblDateTime" layoutX="652.0" layoutY="542.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="231.0" text="Label" textFill="WHITE">
+            <Label fx:id="lblDateTime" layoutX="650.0" layoutY="585.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="26.0" prefWidth="231.0" text="Label" textFill="WHITE">
                <font>
                   <Font name="Gabriola" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="btnStatistics" layoutX="99.0" layoutY="448.0" mnemonicParsing="false" text="Statistiken" />
+            <ImageView fx:id="ivStatistics" fitHeight="124.0" fitWidth="145.0" layoutX="72.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Pictures/StatisticIcon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="59.0" layoutY="496.0" prefHeight="43.0" prefWidth="150.0" text="Statistiken" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
          </children>
          <opaqueInsets>
             <Insets />

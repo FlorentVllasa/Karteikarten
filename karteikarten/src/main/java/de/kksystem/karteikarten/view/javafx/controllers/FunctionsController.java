@@ -48,9 +48,6 @@ public class FunctionsController implements Initializable {
     
     
     @FXML
-    private Button btnStatistics;
-    
-    @FXML
     private ImageView ivLearn;
 
     @FXML
@@ -64,6 +61,9 @@ public class FunctionsController implements Initializable {
 
     @FXML
     private Label lblDateTime;
+    
+    @FXML
+    private ImageView ivStatistics;
     
     @FXML
     private void printUserId(ActionEvent event) {
@@ -86,7 +86,7 @@ public class FunctionsController implements Initializable {
         }
     }
     
-    public void switchToStatisticsWindow(ActionEvent event) {
+    public void switchSceneToStatisticsWindow(MouseEvent event) {
     	wp.createWindowNewStage("/fxml/Statistics.fxml", "Statistiken Ihrer Lektionen und Karteikarten", new StatisticsController());
     }
 
@@ -151,7 +151,7 @@ public class FunctionsController implements Initializable {
         ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
         ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);
         ivUserOptions.setOnMouseClicked(this::switchSceneToUserOptionsWindow);
-        btnStatistics.setOnAction(this::switchToStatisticsWindow);
+        ivStatistics.setOnMouseClicked(this::switchSceneToStatisticsWindow);
     }
     //Farbe  #0B2161
 }
