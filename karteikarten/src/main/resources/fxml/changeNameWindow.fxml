@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="314.0" prefWidth="487.0" stylesheets="@../Css/ChangeName.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="492.0" stylesheets="@../Css/ChangeName.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label text="Neuen Vornamen eingeben:" textFill="#08088a">
+                <Label text="Neuen Vornamen eingeben:" textFill="WHITE">
                     <font>
-                        <Font name="Serif Regular" size="25.0" />
+                        <Font name="System Bold" size="25.0" />
                     </font>
                     <VBox.margin>
                         <Insets top="5.0" />
                     </VBox.margin>
                 </Label>
                 <TextField fx:id="txtNewForeName" />
-            <Label text="Neuen Nachnamen eingeben:" textFill="#08088a">
+            <Label text="Neuen Nachnamen eingeben:" textFill="WHITE">
                <font>
-                  <Font name="Serif Regular" size="25.0" />
+                  <Font name="System Bold" size="25.0" />
                </font>
             </Label>
             <TextField fx:id="txtNewSurName" />
