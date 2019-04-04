@@ -3,32 +3,20 @@
 }
 
 
-#buttonLogin {
+#btnBack {
 	-fx-background-color: #fff;
 	-fx-font-color: #000;
 }
 
-#buttonLogin:hover {
+#btnBack:hover {
 	-fx-background-color: #2E64FE;
 }
 
-#buttonForgotPassword {
+#btnConfirm {
 	-fx-background-color: #fff;
 	-fx-font-color: #000;
 }
 
-#buttonForgotPassword:hover {
-
+#btnConfirm:hover {
 	-fx-background-color: #2E64FE;
 }
-
-#buttonRegister {
-	-fx-background-color: #fff;
-	-fx-font-color: #000;
-}
-
-#buttonRegister:hover {
-
-	-fx-background-color: #2E64FE;
-}
-
