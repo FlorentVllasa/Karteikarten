@@ -199,6 +199,7 @@ public class StatisticsController implements Initializable {
 		List<IndexCardStat> allIndexCardStatsByLectionId = ServiceFacade.getInstance()
 				.findAllStatsByLectionId(lection.getLectionId(), 7);
 
+		resetLectionLabels();
 		calculateStatistics(allIndexCardStatsByLectionId, "Lection");
 		
 		Series<String, Number> seriesTotalNumberRight = new XYChart.Series<String, Number>();
@@ -287,7 +288,6 @@ public class StatisticsController implements Initializable {
 
 	@FXML
 	private void calculateStatistics(List<IndexCardStat> indexCardStatList, String type) {
-		resetLectionLabels();
 		if (indexCardStatList.size() > 0) {
 			double resultTotalNumberRight = 0;
 			double resultTotalNumberWrong = 0;
