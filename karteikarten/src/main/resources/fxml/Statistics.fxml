@@ -35,7 +35,7 @@
           <NumberAxis fx:id="nAxisTotalNumber" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Label layoutX="252.0" layoutY="59.0" text="Hinweis:">
+      <Label layoutX="252.0" layoutY="59.0" text="Hinweise:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -54,7 +54,7 @@
           <TableColumn fx:id="tcQuestion" prefWidth="199.0" text="Frage der Karteikarte" />
         </columns>
       </TableView>
-      <Label layoutX="252.0" layoutY="99.0" text="Das Diagramm rechts zeigt Ihnen die Anzahl wie oft die darin enthaltenen Karteikarten INSGESAMT in den letzten SIEBEN Tagen richtig/falsch beantwortet wurden." wrapText="true" />
+      <Label layoutX="252.0" layoutY="99.0" text="Das Diagramm rechts zeigt Ihnen die Anzahl wie oft die darin enthaltenen Karteikarten jeweils INSGESAMT in den letzten SIEBEN Tagen richtig/falsch beantwortet wurden." wrapText="true" />
       <Label layoutX="252.0" layoutY="158.0" text="Sonstige Statistiken der ausgewählten Karteikarte:">
          <font>
             <Font name="System Bold" size="18.0" />
@@ -83,20 +83,20 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="777.0" layoutY="207.0" text="\% richtig beantwortet (der letzten 7 Tagen):" />
-      <Label fx:id="lblLectionTotalRight" layoutX="1015.0" layoutY="207.0" text="---">
+      <Label layoutX="777.0" layoutY="207.0" text="\% richtig beantwortet (der letzten 7 Tagen insgesamt):" />
+      <Label fx:id="lblLectionTotalRight" layoutX="1073.0" layoutY="207.0" text="---">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="777.0" layoutY="224.0" text="\% falsch beantwortet der letzten 7 Tagen):" />
-      <Label fx:id="lblLectionTotalWrong" layoutX="1010.0" layoutY="224.0" text="---">
+      <Label layoutX="777.0" layoutY="224.0" text="\% falsch beantwortet der letzten 7 Tagen insgesamt):" />
+      <Label fx:id="lblLectionTotalWrong" layoutX="1066.0" layoutY="224.0" text="---">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="777.0" layoutY="190.0" text="Anzahl Versuche (der letzten 7 Tagen):" />
-      <Label fx:id="lblLectionTotalNumberOfTrials" layoutX="989.0" layoutY="190.0" text="---">
+      <Label layoutX="777.0" layoutY="190.0" text="Anzahl Versuche (der letzten 7 Tagen insgesamt):" />
+      <Label fx:id="lblLectionTotalNumberOfTrials" layoutX="1044.0" layoutY="190.0" text="---">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
