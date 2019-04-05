@@ -66,7 +66,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/C:/Users/IgnatiusJuanPradipta/Desktop/true_button.png" />
+                        <Image url="@../Pictures/true_button.png" />
                      </source>
                   </ImageInput>
                </effect>
@@ -75,7 +75,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/C:/Users/IgnatiusJuanPradipta/Desktop/false_button.png" />
+                        <Image url="@../Pictures/false_button.png" />
                      </source>
                   </ImageInput>
                </effect>
