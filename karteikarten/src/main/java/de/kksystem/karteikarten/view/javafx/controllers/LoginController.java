@@ -98,7 +98,7 @@ public class LoginController implements Initializable {
 
     /*Diese Methode wechselt das Fenster vom LogIn Fenster zum Funktionen Fenster durch den Einloggen Button Klick*/
     public void switchTofunctionsWindow(ActionEvent event){
-        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
+        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen", new FunctionsController());
         closeLoginWindow();
     }
     

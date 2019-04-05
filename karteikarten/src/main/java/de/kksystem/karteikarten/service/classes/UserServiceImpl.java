@@ -83,7 +83,6 @@ public class UserServiceImpl implements UserService {
 		
 		if(user != null && user.getPassword().equals(password)) {
 			Favoritelist favoritelist = daoFacade.findFavoritelistIdByUserId(user.getUserId());
-			System.out.println("OK");
 			UserData.getInstance().setUsername(user.getUsername());
 			UserData.getInstance().setUserId(user.getUserId());
 			UserData.getInstance().setFavoritelistId(favoritelist.getFavoritelistId());

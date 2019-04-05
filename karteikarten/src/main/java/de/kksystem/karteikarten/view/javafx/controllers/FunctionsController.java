@@ -93,13 +93,13 @@ public class FunctionsController implements Initializable {
     /*Wenn der auf das Erstellen Bild geklickt wird, öffnet sich das Erstellen Fenster*/
     public void switchSceneToCreateWindow(MouseEvent event){
         CreateWindowController controller = new CreateWindowController();
-        wp.createWindowNewStage("/fxml/createWindow.fxml", "Erstellen Fenster!", controller);
+        wp.createWindowNewStage("/fxml/createWindow.fxml", "Karteimanager", controller);
         UserData.getInstance().setCreateWindowController(controller);
     }
 
     /*Wenn auf das Lernen Bild geklickt wird, öffnet sich das Fenster Kategorie auswählen*/
     public void switchSceneToChooseCategorieWindow(MouseEvent event){
-        wp.createWindowNewStage("/fxml/chooseCategory.fxml", "Wähle deine Kategorie und Lektion!", new ChooseCategoryController());
+        wp.createWindowNewStage("/fxml/chooseCategory.fxml", "Wähle deine Kategorie und Lektion", new ChooseCategoryController());
     }
 
     /*Wenn auf Abmelden Button geklickt wird, schließt sich das Funktionen Fenster und öffnet das Login Fenster*/
