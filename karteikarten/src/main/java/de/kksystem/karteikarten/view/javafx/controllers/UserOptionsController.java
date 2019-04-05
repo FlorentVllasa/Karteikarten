@@ -28,9 +28,14 @@ public class UserOptionsController implements Initializable {
     @FXML
     private Button btnChangeName;
     @FXML
-    private Button ShowUserData;
+    private Button btnShowUserData;
     @FXML
     private Button btnBack;
+
+    @FXML
+    public void switchToShowUserDataWindow(ActionEvent event){
+        loadUi("/fxml/ShowUserDataWindow.fxml", new ShowUserDataController());
+    }
 
     @FXML
     public void switchToChangeUserNameWindow(ActionEvent event){
@@ -88,6 +93,7 @@ public class UserOptionsController implements Initializable {
         btnChangePassword.setOnAction(this::switchToChangePasswordWindow);
         btnChangeEmail.setOnAction(this::switchToChangeEmailWindow);
         btnChangeName.setOnAction(this::switchToChangeNameWindow);
+        btnShowUserData.setOnAction(this::switchToShowUserDataWindow);
 
     }
 }
