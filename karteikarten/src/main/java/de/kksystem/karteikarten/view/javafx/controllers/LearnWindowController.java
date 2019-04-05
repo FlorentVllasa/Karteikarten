@@ -8,6 +8,8 @@ import de.kksystem.karteikarten.facades.ServiceFacade;
 import de.kksystem.karteikarten.model.classes.LectionImpl;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
+import de.kksystem.karteikarten.model.interfaces.Picture;
+
 import java.util.List;
 import javafx.application.Application;
 import javafx.beans.Observable;
@@ -22,12 +24,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Random;
@@ -69,7 +75,7 @@ public class LearnWindowController implements Initializable {
     		nextQuestion(new ActionEvent());
     	}
     	
-    	if(event.getCode() == KeyCode.UP) {
+    	if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.SPACE) {
     		if (!btnShowAnswer.isDisabled() == true) {
     			showAnswer(new ActionEvent());
     		} else if (!btnShowPicture.isDisabled() == true) {
@@ -115,7 +121,10 @@ public class LearnWindowController implements Initializable {
     }
     
     private void showPicture(int cardIndex) {
-    	System.out.println("picture shown");
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
+    	Picture picture = ServiceFacade.getInstance().findPicture(cards.get(cardIndex).getPictureId());
+    	createPopUpImage(picture.getFileLocation());
     }
 
     private void showAnswer(ActionEvent event){
@@ -149,6 +158,30 @@ public class LearnWindowController implements Initializable {
     private void setDisableProperty() {
     	btnPrevious.disableProperty().bind(currentIndex.isEqualTo(minIndex));
     	btnNext.disableProperty().bind(currentIndex.isEqualTo(maxIndex));
+    }
+    
+    private void createPopUpImage(String imageLocation) {
+    	//Create Image
+    	File imageFile = new File(imageLocation);
+    	Image image = new Image(imageFile.toURI().toString());
+    	ImageView imageView = new ImageView(image);
+    	
+    	BorderPane pane = new BorderPane();
+        pane.setCenter(imageView);
+        Scene scene = new Scene(pane);
+        
+        Stage stage = new Stage();
+        stage.setTitle(imageLocation);
+        stage.setScene(scene);
+        stage.setOnCloseRequest(
+            e -> {
+                e.consume();
+                btnShowPicture.setVisible(true);
+            	btnShowPicture.setDisable(false);
+                stage.close();
+            }
+        );
+        stage.showAndWait();
     }
     
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
