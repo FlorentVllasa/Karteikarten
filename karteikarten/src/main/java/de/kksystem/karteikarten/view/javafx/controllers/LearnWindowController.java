@@ -13,7 +13,10 @@ import de.kksystem.karteikarten.model.interfaces.Picture;
 import java.util.List;
 import javafx.application.Application;
 import javafx.beans.Observable;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -61,26 +64,37 @@ public class LearnWindowController implements Initializable {
 
     @FXML
     private Button btnNext;
+    
+    @FXML
+    private Button btnTrue;
+    
+    @FXML
+    private Button btnFalse;
 
     @FXML
     private Button btnCloseWindow;
     
+    private BooleanProperty lockedForReview = new SimpleBooleanProperty(false);
+    private final BooleanProperty allowNewCard = new SimpleBooleanProperty(true);
+    
     @FXML
     private void handleKeyPressed(KeyEvent event) {
-    	if(event.getCode() == KeyCode.LEFT && currentIndex.getValue() > minIndex.getValue()) {
-    		prevQuestion(new ActionEvent());
-    	}
-    	
-    	if(event.getCode() == KeyCode.RIGHT && currentIndex.getValue() < maxIndex.getValue()) {
-    		nextQuestion(new ActionEvent());
-    	}
-    	
-    	if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.SPACE) {
-    		if (!btnShowAnswer.isDisabled() == true) {
-    			showAnswer(new ActionEvent());
-    		} else if (!btnShowPicture.isDisabled() == true) {
-    			showPicture(new ActionEvent());
-    		}
+    	if (!lockedForReview.getValue()) {
+	    	if(event.getCode() == KeyCode.LEFT && currentIndex.getValue() > minIndex.getValue()) {
+	    		prevQuestion(new ActionEvent());
+	    	}
+	    	
+	    	if(event.getCode() == KeyCode.RIGHT && currentIndex.getValue() < maxIndex.getValue()) {
+	    		nextQuestion(new ActionEvent());
+	    	}
+	    	
+	    	if(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.SPACE) {
+	    		if (!btnShowAnswer.isDisabled() == true) {
+	    			showAnswer(new ActionEvent());
+	    		} else if (!btnShowPicture.isDisabled() == true) {
+	    			showPicture(new ActionEvent());
+	    		}
+	    	}
     	}
     }
 
@@ -114,6 +128,8 @@ public class LearnWindowController implements Initializable {
     	webFieldAnswer.getEngine().loadContent(cards.get(cardIndex).getAnswer());
     	btnShowAnswer.setVisible(false);
 		btnShowAnswer.setDisable(true);
+    	btnTrue.setDisable(false);
+    	btnFalse.setDisable(false);
     	if (cards.get(currentIndex.getValue()).getPictureId() != 0) {
     		btnShowPicture.setVisible(true);
         	btnShowPicture.setDisable(false);
@@ -128,6 +144,7 @@ public class LearnWindowController implements Initializable {
     }
 
     private void showAnswer(ActionEvent event){
+    	lockedForReview.setValue(true); 
     	showAnswer(currentIndex.getValue());
     }
     
@@ -156,8 +173,9 @@ public class LearnWindowController implements Initializable {
     }
 
     private void setDisableProperty() {
-    	btnPrevious.disableProperty().bind(currentIndex.isEqualTo(minIndex));
-    	btnNext.disableProperty().bind(currentIndex.isEqualTo(maxIndex));
+    	btnPrevious.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(minIndex),lockedForReview.isEqualTo(allowNewCard)));
+    			//);
+    	btnNext.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(maxIndex),lockedForReview.isEqualTo(allowNewCard)));
     }
     
     private void createPopUpImage(String imageLocation) {
@@ -184,20 +202,39 @@ public class LearnWindowController implements Initializable {
         stage.showAndWait();
     }
     
+    private void answerTrue(ActionEvent event) {
+    	lockedForReview.setValue(false);
+    	btnTrue.setDisable(true);
+    	btnFalse.setDisable(true);
+    }
+    
+    private void answerFalse(ActionEvent event) {
+    	lockedForReview.setValue(false);
+    	btnTrue.setDisable(true);
+    	btnFalse.setDisable(true);
+    }
+    
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getCards();
+        
         currentIndex = new SimpleIntegerProperty(this, "currentIndex", 0);
         minIndex = new SimpleIntegerProperty(this, "minIndex", 0);
         maxIndex = new SimpleIntegerProperty(this, "currentIndex", cards.size()-1);
+        
         setDisableProperty();
         
         btnShowAnswer.setOnAction(this::showAnswer);
         btnShowPicture.setOnAction(this::showPicture);
+        
         btnPrevious.setOnAction(this::prevQuestion);
         btnNext.setOnAction(this::nextQuestion);
+        
         btnCloseWindow.setOnAction(this::closeLearnWindow);
+        
+        btnTrue.setOnAction(this::answerTrue);
+        btnFalse.setOnAction(this::answerFalse);
         
         showQuestion(currentIndex.getValue());
     }
