@@ -1,16 +1,6 @@
-#anchorPane {
-	-fx-background-color: linear-gradient(to right bottom,#FFFF00,#FE2E64);
-}
-
-
-#btnBack {
-	-fx-background-color: #fff;
-	-fx-font-color: #000;
-}
-
-#btnBack:hover {
-	-fx-background-color: #2E64FE;
-}
+/*#anchorPane {*/
+	/*-fx-background-color: linear-gradient(to right bottom,#FFFF00,#FE2E64);*/
+/*}*/
 
 #btnConfirm {
 	-fx-background-color: #fff;

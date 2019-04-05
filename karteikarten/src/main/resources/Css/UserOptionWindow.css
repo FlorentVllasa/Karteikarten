@@ -1,4 +1,4 @@
-#anchorPane {
+#borderPane {
 	-fx-background-color: linear-gradient(to right bottom,#FFFF00,#FE2E64);
 }
 
@@ -44,6 +44,15 @@
 }
 
 #btnChangeName:hover {
+	-fx-background-color: #2E64FE;
+}
+
+#btnShowUserData {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnShowUserData:hover {
 	-fx-background-color: #2E64FE;
 }
 

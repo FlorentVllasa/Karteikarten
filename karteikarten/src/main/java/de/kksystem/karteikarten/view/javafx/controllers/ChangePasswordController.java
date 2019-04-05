@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,8 +22,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ChangePasswordController implements Initializable {
+
     @FXML
-    private AnchorPane anchorPane;
+    private VBox vBox;
 
     @FXML
     private PasswordField pwField;
@@ -32,9 +34,6 @@ public class ChangePasswordController implements Initializable {
 
     @FXML
     private Label lblMessage;
-
-    @FXML
-    private Button btnBack;
 
     @FXML
     public void changePassword(ActionEvent event){
@@ -51,24 +50,8 @@ public class ChangePasswordController implements Initializable {
         }
     }
 
-    @FXML
-    public void switchToUserOptionsWindow(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/userOptionsWindow.fxml"));
-            loader.setController(new UserOptionsController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnBack.setOnMouseClicked(this::switchToUserOptionsWindow);
         btnConfirm.setOnAction(this::changePassword);
     }
 }

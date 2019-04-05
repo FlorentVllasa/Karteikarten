@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,7 +24,7 @@ import java.util.ResourceBundle;
 public class ChangeNameController implements Initializable {
 
     @FXML
-    private AnchorPane anchorPane;
+    private VBox vBox;
 
     @FXML
     private TextField txtNewForeName;
@@ -33,9 +34,6 @@ public class ChangeNameController implements Initializable {
 
     @FXML
     private Button btnConfirm;
-
-    @FXML
-    private Button btnBack;
 
     @FXML
     private Label lblMessage;
@@ -61,24 +59,8 @@ public class ChangeNameController implements Initializable {
         }
     }
 
-    @FXML
-    public void switchToUserOptionsWindow(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/userOptionsWindow.fxml"));
-            loader.setController(new UserOptionsController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
-    }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btnBack.setOnMouseClicked(this::switchToUserOptionsWindow);
         btnConfirm.setOnAction(this::changeName);
     }
 }
