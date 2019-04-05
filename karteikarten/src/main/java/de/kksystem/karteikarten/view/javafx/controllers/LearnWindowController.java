@@ -11,6 +11,11 @@ import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 
 import java.util.List;
+
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
@@ -25,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -33,12 +39,16 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
 import java.text.MessageFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -46,6 +56,9 @@ public class LearnWindowController implements Initializable {
 
 	@FXML
     private SplitPane splitPane;
+	
+	@FXML
+	private Label lblTimer;
 
     @FXML
     private WebView webFieldQuestion;
@@ -106,6 +119,7 @@ public class LearnWindowController implements Initializable {
     private IntegerProperty minIndex;
     private IntegerProperty maxIndex;
     
+	Timeline timer = new Timeline();
 
     private void getCards(){
         int lektionId = UserData.getInstance().getLection().getLectionId();
@@ -121,6 +135,10 @@ public class LearnWindowController implements Initializable {
     }
     
     private void showQuestion(int cardIndex) {
+    	if (UserData.getInstance().getDuration() != 0) {
+    		lblTimer.setTextFill(Color.GREEN);
+    		showTimer(UserData.getInstance().getDuration());
+    	}
     	webFieldQuestion.getEngine().loadContent(cards.get(cardIndex).getQuestion());
     }
     
@@ -153,6 +171,7 @@ public class LearnWindowController implements Initializable {
     }
     
     private void prevQuestion(ActionEvent event) {
+    	timer.stop();
     	currentIndex.set(currentIndex.getValue() - 1);
     	showQuestion(currentIndex.getValue());
     	webFieldAnswer.getEngine().loadContent("");
@@ -163,6 +182,7 @@ public class LearnWindowController implements Initializable {
     }
     
     private void nextQuestion(ActionEvent event) {
+    	timer.stop();
     	currentIndex.set(currentIndex.getValue() + 1);
     	showQuestion(currentIndex.getValue());
     	webFieldAnswer.getEngine().loadContent("");
@@ -174,7 +194,6 @@ public class LearnWindowController implements Initializable {
 
     private void setDisableProperty() {
     	btnPrevious.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(minIndex),lockedForReview.isEqualTo(allowNewCard)));
-    			//);
     	btnNext.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(maxIndex),lockedForReview.isEqualTo(allowNewCard)));
     }
     
@@ -200,6 +219,25 @@ public class LearnWindowController implements Initializable {
             }
         );
         stage.showAndWait();
+    }
+    
+    private int seconds;
+    
+    private void showTimer(int duration) {
+    	seconds = duration * 60;
+    	timer.getKeyFrames().clear();
+    	timer.getKeyFrames().add(new KeyFrame(Duration.seconds(1), e -> {
+    		seconds--;
+    		int minute = seconds / 60;
+    		int second = seconds % 60;
+    		if (minute == 0 && second == 9) {
+    			lblTimer.setTextFill(Color.RED);
+    		}
+    		lblTimer.setText(minute + ":" + second);
+	    }));
+    	timer.setCycleCount(60*duration);
+    	timer.setOnFinished(this::showAnswer);
+	    timer.play();
     }
     
     private void answerTrue(ActionEvent event) {

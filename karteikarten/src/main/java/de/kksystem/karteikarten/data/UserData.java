@@ -15,6 +15,7 @@ public class UserData {
 	private String email;
 	private int userId;
 	private int favoritelistId;
+	private int duration = 0; // in minutes
 	private List<Category> categoryList;
 	private List<Lection> lectionList;
 	private List<Favoritelist> favoriteList;
@@ -96,8 +97,11 @@ public class UserData {
 		return lectionList;
     }
 
-
-	public ResultSet setLection(String ho) {
-		return setLection(ho);
+	public int getDuration() {
+		return duration;
+	}
+	
+	public void setDuration(int minutes) {
+		this.duration = minutes;
 	}
 }
