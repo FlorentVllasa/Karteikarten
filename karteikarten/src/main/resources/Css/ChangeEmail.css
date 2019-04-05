@@ -3,15 +3,6 @@
 /*}*/
 
 
-#btnBack {
-	-fx-background-color: #fff;
-	-fx-font-color: #000;
-}
-
-#btnBack:hover {
-	-fx-background-color: #2E64FE;
-}
-
 #btnConfirm {
 	-fx-background-color: #fff;
 	-fx-font-color: #000;
