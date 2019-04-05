@@ -54,20 +54,6 @@ public class ChangeEmailController implements Initializable {
 
     }
 
-    @FXML
-    public void switchToUserOptionsWindow(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/UserOptionsWindow.fxml"));
-            loader.setController(new UserOptionsController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btnConfirm.setOnAction(this::changeEmail);
