@@ -10,7 +10,7 @@
 
 <VBox fx:id="vBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label text="Neue Email eingeben:">
+      <Label text="Neue Email eingeben:" textFill="WHITE">
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>

@@ -23,7 +23,6 @@ import java.util.ResourceBundle;
 
 public class ChangeUsernameController implements Initializable {
 
-
     @FXML
     private VBox vBox;
 
