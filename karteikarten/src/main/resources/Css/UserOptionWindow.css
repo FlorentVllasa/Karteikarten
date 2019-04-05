@@ -10,3 +10,42 @@
 #btnBack:hover {
 	-fx-background-color: #2E64FE;
 }
+
+#btnChangeUsername {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnChangeUsername:hover {
+	-fx-background-color: #2E64FE;
+}
+
+#btnChangePassword {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnChangePassword:hover {
+	-fx-background-color: #2E64FE;
+}
+
+#btnChangeEmail {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnChangeEmail:hover {
+	-fx-background-color: #2E64FE;
+}
+
+#btnChangeName {
+	-fx-background-color: #fff;
+	-fx-font-color: #000;
+}
+
+#btnChangeName:hover {
+	-fx-background-color: #2E64FE;
+}
+
+
+

@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="453.0" stylesheets="@../Css/UserOptionWindow.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="456.0" stylesheets="@../Css/UserOptionWindow.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" layoutY="33.0" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="-33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
          <children>
             <Label text="Benutzereinstellungen" textFill="WHITE">
                <font>
@@ -19,7 +19,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="btnChangeUsername" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: #2E64FE;" text="Benutzernamen ändern" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnChangeUsername" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" text="Benutzernamen ändern" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnChangePassword" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: #2E64FE;" text="Passwort ändern">
+            <Button fx:id="btnChangePassword" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" text="Passwort ändern">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -35,11 +35,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btnChangeEmail" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: #2E64FE;" text="E-Mail ändern">
+            <Button fx:id="btnChangeEmail" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" text="E-Mail ändern">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>
-            <Button fx:id="btnChangeName" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" style="-fx-background-color: #2E64FE;" text="Namen und/oder Vornamen ändern">
+            <Button fx:id="btnChangeName" mnemonicParsing="false" prefHeight="50.0" prefWidth="450.0" text="Namen und/oder Vornamen ändern">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font></Button>

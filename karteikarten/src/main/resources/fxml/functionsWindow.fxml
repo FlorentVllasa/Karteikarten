@@ -58,12 +58,12 @@
                </font>
             </Label>
             <Separator layoutX="442.0" layoutY="225.0" orientation="VERTICAL" prefHeight="210.0" prefWidth="6.0" />
-            <ImageView fx:id="ivUserOptions" fitHeight="169.0" fitWidth="158.0" layoutX="492.0" layoutY="225.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivUserOptions" fitHeight="169.0" fitWidth="158.0" layoutX="740.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/userOptions.png" />
                </image>
             </ImageView>
-            <Label layoutX="470.0" layoutY="389.0" prefHeight="31.0" prefWidth="201.0" text="Einstellungen" textFill="WHITE">
+            <Label layoutX="718.0" layoutY="389.0" prefHeight="31.0" prefWidth="201.0" text="Einstellungen" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -73,12 +73,12 @@
                   <Font name="Gabriola" size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="ivStatistics" fitHeight="164.0" fitWidth="161.0" layoutX="739.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="ivStatistics" fitHeight="164.0" fitWidth="161.0" layoutX="489.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Pictures/StatisticIcon.png" />
                </image>
             </ImageView>
-            <Label layoutX="745.0" layoutY="389.0" prefHeight="43.0" prefWidth="150.0" text="Statistiken" textFill="WHITE">
+            <Label layoutX="495.0" layoutY="389.0" prefHeight="43.0" prefWidth="150.0" text="Statistiken" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
