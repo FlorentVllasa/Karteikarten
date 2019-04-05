@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import java.net.URL?>
+<VBox fx:id="vBox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="343.0" prefWidth="556.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="Neuen Benutzernamen eingeben:" textFill="WHITE">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNewEmail" prefHeight="31.0" prefWidth="556.0">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </TextField>
+      <Label fx:id="lblMessage" textFill="RED">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <Button fx:id="btnConfirm" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" text="Bestätigen">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+   <stylesheets>
+      <URL value="@../Css/ChangeUsername.css" />
+   </stylesheets>
+</VBox>

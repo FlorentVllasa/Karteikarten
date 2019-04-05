@@ -4,11 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class UserOptionsController implements Initializable {
 
     @FXML
-    private AnchorPane anchorPane;
+    private BorderPane borderPane;
     @FXML
     private Button btnChangeUsername;
     @FXML
@@ -28,66 +28,28 @@ public class UserOptionsController implements Initializable {
     @FXML
     private Button btnChangeName;
     @FXML
+    private Button ShowUserData;
+    @FXML
     private Button btnBack;
 
     @FXML
     public void switchToChangeUserNameWindow(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/changeUsernameWindow.fxml"));
-            loader.setController(new ChangeUsernameController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        loadUi("/fxml/ChangeUserNameWindow.fxml", new ChangeUsernameController());
     }
 
     @FXML
     public void switchToChangePasswordWindow(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/changePasswordWindow.fxml"));
-            loader.setController(new ChangePasswordController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        loadUi("/fxml/ChangePasswordWindow.fxml", new ChangePasswordController());
     }
 
     @FXML
     public void switchToChangeEmailWindow(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/changeEmailWindow.fxml"));
-            loader.setController(new ChangeEmailController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        loadUi("/fxml/ChangeEmailWindow.fxml", new ChangeEmailController());
     }
 
     @FXML
     public void switchToChangeNameWindow(ActionEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/changeNameWindow.fxml"));
-            loader.setController(new ChangeNameController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setResizable(false);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        loadUi("/fxml/ChangeNameWindow.fxml", new ChangeNameController());
     }
 
     @FXML
@@ -96,12 +58,27 @@ public class UserOptionsController implements Initializable {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
             loader.setController(new FunctionsController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo =  (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Parent root = loader.load();
+            Stage stageInfo = (Stage) borderPane.getScene().getWindow();
+            Scene scene = new Scene(root);
             stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());
         }
+    }
+
+    @FXML
+    public void loadUi(String path, Object controller){
+        Parent root = null;
+        try{
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(path));
+            loader.setController(controller);
+            root = loader.load();
+        }catch(IOException io){
+            System.out.println(io.getMessage());
+        }
+        borderPane.setCenter(root);
     }
 
     @Override

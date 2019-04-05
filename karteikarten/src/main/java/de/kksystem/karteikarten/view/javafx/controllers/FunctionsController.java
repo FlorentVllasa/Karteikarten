@@ -8,18 +8,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -76,7 +72,7 @@ public class FunctionsController implements Initializable {
     public void switchSceneToUserOptionsWindow(MouseEvent event){
         try{
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/userOptionsWindow.fxml"));
+            loader.setLocation(getClass().getResource("/fxml/UserOptionsWindow.fxml"));
             loader.setController(new UserOptionsController());
             Scene scene = new Scene(loader.load());
             Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
