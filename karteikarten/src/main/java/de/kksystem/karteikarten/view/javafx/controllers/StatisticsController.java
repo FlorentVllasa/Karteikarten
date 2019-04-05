@@ -358,8 +358,6 @@ public class StatisticsController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		LocalDate ld = LocalDate.now();
-		System.out.println(ld);
 		showLoadedData();
 		showIndexCardBarChart();
 		cmbCategories.setOnAction(this::dynamicListLection);
