@@ -1,34 +1,32 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
-import de.kksystem.karteikarten.dao.classes.jdbc.LectionDaoJdbcImpl;
-import de.kksystem.karteikarten.dao.classes.jdbc.UserDaoJdbcImpl;
-import de.kksystem.karteikarten.dao.interfaces.UserDao;
 import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
-import de.kksystem.karteikarten.model.classes.LectionImpl;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
-import de.kksystem.karteikarten.model.interfaces.Lection;
+
+import java.sql.ResultSet;
 import java.util.List;
-import javafx.application.Application;
-import javafx.beans.Observable;
-import javafx.beans.value.ObservableValue;
+import java.lang.String;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.sqlite.JDBC;
 
 import java.net.URL;
-import java.text.MessageFormat;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
+
+    ObservableList<Lection> list = FXCollections.observableArrayList();
 
 	@FXML
     private SplitPane splitPane;
@@ -62,23 +60,8 @@ public class LearnWindowController implements Initializable {
         stageInfo.close();
     }
 
-
-  /* public void btnAnswer(ActionEvent event){
-       UserData.getInstance().getLection().getLectionId();
-       new LectionDaoJdbcImpl();
-
-   }*/
-
     private void btnAnswer(ActionEvent event){
-
-
-        System.out.println("system Running");
-        if (btnAnswer.getId().equals(Lection)){
-            UserData.getInstance().getLection().getLectionId();
-
-
-
-        }
+        UserData.getInstance().getLection().getLectionId();
 
     }
 
@@ -94,7 +77,43 @@ public class LearnWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getCards();
         btnCloseWindow.setOnAction(this::closeLearnWindow);
+        initTextField();
 
 
+        btnAnswer();
+
+
+    }
+
+    private void btnAnswer() {
+        UserData handler = new UserData();
+        String ho = "SELECT LektionID FROM Lektion";
+        ResultSet rs;
+        rs = handler.setLection(ho);
+        try{
+          while(rs.next()){
+              String answer = rs.getString("answer");
+                list.add(new Lection(answer));
+            }
+        } catch (Exception ex){
+
+        }
+    }
+
+    private void initTextField() {
+        //textFieldAnswer.(new PropertyValueFactory<Lection, String>("answer"));
+
+    }
+
+    public static class Lection{
+        private final SimpleStringProperty answer;
+
+         Lection(String answer){
+             this.answer = new SimpleStringProperty(answer);
+         }
+
+         public String getAnswer(){
+             return answer.get();
+         }
     }
 }

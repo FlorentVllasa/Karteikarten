@@ -1,5 +1,6 @@
 package de.kksystem.karteikarten.data;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import de.kksystem.karteikarten.facades.ServiceFacade;
@@ -23,7 +24,7 @@ public class UserData {
 	
 	private static UserData instance;
 	
-	private UserData() {}
+	public UserData() {}
 	
 	public static UserData getInstance() {
 		if(instance == null){
@@ -96,4 +97,7 @@ public class UserData {
     }
 
 
+	public ResultSet setLection(String ho) {
+		return setLection(ho);
+	}
 }
