@@ -22,6 +22,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -47,12 +49,34 @@ public class LearnWindowController implements Initializable {
 
     @FXML
     private Button btnShowAnswer;
+    
+    @FXML
+    private Button btnShowPicture;
 
     @FXML
     private Button btnNext;
 
     @FXML
     private Button btnCloseWindow;
+    
+    @FXML
+    private void handleKeyPressed(KeyEvent event) {
+    	if(event.getCode() == KeyCode.LEFT && currentIndex.getValue() > minIndex.getValue()) {
+    		prevQuestion(new ActionEvent());
+    	}
+    	
+    	if(event.getCode() == KeyCode.RIGHT && currentIndex.getValue() < maxIndex.getValue()) {
+    		nextQuestion(new ActionEvent());
+    	}
+    	
+    	if(event.getCode() == KeyCode.UP) {
+    		if (!btnShowAnswer.isDisabled() == true) {
+    			showAnswer(new ActionEvent());
+    		} else if (!btnShowPicture.isDisabled() == true) {
+    			showPicture(new ActionEvent());
+    		}
+    	}
+    }
 
     private List<IndexCard> cards;
     
@@ -82,22 +106,44 @@ public class LearnWindowController implements Initializable {
     
     private void showAnswer(int cardIndex) {
     	webFieldAnswer.getEngine().loadContent(cards.get(cardIndex).getAnswer());
+    	btnShowAnswer.setVisible(false);
+		btnShowAnswer.setDisable(true);
+    	if (cards.get(currentIndex.getValue()).getPictureId() != 0) {
+    		btnShowPicture.setVisible(true);
+        	btnShowPicture.setDisable(false);
+    	}
+    }
+    
+    private void showPicture(int cardIndex) {
+    	System.out.println("picture shown");
     }
 
     private void showAnswer(ActionEvent event){
     	showAnswer(currentIndex.getValue());
     }
     
+    private void showPicture(ActionEvent event) {
+    	showPicture(currentIndex.getValue());
+    }
+    
     private void prevQuestion(ActionEvent event) {
     	currentIndex.set(currentIndex.getValue() - 1);
     	showQuestion(currentIndex.getValue());
     	webFieldAnswer.getEngine().loadContent("");
+    	btnShowAnswer.setVisible(true);
+		btnShowAnswer.setDisable(false);
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
     }
     
     private void nextQuestion(ActionEvent event) {
     	currentIndex.set(currentIndex.getValue() + 1);
     	showQuestion(currentIndex.getValue());
     	webFieldAnswer.getEngine().loadContent("");
+    	btnShowAnswer.setVisible(true);
+		btnShowAnswer.setDisable(false);
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
     }
 
     private void setDisableProperty() {
@@ -115,6 +161,7 @@ public class LearnWindowController implements Initializable {
         setDisableProperty();
         
         btnShowAnswer.setOnAction(this::showAnswer);
+        btnShowPicture.setOnAction(this::showPicture);
         btnPrevious.setOnAction(this::prevQuestion);
         btnNext.setOnAction(this::nextQuestion);
         btnCloseWindow.setOnAction(this::closeLearnWindow);

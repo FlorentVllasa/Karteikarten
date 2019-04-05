@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane fx:id="splitPane" dividerPositions="0.26635514018691586" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane fx:id="splitPane" dividerPositions="0.26635514018691586" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" orientation="VERTICAL" prefHeight="430.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <items>
         <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" stylesheets="@../Css/LearnWindow.css">
             <children>
@@ -20,19 +21,24 @@
         <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" stylesheets="@../Css/LearnWindow.css">
             <children>
             <WebView fx:id="webFieldAnswer" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0" />
-                <Button fx:id="btnPrevious" layoutX="11.0" layoutY="238.0" mnemonicParsing="false" text="&lt;- Zurück">
+                <Button fx:id="btnPrevious" layoutX="11.0" layoutY="238.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="&lt;- Zurück" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-                <Button fx:id="btnShowAnswer" layoutX="245.0" layoutY="238.0" mnemonicParsing="false" style="-fx-background-color: #2E64FE;" text="Antwort anzeigen">
+                <Button fx:id="btnShowAnswer" layoutX="245.0" layoutY="238.0" mnemonicParsing="false" style="-fx-background-color: #2E64FE;" text="Antwort anzeigen" AnchorPane.bottomAnchor="48.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-                <Button fx:id="btnNext" layoutX="516.0" layoutY="238.0" mnemonicParsing="false" text="Weiter -&gt;">
+            <Button fx:id="btnShowPicture" disable="true" layoutX="258.0" layoutY="238.0" mnemonicParsing="false" style="-fx-background-color: #2E64FE;" text="Bild anzeigen" visible="false" AnchorPane.bottomAnchor="48.0">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+                <Button fx:id="btnNext" layoutX="516.0" layoutY="238.0" mnemonicParsing="false" text="Weiter -&gt;" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Button fx:id="btnCloseWindow" layoutX="266.0" layoutY="278.0" mnemonicParsing="false" text="Schließen">
+            <Button fx:id="btnCloseWindow" layoutX="266.0" layoutY="278.0" mnemonicParsing="false" text="Schließen" AnchorPane.bottomAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
