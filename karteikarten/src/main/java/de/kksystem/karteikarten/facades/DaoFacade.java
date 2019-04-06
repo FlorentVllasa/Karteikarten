@@ -305,6 +305,10 @@ public class DaoFacade {
 	public void updateWrong(int indexCardId) {
 		indexCardStatDao.updateWrong(indexCardId);
 	}
+
+	public boolean isIndexCardStatAvailable(int indexCardId) {
+		return indexCardStatDao.isIndexCardStatAvailable(indexCardId);
+	}
 	
 	public List<IndexCardStat> findAllStatsByIndexCardId(int indexCardId, int numberOfLastDays) {
 		return indexCardStatDao.findAllStatsByIndexCardId(indexCardId, numberOfLastDays);

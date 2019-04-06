@@ -28,8 +28,8 @@ public class IndexCardStatDaoJdbcImpl implements IndexCardStatDao {
 		PreparedStatement pstatement = null;
 		ResultSet rs = null;
 		
-		//LocalDate currentLocalDate = LocalDate.now();
-		//Date currentSqlDate = Date.valueOf(currentLocalDate);
+		LocalDate currentLocalDate = LocalDate.now();
+		Date currentSqlDate = Date.valueOf(currentLocalDate);
 		
 		String sqlString = "INSERT INTO StatistikKarteikarte (AnzahlRichtig, AnzahlFalsch, Datum, KarteikarteID) VALUES (?, ?, ?, ?)";
 
@@ -39,7 +39,11 @@ public class IndexCardStatDaoJdbcImpl implements IndexCardStatDao {
 
 			pstatement.setInt(1, indexCardStat.getTotalNumberRight());
 			pstatement.setInt(2, indexCardStat.getTotalNumberWrong());
-			pstatement.setDate(3, indexCardStat.getDate());
+			if(indexCardStat.getDate() == null) {
+				pstatement.setDate(3, currentSqlDate);
+			} else {
+				pstatement.setDate(3, indexCardStat.getDate());
+			}
 			pstatement.setInt(4, indexCardStat.getIndexCardId());
 			
 			pstatement.executeUpdate();
@@ -81,7 +85,7 @@ public class IndexCardStatDaoJdbcImpl implements IndexCardStatDao {
 	public void updateRight(int indexCardId) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = "UPDATE StatstikKarteikarte SET AnzahlRichtig = AnzahlRichtig + 1 WHERE KarteikarteID = ? AND Datum = ?";
+		String sqlString = "UPDATE StatistikKarteikarte SET AnzahlRichtig = AnzahlRichtig + 1 WHERE KarteikarteID = ? AND Datum = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();
@@ -120,7 +124,7 @@ public class IndexCardStatDaoJdbcImpl implements IndexCardStatDao {
 	public void updateWrong(int indexCardId) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = "UPDATE StatstikKarteikarte SET AnzahlFalsch = AnzahlFalsch + 1 WHERE KarteikarteID = ? AND Datum = ?";
+		String sqlString = "UPDATE StatistikKarteikarte SET AnzahlFalsch = AnzahlFalsch + 1 WHERE KarteikarteID = ? AND Datum = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();
@@ -151,6 +155,49 @@ public class IndexCardStatDaoJdbcImpl implements IndexCardStatDao {
 				} catch (SQLException sqle) {
 					sqle.printStackTrace();
 				}
+			}
+		}
+	}
+	
+	@Override
+	public boolean isIndexCardStatAvailable(int indexCardId) {
+		Connection connection = null;
+		PreparedStatement pstatement = null;
+		ResultSet rs = null;
+		
+		LocalDate currentLocalDate = LocalDate.now();
+		Date currentSqlDate = Date.valueOf(currentLocalDate);
+		
+		String sqlString = "SELECT StatistikID FROM StatistikKarteikarte"
+				+ " WHERE KarteikarteID = ? AND Datum = ?";
+
+		try {
+			connection = JdbcUtils.getConnection();
+			pstatement = connection.prepareStatement(sqlString);
+
+			pstatement.setInt(1, indexCardId);
+			pstatement.setDate(2, currentSqlDate);
+			
+			rs = pstatement.executeQuery();
+			
+			if(rs.next()) {
+				return true;
+			}
+			return false;
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			return false;
+		}  finally {
+			if(rs != null) {
+				try { rs.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(pstatement != null) {
+				try { pstatement.close(); } catch (SQLException e) { e.printStackTrace(); }
+			}
+
+			if(connection != null) {
+				try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
 			}
 		}
 	}

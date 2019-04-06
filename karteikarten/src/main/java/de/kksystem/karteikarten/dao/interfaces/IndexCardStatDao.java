@@ -9,6 +9,7 @@ public interface IndexCardStatDao {
 	int addIndexCardStat(IndexCardStat indexCardStat);
 	void updateRight(int indexCardId);
 	void updateWrong(int indexCardId);
+	boolean isIndexCardStatAvailable(int indexCardId);
 	List<IndexCardStat> findAllStatsByIndexCardId(int indexCardId, int numberOfLastDays);
 	List<IndexCardStat> findAllStatsByLectionId(int lectionId, int numberOfLastDays);
 }

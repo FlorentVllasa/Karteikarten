@@ -314,6 +314,18 @@ public class ServiceFacade {
 		indexCardStatService.updateWrong(indexCardId);
 	}
 	
+	public boolean isIndexCardStatAvailable(int indexCardId) {
+		return indexCardStatService.isIndexCardStatAvailable(indexCardId);
+	}
+	
+	public void updateOrAddNumberOfRight(int indexCardId) {
+		indexCardStatService.updateOrAddNumberOfRight(indexCardId);
+	}
+	
+	public void updateOrAddNumberOfWrong(int indexCardId) {
+		indexCardStatService.updateOrAddNumberOfWrong(indexCardId);
+	}
+	
 	public List<IndexCardStat> findAllStatsByIndexCardId(int indexCardId, int numberOfLastDays) {
 		return indexCardStatService.findAllStatsByIndexCardId(indexCardId, numberOfLastDays);
 	}
