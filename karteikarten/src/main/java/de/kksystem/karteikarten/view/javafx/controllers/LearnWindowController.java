@@ -300,8 +300,6 @@ public class LearnWindowController implements Initializable {
 		} else {
 			btnTimerOff.setDisable(false);
 		}
-		if (!btnNext.isDisabled())
-			nextQuestion(event);
 		if (currentIndex.getValue() == maxIndex.getValue()) {
 			if (wrongAnswerCards.size() > 0) {
 
@@ -337,6 +335,8 @@ public class LearnWindowController implements Initializable {
 				}
 			}
 		}
+		if (!btnNext.isDisabled())
+			nextQuestion(event);
 	}
 
 	/* Set on Action Methode für Falschknopf */
@@ -352,8 +352,6 @@ public class LearnWindowController implements Initializable {
 		} else {
 			btnTimerOff.setDisable(false);
 		}
-		if (!btnNext.isDisabled())
-			nextQuestion(event);
 		if (currentIndex.getValue() == maxIndex.getValue()) {
 			if (wrongAnswerCards.size() > 0) {
 
@@ -390,6 +388,8 @@ public class LearnWindowController implements Initializable {
 				}
 			}
 		}
+		if (!btnNext.isDisabled())
+			nextQuestion(event);
 	}
 
 	/* Set disable Property von einige FXMLObject */
