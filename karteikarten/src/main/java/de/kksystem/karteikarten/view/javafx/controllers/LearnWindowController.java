@@ -283,6 +283,31 @@ public class LearnWindowController implements Initializable {
     	}
     	if (!btnNext.isDisabled())
     		nextQuestion(event);
+    	if (currentIndex.getValue() == maxIndex.getValue()){
+    		if (wronganswerCards.size() > 0) {
+	    		int learnChoice = JOptionPane.showConfirmDialog(null, "Willst du von deiner Fehlern nochmal lernen?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	    		if (learnChoice == 0) {
+	    			UserData.getInstance().setLection(wronganswerCards);
+	    			WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+	    			wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
+	    			Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	    	        stageInfo.close();
+	    		} else {
+	    		    System.out.print("no");
+	    		    int quitChoice = JOptionPane.showConfirmDialog(null, "Willst du das Lernen beenden?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	    		    if (quitChoice == 0) {
+	    			    Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	       	         	stageInfo.close();
+	    		    }
+	    		}
+	    	} else {
+	    		int quitChoice = JOptionPane.showConfirmDialog(null, "Du bist jetzt Profi! Willst du dein Lernen beenden?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	 		    if (quitChoice == 0) {
+	 			    Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	    	        	stageInfo.close();
+	 		    }
+	    	}
+    	}
     }
     
     private void answerFalse(ActionEvent event) {
@@ -299,16 +324,29 @@ public class LearnWindowController implements Initializable {
     	if (!btnNext.isDisabled())
     		nextQuestion(event);
     	if (currentIndex.getValue() == maxIndex.getValue()) {
-    		int choice = JOptionPane.showConfirmDialog(null, "Willst du von deiner Fehlern nochmal lernen?", "Konfirm", JOptionPane.YES_NO_OPTION);
-    		if (choice == 0) {
-    			UserData.getInstance().setLection(wronganswerCards);
-    			WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
-    			wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
-    			Stage stageInfo = (Stage) splitPane.getScene().getWindow();
-    	        stageInfo.close();
-    		} else {
-    		   System.out.print("no");
-    		}
+	    	if (wronganswerCards.size() > 0) {
+	    		int learnChoice = JOptionPane.showConfirmDialog(null, "Willst du von deiner Fehlern nochmal lernen?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	    		if (learnChoice == 0) {
+	    			UserData.getInstance().setLection(wronganswerCards);
+	    			WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+	    			wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
+	    			Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	    	        stageInfo.close();
+	    		} else {
+	    		    System.out.print("no");
+	    		    int quitChoice = JOptionPane.showConfirmDialog(null, "Du bist noch kein Profi. :( Willst du dein Lernen trotzdem beenden?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	    		    if (quitChoice == 0) {
+	    			    Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	       	         	stageInfo.close();
+	    		    }
+	    		}
+	    	} else {
+	    		int quitChoice = JOptionPane.showConfirmDialog(null, "Du bist jetzt Profi! Willst du dein Lernen beenden?", "Konfirm", JOptionPane.YES_NO_OPTION);
+	 		    if (quitChoice == 0) {
+	 			    Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+	    	        	stageInfo.close();
+	 		    }
+	    	}
     	}
     }
 
