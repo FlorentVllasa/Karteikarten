@@ -142,6 +142,7 @@ public class LearnWindowController implements Initializable {
 
     private int seconds;
     
+    /*Diese Methode zeigt den Timer an, falls den Timer Button von Rot auf Gruen wechselt.*/
     private void showTimer(int duration) {
     	seconds = duration;
     	lblTimer.setTextFill(Color.GREEN);
@@ -160,6 +161,7 @@ public class LearnWindowController implements Initializable {
 	    timer.play();
     }
     
+    /*Set on Action Methode für rote Timerbutton*/
     private void timerOff(ActionEvent event) {
     	if (cmbTimerList.getSelectionModel().getSelectedIndex() > 0) {
     		btnTimerOff.setDisable(true);
@@ -172,6 +174,7 @@ public class LearnWindowController implements Initializable {
     	}
     }
     
+    /*Set on Action Methode für gruene Timerbutton*/
     private void timerOn(ActionEvent event) {
     	btnTimerOff.setDisable(false);
     	btnTimerOff.setVisible(true);
@@ -183,12 +186,14 @@ public class LearnWindowController implements Initializable {
     	duration = 0;
     }
     
+    /*Randomize aktuelle Lernkarteien*/
     private void shuffleCards(ActionEvent event) {
     	Collections.shuffle(cards);
     	currentIndex.set(-1);;
     	nextQuestion(event);
     }
     
+    /*Zeigt die Antwort für die aktuelle gelernte Lernkartei*/
     private void showAnswer(int cardIndex) {
     	webFieldAnswer.getEngine().loadContent(cards.get(cardIndex).getAnswer());
     	btnShowAnswer.setVisible(false);
@@ -201,6 +206,7 @@ public class LearnWindowController implements Initializable {
     	}
     }
     
+    /*Set on Action Methode für Antwortknopf*/
     private void showAnswer(ActionEvent event){
     	lockedForReview.setValue(true); 
     	btnTimerOn.setDisable(true);
@@ -209,6 +215,7 @@ public class LearnWindowController implements Initializable {
     	timer.stop();
     }
 
+    /*Zeigt die Frage von bestimmter Lernkartei, mit direkte Umwandlung von HTML Code zu HTML Viewer*/
     private void showQuestion(int cardIndex) {
     	if (duration != 0) {
     		showTimer(duration);
@@ -216,6 +223,7 @@ public class LearnWindowController implements Initializable {
     	webFieldQuestion.getEngine().loadContent(cards.get(cardIndex).getQuestion());
     }
     
+    /*Set on Action Methode für Zurueckknopf, laedt die vorherige Kartei*/
     private void prevQuestion(ActionEvent event) {
     	timer.stop();
     	currentIndex.set(currentIndex.getValue() - 1);
@@ -227,6 +235,7 @@ public class LearnWindowController implements Initializable {
     	btnShowPicture.setDisable(true);
     }
     
+    /*Set on Action Methode für Weiterknopf, laedt die naechste Kartei*/
     private void nextQuestion(ActionEvent event) {
     	timer.stop();
     	currentIndex.set(currentIndex.getValue() + 1);
@@ -238,6 +247,7 @@ public class LearnWindowController implements Initializable {
     	btnShowPicture.setDisable(true);
     }
 
+    /*Zeigt das Bild einer Kartei in einem PopUpFenster an (falls vorhanden)*/
     private void showPicture(int cardIndex) {
     	btnShowPicture.setVisible(false);
     	btnShowPicture.setDisable(true);
@@ -245,10 +255,12 @@ public class LearnWindowController implements Initializable {
     	createPopUpImage(picture.getFileLocation());
     }
 
+    /*Set on Action Methode für "Bild anzeigen"-knopf*/
     private void showPicture(ActionEvent event) {
     	showPicture(currentIndex.getValue());
     }
 
+    /*Erstelle ein PopUpFenster mit einem bestimmten Bild als Inhalt*/
     private void createPopUpImage(String imageLocation) {
     	File imageFile = new File(imageLocation);
     	Image image = new Image(imageFile.toURI().toString());
@@ -272,6 +284,7 @@ public class LearnWindowController implements Initializable {
         stage.showAndWait();
     }
     
+    /*Set on Action Methode für Richtigknopf*/
     private void answerTrue(ActionEvent event) {
     	lockedForReview.setValue(false);
     	btnTrue.setDisable(true);
@@ -310,6 +323,7 @@ public class LearnWindowController implements Initializable {
     	}
     }
     
+    /*Set on Action Methode für Falschknopf*/
     private void answerFalse(ActionEvent event) {
     	if (!wronganswerCards.contains(cards.get(currentIndex.getValue())))
     		wronganswerCards.add(cards.get(currentIndex.getValue()));
@@ -350,6 +364,7 @@ public class LearnWindowController implements Initializable {
     	}
     }
 
+    /*Set disable Property von einige FXMLObject*/
     private void setDisableProperty() {
     	btnPrevious.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(minIndex),lockedForReview.isEqualTo(allowNewCard)));
     	btnNext.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(maxIndex),lockedForReview.isEqualTo(allowNewCard)));
