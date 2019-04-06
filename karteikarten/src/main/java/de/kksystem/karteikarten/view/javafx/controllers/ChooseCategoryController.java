@@ -89,16 +89,30 @@ public class ChooseCategoryController implements Initializable {
     public void switchToLearnWindow(ActionEvent event){
     	if ((cmbChooseCat.getSelectionModel().getSelectedIndex() > 0) && (cmbChooseLec.getSelectionModel().getSelectedIndex() > 0)) {
     		List<IndexCard> cards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(categoryLectionList.get(cmbChooseLec.getSelectionModel().getSelectedIndex()-1).getLectionId());
-    		UserData.getInstance().setLection(cards);
-    		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
-            Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
-            stageInfo.close();
+    		if (cards.size() != 0) {
+	    		UserData.getInstance().setLection(cards);
+	    		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
+	            Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
+	            stageInfo.close();
+    		} else {
+    			Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Attention");
+        		alert.setHeaderText("Your chosen lection is emtpy.");
+        		alert.showAndWait();
+    		}
     	} else if (cmbChooseFav.getSelectionModel().getSelectedIndex() > 0) {
     		List<IndexCard> cards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(favoriteLectionList.get(cmbChooseFav.getSelectionModel().getSelectedIndex()-1).getLectionId());
-    		UserData.getInstance().setLection(cards);
-    		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
-            Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
-            stageInfo.close();
+    		if (cards.size() != 0) {
+	    		UserData.getInstance().setLection(cards);
+	    		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
+	            Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
+	            stageInfo.close();
+    		} else {
+    			Alert alert = new Alert(AlertType.INFORMATION);
+        		alert.setTitle("Attention");
+        		alert.setHeaderText("Your chosen lection is emtpy.");
+        		alert.showAndWait();
+    		}
     	} else {
     		Alert alert = new Alert(AlertType.INFORMATION);
     		alert.setTitle("Attention");
