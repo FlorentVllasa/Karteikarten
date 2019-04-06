@@ -2,15 +2,14 @@ package de.kksystem.karteikarten.view.javafx.controllers;
 
 import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
-import de.kksystem.karteikarten.model.classes.IndexCardStatImpl;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
-import de.kksystem.karteikarten.model.interfaces.IndexCardStat;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
