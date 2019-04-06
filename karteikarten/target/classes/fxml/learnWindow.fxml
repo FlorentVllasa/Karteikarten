@@ -26,7 +26,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/D:/Eclipse-Workspace/git/bernerslee/karteikarten/src/main/resources/Pictures/shuffle_button.png" />
+                        <Image url="@../Pictures/shuffle_button.png" />
                      </source>
                   </ImageInput>
                </effect>
