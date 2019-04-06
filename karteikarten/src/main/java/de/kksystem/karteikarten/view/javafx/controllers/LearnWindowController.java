@@ -9,41 +9,32 @@ import de.kksystem.karteikarten.model.classes.LectionImpl;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
+import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.animation.Animation;
-import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
-import javafx.beans.Observable;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.TextField;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -51,11 +42,9 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
-import java.text.MessageFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Random;
 import java.util.ResourceBundle;
+
+import javax.swing.JOptionPane;
 
 public class LearnWindowController implements Initializable {
 
@@ -129,8 +118,7 @@ public class LearnWindowController implements Initializable {
     private ComboBox<String> cmbTimerList;
     
     private List<IndexCard> cards;
-    private List<IndexCard> randomizedCards;
-    private List<IndexCard> wronganswerCards;
+    private List<IndexCard> wronganswerCards = new ArrayList<IndexCard>();
 
     private IntegerProperty currentIndex;
     private IntegerProperty minIndex;
@@ -141,8 +129,7 @@ public class LearnWindowController implements Initializable {
 	Timeline timer = new Timeline();
 
     private void getCards(){
-        int lektionId = UserData.getInstance().getLection().getLectionId();
-        cards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(lektionId);
+        cards = UserData.getInstance().getLection();
     }
     
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
@@ -152,95 +139,7 @@ public class LearnWindowController implements Initializable {
         Stage stageInfo = (Stage) splitPane.getScene().getWindow();
         stageInfo.close();
     }
-    
-    private void showQuestion(int cardIndex) {
-    	if (duration != 0) {
-    		showTimer(duration);
-    	}
-    	webFieldQuestion.getEngine().loadContent(cards.get(cardIndex).getQuestion());
-    }
-    
-    private void showAnswer(int cardIndex) {
-    	webFieldAnswer.getEngine().loadContent(cards.get(cardIndex).getAnswer());
-    	btnShowAnswer.setVisible(false);
-		btnShowAnswer.setDisable(true);
-    	btnTrue.setDisable(false);
-    	btnFalse.setDisable(false);
-    	if (cards.get(currentIndex.getValue()).getPictureId() != 0) {
-    		btnShowPicture.setVisible(true);
-        	btnShowPicture.setDisable(false);
-    	}
-    }
-    
-    private void showPicture(int cardIndex) {
-    	btnShowPicture.setVisible(false);
-    	btnShowPicture.setDisable(true);
-    	Picture picture = ServiceFacade.getInstance().findPicture(cards.get(cardIndex).getPictureId());
-    	createPopUpImage(picture.getFileLocation());
-    }
 
-    private void showAnswer(ActionEvent event){
-    	lockedForReview.setValue(true); 
-    	btnTimerOn.setDisable(true);
-    	btnTimerOff.setDisable(true);
-    	showAnswer(currentIndex.getValue());
-    	timer.stop();
-    }
-    
-    private void showPicture(ActionEvent event) {
-    	showPicture(currentIndex.getValue());
-    }
-    
-    private void prevQuestion(ActionEvent event) {
-    	timer.stop();
-    	currentIndex.set(currentIndex.getValue() - 1);
-    	showQuestion(currentIndex.getValue());
-    	webFieldAnswer.getEngine().loadContent("");
-    	btnShowAnswer.setVisible(true);
-		btnShowAnswer.setDisable(false);
-    	btnShowPicture.setVisible(false);
-    	btnShowPicture.setDisable(true);
-    }
-    
-    private void nextQuestion(ActionEvent event) {
-    	timer.stop();
-    	currentIndex.set(currentIndex.getValue() + 1);
-    	showQuestion(currentIndex.getValue());
-    	webFieldAnswer.getEngine().loadContent("");
-    	btnShowAnswer.setVisible(true);
-		btnShowAnswer.setDisable(false);
-    	btnShowPicture.setVisible(false);
-    	btnShowPicture.setDisable(true);
-    }
-
-    private void setDisableProperty() {
-    	btnPrevious.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(minIndex),lockedForReview.isEqualTo(allowNewCard)));
-    	btnNext.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(maxIndex),lockedForReview.isEqualTo(allowNewCard)));
-    }
-    
-    private void createPopUpImage(String imageLocation) {
-    	File imageFile = new File(imageLocation);
-    	Image image = new Image(imageFile.toURI().toString());
-    	ImageView imageView = new ImageView(image);
-    	
-    	BorderPane pane = new BorderPane();
-        pane.setCenter(imageView);
-        Scene scene = new Scene(pane);
-        
-        Stage stage = new Stage();
-        stage.setTitle(imageLocation);
-        stage.setScene(scene);
-        stage.setOnCloseRequest(
-            e -> {
-                e.consume();
-                btnShowPicture.setVisible(true);
-            	btnShowPicture.setDisable(false);
-                stage.close();
-            }
-        );
-        stage.showAndWait();
-    }
-    
     private int seconds;
     
     private void showTimer(int duration) {
@@ -261,32 +160,6 @@ public class LearnWindowController implements Initializable {
 	    timer.play();
     }
     
-    private void answerTrue(ActionEvent event) {
-    	lockedForReview.setValue(false);
-    	btnTrue.setDisable(true);
-    	btnFalse.setDisable(true);
-    	if (duration > 0) {
-    		btnTimerOn.setDisable(false);
-    	} else {
-    		btnTimerOff.setDisable(false);
-    	}
-    	if (!btnNext.isDisabled())
-    		nextQuestion(event);
-    }
-    
-    private void answerFalse(ActionEvent event) {
-    	lockedForReview.setValue(false);
-    	btnTrue.setDisable(true);
-    	btnFalse.setDisable(true);
-    	if (duration > 0) {
-    		btnTimerOn.setDisable(false);
-    	} else {
-    		btnTimerOff.setDisable(false);
-    	}
-    	if (!btnNext.isDisabled())
-    		nextQuestion(event);
-    }
-
     private void timerOff(ActionEvent event) {
     	if (cmbTimerList.getSelectionModel().getSelectedIndex() > 0) {
     		btnTimerOff.setDisable(true);
@@ -314,6 +187,134 @@ public class LearnWindowController implements Initializable {
     	Collections.shuffle(cards);
     	currentIndex.set(-1);;
     	nextQuestion(event);
+    }
+    
+    private void showAnswer(int cardIndex) {
+    	webFieldAnswer.getEngine().loadContent(cards.get(cardIndex).getAnswer());
+    	btnShowAnswer.setVisible(false);
+		btnShowAnswer.setDisable(true);
+    	btnTrue.setDisable(false);
+    	btnFalse.setDisable(false);
+    	if (cards.get(currentIndex.getValue()).getPictureId() != 0) {
+    		btnShowPicture.setVisible(true);
+        	btnShowPicture.setDisable(false);
+    	}
+    }
+    
+    private void showAnswer(ActionEvent event){
+    	lockedForReview.setValue(true); 
+    	btnTimerOn.setDisable(true);
+    	btnTimerOff.setDisable(true);
+    	showAnswer(currentIndex.getValue());
+    	timer.stop();
+    }
+
+    private void showQuestion(int cardIndex) {
+    	if (duration != 0) {
+    		showTimer(duration);
+    	}
+    	webFieldQuestion.getEngine().loadContent(cards.get(cardIndex).getQuestion());
+    }
+    
+    private void prevQuestion(ActionEvent event) {
+    	timer.stop();
+    	currentIndex.set(currentIndex.getValue() - 1);
+    	showQuestion(currentIndex.getValue());
+    	webFieldAnswer.getEngine().loadContent("");
+    	btnShowAnswer.setVisible(true);
+		btnShowAnswer.setDisable(false);
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
+    }
+    
+    private void nextQuestion(ActionEvent event) {
+    	timer.stop();
+    	currentIndex.set(currentIndex.getValue() + 1);
+    	showQuestion(currentIndex.getValue());
+    	webFieldAnswer.getEngine().loadContent("");
+    	btnShowAnswer.setVisible(true);
+		btnShowAnswer.setDisable(false);
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
+    }
+
+    private void showPicture(int cardIndex) {
+    	btnShowPicture.setVisible(false);
+    	btnShowPicture.setDisable(true);
+    	Picture picture = ServiceFacade.getInstance().findPicture(cards.get(cardIndex).getPictureId());
+    	createPopUpImage(picture.getFileLocation());
+    }
+
+    private void showPicture(ActionEvent event) {
+    	showPicture(currentIndex.getValue());
+    }
+
+    private void createPopUpImage(String imageLocation) {
+    	File imageFile = new File(imageLocation);
+    	Image image = new Image(imageFile.toURI().toString());
+    	ImageView imageView = new ImageView(image);
+    	
+    	BorderPane pane = new BorderPane();
+        pane.setCenter(imageView);
+        Scene scene = new Scene(pane);
+        
+        Stage stage = new Stage();
+        stage.setTitle(imageLocation);
+        stage.setScene(scene);
+        stage.setOnCloseRequest(
+            e -> {
+                e.consume();
+                btnShowPicture.setVisible(true);
+            	btnShowPicture.setDisable(false);
+                stage.close();
+            }
+        );
+        stage.showAndWait();
+    }
+    
+    private void answerTrue(ActionEvent event) {
+    	lockedForReview.setValue(false);
+    	btnTrue.setDisable(true);
+    	btnFalse.setDisable(true);
+    	if (duration > 0) {
+    		btnTimerOn.setDisable(false);
+    	} else {
+    		btnTimerOff.setDisable(false);
+    	}
+    	if (!btnNext.isDisabled())
+    		nextQuestion(event);
+    }
+    
+    private void answerFalse(ActionEvent event) {
+    	if (!wronganswerCards.contains(cards.get(currentIndex.getValue())))
+    		wronganswerCards.add(cards.get(currentIndex.getValue()));
+    	lockedForReview.setValue(false);
+    	btnTrue.setDisable(true);
+    	btnFalse.setDisable(true);
+    	if (duration > 0) {
+    		btnTimerOn.setDisable(false);
+    	} else {
+    		btnTimerOff.setDisable(false);
+    	}
+    	if (!btnNext.isDisabled())
+    		nextQuestion(event);
+    	if (currentIndex.getValue() == maxIndex.getValue()) {
+    		int choice = JOptionPane.showConfirmDialog(null, "Willst du von deiner Fehlern nochmal lernen?", "Konfirm", JOptionPane.YES_NO_OPTION);
+    		if (choice == 0) {
+    			UserData.getInstance().setLection(wronganswerCards);
+    			WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+    			wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
+    			Stage stageInfo = (Stage) splitPane.getScene().getWindow();
+    	        stageInfo.close();
+    		} else {
+    		   System.out.print("no");
+    		}
+    	}
+    }
+
+    private void setDisableProperty() {
+    	btnPrevious.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(minIndex),lockedForReview.isEqualTo(allowNewCard)));
+    	btnNext.disableProperty().bind(Bindings.or(currentIndex.isEqualTo(maxIndex),lockedForReview.isEqualTo(allowNewCard)));
     }
     
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/

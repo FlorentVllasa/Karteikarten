@@ -20,7 +20,7 @@ public class UserData {
 	private List<Favoritelist> favoriteList;
 	private CreateWindowController controller;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
-	private Lection choosenLection;
+	private List<IndexCard> choosenLection;
 	
 	private static UserData instance;
 	
@@ -45,7 +45,7 @@ public class UserData {
 		this.userId = userId;
 	}	
 	
-	public void setLection(Lection lection) {
+	public void setLection(List<IndexCard> lection) {
 		choosenLection = lection;
 	}
 	
@@ -72,8 +72,8 @@ public class UserData {
 	public int getFavoritelistId() {
 		return this.favoritelistId;
 	}
-	
-	public Lection getLection() {
+
+	public List<IndexCard> getLection() {
 		return choosenLection;
 	}
 

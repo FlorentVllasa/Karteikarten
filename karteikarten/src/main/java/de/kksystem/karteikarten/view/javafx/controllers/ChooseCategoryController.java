@@ -88,12 +88,14 @@ public class ChooseCategoryController implements Initializable {
     /*Diese Methode wechselt das Fenster zum Lernen Fenster in dem die zuvor erstellen Karteikarten verwendet werden*/
     public void switchToLearnWindow(ActionEvent event){
     	if ((cmbChooseCat.getSelectionModel().getSelectedIndex() > 0) && (cmbChooseLec.getSelectionModel().getSelectedIndex() > 0)) {
-    		UserData.getInstance().setLection(categoryLectionList.get(cmbChooseLec.getSelectionModel().getSelectedIndex()-1));
+    		List<IndexCard> cards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(categoryLectionList.get(cmbChooseLec.getSelectionModel().getSelectedIndex()-1).getLectionId());
+    		UserData.getInstance().setLection(cards);
     		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
             Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
             stageInfo.close();
     	} else if (cmbChooseFav.getSelectionModel().getSelectedIndex() > 0) {
-    		UserData.getInstance().setLection(favoriteLectionList.get(cmbChooseFav.getSelectionModel().getSelectedIndex()-1));
+    		List<IndexCard> cards = ServiceFacade.getInstance().findAllIndexCardsByLectionId(favoriteLectionList.get(cmbChooseFav.getSelectionModel().getSelectedIndex()-1).getLectionId());
+    		UserData.getInstance().setLection(cards);
     		wp.createWindowNewStage("/fxml/learnWindow.fxml", "Lern mol was!", new LearnWindowController());
             Stage stageInfo = (Stage) anchorPane.getScene().getWindow();
             stageInfo.close();
