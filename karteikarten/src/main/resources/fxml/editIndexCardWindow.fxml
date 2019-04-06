@@ -52,14 +52,6 @@
                               </HBox>
                               <HBox alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="509.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnDeletePicture" mnemonicParsing="false" text="Bild loeschen">
-                                       <HBox.margin>
-                                          <Insets right="5.0" />
-                                       </HBox.margin>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </Button>
                                     <Button fx:id="btnSave" mnemonicParsing="false" text="Speichern">
                                        <HBox.margin>
                                           <Insets right="5.0" />

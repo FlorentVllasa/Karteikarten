@@ -77,20 +77,23 @@ public class EditIndexCardController implements Initializable {
 
     @FXML
     public void saveChanges(ActionEvent event) {
-        String question = getText(htmlEditQuestion.getHtmlText());
-        String answer = getText(htmlEditAnswer.getHtmlText());
+        String question = htmlEditQuestion.getHtmlText();
+        String answer = htmlEditAnswer.getHtmlText();
+        String questionPlain = getText(htmlEditQuestion.getHtmlText());
+        String answerPlain = getText(htmlEditAnswer.getHtmlText());
 
-        if (question.isBlank() && answer.isBlank()) {
+        if (questionPlain.isBlank() && answerPlain.isBlank()) {
             lblMessage.setText("Bitte Frage und Antwort angeben!");
-        } else if (question.isBlank()) {
+        } else if (questionPlain.isBlank()) {
             lblMessage.setText("Bitte eine Frage angeben!");
-        } else if (answer.isBlank()) {
+        } else if (answerPlain.isBlank()) {
             lblMessage.setText("Bitte eine Antwort angeben!");
         } else{
             if(indexCardTemp != null){
                 int lectionId = indexCardTemp.getLectionId();
                 int indexCardId = indexCardTemp.getIndexCardId();
-                IndexCardImpl card = new IndexCardImpl(indexCardId, question, answer, null, lectionId, null);
+                int pictureId = indexCardTemp.getPictureId();
+                IndexCardImpl card = new IndexCardImpl(indexCardId, question, answer, null, lectionId, pictureId);
                 ServiceFacade.getInstance().updateIndexCard(card);
                 createWindowController = UserData.getInstance().getC();
                 createWindowController.loadIndexCards(lectionId);
