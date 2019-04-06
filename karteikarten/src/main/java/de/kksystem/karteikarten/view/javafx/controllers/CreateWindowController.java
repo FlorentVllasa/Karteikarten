@@ -272,7 +272,7 @@ public class CreateWindowController implements Initializable {
 						lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
 
 		miAddFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
-		miRemoveFavorite.disableProperty().bind(lvLections.getSelectionModel().selectedItemProperty().isNull());
+		miRemoveFavorite.disableProperty().bind(lvFavorites.getSelectionModel().selectedItemProperty().isNull());
 
 		htmlQuestion.disableProperty().bind(Bindings.and(lvLections.getSelectionModel().selectedItemProperty().isNull(),
 				lvFavorites.getSelectionModel().selectedItemProperty().isNull()));
