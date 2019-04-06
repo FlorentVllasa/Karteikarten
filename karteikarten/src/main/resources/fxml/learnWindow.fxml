@@ -22,12 +22,21 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <Button fx:id="btnShuffle" layoutX="86.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="31.0" text="Shuffle" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="10.0">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="file:/D:/Eclipse-Workspace/git/bernerslee/karteikarten/src/main/resources/Pictures/shuffle_button.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
             <Label fx:id="lblTimer" textFill="RED" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <WebView fx:id="webFieldQuestion" focusTraversable="false" layoutX="30.0" layoutY="35.0" prefHeight="79.0" prefWidth="577.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+            <WebView fx:id="webFieldQuestion" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
                 <Button fx:id="btnPrevious" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="&lt;- Zurück" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
@@ -43,11 +52,30 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btnCloseWindow" focusTraversable="false" layoutX="186.0" layoutY="523.0" mnemonicParsing="false" text="Schließen" AnchorPane.bottomAnchor="10.0">
+            <Button fx:id="btnCloseWindow" focusTraversable="false" mnemonicParsing="false" prefHeight="25.0" prefWidth="72.0" text="Schließen" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button fx:id="btnTimerOff" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="TimerOff" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="80.0">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../Pictures/timer_off.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+            <Button fx:id="btnTimerOn" disable="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" text="TimerOn" visible="false" AnchorPane.bottomAnchor="1.0" AnchorPane.rightAnchor="80.0">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../Pictures/timer_on.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+            <ComboBox fx:id="cmbTimerList" layoutX="362.0" layoutY="527.0" prefHeight="25.0" prefWidth="72.0" promptText="Off" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
             </children></AnchorPane>
         <AnchorPane fx:id="anchorPane" prefHeight="508.0" prefWidth="875.0" stylesheets="@../Css/LearnWindow.css">
             <children>
@@ -56,7 +84,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <WebView fx:id="webFieldAnswer" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
+            <WebView fx:id="webFieldAnswer" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0" />
             <Button fx:id="btnShowPicture" disable="true" layoutX="176.0" layoutY="484.0" mnemonicParsing="false" style="-fx-background-color: #2E64FE;" text="Bild anzeigen" visible="false" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="10.0">
                <font>
                   <Font name="System Bold" size="12.0" />

@@ -10,6 +10,7 @@ import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
 
+import java.util.Collections;
 import java.util.List;
 
 import javafx.animation.Animation;
@@ -24,15 +25,19 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -56,6 +61,9 @@ public class LearnWindowController implements Initializable {
 
 	@FXML
     private SplitPane splitPane;
+	
+	@FXML
+	private Button btnShuffle;
 	
 	@FXML
 	private Label lblTimer;
@@ -110,14 +118,25 @@ public class LearnWindowController implements Initializable {
 	    	}
     	}
     }
-
-    private List<IndexCard> cards;
     
+    @FXML
+    private Button btnTimerOn;
+    
+    @FXML
+    private Button btnTimerOff;
+    
+    @FXML
+    private ComboBox<String> cmbTimerList;
+    
+    private List<IndexCard> cards;
+    private List<IndexCard> randomizedCards;
     private List<IndexCard> wronganswerCards;
 
     private IntegerProperty currentIndex;
     private IntegerProperty minIndex;
     private IntegerProperty maxIndex;
+    
+    private int duration = 0;
     
 	Timeline timer = new Timeline();
 
@@ -135,9 +154,8 @@ public class LearnWindowController implements Initializable {
     }
     
     private void showQuestion(int cardIndex) {
-    	if (UserData.getInstance().getDuration() != 0) {
-    		lblTimer.setTextFill(Color.GREEN);
-    		showTimer(UserData.getInstance().getDuration());
+    	if (duration != 0) {
+    		showTimer(duration);
     	}
     	webFieldQuestion.getEngine().loadContent(cards.get(cardIndex).getQuestion());
     }
@@ -163,7 +181,10 @@ public class LearnWindowController implements Initializable {
 
     private void showAnswer(ActionEvent event){
     	lockedForReview.setValue(true); 
+    	btnTimerOn.setDisable(true);
+    	btnTimerOff.setDisable(true);
     	showAnswer(currentIndex.getValue());
+    	timer.stop();
     }
     
     private void showPicture(ActionEvent event) {
@@ -198,7 +219,6 @@ public class LearnWindowController implements Initializable {
     }
     
     private void createPopUpImage(String imageLocation) {
-    	//Create Image
     	File imageFile = new File(imageLocation);
     	Image image = new Image(imageFile.toURI().toString());
     	ImageView imageView = new ImageView(image);
@@ -224,7 +244,8 @@ public class LearnWindowController implements Initializable {
     private int seconds;
     
     private void showTimer(int duration) {
-    	seconds = duration * 60;
+    	seconds = duration;
+    	lblTimer.setTextFill(Color.GREEN);
     	timer.getKeyFrames().clear();
     	timer.getKeyFrames().add(new KeyFrame(Duration.seconds(1), e -> {
     		seconds--;
@@ -235,7 +256,7 @@ public class LearnWindowController implements Initializable {
     		}
     		lblTimer.setText(minute + ":" + second);
 	    }));
-    	timer.setCycleCount(60*duration);
+    	timer.setCycleCount(duration);
     	timer.setOnFinished(this::showAnswer);
 	    timer.play();
     }
@@ -244,12 +265,55 @@ public class LearnWindowController implements Initializable {
     	lockedForReview.setValue(false);
     	btnTrue.setDisable(true);
     	btnFalse.setDisable(true);
+    	if (duration > 0) {
+    		btnTimerOn.setDisable(false);
+    	} else {
+    		btnTimerOff.setDisable(false);
+    	}
+    	if (!btnNext.isDisabled())
+    		nextQuestion(event);
     }
     
     private void answerFalse(ActionEvent event) {
     	lockedForReview.setValue(false);
     	btnTrue.setDisable(true);
     	btnFalse.setDisable(true);
+    	if (duration > 0) {
+    		btnTimerOn.setDisable(false);
+    	} else {
+    		btnTimerOff.setDisable(false);
+    	}
+    	if (!btnNext.isDisabled())
+    		nextQuestion(event);
+    }
+
+    private void timerOff(ActionEvent event) {
+    	if (cmbTimerList.getSelectionModel().getSelectedIndex() > 0) {
+    		btnTimerOff.setDisable(true);
+        	btnTimerOff.setVisible(false);
+        	btnTimerOn.setDisable(false);
+        	btnTimerOn.setVisible(true);
+        	cmbTimerList.setDisable(true);
+        	duration = cmbTimerList.getSelectionModel().getSelectedIndex() * 60;
+    		showTimer(duration);
+    	}
+    }
+    
+    private void timerOn(ActionEvent event) {
+    	btnTimerOff.setDisable(false);
+    	btnTimerOff.setVisible(true);
+    	btnTimerOn.setDisable(true);
+    	btnTimerOn.setVisible(false);
+    	cmbTimerList.setDisable(false);
+    	timer.stop();
+    	lblTimer.setText("");
+    	duration = 0;
+    }
+    
+    private void shuffleCards(ActionEvent event) {
+    	Collections.shuffle(cards);
+    	currentIndex.set(-1);;
+    	nextQuestion(event);
     }
     
     /*Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen*/
@@ -257,11 +321,15 @@ public class LearnWindowController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getCards();
         
+        cmbTimerList.getItems().addAll("Off" , "1 min" , "2 min" , "3 min" , "4 min" , "5 min" , "6 min" , "7 min" , "8 min" , "9 min");
+        
         currentIndex = new SimpleIntegerProperty(this, "currentIndex", 0);
         minIndex = new SimpleIntegerProperty(this, "minIndex", 0);
-        maxIndex = new SimpleIntegerProperty(this, "currentIndex", cards.size()-1);
+        maxIndex = new SimpleIntegerProperty(this, "maxIndex", cards.size()-1);
         
         setDisableProperty();
+        
+        btnShuffle.setOnAction(this::shuffleCards);
         
         btnShowAnswer.setOnAction(this::showAnswer);
         btnShowPicture.setOnAction(this::showPicture);
@@ -270,6 +338,9 @@ public class LearnWindowController implements Initializable {
         btnNext.setOnAction(this::nextQuestion);
         
         btnCloseWindow.setOnAction(this::closeLearnWindow);
+        
+        btnTimerOff.setOnAction(this::timerOff);
+        btnTimerOn.setOnAction(this::timerOn);
         
         btnTrue.setOnAction(this::answerTrue);
         btnFalse.setOnAction(this::answerFalse);
