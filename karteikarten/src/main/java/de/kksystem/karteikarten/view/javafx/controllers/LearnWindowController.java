@@ -4,6 +4,7 @@ import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Picture;
+import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.web.WebView;
@@ -43,6 +45,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LearnWindowController implements Initializable {
+	private WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
+	private WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
 
 	@FXML
 	private SplitPane splitPane;
@@ -79,6 +83,9 @@ public class LearnWindowController implements Initializable {
 
 	@FXML
 	private Button btnCloseWindow;
+	
+	@FXML
+	private ImageView ivQuestion;
 
 	private BooleanProperty lockedForReview = new SimpleBooleanProperty(false);
 	private final BooleanProperty allowNewCard = new SimpleBooleanProperty(true);
@@ -125,7 +132,9 @@ public class LearnWindowController implements Initializable {
 	Timeline timer = new Timeline();
 
 	private void getCards() {
-		cards = UserData.getInstance().getLection();
+
+	cards = UserData.getInstance().getLection();
+	
 	}
 
 	/*
@@ -398,6 +407,11 @@ public class LearnWindowController implements Initializable {
 		btnNext.disableProperty()
 				.bind(Bindings.or(currentIndex.isEqualTo(maxIndex), lockedForReview.isEqualTo(allowNewCard)));
 	}
+	
+	public void switchSceneToQuestionIcon(MouseEvent event) {
+    	wp.createWindowNewStage("/fxml/QeustionIcon.fxml", "Informationen zum Anwenden des LearnWindow", new LearnWindowInformation());
+    }
+	
 
 	/* Hier werden die anklickbaren Button ihren jeweiligen Methoden zugewiesen */
 	@Override
@@ -430,5 +444,7 @@ public class LearnWindowController implements Initializable {
 		btnWrong.setOnAction(this::answerWrong);
 
 		showQuestion(currentIndex.getValue());
+		
+		ivQuestion.setOnMouseClicked(this::switchSceneToQuestionIcon);
 	}
 }
