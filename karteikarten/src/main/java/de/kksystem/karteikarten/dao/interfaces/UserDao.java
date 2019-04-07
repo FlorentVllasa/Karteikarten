@@ -18,4 +18,6 @@ public interface UserDao {
 	User findUserByUsername(String username);
 	User findUserById(int userId);
 	User findUserByEMail(String email);
+	List<String> findAllUserNames();
+	List<String> findAllUserEmails();
 }

@@ -99,6 +99,14 @@ public class DaoFacade {
 	public void updateUsername(String newUsername, int userId){
 		userDao.updateUsername(newUsername, userId);
 	}
+
+	public List<String> findAllUserEmails(){
+		return userDao.findAllUserEmails();
+	}
+
+	public List<String> findAllUserNames(){
+		return userDao.findAllUserNames();
+	}
 	
 	/*
 	 * 

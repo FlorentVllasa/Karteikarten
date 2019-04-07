@@ -20,4 +20,6 @@ public interface UserService {
 	List<Category> findCategoriesByUserId(int userId);
 	boolean checkLogIn(String username, String password);
 	int checkRegister(String username, String email);
+	List<String> findAllUserEmails();
+	List<String> findAllUserNames();
 }

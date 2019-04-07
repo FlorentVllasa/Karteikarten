@@ -72,6 +72,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public List<String> findAllUserEmails(){
+		return daoFacade.findAllUserEmails();
+	}
+
+	@Override
+	public List<String> findAllUserNames(){
+		return daoFacade.findAllUserNames();
+	}
+
+	@Override
 	public List<Category> findCategoriesByUserId(int userId) {
 		return daoFacade.findCategoriesByUserId(userId);
 	}

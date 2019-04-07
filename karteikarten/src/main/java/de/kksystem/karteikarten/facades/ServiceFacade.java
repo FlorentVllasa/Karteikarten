@@ -99,6 +99,15 @@ public class ServiceFacade {
 	public User findUserByEMail(String email) {
 		return userService.findUserByEMail(email);
 	}
+
+	public List<String> findAllUserNames(){
+		return userService.findAllUserNames();
+	}
+
+	public List<String> findAllUserEmails(){
+		return userService.findAllUserEmails();
+	}
+
 	
 	public boolean checkLogIn(String username, String password) {
 		return userService.checkLogIn(username, password);

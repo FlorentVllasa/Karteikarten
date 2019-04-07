@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Provider;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChangeEmailController implements Initializable {
@@ -35,15 +37,20 @@ public class ChangeEmailController implements Initializable {
     @FXML
     private Label lblMessage;
 
+    private String newEmail;
+
     @FXML
     public void changeEmail(ActionEvent event){
-        String newEmail = txtNewEmail.getText();
+        List<String> allUserEmails = ServiceFacade.getInstance().findAllUserEmails();
+        newEmail = txtNewEmail.getText();
         String currentEmail = UserData.getInstance().getEmail();
         int userId = UserData.getInstance().getUserId();
         if(newEmail.isBlank()){
             lblMessage.setText("Bitte eine neue E-Mail eintragen!");
         }else if(newEmail.equals(currentEmail)){
             lblMessage.setText("Die eingegebene E-Mail wird schon verwendet!");
+        }else if(checkEmail(allUserEmails) > 0){
+            lblMessage.setText("Die eingegebene E-Mail wird bereits verwendet!");
         }else{
             ServiceFacade.getInstance().updateEmail(newEmail, userId);
             UserData.getInstance().setEmail(newEmail);
@@ -52,7 +59,15 @@ public class ChangeEmailController implements Initializable {
             alert.setContentText("Email wurde abgeändert!");
             alert.show();
         }
+    }
 
+    public int checkEmail(List<String> allUserEmails){
+        for (int i = 0; i < allUserEmails.size() ; i++) {
+            if(newEmail.equals(allUserEmails.get(i))) {
+                return 1;
+            }
+        }
+        return -1;
     }
 
     @Override

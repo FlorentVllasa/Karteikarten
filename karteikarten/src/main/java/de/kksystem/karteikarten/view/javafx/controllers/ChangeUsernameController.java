@@ -19,6 +19,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.Provider;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ChangeUsernameController implements Initializable {
@@ -35,23 +37,38 @@ public class ChangeUsernameController implements Initializable {
     @FXML
     private Label lblMessage;
 
+    private String newUsername;
+
     @FXML
     public void changeUserName(ActionEvent event){
-        String newUsername = txtNewUsername.getText();
+        List<String> allUserNames = ServiceFacade.getInstance().findAllUserNames();
+        newUsername = txtNewUsername.getText();
         int userId = UserData.getInstance().getUserId();
         String currentUsername = UserData.getInstance().getUsername();
         if(newUsername.isBlank()){
             lblMessage.setText("Bitte neuen Nutzernamen eingeben!");
         }else if(newUsername.equals(currentUsername)){
             lblMessage.setText("Bitte einen neuen Nutzernamen eingeben!");
+        }else if(checkUserName(allUserNames) > 0){
+            lblMessage.setText("Dieser Nutzername existiert bereits!");
         }else{
             ServiceFacade.getInstance().updateUsername(newUsername, userId);
             UserData.getInstance().setUsername(newUsername);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erfolgreich");
-            alert.setContentText("Benutzername wurde abgeändert.");
+            alert.setContentText("Nutzername wurde abgeändert!");
             alert.show();
         }
+
+    }
+
+    public int checkUserName(List<String> allUserNames){
+        for (int i = 0; i < allUserNames.size() ; i++) {
+            if(newUsername.equals(allUserNames.get(i))) {
+                return 1;
+            }
+        }
+        return -1;
     }
 
     @Override
