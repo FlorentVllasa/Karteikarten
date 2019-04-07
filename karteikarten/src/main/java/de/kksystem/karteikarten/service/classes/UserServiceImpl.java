@@ -87,6 +87,9 @@ public class UserServiceImpl implements UserService {
 			UserData.getInstance().setUserId(user.getUserId());
 			UserData.getInstance().setFavoritelistId(favoritelist.getFavoritelistId());
 			UserData.getInstance().setEmail(user.getEmail());
+			UserData.getInstance().setPassword(user.getPassword());
+			UserData.getInstance().setForeName(user.getForename());
+			UserData.getInstance().setSurname(user.getSurname());
 			
 			return true;
 		}
