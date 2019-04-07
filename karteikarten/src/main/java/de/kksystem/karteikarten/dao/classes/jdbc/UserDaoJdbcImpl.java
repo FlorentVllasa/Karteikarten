@@ -41,7 +41,7 @@ public class UserDaoJdbcImpl implements UserDao {
 			pstatement.setString(3, user.getPassword());
 			pstatement.setString(4, user.getSurname());
 			pstatement.setString(5, user.getForename());
-			pstatement.setTimestamp(6, timestamp);
+			pstatement.setTimestamp(6, user.getLastLogin());
 
 			pstatement.executeUpdate();
 			
