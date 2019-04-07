@@ -30,10 +30,10 @@ import de.kksystem.karteikarten.model.interfaces.User;
 public class UserDaoTest {
 
 	private static final String DATABASE_XML_FILE_PATH = "src/test/resources/test-xml/full-export-db.xml";
-	private static final String ADD_ARTICLE_XML_FILE_PATH = "src/test/resources/test-xml/expected-full-export-db.xml";
+	private static final String ADD_USER_XML_FILE_PATH = "src/test/resources/test-xml/testUser/expected-add-user.xml";
+    //private static final String DELETE_USER_XML_FILE_PATH = "src/test/resources/test-xml/testDataDeleteUser/expected-add-user.xml";
 	private static final String USER_TABLE = "Benutzer";
 	private UserDao userDao;
-	private int newUserId;
 	
 	private void fullDatabaseImport(File file) throws ClassNotFoundException, DatabaseUnitException, IOException, SQLException {
 		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
@@ -68,7 +68,7 @@ public class UserDaoTest {
 	public void testAddUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
-		File expectedXmlFile = new File(ADD_ARTICLE_XML_FILE_PATH);
+		File expectedXmlFile = new File(ADD_USER_XML_FILE_PATH);
 		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
 		IDataSet expectedDataSet = builder.build(expectedXmlFile);
 		ReplacementDataSet dataSet = new ReplacementDataSet(expectedDataSet);
@@ -77,7 +77,7 @@ public class UserDaoTest {
 		//ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
 		
 		User user = new UserImpl("gian-test333", "giantest333@example.com", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
-		newUserId = userDao.addUser(user);
+		userDao.addUser(user);
 		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
 		IDataSet actualDataSet = connection.createDataSet();
 		ITable actualTable = actualDataSet.getTable(USER_TABLE);
@@ -86,6 +86,20 @@ public class UserDaoTest {
 	    		expectedTable.getTableMetaData().getColumns());
 		
 		Assertion.assertEquals(expectedTable, filteredTable);
-		
 	}
+
+	@Test
+    public void testDeleteUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException{
+//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+//
+//        File expectedXmlFile = new File(ADD_USER_XML_FILE_PATH);
+//        FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+//        IDataSet expectedDataSet = builder.build(expectedXmlFile);
+//        ReplacementDataSet dataSet = new ReplacementDataSet(expectedDataSet);
+//        dataSet.addReplacementObject("[SYSTIMESTAMP]", timestamp.getTime());
+//        ITable expectedTable = dataSet.getTable(USER_TABLE);
+
+
+
+    }
 }
