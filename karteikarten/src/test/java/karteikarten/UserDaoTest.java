@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -54,7 +55,12 @@ public class UserDaoTest {
 	
 	@After
     public void tearDown() throws Exception {
-		userDao.deleteUser(new UserImpl(newUserId, "", "", "", "", "", null));
+		//userDao.deleteUser(new UserImpl(newUserId, "", "", "", "", "", null));
+		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
+		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+		IDataSet dataSet = builder.build(new FileInputStream(DATABASE_XML_FILE_PATH));
+
+		DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
     }
 	
 
