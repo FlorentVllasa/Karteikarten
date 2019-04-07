@@ -409,7 +409,7 @@ public class LearnWindowController implements Initializable {
 	}
 	
 	public void switchSceneToQuestionIcon(MouseEvent event) {
-    	wp.createWindowNewStage("/fxml/QeustionIcon.fxml", "Informationen zum Anwenden des LearnWindow", new LearnWindowInformation());
+    	wp.createWindowNewStage("/fxml/LearnWindowInformation.fxml", "Informationen zum Anwenden des LearnWindow", new LearnWindowInformationController());
     }
 	
 
