@@ -30,8 +30,8 @@ import de.kksystem.karteikarten.model.interfaces.User;
 public class UserDaoTest {
 
 	private static final String DATABASE_XML_FILE_PATH = "src/test/resources/test-xml/full-export-db.xml";
-	private static final String ADD_USER_XML_FILE_PATH = "src/test/resources/test-xml/testUser/expected-add-user.xml";
-    //private static final String DELETE_USER_XML_FILE_PATH = "src/test/resources/test-xml/testDataDeleteUser/expected-add-user.xml";
+	private static final String ADD_USER_XML_FILE_PATH = "src/test/resources/test-xml/test-user/expected-add-user.xml";
+    private static final String DELETE_USER_XML_FILE_PATH = "src/test/resources/test-xml/test-user/expected-delete-user.xml";
 	private static final String USER_TABLE = "Benutzer";
 	private UserDao userDao;
 	
@@ -71,9 +71,7 @@ public class UserDaoTest {
 		File expectedXmlFile = new File(ADD_USER_XML_FILE_PATH);
 		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
 		IDataSet expectedDataSet = builder.build(expectedXmlFile);
-		ReplacementDataSet dataSet = new ReplacementDataSet(expectedDataSet);
-		dataSet.addReplacementObject("[SYSTIMESTAMP]", timestamp.getTime());
-		ITable expectedTable = dataSet.getTable(USER_TABLE);
+		ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
 		//ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
 		
 		User user = new UserImpl("gian-test333", "giantest333@example.com", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
@@ -90,16 +88,22 @@ public class UserDaoTest {
 
 	@Test
     public void testDeleteUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException{
-//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-//
-//        File expectedXmlFile = new File(ADD_USER_XML_FILE_PATH);
-//        FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-//        IDataSet expectedDataSet = builder.build(expectedXmlFile);
-//        ReplacementDataSet dataSet = new ReplacementDataSet(expectedDataSet);
-//        dataSet.addReplacementObject("[SYSTIMESTAMP]", timestamp.getTime());
-//        ITable expectedTable = dataSet.getTable(USER_TABLE);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
+        File expectedXmlFile = new File(DELETE_USER_XML_FILE_PATH);
+        FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+        IDataSet expectedDataSet = builder.build(expectedXmlFile);
+        ITable expectedTable =expectedDataSet.getTable(USER_TABLE);
 
+        User user = new UserImpl(39, "giantest555@example.com", "gian-test555", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
+        userDao.deleteUser(user);
+		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
+		IDataSet actualDataSet = connection.createDataSet();
+		ITable actualTable = actualDataSet.getTable(USER_TABLE);
 
+		ITable filteredTable = DefaultColumnFilter.includedColumnsTable(actualTable,
+				expectedTable.getTableMetaData().getColumns());
+
+		Assertion.assertEquals(expectedTable, filteredTable);
     }
 }
