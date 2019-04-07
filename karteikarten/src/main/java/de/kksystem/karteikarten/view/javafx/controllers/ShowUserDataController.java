@@ -45,13 +45,11 @@ public class ShowUserDataController implements Initializable {
     public void showUserData(){
         pwfPassword.setEditable(false);
         txtPasswort.setEditable(false);
-        int userId = UserData.getInstance().getUserId();
-        User user = ServiceFacade.getInstance().findUserById(userId);
-        String userName = user.getUsername();
-        String passWord = user.getPassword();
-        String email = user.getEmail();
-        String foreName = user.getForename();
-        String surName = user.getSurname();
+        String userName = UserData.getInstance().getUsername();
+        String passWord = UserData.getInstance().getPassword();
+        String email = UserData.getInstance().getEmail();
+        String foreName = UserData.getInstance().getForeName();
+        String surName = UserData.getInstance().getSurname();
         lblUserName.setText(userName);
         pwfPassword.setText(passWord);
         lblEmail.setText(email);

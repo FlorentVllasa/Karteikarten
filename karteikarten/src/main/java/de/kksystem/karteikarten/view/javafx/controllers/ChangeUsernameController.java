@@ -46,6 +46,7 @@ public class ChangeUsernameController implements Initializable {
             lblMessage.setText("Bitte einen neuen Nutzernamen eingeben!");
         }else{
             ServiceFacade.getInstance().updateUsername(newUsername, userId);
+            UserData.getInstance().setUsername(newUsername);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erfolgreich");
             alert.setContentText("Benutzername wurde abgeändert.");

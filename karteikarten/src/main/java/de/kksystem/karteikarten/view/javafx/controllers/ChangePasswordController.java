@@ -43,6 +43,7 @@ public class ChangePasswordController implements Initializable {
             lblMessage.setText("Bitte ein neues Passwort eingeben!");
         }else{
             ServiceFacade.getInstance().updatePassword(newPassword, userId);
+            UserData.getInstance().setPassword(newPassword);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erfolgreich!");
             alert.setContentText("Password wurde erfolgreich abgeändert!");

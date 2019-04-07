@@ -19,6 +19,9 @@ public class UserData {
 	private List<Lection> lectionList;
 	private List<Favoritelist> favoriteList;
 	private CreateWindowController controller;
+	private String password;
+	private String foreName;
+	private String surname;
 	/*Choosen Lection to learn, the value is determined after selecting lection from category->lection or favoritelist*/
 	private List<IndexCard> choosenLection;
 	
@@ -43,8 +46,19 @@ public class UserData {
 	
 	public void setUserId(int userId) {
 		this.userId = userId;
-	}	
-	
+	}
+
+	public void setPassword(String password){
+		this.password = password;
+	}
+
+	public void setForeName(String foreName){
+		this.foreName = foreName;
+	}
+
+	public void setSurname(String surname){
+		this.surname = surname;
+	}
 	public void setLection(List<IndexCard> lection) {
 		choosenLection = lection;
 	}
@@ -63,6 +77,18 @@ public class UserData {
 
 	public String getEmail(){
 		return this.email;
+	}
+
+	public String getPassword(){
+		return this.password;
+	}
+
+	public String getForeName(){
+		return this.foreName;
+	}
+
+	public String getSurname(){
+		return this.surname;
 	}
 	
 	public int getUserId() {

@@ -46,6 +46,7 @@ public class ChangeEmailController implements Initializable {
             lblMessage.setText("Die eingegebene E-Mail wird schon verwendet!");
         }else{
             ServiceFacade.getInstance().updateEmail(newEmail, userId);
+            UserData.getInstance().setEmail(newEmail);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erfolgreich");
             alert.setContentText("Email wurde abgeändert!");

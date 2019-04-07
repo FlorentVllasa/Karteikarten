@@ -51,7 +51,9 @@ public class ChangeNameController implements Initializable {
             lblMessage.setText("Bitte Nachnamen eingeben!");
         }else{
             ServiceFacade.getInstance().updateForename(newForeName, userId);
+            UserData.getInstance().setForeName(newForeName);
             ServiceFacade.getInstance().updateSurname(newSurName, userId);
+            UserData.getInstance().setSurname(newSurName);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erfolgreich!");
             alert.setContentText("Name und Vorname wurden angeändert!");
