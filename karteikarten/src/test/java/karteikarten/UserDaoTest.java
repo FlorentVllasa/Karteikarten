@@ -14,8 +14,10 @@ import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ITable;
 import org.dbunit.dataset.ReplacementDataSet;
+import org.dbunit.dataset.filter.DefaultColumnFilter;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -30,6 +32,7 @@ public class UserDaoTest {
 	private static final String ADD_ARTICLE_XML_FILE_PATH = "src/test/resources/test-xml/expected-full-export-db.xml";
 	private static final String USER_TABLE = "Benutzer";
 	private UserDao userDao;
+	private int newUserId;
 	
 	private void fullDatabaseImport(File file) throws ClassNotFoundException, DatabaseUnitException, IOException, SQLException {
 		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
@@ -49,6 +52,11 @@ public class UserDaoTest {
 		fullDatabaseImport(xmlFile);
 	}
 	
+	@After
+    public void tearDown() throws Exception {
+		userDao.deleteUser(new UserImpl(newUserId, "", "", "", "", "", null));
+    }
+	
 
 	@Test
 	public void testAddUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException {
@@ -62,12 +70,16 @@ public class UserDaoTest {
 		ITable expectedTable = dataSet.getTable(USER_TABLE);
 		//ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
 		
-		User user = new UserImpl(37, "gian-test", "giantest9@example.com", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
-		userDao.addUser(user);
+		User user = new UserImpl("gian-test333", "giantest333@example.com", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
+		newUserId = userDao.addUser(user);
 		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
 		IDataSet actualDataSet = connection.createDataSet();
 		ITable actualTable = actualDataSet.getTable(USER_TABLE);
-		Assertion.assertEquals(expectedTable, actualTable);
+		
+	    ITable filteredTable = DefaultColumnFilter.includedColumnsTable(actualTable, 
+	    		expectedTable.getTableMetaData().getColumns());
+		
+		Assertion.assertEquals(expectedTable, filteredTable);
 		
 	}
 }
