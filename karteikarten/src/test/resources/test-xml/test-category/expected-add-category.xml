@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <Benutzer EmailAdresse="neueEmail@neu.de" Benutzername="nutzer" Passwort="123" Nachname="nachname" Vorname="vorname"/>
+  <Benutzer EmailAdresse="flowmow@random.com" Benutzername="flowmow12" Passwort="123" Nachname="der Fünfte" Vorname="Güntha"/>
+  <Benutzer EmailAdresse="engin.aykat@hotmail.de" Benutzername="engin" Passwort="12" Nachname="aykat" Vorname="engin"/>
+  <Benutzer EmailAdresse="florentus998@gmail.com" Benutzername="flow" Passwort="123" Nachname="vl" Vorname="fl"/>
+  <Benutzer EmailAdresse="giantest9@example.com" Benutzername="gian-test" Passwort="test1231" Nachname="testnutzer1" Vorname="testnutzervorname1"/>
+  <Benutzer EmailAdresse="giantest55@example.com" Benutzername="gian-test55" Passwort="test1231" Nachname="testnutzer1" Vorname="testnutzervorname1"/>
+  <Benutzer EmailAdresse="giantest555@example.com" Benutzername="gian-test555" Passwort="test1231" Nachname="testnutzer1" Vorname="testnutzervorname1"/>
+  <Benutzer EmailAdresse="giantest333@example.com" Benutzername="gian-test333" Passwort="test1231" Nachname="testnutzer1" Vorname="testnutzervorname1"/>
+  <Bild BildID="10" Speicherort="C:\Users\Gian\Desktop\lol.jpg"/>
+  <Bild BildID="11" Speicherort="C:\Users\Gian\Desktop\Karteikartensystem.jpg"/>
+  <Bild BildID="12" Speicherort="C:\Users\Gian\Desktop\lol.jpg"/>
+  <Bild BildID="13" Speicherort="C:\Users\Gian\Desktop\Restaurant.jpg"/>
+  <Bild BildID="15" Speicherort="C:\Users\Gian\Desktop\schaltplan_neu.jpg"/>
+  <Bild BildID="16" Speicherort="C:\Users\Gian\Desktop\dc-logo.jpg"/>
+  <Bild BildID="17" Speicherort="C:\Users\Gian\Desktop\Restaurant.jpg"/>
+  <Bild BildID="20" Speicherort="C:\Users\Gian\Desktop\plan.jpg"/>
+  <Bild BildID="22" Speicherort="C:\Users\hp\Desktop\Übung3 Aufgabe2.jpg"/>
+  <Bild BildID="23" Speicherort="D:\Visual Studio Workspace\source\repos\GlowWire\GlowWire\question-mark.jpg"/>
+  <Favoritenliste FavoritenlisteID="14" BenutzerID="27"/>
+  <Favoritenliste FavoritenlisteID="15" BenutzerID="28"/>
+  <Favoritenliste FavoritenlisteID="18" BenutzerID="31"/>
+  <Favoritenliste FavoritenlisteID="19" BenutzerID="32"/>
+  <Favoritenliste FavoritenlisteID="21" BenutzerID="34"/>
+  <Karteikarte KarteikarteID="3" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;Sicher?&lt;span class=&quot;Apple-tab-span&quot; style=&quot;white-space:pre&quot;&gt;&#09;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;ei sicha&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41" BildID="20"/>
+  <Karteikarte KarteikarteID="4" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;caret-color: rgb(153, 0, 0); color: rgb(153, 0, 0); font-style: italic; font-weight: bold; text-decoration: underline;&quot;&gt;asdasd&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;caret-color: rgb(153, 0, 0); color: rgb(153, 0, 0); font-style: italic; font-weight: bold; text-decoration: underline;&quot;&gt;asdasdas&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41" BildID="22"/>
+  <Karteikarte KarteikarteID="7" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;1+1&lt;span class=&quot;Apple-tab-span&quot; style=&quot;white-space:pre&quot;&gt;&#09;&#09;&#09;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="52"/>
+  <Karteikarte KarteikarteID="8" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;1+2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="52"/>
+  <Karteikarte KarteikarteID="9" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(153, 0, 0);&quot;&gt;q1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(153, 51, 0);&quot;&gt;a1&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41"/>
+  <Karteikarte KarteikarteID="10" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;q2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;a2&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41"/>
+  <Karteikarte KarteikarteID="11" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;q3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;a3&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41"/>
+  <Karteikarte KarteikarteID="12" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;q4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;a4&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41"/>
+  <Karteikarte KarteikarteID="13" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;span style=&quot;font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(255, 255, 102);&quot;&gt;q5&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;span style=&quot;font-weight: bold; font-style: italic; text-decoration: underline; color: rgb(255, 255, 77);&quot;&gt;a5&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41" BildID="23"/>
+  <Karteikarte KarteikarteID="14" Frage="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;awdasd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" Antwort="&lt;html dir=&quot;ltr&quot;&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;p&gt;asdasd&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;" LektionID="41"/>
+  <Kategorie Name="Mathematik" BenutzerID="27"/>
+  <Kategorie Name="Cat2" BenutzerID="27"/>
+  <Kategorie Name="Cat3" BenutzerID="27"/>
+  <Kategorie Name="mathe" BenutzerID="32"/>
+  <Kategorie Name="cat" BenutzerID="32"/>
+  <Lektion LektionID="38" Name="testuser" KategorieID="53"/>
+  <Lektion LektionID="41" Name="Macht Spaß" KategorieID="56" FavoritenlisteID="14"/>
+  <Lektion LektionID="44" Name="Tach385i" KategorieID="56"/>
+  <Lektion LektionID="46" Name="Cat3lekt1" KategorieID="59"/>
+  <Lektion LektionID="47" Name="Cat3lekt2" KategorieID="59"/>
+  <Lektion LektionID="48" Name="Cat3lekt3" KategorieID="59"/>
+  <Lektion LektionID="49" Name="Cat2lekt1" KategorieID="58"/>
+  <Lektion LektionID="50" Name="Cat2lekt2" KategorieID="58" FavoritenlisteID="14"/>
+  <Lektion LektionID="51" Name="Cat2lekt3" KategorieID="58"/>
+  <Lektion LektionID="52" Name="integral" KategorieID="60" FavoritenlisteID="19"/>
+  <StatistikKarteikarte StatistikID="11" AnzahlRichtig="10" AnzahlFalsch="5" Datum="1553727600000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="12" AnzahlRichtig="15" AnzahlFalsch="5" Datum="1553814000000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="13" AnzahlRichtig="15" AnzahlFalsch="18" Datum="1553900400000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="14" AnzahlRichtig="2" AnzahlFalsch="3" Datum="1553986800000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="15" AnzahlRichtig="12" AnzahlFalsch="7" Datum="1554069600000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="16" AnzahlRichtig="20" AnzahlFalsch="7" Datum="1554156000000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="17" AnzahlRichtig="4" AnzahlFalsch="6" Datum="1554242400000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="18" AnzahlRichtig="5" AnzahlFalsch="15" Datum="1553727600000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="19" AnzahlRichtig="5" AnzahlFalsch="5" Datum="1553814000000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="20" AnzahlRichtig="9" AnzahlFalsch="8" Datum="1553900400000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="21" AnzahlRichtig="2" AnzahlFalsch="8" Datum="1553986800000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="22" AnzahlRichtig="5" AnzahlFalsch="3" Datum="1554069600000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="23" AnzahlRichtig="19" AnzahlFalsch="8" Datum="1554156000000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="24" AnzahlRichtig="6" AnzahlFalsch="8" Datum="1554242400000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="25" AnzahlRichtig="5" AnzahlFalsch="9" Datum="1554501600000" KarteikarteID="3"/>
+  <StatistikKarteikarte StatistikID="26" AnzahlRichtig="3" AnzahlFalsch="9" Datum="1554501600000" KarteikarteID="4"/>
+  <StatistikKarteikarte StatistikID="27" AnzahlRichtig="4" AnzahlFalsch="6" Datum="1554501600000" KarteikarteID="9"/>
+  <StatistikKarteikarte StatistikID="28" AnzahlRichtig="3" AnzahlFalsch="6" Datum="1554501600000" KarteikarteID="10"/>
+  <StatistikKarteikarte StatistikID="29" AnzahlRichtig="3" AnzahlFalsch="5" Datum="1554501600000" KarteikarteID="11"/>
+  <StatistikKarteikarte StatistikID="30" AnzahlRichtig="4" AnzahlFalsch="3" Datum="1554501600000" KarteikarteID="12"/>
+  <StatistikKarteikarte StatistikID="31" AnzahlRichtig="1" AnzahlFalsch="0" Datum="1554501600000" KarteikarteID="13"/>
+</dataset>

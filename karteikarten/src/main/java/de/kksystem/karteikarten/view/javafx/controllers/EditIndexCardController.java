@@ -5,6 +5,7 @@ import de.kksystem.karteikarten.facades.ServiceFacade;
 import de.kksystem.karteikarten.model.classes.IndexCardImpl;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
+import de.kksystem.karteikarten.utils.StringUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -62,25 +63,12 @@ public class EditIndexCardController implements Initializable {
         stageInfo.close();
     }
 
-    public static String getText(String htmlText) {
-        String result = "";
-        Pattern pattern = Pattern.compile("<[^>]*>");
-        Matcher matcher = pattern.matcher(htmlText);
-        final StringBuffer text = new StringBuffer(htmlText.length());
-        while (matcher.find()) {
-            matcher.appendReplacement(text, " ");
-        }
-        matcher.appendTail(text);
-        result = text.toString().trim();
-        return result;
-    }
-
     @FXML
     public void saveChanges(ActionEvent event) {
         String question = htmlEditQuestion.getHtmlText();
         String answer = htmlEditAnswer.getHtmlText();
-        String questionPlain = getText(htmlEditQuestion.getHtmlText());
-        String answerPlain = getText(htmlEditAnswer.getHtmlText());
+        String questionPlain = StringUtils.getText(htmlEditQuestion.getHtmlText());
+        String answerPlain = StringUtils.getText(htmlEditAnswer.getHtmlText());
 
         if (questionPlain.isBlank() && answerPlain.isBlank()) {
             lblMessage.setText("Bitte Frage und Antwort angeben!");

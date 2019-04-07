@@ -33,6 +33,11 @@ public class UserOptionsController implements Initializable {
     private Button btnBack;
 
     @FXML
+    public void setInitBorderPaneCenter(){
+        loadUi("/fxml/ShowUserDataWindow.fxml", new ShowUserDataController());
+    }
+
+    @FXML
     public void switchToShowUserDataWindow(ActionEvent event){
         loadUi("/fxml/ShowUserDataWindow.fxml", new ShowUserDataController());
     }
@@ -88,6 +93,7 @@ public class UserOptionsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setInitBorderPaneCenter();
         btnBack.setOnMouseClicked(this::switchBackToFunctionsWindow);
         btnChangeUsername.setOnAction(this::switchToChangeUserNameWindow);
         btnChangePassword.setOnAction(this::switchToChangePasswordWindow);

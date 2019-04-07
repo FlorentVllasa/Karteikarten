@@ -73,17 +73,7 @@ public class CreateNewPasswordWindowController implements Initializable{
 	}
 
 	public void switchToLoginWindow(){
-		try{
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
-			fxmlLoader.setController(new LoginController());
-			Parent root = fxmlLoader.load();
-			Stage stageInfo = (Stage) btnChangePassword.getScene().getWindow();
-			Scene scene = new Scene(root);
-			stageInfo.setScene(scene);
-		}catch(IOException io){
-			System.out.println(io.getMessage());
-		}
+		wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
 	}
 	
 	private void onEnterNewPassword(ActionEvent event) {

@@ -20,6 +20,11 @@ public class FavoritelistImpl implements Favoritelist {
 	public FavoritelistImpl(String name){
 		this.name = name;
 	}
+
+	public FavoritelistImpl(String name, int userId){
+		this.name = name;
+		this.userId = userId;
+	}
 	
 	@Override
 	public int getFavoritelistId() {

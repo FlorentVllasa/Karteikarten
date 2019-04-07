@@ -210,15 +210,17 @@ public class UserDaoJdbcImpl implements UserDao {
 	public void updateUser(User user) {
 		Connection connection = null;
 		PreparedStatement pstatement = null;
-		String sqlString = "UPDATE Benutzer SET Password = ?, Nachname = ?, Vorname = ? WHERE BenutzerID = ?";
+		String sqlString = "UPDATE Benutzer SET Benutzername = ?, Passwort = ?, Nachname = ?, Vorname = ? WHERE BenutzerID = ?";
 
 		try {
 			connection = JdbcUtils.getConnection();
 			pstatement = connection.prepareStatement(sqlString);
 
-			pstatement.setString(1, user.getPassword());
-			pstatement.setString(2, user.getSurname());
-			pstatement.setString(3, user.getForename());
+			pstatement.setString(1, user.getUsername());
+			pstatement.setString(2, user.getPassword());
+			pstatement.setString(3, user.getSurname());
+			pstatement.setString(4, user.getForename());
+			pstatement.setInt(5, user.getUserId());
 
 			pstatement.executeUpdate();
 		} catch (SQLException sqle) {

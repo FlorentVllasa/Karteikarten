@@ -3,16 +3,12 @@ package de.kksystem.karteikarten.view.javafx.controllers;
 import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
-import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -22,7 +18,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,7 +26,6 @@ import java.util.ResourceBundle;
 public class FunctionsController implements Initializable {
     private WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
     private WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
-    private LoginWindow lw = new LoginWindow();
 
     @FXML
     private AnchorPane anchorPane;
@@ -41,8 +35,7 @@ public class FunctionsController implements Initializable {
     
     @FXML
     private Button btnLogOut;
-    
-    
+
     @FXML
     private ImageView ivLearn;
 
@@ -70,18 +63,10 @@ public class FunctionsController implements Initializable {
     }
 
     public void switchSceneToUserOptionsWindow(MouseEvent event){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/fxml/UserOptionsWindow.fxml"));
-            loader.setController(new UserOptionsController());
-            Scene scene = new Scene(loader.load());
-            Stage stageInfo = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        Stage stageInfo = (Stage) ivUserOptions.getScene().getWindow();
+        wpss.createWindowSwitchScene("/fxml/UserOptionsWindow.fxml", new UserOptionsController(), stageInfo);
     }
-    
+
     public void switchSceneToStatisticsWindow(MouseEvent event) {
     	wp.createWindowNewStage("/fxml/Statistics.fxml", "Statistiken Ihrer Lektionen und Karteikarten", new StatisticsController());
     }
@@ -100,20 +85,8 @@ public class FunctionsController implements Initializable {
 
     /*Wenn auf Abmelden Button geklickt wird, schließt sich das Funktionen Fenster und öffnet das Login Fenster*/
     public void switchToPreviousWindowLogin(ActionEvent event){
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
-            fxmlLoader.setController(new LoginController());
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = new Stage();
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
-            closeWindowFunktionen();
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
-        //wp.createWindowNewStage("/loginWindow.fxml", "Login Window", new LoginController());
+        wp.createWindowNewStage("/fxml/LoginNew.fxml", "Login Window", new LoginController());
+        closeWindowFunktionen();
     }
     /*Diese Methode nimmt sich die Stage Information der Scene und schließt das Fenster daraufhin.
      * Dies wird erreicht in dem die Stage Information irgendeiner Komponente der Scene ermittelt wird und
@@ -142,7 +115,6 @@ public class FunctionsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
     	showTime();
     	showLblLoggedInMessage();
-        //abmeldenButton.setOnAction(this::switchToPreviousWindowLogin);
     	btnLogOut.setOnAction(this::switchToPreviousWindowLogin);
         ivManager.setOnMouseClicked(this::switchSceneToCreateWindow);
         ivLearn.setOnMouseClicked(this::switchSceneToChooseCategorieWindow);

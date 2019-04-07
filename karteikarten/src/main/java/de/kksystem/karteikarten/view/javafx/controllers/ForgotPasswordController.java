@@ -1,8 +1,6 @@
 package de.kksystem.karteikarten.view.javafx.controllers;
 
-import de.kksystem.karteikarten.data.UserData;
 import de.kksystem.karteikarten.facades.ServiceFacade;
-import de.kksystem.karteikarten.model.classes.UserImpl;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchScene;
 import de.kksystem.karteikarten.view.javafx.helperclasses.WindowPresetSwitchStage;
 import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
@@ -10,12 +8,6 @@ import de.kksystem.karteikarten.view.javafx.stages.LoginWindow;
 import java.io.IOException;
 import java.util.Properties;
 
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.ActionEvent;
@@ -26,13 +18,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 
 import javax.mail.*;
 import javax.mail.internet.*;
@@ -44,11 +34,7 @@ import java.util.ResourceBundle;
 public class ForgotPasswordController implements Initializable{
 	
 	private final int KEY_LENGTH = 100;
-	
-	LoginWindow lw = new LoginWindow();
-	WindowPresetSwitchStage wp = new WindowPresetSwitchStage();
-    WindowPresetSwitchScene wpss = new WindowPresetSwitchScene();
-    
+
     @FXML
     private AnchorPane anchorPane;
     
@@ -75,12 +61,12 @@ public class ForgotPasswordController implements Initializable{
 	/*Diese Methode springt das Fenster auf das LoginWindow zurueck*/
 	private void switchToLoginWindow(ActionEvent event){
 		try{
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
-			fxmlLoader.setController(new LoginController());
-			Parent root = fxmlLoader.load();
-			Stage stageInfo = (Stage) btnBack.getScene().getWindow();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
+			loader.setController(new LoginController());
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			Stage stageInfo = (Stage) btnBack.getScene().getWindow();
 			stageInfo.setScene(scene);
 		}catch(IOException io){
 			System.out.println(io.getMessage());
@@ -89,14 +75,13 @@ public class ForgotPasswordController implements Initializable{
 	
 	/*Diese Methode erstellt ein neues Fenster zum Aendern des Passworts, falls die geschickte und eingegebene Schluesseln miteinander stimmen*/
 	private void switchToCreateNewPasswordWindow() {
-		//wpss.createWindowSwitchScene("/fxml/CreateNewPasswordWindow.fxml", new CreateNewPasswordWindowController(txtFieldEmail.getText()), lw.getWindow());
 		try{
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("/fxml/CreateNewPasswordWindow.fxml"));
-			fxmlLoader.setController(new CreateNewPasswordWindowController(txtFieldEmail.getText()));
-			Parent root = fxmlLoader.load();
-			Stage stageInfo = (Stage) btnConfirm.getScene().getWindow();
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("/fxml/CreateNewPasswordWindow.fxml"));
+			loader.setController(new CreateNewPasswordWindowController(txtFieldEmail.getText()));
+			Parent root = loader.load();
 			Scene scene = new Scene(root);
+			Stage stageInfo = (Stage) btnConfirm.getScene().getWindow();
 			stageInfo.setScene(scene);
 		}catch(IOException io){
 			System.out.println(io.getMessage());

@@ -34,28 +34,23 @@ public class UserDaoTest {
     private static final String DELETE_USER_XML_FILE_PATH = "src/test/resources/test-xml/test-user/expected-delete-user.xml";
 	private static final String USER_TABLE = "Benutzer";
 	private UserDao userDao;
-	
-	private void fullDatabaseImport(File file) throws ClassNotFoundException, DatabaseUnitException, IOException, SQLException {
-		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-		DBUnitUtils.fullDatabaseExport(connection);
-		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-		IDataSet dataSet = builder.build(file);
-		
-		DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
-	}
-	
+
 	@Before
 	public void setUp() throws ClassNotFoundException, DatabaseUnitException, IOException, SQLException {
 		File xmlFile = new File(DATABASE_XML_FILE_PATH);
 		boolean xmlFileExists = xmlFile.exists();
 		assertTrue(xmlFileExists);
 		userDao = new UserDaoJdbcImpl();
-		fullDatabaseImport(xmlFile);
+		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
+		DBUnitUtils.fullDatabaseExport(connection);
+		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
+		IDataSet dataSet = builder.build(xmlFile);
+
+		DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
 	}
 	
 	@After
     public void tearDown() throws Exception {
-		//userDao.deleteUser(new UserImpl(newUserId, "", "", "", "", "", null));
 		IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
 		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
 		IDataSet dataSet = builder.build(new FileInputStream(DATABASE_XML_FILE_PATH));
@@ -68,11 +63,7 @@ public class UserDaoTest {
 	public void testAddUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException {
 		Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 		
-		File expectedXmlFile = new File(ADD_USER_XML_FILE_PATH);
-		FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-		IDataSet expectedDataSet = builder.build(expectedXmlFile);
-		ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
-		//ITable expectedTable = expectedDataSet.getTable(USER_TABLE);
+		ITable expectedTable = DBUnitUtils.setExpected(ADD_USER_XML_FILE_PATH, USER_TABLE);
 		
 		User user = new UserImpl("gian-test333", "giantest333@example.com", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
 		userDao.addUser(user);
@@ -89,11 +80,7 @@ public class UserDaoTest {
 	@Test
     public void testDeleteUser() throws DatabaseUnitException, ClassNotFoundException, IOException, SQLException{
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-
-        File expectedXmlFile = new File(DELETE_USER_XML_FILE_PATH);
-        FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
-        IDataSet expectedDataSet = builder.build(expectedXmlFile);
-        ITable expectedTable =expectedDataSet.getTable(USER_TABLE);
+		ITable expectedTable = DBUnitUtils.setExpected(DELETE_USER_XML_FILE_PATH, USER_TABLE);
 
         User user = new UserImpl(39, "giantest555@example.com", "gian-test555", "test1231", "testnutzer1", "testnutzervorname1", timestamp);
         userDao.deleteUser(user);
@@ -106,4 +93,5 @@ public class UserDaoTest {
 
 		Assertion.assertEquals(expectedTable, filteredTable);
     }
+
 }

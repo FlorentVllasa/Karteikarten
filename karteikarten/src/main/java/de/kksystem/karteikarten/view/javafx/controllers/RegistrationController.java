@@ -121,21 +121,8 @@ public class RegistrationController implements Initializable {
                 	// FavoritenlisteID des neuen Nutzers nun in UserData abgespeichert
                 	UserData.getInstance().setFavoritelistId(newFavoritelistId);
                 	
-//                    wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!", new FunctionsController());
-//                    closeRegisterWindow();
-                    try{
-                        FXMLLoader fxmlLoader = new FXMLLoader();
-                        fxmlLoader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
-                        fxmlLoader.setController(new FunctionsController());
-                        Stage stage = new Stage();
-                        Scene scene = new Scene(fxmlLoader.load());
-                        stage.setResizable(false);
-                        stage.setScene(scene);
-                        stage.show();
-                        closeRegisterWindow();
-                    }catch(IOException io){
-                        System.out.println(io.getMessage());
-                    }
+                    wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion waehlen!", new FunctionsController());
+                    closeRegisterWindow();
             	}else {
             		System.out.println("Leider ist etwas schiefgelaufen. Versuchen Sie es später erneut.");
             	}
@@ -256,18 +243,7 @@ public class RegistrationController implements Initializable {
 
     /*Diese Methode wechselt die von der Registrieren Scene zur LogIn Scene*/
     public void switchToLoginWindow(ActionEvent event){
-        //wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
-        try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fxml/LoginNew.fxml"));
-            fxmlLoader.setController(new LoginController());
-            Parent root = fxmlLoader.load();
-            Stage stageInfo = (Stage) btnBack.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stageInfo.setScene(scene);
-        }catch(IOException io){
-            System.out.println(io.getMessage());
-        }
+        wpss.createWindowSwitchScene("/fxml/LoginNew.fxml", new LoginController(), lw.getWindow());
     }
 
     /*Diese Methode vergleicht den von Benutzer eingegebenen Schüssel und dem zu der Benutzeremail geschickten Schlüssel*/

@@ -73,21 +73,8 @@ public class LoginController implements Initializable {
     	
     	if(!username.isEmpty() && !password.isEmpty()) {
 	    	if(ServiceFacade.getInstance().checkLogIn(username, password)) {
-//	            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
-//	            closePreviousWindowLogin();
-                try{
-                    FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("/fxml/functionsWindow.fxml"));
-                    fxmlLoader.setController(new FunctionsController());
-                    Scene scene = new Scene(fxmlLoader.load());
-                    Stage stage = new Stage();
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.show();
-                    closeLoginWindow();
-                }catch(IOException io){
-                    System.out.println(io.getMessage());
-                }
+	            wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen!", new FunctionsController());
+	            closeLoginWindow();
 	    	}else {
 	    		lblLogInMessage.setText("Benutzername oder Passwort falsch.");
 	    	}
@@ -95,23 +82,17 @@ public class LoginController implements Initializable {
     		lblLogInMessage.setText("Bitte Benutzername und Passwort eingeben.");
     	}
     }
-
-    /*Diese Methode wechselt das Fenster vom LogIn Fenster zum Funktionen Fenster durch den Einloggen Button Klick*/
-    public void switchTofunctionsWindow(ActionEvent event){
-        wp.createWindowNewStage("/fxml/functionsWindow.fxml", "Funktion wählen", new FunctionsController());
-        closeLoginWindow();
-    }
     
     /*Diese Methode wechselt die Scene von der LogIn Scene in die Regristrieren Scene durch RegistrierenButton Klick */
     public void switchToForgotPasswordWindow(ActionEvent event){
         //wpss.createWindowSwitchScene("/fxml/ForgotPassword.fxml", new ForgotPasswordController(), lw.getWindow());
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fxml/ForgotPassword.fxml"));
-            fxmlLoader.setController(new ForgotPasswordController());
-            Parent root = fxmlLoader.load();
-            Stage stageInfo = (Stage) buttonForgotPassword.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/ForgotPassword.fxml"));
+            loader.setController(new ForgotPasswordController());
+            Parent root = loader.load();
             Scene scene = new Scene(root);
+            Stage stageInfo = (Stage) buttonForgotPassword.getScene().getWindow();
             stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());
@@ -122,12 +103,12 @@ public class LoginController implements Initializable {
     public void switchToRegistrationWindow(ActionEvent event){
         //wpss.createWindowSwitchScene("/fxml/registrationWindow.fxml", new RegistrationController(), lw.getWindow());
         try{
-            FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/fxml/registrationWindow.fxml"));
-            fxmlLoader.setController(new RegistrationController());
-            Parent root = fxmlLoader.load();
-            Stage stageInfo = (Stage) buttonRegister.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/fxml/registrationWindow.fxml"));
+            loader.setController(new RegistrationController());
+            Parent root = loader.load();
             Scene scene = new Scene(root);
+            Stage stageInfo = (Stage) buttonRegister.getScene().getWindow();
             stageInfo.setScene(scene);
         }catch(IOException io){
             System.out.println(io.getMessage());

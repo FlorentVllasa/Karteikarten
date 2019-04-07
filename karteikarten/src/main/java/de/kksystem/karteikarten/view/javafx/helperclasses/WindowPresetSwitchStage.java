@@ -12,8 +12,6 @@ public class WindowPresetSwitchStage {
      * Path ist die fxml Url, title ist der Titel des Fensters, controller ist eine Referenz auf die ControllerKlasse
      * der jeweiligen fxml*/
 
-    Object controller;
-
     public void createWindowNewStage(String path, String title, Object controller){
         try {
             final FXMLLoader fxmlLoader = new FXMLLoader();
@@ -21,6 +19,7 @@ public class WindowPresetSwitchStage {
             fxmlLoader.setController(controller);
             final Stage stage = new Stage();
             Scene scene = new Scene(fxmlLoader.load());
+            stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(scene);
             stage.setTitle(title);
@@ -29,9 +28,5 @@ public class WindowPresetSwitchStage {
         }catch(IOException io){
             io.printStackTrace();
         }
-    }
-
-    public Object getController() {
-        return controller;
     }
 }

@@ -10,6 +10,7 @@ import de.kksystem.karteikarten.model.interfaces.Category;
 import de.kksystem.karteikarten.model.interfaces.IndexCard;
 import de.kksystem.karteikarten.model.interfaces.Lection;
 import de.kksystem.karteikarten.model.interfaces.Picture;
+import de.kksystem.karteikarten.utils.StringUtils;
 import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -505,8 +506,8 @@ public class CreateWindowController implements Initializable {
 	public void addIndexCardIntoTableView(ActionEvent event) {
 		String question = htmlQuestion.getHtmlText();
 		String answer = htmlAnswer.getHtmlText();
-		String questionPlainText = getText(htmlQuestion.getHtmlText());
-		String answerPlainText = getText(htmlAnswer.getHtmlText());
+		String questionPlainText = StringUtils.getText(htmlQuestion.getHtmlText());
+		String answerPlainText = StringUtils.getText(htmlAnswer.getHtmlText());
 		String pathOfPicture = null;
 		String pictureFilename = null;
 		int newPictureId = -1;
@@ -574,19 +575,6 @@ public class CreateWindowController implements Initializable {
 				loadIndexCards(lectionId);
 			}
 		}
-	}
-
-	public static String getText(String htmlText) {
-		String result = "";
-		Pattern pattern = Pattern.compile("<[^>]*>");
-		Matcher matcher = pattern.matcher(htmlText);
-		final StringBuffer text = new StringBuffer(htmlText.length());
-		while (matcher.find()) {
-			matcher.appendReplacement(text, " ");
-		}
-		matcher.appendTail(text);
-		result = text.toString().trim();
-		return result;
 	}
 
 	@FXML
