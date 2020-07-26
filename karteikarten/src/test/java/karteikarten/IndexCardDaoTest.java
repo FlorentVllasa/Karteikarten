@@ -41,7 +41,6 @@ public class IndexCardDaoTest {
         assertTrue(xmlFileExists);
         indexCardDao = new IndexCardDaoJdbcImpl();
         IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-        DBUnitUtils.fullDatabaseExport(connection);
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         IDataSet dataSet = builder.build(xmlFile);
         DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);

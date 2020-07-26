@@ -45,7 +45,6 @@ public class PictureDaoTest {
         assertTrue(xmlFileExists);
         pictureDao = new PictureDaoJdbcImpl();
         IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-        DBUnitUtils.fullDatabaseExport(connection);
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         IDataSet dataSet = builder.build(xmlFile);
 

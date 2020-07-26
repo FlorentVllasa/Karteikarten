@@ -46,7 +46,6 @@ public class LectionDaoTest {
         assertTrue(xmlFileExists);
         lectionDao = new LectionDaoJdbcImpl();
         IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-        DBUnitUtils.fullDatabaseExport(connection);
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         IDataSet dataSet = builder.build(xmlFile);
 

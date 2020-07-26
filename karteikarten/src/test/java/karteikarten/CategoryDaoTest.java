@@ -43,7 +43,6 @@ public class CategoryDaoTest {
         assertTrue(xmlFileExists);
         categoryDao = new CategoryDaoJdbcImpl();
         IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-        DBUnitUtils.fullDatabaseExport(connection);
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         IDataSet dataSet = builder.build(xmlFile);
         DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);

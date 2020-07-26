@@ -44,7 +44,6 @@ public class FavoriteDaoTest {
         assertTrue(xmlFileExists);
         favoritelistDao = new FavoritelistDaoJdbcImpl();
         IDatabaseConnection connection = DBUnitUtils.getDatabaseConnection();
-        DBUnitUtils.fullDatabaseExport(connection);
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         IDataSet dataSet = builder.build(xmlFile);
 
